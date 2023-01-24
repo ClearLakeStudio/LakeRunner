@@ -1,2 +1,2 @@
-# lakerunner
-A unity game
+# Lake Runner
+A reverse-platformer game built using Unity
