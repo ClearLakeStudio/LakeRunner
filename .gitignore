@@ -6,9 +6,9 @@
 *.app
 
 # This .gitignore file should be placed at the root of your Unity project directory
-#
+
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -16,6 +16,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+# I don't believe we need to share these with each other
+/[Uu]ser[Ss]ettings/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -28,6 +30,7 @@
 
 # Visual Studio cache directory
 .vs/
+.vscode/
 
 # Gradle cache directory
 .gradle/
