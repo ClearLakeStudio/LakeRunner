@@ -1,2 +1,10 @@
-# environment and terrain
-# user interaction with the environment and terrain
+## <Zaiden Espe> - <Platform Drawing>
+
+## Overview of Feature
+  My feature is the platform drawing mechanic. The player can draw various types of terrain objects on the screen to guide the surfer through the environment.
+
+## Coding Tasks
+  1. handle user input
+  2. verify validity of user input
+  3. create and store platform objects
+  4. draw platform on map
