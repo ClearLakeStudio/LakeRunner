@@ -10,3 +10,4 @@ I am responsible for the items that the player can use to manipulate the Surfer'
 
 ## Coding Tasks
 - to be finished later...
+- An example of a task
