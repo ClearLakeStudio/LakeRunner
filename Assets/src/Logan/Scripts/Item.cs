@@ -14,7 +14,7 @@ using UnityEngine;
  * isCollected -- bool that reflects the current status of the item instance.
  * type        -- ItemType that tells what kind of item this instance is.
  */
-abstract class Item
+abstract public class Item : MonoBehaviour
 {
     public enum ItemType {
         Undefined = -1,
