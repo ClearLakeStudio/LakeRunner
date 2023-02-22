@@ -40,7 +40,7 @@ abstract public class Item : MonoBehaviour
     public ItemType Collect()
     {
         this.isCollected = true;
-        Debug.Log("Item Class: " + (int)this.type + "collected.");
+        Debug.Log("(Logan) Item Class: " + (int)this.type + "collected.");
         return this.type;
     }
 
