@@ -6,15 +6,15 @@ using UnityEngine;
 public class LoadLevel : MonoBehaviour{
     private float chunkTime;
 
-    void Start(){
+    void Start() {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         chunkTime = 0.0f;
     }
 
-    void Update(){
+    void FixedUpdate() {
         //Subtract the seconds since last fram from the chunk loading timer. If this puts the timer below 0, set it to 0.
         if(chunkTime > 0){
-            chunkTime -= Time.deltaTime;
+            chunkTime--;
         }
         if(chunkTime < 0){
             chunkTime = 0;
@@ -28,7 +28,7 @@ public class LoadLevel : MonoBehaviour{
             Debug.Log("Ian - Load first three chunks at " + heroPos.x + ", " + (heroPos.x + 25) + ", and " + (heroPos.x + 50));
         } else if(((heroPos.x % 25) < .1) && chunkTime == 0){ 
             Debug.Log("Ian - Load next chunk in level at x-value " + heroPos.x +" and y-value " + heroPos.y);
-            chunkTime = 2;
+            chunkTime = 100;
         }
     }
 }
