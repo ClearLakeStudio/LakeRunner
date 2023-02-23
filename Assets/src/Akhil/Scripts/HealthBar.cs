@@ -14,7 +14,6 @@ public class HealthBar : MonoBehaviour {
     //        g = GameManager.Instance;
         }
         healthSlider = GetComponent<Slider>();
-
         maxHealth = 100;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;

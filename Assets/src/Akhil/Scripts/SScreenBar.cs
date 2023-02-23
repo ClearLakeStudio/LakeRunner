@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SScreenBar : MonoBehaviour {
 
 
-    public Slider ssSlider;
+    public Slider sSlider;
     private GameManager gm;
     public int sScreen;
 
@@ -16,23 +16,20 @@ public class SScreenBar : MonoBehaviour {
     //        gm = GameManager.Instance;
         }
         sSlider = GetComponent<Slider>();
-
-        sScreen = 100;
-        sSlider.sScreen = sScreen;
+        sScreen = 0;
         sSlider.value = sScreen;
         
     }
 
     public void SetSScreen(int sScreen){
-        sSlider.maxValue = sScreen;
         sSlider.value = sScreen;
     }
 
-    /*   public void pickUpSS(){
+    public void pickUpSS(){
         sSlider.value += 1;
-        if(sSlider.used){
-            sSlider.value -= 1;
-        }
-    }  */
+    } 
+    public void UsedSS(){ 
+        sSlider.value -= 1;
+    }
 
 }
