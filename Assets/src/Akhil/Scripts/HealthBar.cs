@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour {
 
     private void Start(){
         if(g == null){
-            g = GameManager.Instance;
+    //        g = GameManager.Instance;
         }
         healthSlider = GetComponent<Slider>();
 
