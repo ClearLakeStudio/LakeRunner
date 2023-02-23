@@ -44,6 +44,13 @@ public class Hero : MonoBehaviour
         if(other.tag == "Enemy")
         {
             Debug.Log("Collision with enemy");
+            //other.GetComponent<Enemy>().hitenemy; -- tell enemy i hit him.
         }
+        /*if(other.tag == "Item")
+        {
+            Debug.Log("Collision with item");
+            other.GetComponent<Item>(); --need to find a way to tell Logan I hit him.
+        }
+         */
     }
 }
