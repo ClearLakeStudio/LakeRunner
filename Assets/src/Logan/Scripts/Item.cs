@@ -27,6 +27,7 @@ abstract public class Item : MonoBehaviour
     public bool isCollected = false;
 
     private ItemType type = ItemType.Undefined;
+    [SerializeField] AudioClip collectSound;
 
     /*
      * Should be called whenever the hero interacts collides with an uncollected
@@ -37,11 +38,30 @@ abstract public class Item : MonoBehaviour
      * ItemType -- the type of the item that was collected (can go towards updating
      *             statistics or inventory UI, etc.)
      */
-    public ItemType Collect()
+    public ItemType Collected()
     {
         this.isCollected = true;
-        Debug.Log("(Logan) Item Class: " + (int)this.type + "collected.");
+        Debug.Log("(Logan) Item Class: " + this.type.ToString() + " collected.");
         return this.type;
+    }
+
+    protected void Start()
+    {
+        if (gameObject.tag == "Sunscreen") {
+            this.SetType(ItemType.Sunscreen);
+        }
+        else if (gameObject.tag == "Aloe Vera") {
+            this.SetType(ItemType.AloeVera);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Hero") {
+            AudioSource.PlayClipAtPoint(collectSound, transform.position);
+            this.Collected();
+            Destroy(gameObject);
+        }
     }
 
     /*
