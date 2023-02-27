@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1de6a1e434c0b4aff82ccbe8f81064a9
+guid: 844ea5ab7b09b4de8bda9a66717e7f80
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel(1)_0
+      name: AloeVera_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c905dc4123d0a4475b123dbc6a4143b0
-      internalID: -1560027791
+      spriteID: ef5a07910208541d6b151711b01128c2
+      internalID: 1653964883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel(1)_1
+      name: AloeVera_1
       rect:
         serializedVersion: 2
         x: 32
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3fae0ed453ed42ca80723eaba210e7b
-      internalID: 2128220651
+      spriteID: 343d6fb9fcdd34ceeab54ec950253051
+      internalID: -160615061
       vertices: []
       indices: 
       edges: []
@@ -157,8 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      New Piskel(1)_0: -1560027791
-      New Piskel(1)_1: 2128220651
+      AloeVera_1: -160615061
+      AloeVera_0: 1653964883
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

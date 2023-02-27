@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 40a6e3d318ebc49e0b8272100042c6ab
+guid: 1de6a1e434c0b4aff82ccbe8f81064a9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel(2)_0
+      name: Sunscreen_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13962d27048a24e279857e4bc198cadb
-      internalID: -887610326
+      spriteID: 01e22790d3e3e4bc792267e8ae734373
+      internalID: -590720916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel(2)_1
+      name: Sunscreen_1
       rect:
         serializedVersion: 2
         x: 32
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05f7dabe990c8467da9eb7ca3a91786b
-      internalID: -33714853
+      spriteID: 31d661690157e4f30a9152c335fd54a9
+      internalID: -1661701236
       vertices: []
       indices: 
       edges: []
@@ -157,8 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      New Piskel(2)_0: -887610326
-      New Piskel(2)_1: -33714853
+      Sunscreen_0: -590720916
+      Sunscreen_1: -1661701236
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

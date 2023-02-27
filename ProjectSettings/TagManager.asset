@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hero
   - Enemy
+  - Sunscreen
+  - Aloe Vera
   layers:
   - Default
   - TransparentFX
