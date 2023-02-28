@@ -27,7 +27,7 @@ public class LoadLevel : MonoBehaviour{
         if(heroPos.x < 10){
             Debug.Log("Ian - Load first three chunks at " + heroPos.x + ", " + (heroPos.x + 25) + ", and " + (heroPos.x + 50));
         } else if(((heroPos.x % 25) < .1) && chunkTime == 0){ 
-            Debug.Log("Ian - Load next chunk in level at x-value " + heroPos.x +" and y-value " + heroPos.y);
+            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 25) +" and y-value " + heroPos.y);
             chunkTime = 100;
         }
     }
