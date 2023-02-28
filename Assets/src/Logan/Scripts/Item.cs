@@ -17,11 +17,12 @@ using UnityEngine;
 abstract public class Item : MonoBehaviour
 {
     public enum ItemType {
-        Undefined = -1,
-        AloeVera = 0,
-        Sunscreen = 1,
-        Sunglasses = 10,
-        BrainBlastBar= 11,
+        Undefined     = -1,
+        AloeVera      = 0,
+        Sunscreen     = 1,
+        Sunglasses    = 10,
+        BrainBlastBar = 11,
+        Slippers      = 12,
     }
 
     public bool isCollected = false;
@@ -52,6 +53,12 @@ abstract public class Item : MonoBehaviour
         }
         else if (gameObject.tag == "Aloe Vera") {
             this.SetType(ItemType.AloeVera);
+        }
+        else if (gameObject.tag == "Sunglasses") {
+            this.SetType(ItemType.Sunglasses);
+        }
+        else if (gameObject.tag == "Slippers") {
+            this.SetType(ItemType.Slippers);
         }
     }
 
