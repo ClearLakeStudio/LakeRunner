@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Sunscreen
   - Aloe Vera
+  - Sunglasses
+  - Slippers
   layers:
   - Default
   - TransparentFX
