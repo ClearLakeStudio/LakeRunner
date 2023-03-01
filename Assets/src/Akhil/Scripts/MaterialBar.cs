@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MaterialBar : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class MaterialBar : MonoBehaviour {
+    
+    public Slider matSlider;
+    public int maxMat;
+
+    public void SetMaxMat(int maxMat){
+        matSlider.maxValue = maxMat;
+        matSlider.value = maxMat;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void changeMat (int material) {
+        slider.value = material;
     }
 }
