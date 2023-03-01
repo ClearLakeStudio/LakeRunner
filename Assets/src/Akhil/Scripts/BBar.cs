@@ -16,4 +16,4 @@ public class BBar : MonoBehaviour {
 }
 
 
-// attach this file to the gamemanager file
+// attach this script to the gamemanager script and then attach the textObject to this script
