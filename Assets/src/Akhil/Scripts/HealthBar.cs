@@ -22,10 +22,12 @@ public class HealthBar : MonoBehaviour {
     public void SetMaxHealth(int maxHealth){
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
+        Debug.Log("Akhil : Max health set");
     }
 
     public void updateHealth (int health) {
         healthSlider.value = health;
+        Debug.Log("Akhil : health update");
     }
 
  /*   public void subtract_damage(){

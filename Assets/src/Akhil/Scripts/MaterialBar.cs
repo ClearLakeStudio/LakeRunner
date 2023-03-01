@@ -11,9 +11,11 @@ public class MaterialBar : MonoBehaviour {
     public void SetMaxMat(int maxMat){
         matSlider.maxValue = maxMat;
         matSlider.value = maxMat;
+        Debug.Log("Akhil : Max material resource set");
     }
 
     public void updateMaterial (int material) {
         matSlider.value = material;
+        Debug.Log("Akhil : Material resource update");
     }
 }
