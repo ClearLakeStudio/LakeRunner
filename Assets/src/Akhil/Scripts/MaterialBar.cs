@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MaterialBar : MonoBehaviour {
-    
+
     public Slider matSlider;
     public int maxMat;
 
@@ -13,7 +13,7 @@ public class MaterialBar : MonoBehaviour {
         matSlider.value = maxMat;
     }
 
-    public void changeMat (int material) {
-        slider.value = material;
+    public void updateMaterial (int material) {
+        matSlider.value = material;
     }
 }
