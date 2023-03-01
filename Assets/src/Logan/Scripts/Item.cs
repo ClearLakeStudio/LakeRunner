@@ -60,6 +60,9 @@ abstract public class Item : MonoBehaviour
         else if (gameObject.tag == "Slippers") {
             this.SetType(ItemType.Slippers);
         }
+        else if (gameObject.tag == "BrainBlastBar") {
+            this.SetType(ItemType.BrainBlastBar);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
