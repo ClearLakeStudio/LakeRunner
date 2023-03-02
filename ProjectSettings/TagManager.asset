@@ -10,6 +10,8 @@ TagManager:
   - Aloe Vera
   - Sunglasses
   - Slippers
+  - Platform
+  - BrainBlastBar
   layers:
   - Default
   - TransparentFX
