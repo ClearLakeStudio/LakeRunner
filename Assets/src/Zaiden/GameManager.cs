@@ -15,16 +15,16 @@ public class GameManager : MonoBehaviour
     public GameObject chunkManager;
     public GameObject hero;
     public GameObject healthBar;
-    public GameObject matBar;
-    public GameObject sunscreenBar;
+    //public GameObject matBar;
+    //public GameObject sunscreenBar;
     //public GameObject autoPlat; // reference to automatically-made platforms (need a better naming convention for later)
 
     // store references to scripts
     PlatformManager pM;
     LoadLevel cM;
     HealthBar hB;
-    MaterialBar mB;
-    SunSbar ssB; // would like to have SunScreen edited to include bar at the end
+    //MaterialBar mB;
+    //SunSbar ssB; // would like to have SunScreen edited to include bar at the end
 
     // store moues data value
     Vector3 mousePos; // stores position of mouse at critical points
@@ -45,13 +45,13 @@ public class GameManager : MonoBehaviour
         pM = platManager.GetComponent<PlatformManager>(); // assign script reference in platformmanager.cs
         cM = chunkManager.GetComponent<LoadLevel>(); // assign script reference in loadlevel.cs
         hB = healthBar.GetComponent<HealthBar>(); // assign script reference in HealthBar.cs
-        mB = matBar.GetComponent<MaterialBar>(); // assign script reference in MatBar.cs
-        ssB = sunscreenBar.GetComponent<SunSbar>(); // assign script reference in SunScreen.cs
+        //mB = matBar.GetComponent<MaterialBar>(); // assign script reference in MatBar.cs
+        //ssB = sunscreenBar.GetComponent<SunSbar>(); // assign script reference in SunScreen.cs
 
         // initial calls, will be removed later and moved to hero script
         hB.SetMaxHealth(10);
-        mB.SetMaxMat(100);
-        ssB.SetSunS(10);
+        //mB.SetMaxMat(100);
+        //ssB.SetSunS(10);
 
     }
 
