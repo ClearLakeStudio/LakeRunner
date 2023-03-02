@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class LoadLevel : MonoBehaviour{
     private float chunkTime;
+    public GameObject platform;
+    private bool firstSpawned;
+    private int offset;
 
     void Start() {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         chunkTime = 0.0f;
+        firstSpawned = false;
+        offset = 2;
     }
 
     void FixedUpdate() {
@@ -23,11 +28,15 @@ public class LoadLevel : MonoBehaviour{
 
     /*  This function will spawn the first three chunks of the level immediately. It will then check whether 
         the hero has reached the end of a chunk and, if so, spawn another chunk past the current final chunk. */
-    void CreateNewChunk(Vector3 heroPos) {
-        if(heroPos.x < 10){
-            Debug.Log("Ian - Load first three chunks at " + heroPos.x + ", " + (heroPos.x + 25) + ", and " + (heroPos.x + 50));
-        } else if(((heroPos.x % 25) < .1) && chunkTime == 0){ 
-            Debug.Log("Ian - Load next chunk in level at x-value " + heroPos.x +" and y-value " + heroPos.y);
+    public void CreateNewChunk(Vector3 heroPos) {
+        if(heroPos.x < .1 && !firstSpawned){
+            for(int i = 0; i < 20; i++){
+                Instantiate(platform,new Vector2(heroPos.x + i * offset, heroPos.y),Quaternion.identity);
+            }
+            firstSpawned = true;
+        } else if(((heroPos.x % offset) < .1) && chunkTime == 0){ 
+            Instantiate(platform,new Vector2(heroPos.x + 19*offset + (heroPos.x%offset), heroPos.y), Quaternion.identity);
+            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 2*offset + (heroPos.x%offset)) +" and y-value " + heroPos.y);
             chunkTime = 100;
         }
     }
