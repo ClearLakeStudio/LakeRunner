@@ -26,15 +26,15 @@ public class LoadLevel : MonoBehaviour{
         the hero has reached the end of a chunk and, if so, spawn another chunk past the current final chunk. */
     public void CreateNewChunk(Vector3 heroPos) {
         int offset = 2;
-        if(heroPos.x < .1 && chunkTime == 0){
-            Instantiate(platform,new Vector2(heroPos.x, heroPos.y), Quaternion.identity);
-            Instantiate(platform,new Vector2(heroPos.x + offset, heroPos.y), Quaternion.identity);
-            Instantiate(platform,new Vector2(heroPos.x + 2 * offset, heroPos.y), Quaternion.identity);
-            Debug.Log("Ian - Load first three chunks at " + heroPos.x + ", " + (heroPos.x + offset) + ", and " + (heroPos.x + 2 * offset));
-            chunkTime = 100;
-        } else if(((heroPos.x % 25) < .1) && chunkTime == 0){ 
+        bool firstSpawned = false;
+        if(heroPos.x < .1 && !firstSpawned){
+            for(int i = 0; i < 20; i++){
+                Instantiate(platform,new Vector2(heroPos.x + i * offset, heroPos.y),Quaternion.identity);
+            }
+            firstSpawned = true;
+        } else if(((heroPos.x % offset) < .1) && chunkTime == 0){ 
             Instantiate(platform,new Vector2(heroPos.x + 2*offset + (heroPos.x%25), heroPos.y), Quaternion.identity);
-            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 2*offset + (heroPos.x%25)) +" and y-value " + heroPos.y);
+            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 2*offset + (heroPos.x%offset)) +" and y-value " + heroPos.y);
             chunkTime = 100;
         }
     }
