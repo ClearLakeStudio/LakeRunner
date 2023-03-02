@@ -35,8 +35,8 @@ public class LoadLevel : MonoBehaviour{
             }
             firstSpawned = true;
         } else if(((heroPos.x % offset) < .1) && chunkTime == 0){ 
-            Instantiate(platform,new Vector2(heroPos.x + 19*offset + (heroPos.x%offset), heroPos.y), Quaternion.identity);
-            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 2*offset + (heroPos.x%offset)) +" and y-value " + heroPos.y);
+            Instantiate(platform,new Vector2(heroPos.x + 19*offset, heroPos.y), Quaternion.identity);
+            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 19*offset) +" and y-value " + heroPos.y);
             chunkTime = 100;
         }
     }
