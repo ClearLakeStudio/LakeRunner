@@ -24,7 +24,7 @@ public class LoadLevel : MonoBehaviour{
 
     /*  This function will spawn the first three chunks of the level immediately. It will then check whether 
         the hero has reached the end of a chunk and, if so, spawn another chunk past the current final chunk. */
-    void CreateNewChunk(Vector3 heroPos) {
+    public void CreateNewChunk(Vector3 heroPos) {
         if(heroPos.x < 10){
             Instantiate(platform,new Vector2(heroPos.x, heroPos.y), Quaternion.identity);
             Instantiate(platform,new Vector2(heroPos.x + 25, heroPos.y), Quaternion.identity);
