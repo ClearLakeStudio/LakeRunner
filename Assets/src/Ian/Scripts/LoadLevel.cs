@@ -29,12 +29,12 @@ public class LoadLevel : MonoBehaviour{
     /*  This function will spawn the first three chunks of the level immediately. It will then check whether 
         the hero has reached the end of a chunk and, if so, spawn another chunk past the current final chunk. */
     public void CreateNewChunk(Vector3 heroPos) {
-        if(heroPos.x < .1 && !firstSpawned){
+        if(heroPos.x < .05 && !firstSpawned){
             for(int i = 0; i < 20; i++){
                 Instantiate(platform,new Vector2(heroPos.x + i * offset, heroPos.y),Quaternion.identity);
             }
             firstSpawned = true;
-        } else if(((heroPos.x % offset) < .1) && chunkTime == 0){ 
+        } else if(((heroPos.x % offset) < .05) && chunkTime == 0){ 
             Instantiate(platform,new Vector2(heroPos.x + 19*offset, heroPos.y), Quaternion.identity);
             Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 19*offset - .1) +" and y-value " + heroPos.y);
             chunkTime = 100;
