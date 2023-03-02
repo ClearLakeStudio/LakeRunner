@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BBar : MonoBehaviour {
 
-    public int BBarCount = 0;
+    public int BBarCount = 0;//  <<------ attach this script to the player and then attach the text corresponding to this script to there
     public Text BBarText;
 
     void Update() {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SunGlasses : MonoBehaviour {
 
-    public int SGlassCount = 0;
+    public int SGlassCount = 0;     //  <<------ attach this script to the player and then attach the text corresponding to this script to there
     public Text SGlassText;
 
     void Update() {

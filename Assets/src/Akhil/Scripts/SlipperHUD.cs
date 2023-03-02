@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SlipperHUD : MonoBehaviour
 {
-    
+   //  <<------ attach this script to the player and then attach the text corresponding to this script to there 
     public int SlprCount = 0;
     public Text SlprText;
 
