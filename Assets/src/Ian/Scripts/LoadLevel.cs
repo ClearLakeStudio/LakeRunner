@@ -31,8 +31,8 @@ public class LoadLevel : MonoBehaviour{
             Instantiate(platform,new Vector2(heroPos.x + 50, heroPos.y), Quaternion.identity);
             Debug.Log("Ian - Load first three chunks at " + heroPos.x + ", " + (heroPos.x + 25) + ", and " + (heroPos.x + 50));
         } else if(((heroPos.x % 25) < .1) && chunkTime == 0){ 
-            Instantiate(platform,new Vector2(heroPos.x + 25, heroPos.y), Quaternion.identity);
-            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 25) +" and y-value " + heroPos.y);
+            Instantiate(platform,new Vector2(heroPos.x + 50 + (heroPos.x%25), heroPos.y), Quaternion.identity);
+            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 50 + (heroPos.x%25)) +" and y-value " + heroPos.y);
             chunkTime = 100;
         }
     }
