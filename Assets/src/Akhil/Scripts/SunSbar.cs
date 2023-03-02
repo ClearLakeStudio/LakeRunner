@@ -6,16 +6,22 @@ using UnityEngine.UI;
 public class SunSbar : MonoBehaviour
 {
     public Slider SunScreenSlider;
-    public int maxSunS;        // <<===== init the max material building resource in the player script
 
-    public void SetSunS(int maxSunS){
+    // init the max material building resource in the player script
+    public int maxSunS;        
+
+    // call this func in the player script start func 
+    public void SetSunS(int maxSunS)
+    {
         SunScreenSlider.maxValue = maxSunS;
-        SunScreenSlider.value = maxSunS;            // <<==== call this func in the player script start func 
+        SunScreenSlider.value = maxSunS;           
         Debug.Log("Akhil : Max SunScreen set");
     }
 
-    public void updateSunS (int SunScrnbar) {       // <<==== call this func in material use or update func 
-        SunScreenSlider.value = SunScrnbar;
+    // call this func in material use or update func 
+    public void updateSunS(int sunScrnbar) 
+    {       
+        SunScreenSlider.value = sunScrnbar;
         Debug.Log("Akhil : Sunscreen bar update");
     }
 }

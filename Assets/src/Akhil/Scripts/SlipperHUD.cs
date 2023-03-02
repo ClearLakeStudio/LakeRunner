@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//  <<------ attach this script to the player and then attach the text corresponding to this script to there 
 public class SlipperHUD : MonoBehaviour
 {
-   //  <<------ attach this script to the player and then attach the text corresponding to this script to there 
+   
     public int SlprCount = 0;
     public Text SlprText;
 
-    void Update() {
+    void Update() 
+    {
         SlprText.text = SlprCount.ToString();
+        Debug.Log("Akhil : Slipper bar update");
     }
-    public void pickUpSlpr() {       // <<---- call these func in the item collectible script 
+
+    // <<---- call these func in the item collectible script 
+    public void pickUpSlpr() 
+    {      
         SlprCount++;
+        Debug.Log("Akhil : Slipper pickup");
     }
-    public void useSlpr () {          
+
+    public void useSlpr() 
+    {          
         SlprCount--;
+        Debug.Log("Akhil : Slipper use");
     }
 
 }

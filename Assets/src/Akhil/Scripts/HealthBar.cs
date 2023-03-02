@@ -6,26 +6,21 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour {
 
     public Slider healthSlider;
-    public int maxHealth;   // <===== init the max health in the player script
+    // <===== init the max health in the player script
+    public int maxHealth;   
 
-    // private void Start(){
-    //     if(g == null){
-    // //        g = GameManager.Instance;
-    //     }
-    //     healthSlider = GetComponent<Slider>();
-    //     maxHealth = 100;
-    //     healthSlider.maxValue = maxHealth;
-    //     healthSlider.value = maxHealth;
-    // }
-
-    public void SetMaxHealth(int maxHealth){   // <<==== call this func in the player script start func  
+    // <<==== call this func in the player script start func  
+    public void SetMaxHealth(int maxHealth)
+    {  
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
         Debug.Log("Akhil : Max health set");
     }
 
-    public void updateHealth (int health) {
-        healthSlider.value = health;          // <<==== call this func in damage or update func 
+    // <<==== call this func in damage or update func  
+    public void updateHealth (int health) 
+    {
+        healthSlider.value = health;         
         Debug.Log("Akhil : health update");
     }
 
