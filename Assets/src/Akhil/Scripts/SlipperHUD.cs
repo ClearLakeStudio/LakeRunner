@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slippers : MonoBehaviour
+public class SlipperHUD : MonoBehaviour
 {
     
     public int SlprCount = 0;
