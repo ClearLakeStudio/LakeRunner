@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2069538595687712181
 Transform:
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db5ff43b454ccff4bb0e9a6e4fcd16f3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a0c21b6e9ce6b41914a90dff7b74b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
-  jumpForce: 0
+  movementSpeed: 10
+  jumpForce: 7
 --- !u!70 &2960661923990392835
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

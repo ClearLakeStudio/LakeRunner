@@ -36,7 +36,13 @@ public class Hero : MonoBehaviour
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
     void FixedUpdate() 
     {
-        rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
+        if(Time.fixedTime%5==0){
+            rb.velocity = new Vector2(movementSpeed, rb.velocity.y+jumpForce);
+        }
+        else{
+            //rb.velocity = new Vector2(movementSpeed, rb.velocity.y+jumpForce);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
