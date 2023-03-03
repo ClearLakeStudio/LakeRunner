@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //  <<------ attach this script to the player and then attach the text corresponding to this script to there
-public class BBar : MonoBehaviour 
+public class BrainBlast : MonoBehaviour 
 {
 
     public int BBarCount = 0;
