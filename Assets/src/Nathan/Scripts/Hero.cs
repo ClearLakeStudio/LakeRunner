@@ -16,7 +16,11 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
     [SerializeField]
+    private float stepTimer;
+    [SerializeField]
     private float jumpForce;
+    [SerializeField]
+    private float jumpTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -36,13 +40,12 @@ public class Hero : MonoBehaviour
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
     void FixedUpdate() 
     {
-        if(Time.fixedTime%5==0){
-            rb.velocity = new Vector2(movementSpeed, rb.velocity.y+jumpForce);
+        if((Time.fixedTime%jumpTimer==0) && (Time.fixedTime==0)){
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+jumpForce);
         }
-        else{
-            //rb.velocity = new Vector2(movementSpeed, rb.velocity.y+jumpForce);
+        if((Time.fixedTime%stepTimer==0) && (Time.fixedTime==0)){
+            rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
