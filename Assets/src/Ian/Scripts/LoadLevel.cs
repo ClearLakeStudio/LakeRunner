@@ -35,9 +35,9 @@ public class LoadLevel : MonoBehaviour{
         the hero has reached the end of a chunk and, if so, spawn another chunk past the current final chunk. */
     public void CreateNewChunk(Vector3 heroPos) {
         //if(((heroPos.x % platLength) < .1) && chunkTime == 0){ 
-        if(lastPlatformLoc.x - heroPos.x < (5 * platLength)){  
+        if(lastPlatformLoc.x - heroPos.x < (5 * platLength)){
+            Instantiate(platform, lastPlatformLoc, Quaternion.identity);  
             lastPlatformLoc = new Vector2(lastPlatformLoc.x + platLength, lastPlatformLoc.y);
-            Instantiate(platform, lastPlatformLoc, Quaternion.identity);
             Debug.Log("Ian - Load next chunk in level at x-value " + (lastPlatformLoc.x + platLength) +" and y-value " + lastPlatformLoc.y);
             chunkTime = 5;
         }
