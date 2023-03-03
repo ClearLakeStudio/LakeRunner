@@ -15,8 +15,9 @@ public class LoadLevel : MonoBehaviour{
         platLength = 5.12f;
         lastPlatformLoc = new Vector2(-1,-1);
         for(int i = 0; i < 20; i++){
-                lastPlatformLoc = new Vector2(lastPlatformLoc.x + platLength, lastPlatformLoc.y);
                 Instantiate(platform, lastPlatformLoc, Quaternion.identity);
+                lastPlatformLoc = new Vector2(lastPlatformLoc.x + platLength, lastPlatformLoc.y);
+
             }
     }
 
