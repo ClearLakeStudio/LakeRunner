@@ -999,7 +999,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8420046549401104826, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2069538595687712181, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_RootOrder
@@ -1060,6 +1060,22 @@ PrefabInstance:
     - target: {fileID: 5716343106048154735, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_TagString
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014268197561375623, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: stepJump
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014268197561375623, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: jumpTimer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014268197561375623, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: stepTimer
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014268197561375623, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: movementSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
