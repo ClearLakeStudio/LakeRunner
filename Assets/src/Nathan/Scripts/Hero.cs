@@ -18,6 +18,8 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private float stepTimer;
     [SerializeField]
+    private float stepJump;
+    [SerializeField]
     private float jumpForce;
     [SerializeField]
     private float jumpTimer;
@@ -40,11 +42,11 @@ public class Hero : MonoBehaviour
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
     void FixedUpdate() 
     {
-        if((Time.fixedTime%jumpTimer==0) && (Time.fixedTime==0)){
+        if((Time.fixedTime%jumpTimer==0)&&(Time.fixedTime!=0)){
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+jumpForce);
         }
-        if((Time.fixedTime%stepTimer==0) && (Time.fixedTime==0)){
-            rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
+        if((Time.fixedTime%stepTimer==0)&&(Time.fixedTime!=0)){
+            rb.velocity = new Vector2(movementSpeed, rb.velocity.y+stepJump);
         }
     }
 
