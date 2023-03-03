@@ -6,14 +6,18 @@ using UnityEngine;
 public class LoadLevel : MonoBehaviour{
     private float chunkTime;
     public GameObject platform;
-    private bool firstSpawned;
-    private int offset;
+    private float platLength;
+    private Vector2 lastPlatformLoc;
 
     void Start() {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         chunkTime = 0.0f;
-        firstSpawned = false;
-        offset = 2;
+        platLength = 3;
+        lastPlatformLoc = new Vector2(-1,-1);
+        for(int i = 0; i < 20; i++){
+                lastPlatformLoc = new Vector2(lastPlatformLoc.x + platLength, lastPlatformLoc.y);
+                Instantiate(platform, lastPlatformLoc, Quaternion.identity);
+            }
     }
 
     void FixedUpdate() {
@@ -29,14 +33,10 @@ public class LoadLevel : MonoBehaviour{
     /*  This function will spawn the first three chunks of the level immediately. It will then check whether 
         the hero has reached the end of a chunk and, if so, spawn another chunk past the current final chunk. */
     public void CreateNewChunk(Vector3 heroPos) {
-        if(heroPos.x < .05 && !firstSpawned){
-            for(int i = 0; i < 20; i++){
-                Instantiate(platform,new Vector2(heroPos.x + i * offset - .05f, heroPos.y),Quaternion.identity);
-            }
-            firstSpawned = true;
-        } else if(((heroPos.x % offset) < .05) && chunkTime == 0){ 
-            Instantiate(platform,new Vector2(heroPos.x + 19*offset - 0.5f, heroPos.y), Quaternion.identity);
-            Debug.Log("Ian - Load next chunk in level at x-value " + (heroPos.x + 19*offset - .1) +" and y-value " + heroPos.y);
+        if(((heroPos.x % platLength) < .05) && chunkTime == 0){ 
+            lastPlatformLoc = new Vector2(lastPlatformLoc.x + platLength, lastPlatformLoc.y);
+            Instantiate(platform, lastPlatformLoc, Quaternion.identity);
+            Debug.Log("Ian - Load next chunk in level at x-value " + (lastPlatformLoc.x + platLength) +" and y-value " + lastPlatformLoc.y);
             chunkTime = 100;
         }
     }
