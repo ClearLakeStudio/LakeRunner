@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LoadLevel : MonoBehaviour{
+    public GameObject terrain;
+    private GameObject[] allTerrains;
+    private Vector2 lastTerrainLoc;
+    private float terrLength;
     private float chunkTime;
-    public GameObject platform;
-    private float platLength;
-    private Vector2 lastPlatformLoc;
-
+    private float terrPos;
+    
     void Start() {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         chunkTime = 0.0f;
-        platLength = 5.12f;
-        lastPlatformLoc = new Vector2(-1,-1);
+        terrLength = 5.12f;
+        lastTerrainLoc = new Vector2(-1,-1);
         for(int i = 0; i < 20; i++){
-                Instantiate(platform, lastPlatformLoc, Quaternion.identity);
-                lastPlatformLoc = new Vector2(lastPlatformLoc.x + platLength, lastPlatformLoc.y);
-
+                Instantiate(terrain, lastTerrainLoc, Quaternion.identity);
+                lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
             }
     }
 
@@ -34,11 +35,10 @@ public class LoadLevel : MonoBehaviour{
     /*  This function will spawn the first three chunks of the level immediately. It will then check whether 
         the hero has reached the end of a chunk and, if so, spawn another chunk past the current final chunk. */
     public void CreateNewChunk(Vector3 heroPos) {
-        //if(((heroPos.x % platLength) < .1) && chunkTime == 0){ 
-        if(lastPlatformLoc.x - heroPos.x < (5 * platLength)){
-            Instantiate(platform, lastPlatformLoc, Quaternion.identity);  
-            lastPlatformLoc = new Vector2(lastPlatformLoc.x + platLength, lastPlatformLoc.y);
-            Debug.Log("Ian - Load next chunk in level at x-value " + (lastPlatformLoc.x + platLength) +" and y-value " + lastPlatformLoc.y);
+        if(lastTerrainLoc.x - heroPos.x < (5 * terrLength)){
+            Instantiate(terrain, lastTerrainLoc, Quaternion.identity);  
+            lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
+            //Debug.Log("Ian - Load next chunk in level at x-value " + (lastPlatformLoc.x + platLength) +" and y-value " + lastPlatformLoc.y);
             chunkTime = 5;
         }
     }

@@ -12,6 +12,7 @@ TagManager:
   - Slippers
   - Platform
   - BrainBlastBar
+  - Terrain
   layers:
   - Default
   - TransparentFX
