@@ -1,0 +1,6 @@
+{
+    "name": "LFPlayMode",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}
