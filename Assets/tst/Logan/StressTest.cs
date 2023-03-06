@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Spawn objects until a certain threshold is passed
 // selectable thresholds:
@@ -8,4 +10,22 @@ using UnityEngine;
 
 public class StressTest : MonoBehaviour
 {
+    public Text fpsText;
+    private float deltaTime;
+
+    void Start()
+    {
+    }
+
+    void Update()
+    {
+        UpdateFPS();
+    }
+
+    void UpdateFPS()
+    {
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        float fps = 1.0f / deltaTime;
+        fpsText.text = Mathf.Ceil (fps).ToString();
+    }
 }
