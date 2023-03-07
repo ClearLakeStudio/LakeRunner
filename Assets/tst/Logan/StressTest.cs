@@ -57,7 +57,7 @@ public class StressTest : MonoBehaviour
         }
         fpsDrop.text = fpsDropCount.ToString();
         if (fpsDropCount > 5) {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
     }
 
