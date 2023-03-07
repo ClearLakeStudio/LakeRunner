@@ -9,18 +9,17 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    public float jumpForce;
+    public float movementSpeed;
+
     private Rigidbody2D rb;
     //private Animator anim;
     private SpriteRenderer sprite;
 
     [SerializeField]
-    private float movementSpeed;
-    [SerializeField]
-    private float stepTimer;
-    [SerializeField]
     private float stepJump;
     [SerializeField]
-    private float jumpForce;
+    private float stepTimer;
     [SerializeField]
     private float jumpTimer;
 
@@ -54,7 +53,7 @@ public class Hero : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            Debug.Log("Collision with enemy");
+            Debug.Log("(NN) Collision with enemy");
             //other.GetComponent<Enemy>().hitenemy; -- tell enemy i hit him.
         }
         /*if(other.tag == "Item")
