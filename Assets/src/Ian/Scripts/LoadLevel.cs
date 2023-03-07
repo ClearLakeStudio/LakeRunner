@@ -45,8 +45,8 @@ public class LoadLevel : MonoBehaviour{
     public void CreateRandomChunk(Vector3 heroPos){
         System.Random rnd = new System.Random();
         int randX = rnd.Next(-10, 10);
-        int randY = rnd.Next(-10,10);
-        randLoc = new Vector2(heroPos.x - randX, heroPos.y - randY);
+        int randY = rnd.Next(-5,5);
+        randLoc = new Vector2(heroPos.x + randX - 0.5f, heroPos.y + randY - 0.5f);
         Instantiate(terrain,randLoc,Quaternion.identity);
     }
 }
