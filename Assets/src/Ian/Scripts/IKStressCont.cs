@@ -50,7 +50,7 @@ public class IKStressCont : MonoBehaviour
         if(fpsDrop >= 5)
             Time.timeScale = 0;
         timer += Time.deltaTime;
-        if(timer >= interval){
+        if(timer > interval){
             chunkMan.GetComponent<LoadLevel>().SendMessage("CreateRandomChunk",heroPos);
             terrNum++;
             timer = 0;

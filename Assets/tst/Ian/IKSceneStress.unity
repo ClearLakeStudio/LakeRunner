@@ -812,6 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 302319365480725765, guid: 07843e4919ec90140ba9290c74d33f07, type: 3}
+  lastTerrainLoc: {x: 0, y: 0}
 --- !u!1 &1478197984
 GameObject:
   m_ObjectHideFlags: 0
