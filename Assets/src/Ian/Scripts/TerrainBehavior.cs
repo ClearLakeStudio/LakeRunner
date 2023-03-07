@@ -18,7 +18,7 @@ public class TerrainBehavior : MonoBehaviour
         allTerrains = GameObject.FindGameObjectsWithTag("Terrain");
         foreach(GameObject terr in allTerrains){
             terrPos = terr.GetComponent<Transform>().position.x;
-            if(terrPos < (heroPos.x - 10)){
+            if(terrPos < (heroPos.x - 10) && terr != null){
                 Destroy(terr);
             }
         }

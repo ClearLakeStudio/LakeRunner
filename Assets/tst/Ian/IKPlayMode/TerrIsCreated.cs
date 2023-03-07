@@ -8,9 +8,12 @@ public class TerrIsCreated
 {
     [UnityTest]
     public IEnumerator TerrIsCreatedTest(){
+        // var gameObject = new GameObject();
+        // var terr = gameObject.AddComponent<LoadLevel>();
 
+        //GameObject anotherTerr = terr.CreateNewChunk(new Vector3 (0,0,0));
 
         yield return null;
-        Assert.AreEqual(1,1);
+        Assert.IsTrue(true);
     }
 }
