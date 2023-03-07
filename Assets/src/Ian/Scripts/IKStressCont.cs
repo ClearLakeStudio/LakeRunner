@@ -14,6 +14,7 @@ public class IKStressCont : MonoBehaviour
     private float lastFramerate;
     private float refreshTime;
     private int fpsDrop;
+    private int terrNum;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class IKStressCont : MonoBehaviour
         lastFramerate = 0.0f;
         refreshTime = 0.5f;
         fpsDrop = 0;
+        terrNum = 0;
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class IKStressCont : MonoBehaviour
         timer += Time.deltaTime;
         if(timer >= interval){
             chunkMan.GetComponent<LoadLevel>().SendMessage("CreateRandomChunk",heroPos);
+            terrNum++;
             timer = 0;
         }
     }
@@ -58,6 +61,6 @@ public class IKStressCont : MonoBehaviour
         GUI.Label(new Rect(Screen.width/8, Screen.height / 10, 300, 300), "FRAME RATE = " + fps.ToString()); 
         GUI.Label(new Rect(Screen.width - (Screen.width/4), Screen.height / 10, 300, 300), "INTERVAL = " + interval);
         GUI.Label(new Rect(Screen.width - (Screen.width/4), Screen.height - (Screen.height / 10), 300, 300), "DROPS BELOW 300 fps = " + fpsDrop);
-
+        GUI.Label(new Rect(Screen.width/8, Screen.height - (Screen.height / 10), 300, 300), "Terrain Pieces = " + terrNum);
     }
 }
