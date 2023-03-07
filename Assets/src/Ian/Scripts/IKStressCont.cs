@@ -43,7 +43,7 @@ public class IKStressCont : MonoBehaviour
             timeCount = 0.0f;
         }
         fps = lastFramerate;
-        if(fps < 300 && timer == 0)
+        if(fps < 300 && timer == 0 && fpsDrop <= 5)
             fpsDrop++;
         if(fpsDrop >= 5)
             Time.timeScale = 0;
