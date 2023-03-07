@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0b8f2c8ba924d5eafe29d8d62479f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 302319365480725765, guid: 07843e4919ec90140ba9290c74d33f07, type: 3}
+  terrain: {fileID: 302319365480725765, guid: 07843e4919ec90140ba9290c74d33f07, type: 3}
 --- !u!1 &1478197984
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +908,10 @@ PrefabInstance:
     - target: {fileID: 5716343106048154735, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014268197561375623, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: movementSpeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
