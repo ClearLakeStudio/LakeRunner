@@ -10,8 +10,7 @@ public class LoadLevel : MonoBehaviour{
     private Vector2 randLoc;
     private float terrLength;
     private float chunkTime;
-    private float terrPos;
-    
+
     void Start() {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         chunkTime = 0.0f;
