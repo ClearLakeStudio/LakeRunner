@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2c9861a4838b6954889a96eb331b32b8
+  - enabled: 1
+    path: Assets/tst/Ian/IKSceneStress.unity
+    guid: 2cba3da68e48e1941a30c52392562184
   m_configObjects: {}

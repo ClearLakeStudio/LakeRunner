@@ -9,7 +9,7 @@ public class TerrIsCreated
 {
     [SetUp]
     public void MySetUp(){
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     [UnityTest]
@@ -24,7 +24,7 @@ public class TerrIsCreated
 
     [TearDown]
     public void MyTearDown(){
-        SceneManager.UnloadSceneAsync(0);
+        SceneManager.UnloadSceneAsync(1);
     }
 
 }
