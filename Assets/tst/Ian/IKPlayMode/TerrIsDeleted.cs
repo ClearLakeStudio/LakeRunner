@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class TerrIsCreated
+public class TerrIsDeleted
 {
     [UnityTest]
-    public IEnumerator TerrIsCreatedTest(){
+    public IEnumerator TerrIsDeletedTest(){
 
 
         yield return null;
