@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TerrainBehavior : MonoBehaviour
@@ -15,11 +16,10 @@ public class TerrainBehavior : MonoBehaviour
 
     void OnBecameInvisible(){
         heroPos = hero.GetComponent<Transform>().position;
-        allTerrains = GameObject.FindGameObjectsWithTag("Terrain");
-        foreach(GameObject terr in allTerrains){
-            terrPos = terr.GetComponent<Transform>().position.x;
-            if(terrPos < (heroPos.x - 10) && terr != null){
-                Destroy(terr);
+        if (gameObject != null) {
+            terrPos = GetComponent<Transform>().position.x;
+            if(terrPos < (heroPos.x - 10)){
+                Destroy(gameObject);
             }
         }
     }

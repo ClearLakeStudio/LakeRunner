@@ -6,7 +6,7 @@ using UnityEngine;
 public class LoadLevel : MonoBehaviour{
     public GameObject terrain;
     private GameObject[] allTerrains;
-    private Vector2 lastTerrainLoc;
+    public Vector2 lastTerrainLoc;
     private Vector2 randLoc;
     private float terrLength;
     private float chunkTime;

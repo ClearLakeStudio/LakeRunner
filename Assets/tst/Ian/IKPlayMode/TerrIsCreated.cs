@@ -2,18 +2,29 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
 public class TerrIsCreated
 {
+    [SetUp]
+    public void MySetUp(){
+        SceneManager.LoadScene(0);
+    }
+
     [UnityTest]
     public IEnumerator TerrIsCreatedTest(){
-        // var gameObject = new GameObject();
-        // var terr = gameObject.AddComponent<LoadLevel>();
+        new WaitForSeconds(0.1f);
 
-        //GameObject anotherTerr = terr.CreateNewChunk(new Vector3 (0,0,0));
+        var terrExists = GameObject.FindWithTag("Terrain");
 
         yield return null;
-        Assert.IsTrue(true);
+        Assert.IsNotNull(terrExists);
     }
+
+    [TearDown]
+    public void MyTearDown(){
+        SceneManager.UnloadSceneAsync(0);
+    }
+
 }
