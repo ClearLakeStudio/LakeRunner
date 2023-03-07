@@ -7,7 +7,7 @@ public class HealthBar : MonoBehaviour {
 
     public Slider healthSlider;
     // <===== init the max health in the player script
-    public int maxHealth;   
+    public int maxHealth = 100;   
 
     // <<==== call this func in the player script start func  
     public void SetMaxHealth(int maxHealth)
