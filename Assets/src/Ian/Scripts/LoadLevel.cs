@@ -47,7 +47,7 @@ public class LoadLevel : MonoBehaviour{
         System.Random rnd = new System.Random();
         int randX = rnd.Next(-10, 10);
         int randY = rnd.Next(-10,10);
-        randLoc = new Vector2(randX, randY);
+        randLoc = new Vector2(heroPos.x - randX, heroPos.y - randY);
         Instantiate(terrain,randLoc,Quaternion.identity);
     }
 }
