@@ -7,6 +7,7 @@ public class LoadLevel : MonoBehaviour{
     public GameObject terrain;
     private GameObject[] allTerrains;
     private Vector2 lastTerrainLoc;
+    private Vector2 randLoc;
     private float terrLength;
     private float chunkTime;
     private float terrPos;
@@ -38,8 +39,15 @@ public class LoadLevel : MonoBehaviour{
         if(lastTerrainLoc.x - heroPos.x < (5 * terrLength)){
             Instantiate(terrain, lastTerrainLoc, Quaternion.identity);  
             lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
-            //Debug.Log("Ian - Load next chunk in level at x-value " + (lastPlatformLoc.x + platLength) +" and y-value " + lastPlatformLoc.y);
             chunkTime = 5;
         }
+    }
+
+    public void CreateRandomChunk(Vector3 heroPos){
+        System.Random rnd = new System.Random();
+        int randX = rnd.Next(-10, 10);
+        int randY = rnd.Next(-10,10);
+        randLoc = new Vector2(randX, randY);
+        Instantiate(terrain,randLoc,Quaternion.identity);
     }
 }
