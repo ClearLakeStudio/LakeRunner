@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Displays an overview of all the game levels.
@@ -17,7 +18,19 @@ using UnityEngine;
  */
 public class OverworldMap : Map
 {
+    private OverworldLevel level;
+    void Start()
+    {
+        var gameObject = new GameObject();
+        gameObject.AddComponent<OverworldLevel>();
+        level = gameObject.GetComponent<OverworldLevel>();
+        SelectLevel();
+    }
 
+    public void SelectLevel()
+    {
+        level.OpenLevelMenu();
+    }
 }
 
 /* notes to self
