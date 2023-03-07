@@ -46,6 +46,11 @@ abstract public class Item : MonoBehaviour
         return this.type;
     }
 
+    public ItemType GetItemType()
+    {
+        return this.type;
+    }
+
     protected void Start()
     {
         if (gameObject.tag == "Sunscreen") {
