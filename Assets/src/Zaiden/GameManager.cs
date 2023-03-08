@@ -8,6 +8,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct PlatBox // stores basic platform creation info
+{
+    public float posX;
+    public float posY;
+    public float width;
+    public float height;
+    public bool valid;
+}
+
 public class GameManager : MonoBehaviour
 {
     // store references to gameObjects to initialize
@@ -15,16 +24,11 @@ public class GameManager : MonoBehaviour
     public GameObject chunkManager;
     public GameObject hero;
     public GameObject healthBar;
-    //public GameObject matBar;
-    //public GameObject sunscreenBar;
-    //public GameObject autoPlat; // reference to automatically-made platforms (need a better naming convention for later)
 
     // store references to scripts
     PlatformManager pM;
     LoadLevel cM;
     HealthBar hB;
-    //MaterialBar mB;
-    //SunSbar ssB; // would like to have SunScreen edited to include bar at the end
 
     // store moues data value
     Vector3 mousePos; // stores position of mouse at critical points
@@ -47,6 +51,7 @@ public class GameManager : MonoBehaviour
         hB = healthBar.GetComponent<HealthBar>(); // assign script reference in HealthBar.cs
         //mB = matBar.GetComponent<MaterialBar>(); // assign script reference in MatBar.cs
         //ssB = sunscreenBar.GetComponent<SunSbar>(); // assign script reference in SunScreen.cs
+
 
         // initial calls, will be removed later and moved to hero script
         hB.SetMaxHealth(10);
@@ -73,9 +78,27 @@ public class GameManager : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = Camera.main.nearClipPlane;
             boxCorners[1] = mousePos;
-            if (pM.CheckPlatValidity(boxCorners))
+            PlatBox p = pM.CheckPlatValidity(boxCorners);
+            if (p.valid == true)
             {
-                pM.MakePlat(boxCorners, 0); 
+                pM.MakePlat(p, 0);
+            } else
+            {
+                pM.DestroyPreVPlat();
+            }
+        }
+        if (Input.GetMouseButton(0) && mouseHold == true) // get where mouse hold currently is to make preview box
+        {
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = Camera.main.nearClipPlane;
+            boxCorners[1] = new Vector3(mousePos.x, mousePos.y, mousePos.z);
+            PlatBox p = pM.CheckPlatValidity(boxCorners);
+            if (p.valid == true)
+            {
+                pM.MakePreVPlat(p); // creates preview platform
+            } else
+            {
+                pM.DestroyPreVPlat();
             }
         }
 
@@ -84,7 +107,5 @@ public class GameManager : MonoBehaviour
 
         // call chunk creation function
         cM.CreateNewChunk(new Vector3(heroPos.x, -4.25f, heroPos.z));
-        
-
     }
 }
