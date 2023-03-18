@@ -9,17 +9,24 @@ public class TerrainBehavior : MonoBehaviour
     private GameObject hero;
     private GameObject[] allTerrains;
     private float terrPos;
+    private int frameUsed;
 
     void Awake(){
         hero = GameObject.Find("Hero");
+        frameUsed = 0;
+    }
+
+    void Update(){
+        frameUsed = 0;
     }
 
     void OnBecameInvisible(){
-        heroPos = hero.GetComponent<Transform>().position;
+        //heroPos = hero.GetComponent<Transform>().position;
         if (gameObject != null) {
             terrPos = GetComponent<Transform>().position.x;
-            if(terrPos < (heroPos.x - 10)){
+            if(terrPos < (heroPos.x - 10) && frameUsed == 0){
                 Destroy(gameObject);
+                frameUsed = 1;
             }
         }
     }
