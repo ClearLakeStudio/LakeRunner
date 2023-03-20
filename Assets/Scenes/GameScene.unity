@@ -487,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Platform: {fileID: 2166465162896219611, guid: f288831d45e775d4691e60b41e9f2672, type: 3}
+  pvPlatform: {fileID: 0}
 --- !u!1 &686363204
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrain: {fileID: 302319365480725765, guid: 07843e4919ec90140ba9290c74d33f07, type: 3}
   lastTerrainLoc: {x: 0, y: 0}
+  isInfinite: 1
 --- !u!1 &860315608
 GameObject:
   m_ObjectHideFlags: 0
