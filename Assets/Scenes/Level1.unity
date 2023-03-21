@@ -1850,6 +1850,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 9014268197561375623, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: limLowY
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014268197561375623, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: limHighY
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
 --- !u!4 &801252181 stripped
