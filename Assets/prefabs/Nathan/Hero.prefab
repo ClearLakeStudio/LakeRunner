@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2960661923990392835}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -120,10 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a0c21b6e9ce6b41914a90dff7b74b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  stepTimer: 0.25
-  stepJump: 2.5
   jumpForce: 7
+  movementSpeed: 10
+  stepJump: 2.5
+  stepTimer: 0.25
   jumpTimer: 4
 --- !u!70 &2960661923990392835
 CapsuleCollider2D:
