@@ -27,13 +27,19 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private float limLowY;
 
-    // Start is called before the first frame update
-    void Start()
+    //Awake is called when the object is initialized.
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
         //sprite = GetComponent<SpriteRenderer>();
         gameObject.tag = "Hero";
+    }
+
+    //Start is called before the first call of Update
+    void Start()
+    {
+        //nothing
     }
 
     // Update is called once per frame
@@ -64,14 +70,9 @@ public class Hero : MonoBehaviour
             Debug.Log("(NN) Collision with enemy");
             other.GetComponent<Enemy>().Collide();
         }
-        /*if(other.tag == "Item")
-        {
-            Debug.Log("Collision with item");
-            other.GetComponent<Item>(); --need to find a way to tell Logan I hit him.
-        }
-         */
     }
 
+    //this is redundant with findgameobjectwithtag-getcomponent-transform-position
     public Vector2 GetPosition(){
         return rb.position;
     }
