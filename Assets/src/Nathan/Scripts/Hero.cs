@@ -14,7 +14,7 @@ public class Hero : MonoBehaviour
 
     private Rigidbody2D rb;
     //private Animator anim;
-    private SpriteRenderer sprite;
+    //private SpriteRenderer sprite;
 
     [SerializeField]
     private float stepJump;
@@ -32,7 +32,7 @@ public class Hero : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
         gameObject.tag = "Hero";
     }
 
@@ -51,7 +51,7 @@ public class Hero : MonoBehaviour
         if((Time.fixedTime%stepTimer==0) && (Time.fixedTime!=0)){
             rb.velocity = new Vector2(movementSpeed, rb.velocity.y+stepJump);
         }
-        if((rb.position.y < limLowY) || (rb.position.y > limHighY)){
+        if(rb.simulated && (rb.position.y < limLowY) || (rb.position.y > limHighY)){
             rb.simulated = false;
             Debug.Log("(NN) Hero frozen, out of bounds");
         }
@@ -62,7 +62,7 @@ public class Hero : MonoBehaviour
         if(other.tag == "Enemy")
         {
             Debug.Log("(NN) Collision with enemy");
-            //other.GetComponent<Enemy>().hitenemy; -- tell enemy i hit him.
+            other.GetComponent<Enemy>().Collide();
         }
         /*if(other.tag == "Item")
         {

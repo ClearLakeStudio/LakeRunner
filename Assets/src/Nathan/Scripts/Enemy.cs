@@ -14,17 +14,22 @@ public class Enemy : MonoBehaviour
 {
     private Rigidbody2D rb;
     //private Animator anim;
-    private SpriteRenderer sprite;
+    //private SpriteRenderer sprite;
 
     [SerializeField]
     private float movementSpeed;
+
+    [SerializeField]
+    private float limHighY;
+    [SerializeField]
+    private float limLowY;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
         gameObject.tag = "Enemy";
     }
 
@@ -37,7 +42,12 @@ public class Enemy : MonoBehaviour
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
     void FixedUpdate() 
     {
-        //nothing
+        if(rb.simulated && (rb.position.y < limLowY) || (rb.position.y > limHighY)){
+            Destroy(gameObject);
+            Debug.Log("(NN) Enemy destroyed, out of bounds");
+        }
     }
-
+    public void Collide(){
+        Debug.Log("(NN) Enemy acknowledged collision");
+    }
 }
