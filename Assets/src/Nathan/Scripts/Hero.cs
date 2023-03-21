@@ -23,9 +23,9 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private float jumpTimer;
     [SerializeField]
-    private float limLowY;
-    [SerializeField]
     private float limHighY;
+    [SerializeField]
+    private float limLowY;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +53,7 @@ public class Hero : MonoBehaviour
         }
         if((rb.position.y < limLowY) || (rb.position.y > limHighY)){
             rb.simulated = false;
+            Debug.Log("(NN) Hero frozen, out of bounds");
         }
     }
 
@@ -69,5 +70,9 @@ public class Hero : MonoBehaviour
             other.GetComponent<Item>(); --need to find a way to tell Logan I hit him.
         }
          */
+    }
+
+    public Vector2 getPosition(){
+        return rb.position;
     }
 }
