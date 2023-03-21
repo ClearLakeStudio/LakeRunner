@@ -50,4 +50,8 @@ public class Enemy : MonoBehaviour
     public void Collide(){
         Debug.Log("(NN) Enemy acknowledged collision");
     }
+
+    public Vector2 GetPosition(){
+        return rb.position;
+    }
 }

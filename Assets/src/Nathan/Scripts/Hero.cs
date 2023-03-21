@@ -72,7 +72,7 @@ public class Hero : MonoBehaviour
          */
     }
 
-    public Vector2 getPosition(){
+    public Vector2 GetPosition(){
         return rb.position;
     }
 }

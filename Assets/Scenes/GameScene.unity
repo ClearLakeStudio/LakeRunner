@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Platform: {fileID: 2166465162896219611, guid: f288831d45e775d4691e60b41e9f2672, type: 3}
-  pvPlatform: {fileID: 0}
+  pvPlatform: {fileID: 6825211924453270627, guid: cd97035abe810c84f9d345d1ccb3d744, type: 3}
 --- !u!1 &686363204
 GameObject:
   m_ObjectHideFlags: 0
