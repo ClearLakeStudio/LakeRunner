@@ -16,6 +16,6 @@ public class Slippers : InventoryItem
 {
     public override void UseEffect()
     {
-        Debug.Log("Hello fram Slippers");
+        Debug.Log("Slippers were used");
     }
 }

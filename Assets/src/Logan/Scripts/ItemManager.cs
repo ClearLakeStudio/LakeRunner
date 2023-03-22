@@ -14,6 +14,29 @@ using UnityEngine;
  */
 public class ItemManager : MonoBehaviour
 {
+    public KeyCode sunglassesKey = KeyCode.Alpha1;
+    public KeyCode slippersKey = KeyCode.Alpha2;
+    public KeyCode brainBlastBarKey = KeyCode.Alpha3;
+
+    public void Update()
+    {
+        // check for user input
+        if (Input.GetKeyDown(sunglassesKey)) {
+            // query the inventory to ensure that the player has the item
+            // if (inventory.ExistsInInventory(ItemType.Sunglasses == true) {
+            //     // call the item's effect
+            // } else {
+            //     // play "denial" sound
+            // }
+
+            ActivateItemEffect(ItemType.Sunglasses);
+        } else if (Input.GetKeyDown(slippersKey)) {
+            ActivateItemEffect(ItemType.Slippers);
+        } else if (Input.GetKeyDown(brainBlastBarKey)) {
+            ActivateItemEffect(ItemType.BrainBlastBar);
+        }
+    }
+
     /*
      * This function should be called whenever the effect of an item needs
      * to execute. This function does not check for whether the item

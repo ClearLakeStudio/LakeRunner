@@ -16,6 +16,9 @@ public class BrainBlastBar : InventoryItem
 {
     public override void UseEffect()
     {
-        Debug.Log("Hello from BrainBlastBar");
+        // Store the original x velocity of the runner
+        // Set runner's velocity to be negative x velocity
+        // After a period of time elapses, restore x velocity back to original
+        Debug.Log("BrainBlastBar was used");
     }
 }
