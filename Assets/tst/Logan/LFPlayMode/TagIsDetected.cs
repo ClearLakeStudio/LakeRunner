@@ -14,6 +14,6 @@ public class TagIsDetected
         var item = gameObject.AddComponent<Sunglasses>();
 
         yield return null;
-        Assert.AreEqual(item.GetItemType(), Item.ItemType.Sunglasses);
+        Assert.AreEqual(item.GetItemType(), ItemType.Sunglasses);
     }
 }

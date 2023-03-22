@@ -4,6 +4,8 @@
  * Purpose:   This file defines the "Sunglasses" class.
  */
 
+using UnityEngine;
+
 /*
  * This file extends the InventoryItem class specifically for the
  * Sunglasses
@@ -12,4 +14,8 @@
  */
 public class Sunglasses : InventoryItem
 {
+    public override void UseEffect()
+    {
+        Debug.Log("Hello from Sunglasses");
+    }
 }

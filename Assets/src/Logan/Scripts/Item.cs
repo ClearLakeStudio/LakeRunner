@@ -15,24 +15,24 @@ using UnityEngine;
  * type             -- ItemType that tells what kind of item this instance is.
  * collectSound     -- AudioClip that holds an audio file that is played an pick-up.
  */
-abstract public class Item : MonoBehaviour
-{
-    public enum ItemType {
-        Undefined     = -1,
-        AloeVera      = 0,
-        Sunscreen     = 1,
-        Sunglasses    = 10,
-        BrainBlastBar = 11,
-        Slippers      = 12,
-    }
+public enum ItemType {
+    Undefined     = -1,
+    AloeVera      = 0,
+    Sunscreen     = 1,
+    Sunglasses    = 10,
+    BrainBlastBar = 11,
+    Slippers      = 12,
+}
 
+public class Item : MonoBehaviour
+{
     public bool isCollected = false;
 
     [SerializeField] AudioClip collectSound;
     private ItemType type = ItemType.Undefined;
 
     /*
-     * Should be called whenever the hero interacts collides with an uncollected
+     * Should be called whenever the hero collides with an uncollected
      * item in a level. Updates the isCollected member variable to reflect the
      * current status of the item instance.
      *
@@ -81,15 +81,17 @@ abstract public class Item : MonoBehaviour
     }
 
     /*
-     * Should be called whenever the hero interacts collides with an uncollected
-     * item in a level. Updates the isCollected member variable to reflect the
-     * current status of the item instance.
-     *
      * Parameters:
      * desiredType -- ItemType that will set the instances type variable
      */
     public void SetType(ItemType desiredType)
     {
+        // come back and validate the value that is passed
         this.type = desiredType;
+    }
+
+    public virtual void UseEffect()
+    {
+        Debug.Log("Hello from Item");
     }
 }
