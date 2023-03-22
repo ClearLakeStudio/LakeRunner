@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4475329650533259866}
   - component: {fileID: 1727173199842450739}
   - component: {fileID: 5174107038177568048}
-  - component: {fileID: 4475329650533259867}
+  - component: {fileID: 579288026276296765}
   m_Layer: 0
   m_Name: Aloe Vera
   m_TagString: Aloe Vera
@@ -182,7 +182,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4475329650533259867
+--- !u!114 &579288026276296765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4475329650533259869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fd1f618371d4151b73124cf867e6f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d84f5a4ec88f4077be67a25cc5ab669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCollected: 0

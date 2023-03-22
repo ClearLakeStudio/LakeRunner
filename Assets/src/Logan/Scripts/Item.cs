@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
     public bool isCollected = false;
 
     [SerializeField] AudioClip collectSound;
-    private ItemType type = ItemType.Undefined;
+    protected ItemType type = ItemType.Undefined;
 
     /*
      * Should be called whenever the hero collides with an uncollected
@@ -40,7 +40,7 @@ public class Item : MonoBehaviour
      * ItemType -- the type of the item that was collected (can go towards updating
      *             statistics or inventory UI, etc.)
      */
-    public ItemType Collected()
+    public virtual ItemType Collected()
     {
         this.isCollected = true;
         Debug.Log("(Logan) Item Class: " + this.type.ToString() + " collected.");

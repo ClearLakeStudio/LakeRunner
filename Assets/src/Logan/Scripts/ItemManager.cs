@@ -29,10 +29,10 @@ public class ItemManager : MonoBehaviour
 
         switch (itemType) {
             case ItemType.Sunscreen:
-                item = gameObject.AddComponent<AttributeItem>();
+                item = gameObject.AddComponent<Sunscreen>();
                 break;
             case ItemType.AloeVera:
-                item = gameObject.AddComponent<AttributeItem>();
+                item = gameObject.AddComponent<AloeVera>();
                 break;
             case ItemType.Sunglasses:
                 item = gameObject.AddComponent<Sunglasses>();

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6530275150292202744}
   - component: {fileID: -4722292326912686706}
   - component: {fileID: 4304587529762593269}
-  - component: {fileID: 6530275150292202745}
+  - component: {fileID: -4969838031623341430}
   m_Layer: 0
   m_Name: Sunscreen
   m_TagString: Sunscreen
@@ -182,7 +182,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6530275150292202745
+--- !u!114 &-4969838031623341430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6530275150292202743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fd1f618371d4151b73124cf867e6f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 31b300d97bc464fd4a4a1be1f81cdf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCollected: 0
