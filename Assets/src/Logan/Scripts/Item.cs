@@ -7,12 +7,13 @@
 using UnityEngine;
 
 /*
- * This subclass lays the foundation for all of the items featured in LakeRunner.
+ * This superclass lays the foundation for all of the items featured in LakeRunner.
  * Only common functions that are necessary for every kind of item are defined.
  *
  * Member Variables:
- * isCollected -- bool that reflects the current status of the item instance.
- * type        -- ItemType that tells what kind of item this instance is.
+ * isCollected      -- bool that reflects the current status of the item instance.
+ * type             -- ItemType that tells what kind of item this instance is.
+ * collectSound     -- AudioClip that holds an audio file that is played an pick-up.
  */
 abstract public class Item : MonoBehaviour
 {
@@ -27,8 +28,8 @@ abstract public class Item : MonoBehaviour
 
     public bool isCollected = false;
 
-    private ItemType type = ItemType.Undefined;
     [SerializeField] AudioClip collectSound;
+    private ItemType type = ItemType.Undefined;
 
     /*
      * Should be called whenever the hero interacts collides with an uncollected
