@@ -1,0 +1,3 @@
+Prefab: Level Map
+Purpose: Display the hero's current position in a level.
+Interaction: Displayed on level screen.

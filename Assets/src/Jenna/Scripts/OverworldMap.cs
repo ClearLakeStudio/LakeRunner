@@ -1,7 +1,7 @@
 /*
  * Filename: OverworldMap.cs
  * Developer: Jenna-Luz Pura
- * Purpose:
+ * Purpose: Keeps track of all the levels in the game.
  */
 
 using System.Collections;
@@ -13,26 +13,49 @@ using UnityEngine.UI;
  * Displays an overview of all the game levels.
  * Also displays a specific level menu, which shows the hero's current inventory and the player's
  *     current high score for that level.
- *
- * Member variables:
  */
 public class OverworldMap : Map
 {
-    private OverworldLevel level;
     void Start()
     {
+        /*
         var gameObject = new GameObject();
-        gameObject.AddComponent<OverworldLevel>();
-        level = gameObject.GetComponent<OverworldLevel>();
+        gameObject.AddComponent<Lake>();
+        level1 = gameObject.GetComponent<Lake>();
         SelectLevel();
+        */
     }
 
-    public void SelectLevel()
+    /*
+     * Gets all GameObjects with the "Level" tag and stores them in an array.
+     * Each level is added a "Lake" component.
+     */
+    public void OverworldMapInit()
     {
-        level.OpenLevelMenu();
+        levels = GameObject.FindGameObjectsWithTag("Level");
+        levelCount = levels.Length;
+
+        foreach (GameObject level in levels) {
+            level.GetComponent<Lake>().lakeName = level.name;
+        }
+    }
+
+    /*
+     * Is called when the user clicks on a GameObject.
+     * Checks if clicked GameObject is a level.
+     *
+     * Returns:
+     * bool -- true if the GameObject is a level, false if it is not.
+     */
+    public bool SelectLevel(string levelName)
+    {
+        foreach (GameObject level in levels) {
+            if (level.name == levelName) {
+                level.GetComponent<Lake>().OpenLevelMenu();
+                return true;
+            }
+        }
+
+        return false;
     }
 }
-
-/* notes to self
- * inventory, high score (on start, get inventory, high score, and player position)
- */

@@ -12,7 +12,7 @@ public class SelectLevel
     public IEnumerator SelectAndOpenLevel()
     {
         var gameObject = new GameObject();
-        var level = gameObject.AddComponent<OverworldLevel>();
+        var level = gameObject.AddComponent<Lake>();
 
         level.OpenLevelMenu();
 

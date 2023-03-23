@@ -12,13 +12,11 @@ using UnityEngine;
  * Defines a base class for different types of game maps.
  *
  * Member variables:
+ * levelCount -- protected int to hold the number of levels.
+ * levels -- protected GameObject[] to hold an array of all levels.
  */
-public abstract class Map : MonoBehaviour
+public class Map : MonoBehaviour
 {
-
+    protected int levelCount;
+    protected GameObject[] levels;
 }
-
-/* notes to self
- * enemy locations -- some sort of dictionary?
- *      get sprites from nathan's dir
- */

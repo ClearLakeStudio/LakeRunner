@@ -11,7 +11,7 @@ public class LoadLevel
     public IEnumerator LoadLevelWithEnumeratorPasses()
     {
         var gameObject = new GameObject();
-        var level = gameObject.AddComponent<OverworldLevel>();
+        var level = gameObject.AddComponent<Lake>();
 
         level.LoadLevel();
 
@@ -21,4 +21,12 @@ public class LoadLevel
 
         Assert.AreEqual("GameScene", currentScene.name);
     }
+
+    /*
+    [TearDown]
+    public void TearDown()
+    {
+        SceneManager.UnloadSceneAsync("Level");
+    }
+    */
 }

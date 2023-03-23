@@ -16,6 +16,7 @@ TagManager:
   - Level Menu
   - HealthBar
   - ItemManager
+  - Level
   layers:
   - Default
   - TransparentFX
