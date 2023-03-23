@@ -1,0 +1,3 @@
+Prefab: Terrain Stair Green
+Purpose: Incline or decline in terrain
+Interaction: Player runs on top of it

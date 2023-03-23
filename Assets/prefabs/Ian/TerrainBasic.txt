@@ -1,0 +1,3 @@
+Prefab: Terrain Basic
+Purpose: Basic, low-level terrain
+Interaction: Player runs on top

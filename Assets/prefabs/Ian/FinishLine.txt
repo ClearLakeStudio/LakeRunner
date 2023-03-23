@@ -1,0 +1,3 @@
+Prefab: Finish Line
+Purpose: Mark the end of a level
+Interaction: Goes to the end screen once the player passes it

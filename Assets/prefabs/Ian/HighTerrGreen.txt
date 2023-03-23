@@ -1,0 +1,3 @@
+Prefab: High Terr Green
+Purpose: Taller green terrain piece
+Interaction: Player walks on top of it
