@@ -52,10 +52,11 @@ public class IKStressCont : MonoBehaviour
             timeCount = 0.0f;
         }
         fps = lastFramerate;
-        if (fps < 300 && timer == 0 && fpsDrop <= 5)
+        if (fps < 300 && timer == 0 && fpsDrop < 5)
             fpsDrop++;
         if (fpsDrop >= 5)
             Time.timeScale = 0;
+            Debug.Log("[IKStressCont.cs -- Update()] Stress test ended: fps dropped 5 times after " + terrNum + " objects were spawned.");
         timer += Time.deltaTime;
         if (timer > interval)
         {
