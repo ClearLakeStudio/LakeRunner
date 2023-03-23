@@ -63,6 +63,7 @@ public class Hero : MonoBehaviour
         }
     }
 
+    //OnTriggerEnter2D is called whenever the object collides with a trigger.
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Enemy")
@@ -72,8 +73,13 @@ public class Hero : MonoBehaviour
         }
     }
 
-    //this is redundant with findgameobjectwithtag-getcomponent-transform-position
+    //Public position setting function. Since component transform is public.
     public Vector2 GetPosition(){
         return rb.position;
+    }
+
+    //Public position setting function. (redundant since component transform is public)
+    public void SetPosition(Vector2 setpos){
+        rb.position = setpos;
     }
 }
