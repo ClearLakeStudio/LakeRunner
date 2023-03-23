@@ -17,8 +17,15 @@ public class DemoController : MonoBehaviour
     *       - If y-distance > 1? then draw stairs
     *       - Else draw platform from top right corner of platform to left edge of next, minimum height
     *   - Item interactions as needed
+    *
+    *   Checking distances:
+    *   - Iterate through terrain pieces one at a time based on relation to player location
+    *       - Store last terrain location
+    *       - If player moves onto last terrain and no next terrain is found: 
+    *           - Make sure finish line is not behind player
+    *           - Begin drawing certain length platforms until next terrain is found or player passes finish
     */
-    GameObject[] allTerrain;
+    private GameObject[] allTerrain;
 
     // Start is called before the first frame update
     void Start()

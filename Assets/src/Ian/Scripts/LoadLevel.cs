@@ -15,7 +15,6 @@ public class LoadLevel : MonoBehaviour
     public Vector2 lastTerrainLoc;
     public bool isInfinite;
 
-    private GameObject[] allTerrains;
     private Vector2 randLoc;
     private float terrLength;
     private float chunkTime;
