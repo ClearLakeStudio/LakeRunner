@@ -1,3 +1,9 @@
+/*
+    Filename: IKStressCont.cs
+    Developer: Ian King
+    Purpose: Define behavior of terrain (such as deletion upon exit from screen space)
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +17,25 @@ public class TerrainBehavior : MonoBehaviour
     private float terrPos;
     private int frameUsed;
 
-    void Awake(){
+    void Awake()
+    {
         hero = GameObject.Find("Hero");
         frameUsed = 0;
     }
 
-    void Update(){
+    void Update()
+    {
         frameUsed = 0;
     }
 
-    void OnBecameInvisible(){
+    void OnBecameInvisible()
+    {
         //heroPos = hero.GetComponent<Transform>().position;
-        if (gameObject != null) {
+        if (gameObject != null)
+        {
             terrPos = GetComponent<Transform>().position.x;
-            if(terrPos < (heroPos.x - 10) && frameUsed == 0){
+            if (terrPos < (heroPos.x - 10) && frameUsed == 0)
+            {
                 Destroy(gameObject);
                 frameUsed = 1;
             }

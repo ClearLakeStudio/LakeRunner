@@ -1,12 +1,20 @@
+/*
+    Filename: LevelFinish.cs
+    Developer: Ian King
+    Purpose: Respond to the hero reaching the level finish
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelFinish : MonoBehaviour
 {
-    void OnTriggerExit2D(Collider2D col){
+    void OnTriggerExit2D(Collider2D col)
+    {
         Debug.Log("Colliding with object.");
-        if(col.gameObject.tag == "Hero"){
+        if (col.gameObject.tag == "Hero")
+        {
             Time.timeScale = 0;
             Debug.Log("Level Finished");
         }

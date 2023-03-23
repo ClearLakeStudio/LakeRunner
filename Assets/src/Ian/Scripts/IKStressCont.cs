@@ -1,11 +1,18 @@
+/*
+    Filename: IKStressCont.cs
+    Developer: Ian King
+    Purpose: Perform a stress test on the system using platform spawning, using framerate and physics glitches as metrics
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IKStressCont : MonoBehaviour
 {
-    private GameObject chunkMan;
     public float interval;
+    
+    private GameObject chunkMan;
     private float timer;
     private float fps;
     private Vector3 heroPos;
@@ -33,7 +40,7 @@ public class IKStressCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeCount < refreshTime)
+        if (timeCount < refreshTime)
         {
             timeCount += Time.deltaTime;
             frameCount++;
@@ -45,19 +52,21 @@ public class IKStressCont : MonoBehaviour
             timeCount = 0.0f;
         }
         fps = lastFramerate;
-        if(fps < 300 && timer == 0 && fpsDrop <= 5)
+        if (fps < 300 && timer == 0 && fpsDrop <= 5)
             fpsDrop++;
-        if(fpsDrop >= 5)
+        if (fpsDrop >= 5)
             Time.timeScale = 0;
         timer += Time.deltaTime;
-        if(timer > interval){
+        if (timer > interval)
+        {
             chunkMan.GetComponent<LoadLevel>().SendMessage("CreateRandomChunk",heroPos);
             terrNum++;
             timer = 0;
         }
     }
 
-    void OnGUI(){
+    void OnGUI()
+    {
         GUI.Label(new Rect(Screen.width/8, Screen.height / 10, 300, 300), "FRAME RATE = " + fps.ToString()); 
         GUI.Label(new Rect(Screen.width - (Screen.width/4), Screen.height / 10, 300, 300), "INTERVAL = " + interval);
         GUI.Label(new Rect(Screen.width - (Screen.width/4), Screen.height - (Screen.height / 10), 300, 300), "DROPS BELOW 300 fps = " + fpsDrop);
