@@ -28,7 +28,7 @@ public class LoadLevel : MonoBehaviour
         lastTerrainLoc = new Vector2(-1,-1);
         if (isInfinite)
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 10; i++)
             {
                     Instantiate(terrain, lastTerrainLoc, Quaternion.identity);
                     lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
