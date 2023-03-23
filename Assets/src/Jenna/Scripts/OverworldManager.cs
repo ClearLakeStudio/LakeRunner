@@ -32,14 +32,12 @@ public class OverworldManager : MonoBehaviour
     void Update()
     {
         // check for user input
-        if (levelMenu.activeSelf == false) {
-            if (Input.GetMouseButtonDown(0)) {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-                if (hit.collider != null) {
-                    funcReturn = overworld.SelectLevel(hit.collider.name);
-                }
+            if (hit.collider != null) {
+                funcReturn = overworld.SelectLevel(hit.collider.name);
             }
         }
     }
