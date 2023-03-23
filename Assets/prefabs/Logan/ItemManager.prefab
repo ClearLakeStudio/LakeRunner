@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72debda62555d41c1984651c17d999f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunglassesKey: 119
-  slippersKey: 115
-  brainBlastBarKey: 100
+  sunglassesKey: 49
+  slippersKey: 50
+  brainBlastBarKey: 51
