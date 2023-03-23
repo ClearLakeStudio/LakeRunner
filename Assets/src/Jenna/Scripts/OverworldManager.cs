@@ -14,14 +14,14 @@ using UnityEngine;
  * Member Variables:
  * levelMenu -- public  GameObject to reference the level menu panel.
  * overworld -- private OverworldMap to access stored levels.
- * funcReturn -- private int to hold return value of certain methods.
+ * funcReturn -- private bool to hold return value of certain methods.
  */
 public class OverworldManager : MonoBehaviour
 {
     public GameObject levelMenu;
 
     private OverworldMap overworld;
-    private int funcReturn;
+    private bool funcReturn;
 
     void Start()
     {
