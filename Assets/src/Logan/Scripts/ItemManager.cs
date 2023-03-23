@@ -48,7 +48,7 @@ public class ItemManager : MonoBehaviour
      */
     public void ActivateItemEffect(ItemType itemType)
     {
-        Item item = gameObject.AddComponent<Item>();
+        Item item = gameObject.GetComponent<Item>();
 
         switch (itemType) {
             case ItemType.Sunscreen:
