@@ -15,6 +15,7 @@ TagManager:
   - Terrain
   - Level Menu
   - HealthBar
+  - ItemManager
   layers:
   - Default
   - TransparentFX
