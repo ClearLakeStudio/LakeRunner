@@ -64,6 +64,7 @@ public class PlatformManager : MonoBehaviour
         p.width = width;
         p.height = height;
         p.valid = valid;
+        p.floating = false;
 
         return p;
     }
