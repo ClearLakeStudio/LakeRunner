@@ -12,7 +12,8 @@ using UnityEngine;
 // this class is to handle platform creation and call the actual instances of the platforms
 public class PlatformManager : MonoBehaviour
 {
-    public GameObject Platform;
+    public GameObject floatPlatform;
+    public GameObject fallPlatform;
     public GameObject pvPlatform;
 
     GameObject pvPlat;
@@ -74,9 +75,15 @@ public class PlatformManager : MonoBehaviour
     // may just be moved into specific platform classes though
     public void MakePlat(PlatBox p, int time)
     {
-        DestroyPreVPlat();      
+        DestroyPreVPlat();
         Debug.Log("Zaiden: making platform.");
-        GameObject newPlat = Instantiate(Platform, new Vector3(p.posX, p.posY, 0), Quaternion.identity);
+        GameObject newPlat;
+        if (p.floating) {
+            newPlat = Instantiate(floatPlatform, new Vector3(p.posX, p.posY, 0), Quaternion.identity);
+        } else
+        {
+            newPlat = Instantiate(fallPlatform, new Vector3(p.posX, p.posY, 0), Quaternion.identity);
+        }
         newPlat.transform.localScale = new Vector3(p.width, p.height, 1);
     }
 
