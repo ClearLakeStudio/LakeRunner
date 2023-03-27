@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0b8f2c8ba924d5eafe29d8d62479f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 0}
+  terrain: {fileID: 302319365480725765, guid: 07843e4919ec90140ba9290c74d33f07, type: 3}
   lastTerrainLoc: {x: 0, y: 0}
   isInfinite: 0

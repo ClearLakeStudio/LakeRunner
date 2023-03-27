@@ -25,15 +25,16 @@ public class DemoController : MonoBehaviour
     *           - Make sure finish line is not behind player
     *           - Begin drawing certain length platforms until next terrain is found or player passes finish
     */
+    
     private GameObject platMan;
-
     private GameObject[] allTerrain;
-    //private PlatformManager platScript;
+    PlatformManager platScript;
 
     // Start is called before the first frame update
     void Start()
     {
-       //platScript = platMan.GetComponent<PlatformManager>();
+        platMan = GameObject.Find("UserPlatformManager");
+        platScript = platMan.GetComponent<PlatformManager>();
     }
 
     // Update is called once per frame
