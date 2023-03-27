@@ -25,7 +25,7 @@ public class DemoController : MonoBehaviour
     *           - Make sure finish line is not behind player
     *           - Begin drawing certain length platforms until next terrain is found or player passes finish
     */
-    public GameObject platMan;
+    private GameObject platMan;
 
     private GameObject[] allTerrain;
     //private PlatformManager platScript;
@@ -40,5 +40,65 @@ public class DemoController : MonoBehaviour
     void Update()
     {
         
+    }
+}
+
+//Facade to incorporate Chunk and PlatformManager classes
+public class DemoFacade
+{
+    //PlatformManager pM;
+    ChunkGroup ch;
+
+    public DemoFacade()
+    {
+        //HOW DO YOU INITIALIZE PLATFORMMANAGER???
+        //pM = ;
+        //ch = new ChunkGroup();
+    }
+
+    public Vector2 GetNextChunkPos(Vector2 pos){
+        ChunkGroup temp = ch.GetNextChunk(pos);
+        Vector2 tempLoc = temp.transform.position;
+        return tempLoc;
+    }
+
+    public Vector2 GetCurChunkPos(Vector2 pos){
+        ChunkGroup temp = ch.GetCurChunk(pos);
+        Vector2 tempLoc = temp.transform.position;
+        return tempLoc;
+    }
+
+    public void CreatePlatform(Vector2 topLeft, float width){
+        Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
+        // PlatBox pTemp = pM.CheckPlatValidity(loc);
+        // pM.MakePlat(pTemp);
+    }
+
+    public void FillGap(Vector2 heroPos){
+        ChunkGroup nextChunk = ch.GetNextChunk(heroPos);
+        ChunkGroup curChunk = ch.GetCurChunk(heroPos);
+        float distX = nextChunk.GetPos().x - curChunk.GetPos().x;
+        float distY = nextChunk.GetPos().y - curChunk.GetPos().y;
+        
+        //platforms are not meeting, gap must be filled
+        if(distX > 0)
+        {
+            //Player must be built up to next platform
+            if(distY > .5)
+            {
+                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x+(curChunk.GetComponent<Collider>().bounds.size.x/2),curChunk.GetPos().y + 0.5f);
+                for(int i = 0; i < distY * 2; i++){
+                    CreatePlatform(topLeftLoc,distY/distX);
+                    topLeftLoc.x += distX/(distY * 2);
+                    topLeftLoc.y += 0.5f;
+                }
+            }
+            //Player may be built across on same level
+            else
+            {
+                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x+(curChunk.GetComponent<Collider>().bounds.size.x/2),curChunk.GetPos().y);
+                CreatePlatform(topLeftLoc,distX);
+            }
+        }
     }
 }
