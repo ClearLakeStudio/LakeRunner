@@ -50,7 +50,18 @@ public class ChunkGroup : MonoBehaviour
         allChunks.Add(this);
     }    
 
-    public Vector2 GetPos(){
+    public Vector2 GetPos()
+    {
         return pos;
+    }
+
+    public void FillGroup()
+    {
+        GameObject[] allTerrain;
+        allTerrain = GameObject.FindGameObjectsWithTag("Terrain");
+        for(int i = 0; i < allTerrain.Length; i++)
+        {
+            allChunks.Add(allTerrain[i]);
+        } 
     }
 }

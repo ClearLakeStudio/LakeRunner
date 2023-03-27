@@ -60,18 +60,17 @@ public class DemoController : MonoBehaviour
             {
                 inDemo = true;
                 SceneManager.LoadScene(overScript.GetHeroLevel());
-                hero = GameObject.Find("Hero");
                 platMan = GameObject.Find("UserPlatformManager");
-                //platScript = platMan.GetComponent<PlatformManager>();
+                platScript = platMan.GetComponent<PlatformManager>();
             }
         }
         else
         {
             //Demo functions go here
-            //Vector2 heroPos = hero.transform.position;
+            Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
 
             demo = new DemoFacade();
-            //demo.FillGap(heroPos);
+            demo.FillGap(heroPos);
 
             if(Input.anyKey)
             {
