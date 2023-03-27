@@ -11,8 +11,8 @@ using UnityEngine;
 public class DemoController : MonoBehaviour
 {
     /*  Needed:
-    *   - Find current and next 3? platforms
-    *   - Compare distance from top right edge of one platform COLLIDER to top left edge of next
+    *   - Find current and next 3? terrain
+    *   - Compare distance from top right edge of one terrain COLLIDER to top left edge of next
     *   - If x-distance > 1?
     *       - If y-distance > 1? then draw stairs
     *       - Else draw platform from top right corner of platform to left edge of next, minimum height
@@ -25,12 +25,15 @@ public class DemoController : MonoBehaviour
     *           - Make sure finish line is not behind player
     *           - Begin drawing certain length platforms until next terrain is found or player passes finish
     */
+    public GameObject platMan;
+
     private GameObject[] allTerrain;
+    //private PlatformManager platScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       //platScript = platMan.GetComponent<PlatformManager>();
     }
 
     // Update is called once per frame
