@@ -8,7 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ChunkGroup : MonoBehaviour
+//Potential for abstraction here
+public class ChunkGroup : MonoBehaviour
 {
     private List<ChunkGroup> allChunks;
 

@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DemoController : MonoBehaviour
 {
@@ -26,28 +27,65 @@ public class DemoController : MonoBehaviour
     *           - Begin drawing certain length platforms until next terrain is found or player passes finish
     */
     
+    private DemoFacade demo;
     private GameObject platMan;
-    private GameObject[] allTerrain;
-    PlatformManager platScript;
+    private GameObject overMan;
+    private GameObject hero;
+    // private GameObject[] allTerrain;
+    private PlatformManager platScript;
+    private OverworldManager overScript;
+    private float secCount = 0.0f;
+    private bool inDemo = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        platMan = GameObject.Find("UserPlatformManager");
-        platScript = platMan.GetComponent<PlatformManager>();
+        overMan = GameObject.FindWithTag("OverworldManager");
+        overScript = overMan.GetComponent<OverworldManager>();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.anyKey)
+        {
+            secCount = 0;
+        }
+        if(!inDemo)
+        {
+            secCount += Time.deltaTime;
+            Debug.Log("Demo counter = " + secCount);
+            if(secCount >= 10.0f)
+            {
+                inDemo = true;
+                SceneManager.LoadScene(overScript.GetHeroLevel());
+                hero = GameObject.Find("Hero");
+                platMan = GameObject.Find("UserPlatformManager");
+                //platScript = platMan.GetComponent<PlatformManager>();
+            }
+        }
+        else
+        {
+            //Demo functions go here
+            //Vector2 heroPos = hero.transform.position;
+
+            demo = new DemoFacade();
+            //demo.FillGap(heroPos);
+
+            if(Input.anyKey)
+            {
+                inDemo = false;
+                SceneManager.LoadScene("Overworld");
+            }
+        }
     }
 }
 
 //Facade to incorporate Chunk and PlatformManager classes
 public class DemoFacade
 {
-    //PlatformManager pM;
+    PlatformManager pM;
     ChunkGroup ch;
 
     public DemoFacade()
@@ -71,8 +109,8 @@ public class DemoFacade
 
     public void CreatePlatform(Vector2 topLeft, float width){
         Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
-        // PlatBox pTemp = pM.CheckPlatValidity(loc);
-        // pM.MakePlat(pTemp);
+        PlatBox pTemp = pM.CheckPlatValidity(loc);
+        pM.MakePlat(pTemp,0);
     }
 
     public void FillGap(Vector2 heroPos){
@@ -81,7 +119,7 @@ public class DemoFacade
         float distX = nextChunk.GetPos().x - curChunk.GetPos().x;
         float distY = nextChunk.GetPos().y - curChunk.GetPos().y;
         
-        //platforms are not meeting, gap must be filled
+        //Chunks are not meeting, gap must be filled
         if(distX > 0)
         {
             //Player must be built up to next platform
