@@ -18,7 +18,7 @@ public class OverworldMap : Map
 {
     // hero variables
     private GameObject hero;
-    //private int hero_current_level = 1;
+    private int hero_current_level = 1;
 
     void Start()
     {
@@ -62,5 +62,10 @@ public class OverworldMap : Map
         }
 
         return false;
+    }
+
+    public int GetHeroLevel()
+    {
+        return hero_current_level;
     }
 }

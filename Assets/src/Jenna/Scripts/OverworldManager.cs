@@ -50,6 +50,6 @@ public class OverworldManager : MonoBehaviour
      */
     public int GetHeroLevel()
     {
-        return 1;
+        return overworld.GetHeroLevel();
     }
 }
