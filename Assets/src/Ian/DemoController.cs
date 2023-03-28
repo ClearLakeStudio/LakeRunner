@@ -35,6 +35,7 @@ public class DemoController : MonoBehaviour
     private PlatformManager platScript;
     private OverworldManager overScript;
     private float secCount = 0.0f;
+    private float totalCount = 5.0f;
     private bool inDemo = false;
 
     // Start is called before the first frame update
@@ -56,20 +57,19 @@ public class DemoController : MonoBehaviour
         if(!inDemo)
         {
             secCount += Time.deltaTime;
-            Debug.Log("Demo counter = " + secCount);
-            if(secCount >= 10.0f)
+            if(secCount >= totalCount)
             {
                 inDemo = true;
                 SceneManager.LoadScene(overScript.GetHeroLevel());
                 platMan = GameObject.Find("UserPlatformManager");
-                platScript = platMan.GetComponent<PlatformManager>();
+                //platScript = platMan.GetComponent<PlatformManager>();
             }
         }
         else
         {
             //Demo functions go here
             Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
-
+            demo = new DemoFacade();
             demo.FillGap(heroPos);
 
             if(Input.anyKey)
@@ -156,19 +156,26 @@ public class ChunkGroup
         GameObject[] allTerrain;
         ChunkGroup chunk;
         Vector2 dimensions;
-
+        allChunks = new List<ChunkGroup>();
         allTerrain = GameObject.FindGameObjectsWithTag("Terrain");
+        Debug.Log("GOT THE allTERRAIN LIST");
         for(int i = 0; i < allTerrain.Length; i++)
         {
-            dimensions = allTerrain[i].GetComponent<Collider2D>().bounds.size;
+            Collider2D col = allTerrain[i].GetComponent<Collider2D>();
+            if(!col)
+            {
+                col = allTerrain[i].transform.GetChild(0).gameObject.GetComponent<Collider2D>();
+            }
+            dimensions = col.bounds.size;
             chunk = new ChunkGroup(allTerrain[i], allTerrain[i].transform.position, dimensions.x, dimensions.y);
+            Debug.Log("Chunk pos = " + chunk.GetPos());
             allChunks.Add(chunk);
         } 
-        allChunks.ForEach(p => Debug.Log(p));
     }
 
     //Constructor for a ChunkGroup with member
     public ChunkGroup(GameObject o, Vector2 p, float w, float h){
+        allChunks = new List<ChunkGroup>();
         obj = o;
         pos = p;
         width = w;
