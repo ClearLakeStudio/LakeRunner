@@ -175,7 +175,6 @@ public class ChunkGroup
         Vector2 dimensions;
         allChunks = new List<ChunkGroup>();
         allTerrain = GameObject.FindGameObjectsWithTag("Terrain");
-        Debug.Log("GOT THE allTERRAIN LIST");
         for(int i = 0; i < allTerrain.Length; i++)
         {
             Collider2D col = allTerrain[i].GetComponent<Collider2D>();
