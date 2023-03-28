@@ -27,7 +27,6 @@ public class DemoController : MonoBehaviour
     *           - Begin drawing certain length platforms until next terrain is found or player passes finish
     */
     
-    private DemoFacade demo;
     private GameObject platMan;
     private GameObject overMan;
     private GameObject hero;
@@ -43,7 +42,7 @@ public class DemoController : MonoBehaviour
     {
         overMan = GameObject.FindWithTag("OverworldManager");
         overScript = overMan.GetComponent<OverworldManager>();
-        demo = new DemoFacade();
+        // demo = new DemoFacade();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -69,7 +68,8 @@ public class DemoController : MonoBehaviour
         {
             //Demo functions go here
             Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
-            demo = new DemoFacade();
+            DemoFacade demo = DemoFacade.GetDemoFacade();
+            demo.GetNextChunkPos(heroPos);
             demo.FillGap(heroPos);
 
             if(Input.anyKey)
@@ -82,17 +82,34 @@ public class DemoController : MonoBehaviour
     }
 }
 
-//Facade to incorporate Chunk and PlatformManager classes
+//Facade/Singleton to incorporate Chunk and PlatformManager classes
 public class DemoFacade
 {
     PlatformManager pM;
     ChunkGroup ch;
+    static DemoFacade instance;
+    private static object locker = new object();
 
-    public DemoFacade()
+    protected DemoFacade()
     {
         //HOW DO YOU INITIALIZE PLATFORMMANAGER???
         //pM = ;
         ch = new ChunkGroup();
+    }
+
+    public static DemoFacade GetDemoFacade()
+    {
+        if(instance == null)
+        {
+            lock(locker)
+            {
+                if(instance == null)
+                {
+                    instance = new DemoFacade();
+                }
+            }
+        }
+        return instance;
     }
 
     public Vector2 GetNextChunkPos(Vector2 pos){
@@ -168,8 +185,6 @@ public class ChunkGroup
             }
             dimensions = col.bounds.size;
             chunk = new ChunkGroup(allTerrain[i], allTerrain[i].transform.position, dimensions.x, dimensions.y);
-            Debug.Log("Chunk pos = " + chunk.GetPos());
-            allChunks.Add(chunk);
         } 
     }
 
@@ -181,6 +196,7 @@ public class ChunkGroup
         width = w;
         height = h;
         allChunks.Add(this);
+        Debug.Log("Chunk pos = " + this.GetPos());
     }    
 
     public ChunkGroup GetNextChunk(Vector2 pos){
