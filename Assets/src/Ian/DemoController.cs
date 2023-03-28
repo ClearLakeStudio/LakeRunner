@@ -31,7 +31,6 @@ public class DemoController : MonoBehaviour
     private GameObject platMan;
     private GameObject overMan;
     private GameObject hero;
-    // private GameObject[] allTerrain;
     private PlatformManager platScript;
     private OverworldManager overScript;
     private float secCount = 0.0f;
@@ -43,7 +42,6 @@ public class DemoController : MonoBehaviour
     {
         overMan = GameObject.FindWithTag("OverworldManager");
         overScript = overMan.GetComponent<OverworldManager>();
-        // demo = new DemoFacade();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -68,17 +66,16 @@ public class DemoController : MonoBehaviour
         else
         {
             //Demo functions go here
-            Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
-            DemoFacade demo = DemoFacade.GetDemoFacade();
-            demo.GetNextChunkPos(heroPos);
-            demo.FillGap(heroPos);
-
             if(Input.anyKey)
             {
                 inDemo = false;
                 SceneManager.LoadScene("Overworld");
-                
             }
+
+            Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
+            DemoFacade demo = DemoFacade.GetDemoFacade();
+            demo.GetNextChunkPos(heroPos);
+            demo.FillGap(heroPos);
         }
     }
 }
@@ -88,8 +85,8 @@ namespace Facade
     //Facade/Singleton to incorporate Chunk and PlatformManager classes
     public class DemoFacade
     {
-        PlatformManager pM;
-        ChunkGroup ch;
+        private PlatformManager pM;
+        private ChunkGroup ch;
         static DemoFacade instance;
         private static object locker = new object();
 
@@ -98,7 +95,7 @@ namespace Facade
             //HOW DO YOU INITIALIZE PLATFORMMANAGER???
             //pM = ;
             ch = new ChunkGroup();
-            //Debug.Log(typeof(ch));
+            Debug.Log("Type of ch = " + ch.GetType());
         }
 
         public static DemoFacade GetDemoFacade()
@@ -117,16 +114,11 @@ namespace Facade
         }
 
         public Vector2 GetNextChunkPos(Vector2 pos){
-            
-            ChunkGroup temp = ch.GetNextChunk(pos);
-            Vector2 tempLoc = temp.GetPos();
-            return tempLoc;
+            return ch.GetNextChunk(pos).GetPos();
         }
 
         public Vector2 GetCurChunkPos(Vector2 pos){
-            ChunkGroup temp = ch.GetCurChunk(pos);
-            Vector2 tempLoc = temp.GetPos();
-            return tempLoc;
+            return ch.GetCurChunk(pos).GetPos();
         }
 
         public void CreatePlatform(Vector2 topLeft, float width){
@@ -194,11 +186,17 @@ namespace Facade
 
         //Constructor for a ChunkGroup with member
         public ChunkGroup(GameObject o, Vector2 p, float w, float h){
-            allChunks = new List<ChunkGroup>();
             obj = o;
             pos = p;
             width = w;
             height = h;
+            foreach(ChunkGroup chunk in allChunks)
+            {
+                if(chunk.GetObj() == o)
+                {
+                    return;
+                }
+            }
             allChunks.Add(this);
             Debug.Log("Chunk pos = " + this.GetPos());
         }    
@@ -227,7 +225,7 @@ namespace Facade
 
         public void SpawnChunk(ChunkGroup ch)
         {
-            MonoBehaviour.Instantiate(ch.obj, ch.pos, Quaternion.identity);
+            MonoBehaviour.Instantiate(ch.GetObj(), ch.GetPos(), Quaternion.identity);
         }
 
         public Vector2 GetPos()
@@ -243,6 +241,11 @@ namespace Facade
         public float GetHeight()
         {
             return height;
+        }
+
+        public GameObject GetObj()
+        {
+            return obj;
         }
     }
 }
