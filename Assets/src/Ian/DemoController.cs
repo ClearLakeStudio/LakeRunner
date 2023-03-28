@@ -4,6 +4,7 @@
     Purpose: Control the AI that will play through demo mode
 */
 
+using Facade;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,161 +83,169 @@ public class DemoController : MonoBehaviour
     }
 }
 
-//Facade/Singleton to incorporate Chunk and PlatformManager classes
-public class DemoFacade
+namespace Facade
 {
-    PlatformManager pM;
-    ChunkGroup ch;
-    static DemoFacade instance;
-    private static object locker = new object();
-
-    protected DemoFacade()
+    //Facade/Singleton to incorporate Chunk and PlatformManager classes
+    public class DemoFacade
     {
-        //HOW DO YOU INITIALIZE PLATFORMMANAGER???
-        //pM = ;
-        ch = new ChunkGroup();
-    }
+        PlatformManager pM;
+        ChunkGroup ch;
+        static DemoFacade instance;
+        private static object locker = new object();
 
-    public static DemoFacade GetDemoFacade()
-    {
-        if(instance == null)
+        protected DemoFacade()
         {
-            lock(locker)
+            //HOW DO YOU INITIALIZE PLATFORMMANAGER???
+            //pM = ;
+            ch = new ChunkGroup();
+            Debug.Log(typeof(ch));
+        }
+
+        public static DemoFacade GetDemoFacade()
+        {
+            if(instance == null)
             {
-                if(instance == null)
+                lock(locker)
                 {
-                    instance = new DemoFacade();
+                    if(instance == null)
+                    {
+                        instance = new DemoFacade();
+                    }
+                }
+            }
+            return instance;
+        }
+
+        public Vector2 GetNextChunkPos(Vector2 pos){
+            if(typeof(ch) == typeof(ChunkGroup))
+            {
+                Debug.Log("ch is a " + typeof(ch) + " and so is ChunkGroup");
+            }
+            ChunkGroup temp = ch.GetNextChunk(pos);
+            Vector2 tempLoc = temp.GetPos();
+            return tempLoc;
+        }
+
+        public Vector2 GetCurChunkPos(Vector2 pos){
+            ChunkGroup temp = ch.GetCurChunk(pos);
+            Vector2 tempLoc = temp.GetPos();
+            return tempLoc;
+        }
+
+        public void CreatePlatform(Vector2 topLeft, float width){
+            Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
+            PlatBox pTemp = pM.CheckPlatValidity(loc);
+            pM.MakePlat(pTemp,0);
+        }
+
+        public void FillGap(Vector2 heroPos){
+            ChunkGroup nextChunk = ch.GetNextChunk(heroPos);
+            ChunkGroup curChunk = ch.GetCurChunk(heroPos);
+            float distX = nextChunk.GetPos().x - curChunk.GetPos().x;
+            float distY = nextChunk.GetPos().y - curChunk.GetPos().y;
+            
+            //Chunks are not meeting, gap must be filled
+            if(distX > 0)
+            {
+                //Player must be built up to next platform
+                if(distY > .5)
+                {
+                    Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y + 0.5f);
+                    for(int i = 0; i < distY * 2; i++){
+                        CreatePlatform(topLeftLoc,distY/distX);
+                        topLeftLoc.x += distX/(distY * 2);
+                        topLeftLoc.y += 0.5f;
+                    }
+                }
+                //Player may be built across on same level
+                else
+                {
+                    Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y);
+                    CreatePlatform(topLeftLoc,distX);
                 }
             }
         }
-        return instance;
     }
 
-    public Vector2 GetNextChunkPos(Vector2 pos){
-        ChunkGroup temp = ch.GetNextChunk(pos);
-        Vector2 tempLoc = temp.GetPos();
-        return tempLoc;
-    }
+    public class ChunkGroup
+    {
+        private List<ChunkGroup> allChunks = new List<ChunkGroup>();
+        private GameObject obj;
+        private Vector2 pos;
+        private float width;
+        private float height;
 
-    public Vector2 GetCurChunkPos(Vector2 pos){
-        ChunkGroup temp = ch.GetCurChunk(pos);
-        Vector2 tempLoc = temp.GetPos();
-        return tempLoc;
-    }
-
-    public void CreatePlatform(Vector2 topLeft, float width){
-        Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
-        PlatBox pTemp = pM.CheckPlatValidity(loc);
-        pM.MakePlat(pTemp,0);
-    }
-
-    public void FillGap(Vector2 heroPos){
-        ChunkGroup nextChunk = ch.GetNextChunk(heroPos);
-        ChunkGroup curChunk = ch.GetCurChunk(heroPos);
-        float distX = nextChunk.GetPos().x - curChunk.GetPos().x;
-        float distY = nextChunk.GetPos().y - curChunk.GetPos().y;
-        
-        //Chunks are not meeting, gap must be filled
-        if(distX > 0)
+        //Constructor for ChunkGroup from existing terrain
+        public ChunkGroup()
         {
-            //Player must be built up to next platform
-            if(distY > .5)
+            GameObject[] allTerrain;
+            ChunkGroup chunk;
+            Vector2 dimensions;
+            //NEEDS TO BE SORTED BY X-POS
+            allTerrain = GameObject.FindGameObjectsWithTag("Terrain");
+            for(int i = 0; i < allTerrain.Length; i++)
             {
-                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y + 0.5f);
-                for(int i = 0; i < distY * 2; i++){
-                    CreatePlatform(topLeftLoc,distY/distX);
-                    topLeftLoc.x += distX/(distY * 2);
-                    topLeftLoc.y += 0.5f;
+                Collider2D col = allTerrain[i].GetComponent<Collider2D>();
+                if(!col)
+                {
+                    col = allTerrain[i].transform.GetChild(0).gameObject.GetComponent<Collider2D>();
+                }
+                dimensions = col.bounds.size;
+                chunk = new ChunkGroup(allTerrain[i], allTerrain[i].transform.position, dimensions.x, dimensions.y);
+            } 
+        }
+
+        //Constructor for a ChunkGroup with member
+        public ChunkGroup(GameObject o, Vector2 p, float w, float h){
+            allChunks = new List<ChunkGroup>();
+            obj = o;
+            pos = p;
+            width = w;
+            height = h;
+            allChunks.Add(this);
+            Debug.Log("Chunk pos = " + this.GetPos());
+        }    
+
+        public ChunkGroup GetNextChunk(Vector2 pos){
+            foreach(ChunkGroup chunk in allChunks)
+            {
+                if(chunk.GetPos().x > pos.x)
+                {
+                    return chunk;
                 }
             }
-            //Player may be built across on same level
-            else
-            {
-                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y);
-                CreatePlatform(topLeftLoc,distX);
-            }
+            return null;
         }
-    }
-}
 
-public class ChunkGroup
-{
-    private List<ChunkGroup> allChunks;
-    private GameObject obj;
-    private Vector2 pos;
-    private float width;
-    private float height;
-
-    //Constructor for ChunkGroup from existing terrain
-    public ChunkGroup()
-    {
-        GameObject[] allTerrain;
-        ChunkGroup chunk;
-        Vector2 dimensions;
-        allChunks = new List<ChunkGroup>();
-        allTerrain = GameObject.FindGameObjectsWithTag("Terrain");
-        for(int i = 0; i < allTerrain.Length; i++)
-        {
-            Collider2D col = allTerrain[i].GetComponent<Collider2D>();
-            if(!col)
+        public ChunkGroup GetCurChunk(Vector2 pos){
+            foreach(ChunkGroup chunk in allChunks)
             {
-                col = allTerrain[i].transform.GetChild(0).gameObject.GetComponent<Collider2D>();
+                if(chunk.GetPos(). x > pos.x)
+                {
+                    return chunk;
+                }
             }
-            dimensions = col.bounds.size;
-            chunk = new ChunkGroup(allTerrain[i], allTerrain[i].transform.position, dimensions.x, dimensions.y);
-        } 
-    }
-
-    //Constructor for a ChunkGroup with member
-    public ChunkGroup(GameObject o, Vector2 p, float w, float h){
-        allChunks = new List<ChunkGroup>();
-        obj = o;
-        pos = p;
-        width = w;
-        height = h;
-        allChunks.Add(this);
-        Debug.Log("Chunk pos = " + this.GetPos());
-    }    
-
-    public ChunkGroup GetNextChunk(Vector2 pos){
-        foreach(ChunkGroup chunk in allChunks)
-        {
-            if(chunk.GetPos().x > pos.x)
-            {
-                return chunk;
-            }
+            return null;
         }
-        return null;
-    }
 
-    public ChunkGroup GetCurChunk(Vector2 pos){
-        foreach(ChunkGroup chunk in allChunks)
+        public void SpawnChunk(ChunkGroup ch)
         {
-            if(chunk.GetPos(). x > pos.x)
-            {
-                return chunk;
-            }
+            MonoBehaviour.Instantiate(ch.obj, ch.pos, Quaternion.identity);
         }
-        return null;
-    }
 
-    public void SpawnChunk(ChunkGroup ch)
-    {
-        MonoBehaviour.Instantiate(ch.obj, ch.pos, Quaternion.identity);
-    }
+        public Vector2 GetPos()
+        {
+            return pos;
+        }
 
-    public Vector2 GetPos()
-    {
-        return pos;
-    }
+        public float GetWidth()
+        {
+            return width;
+        }
 
-    public float GetWidth()
-    {
-        return width;
-    }
-
-    public float GetHeight()
-    {
-        return height;
+        public float GetHeight()
+        {
+            return height;
+        }
     }
 }
