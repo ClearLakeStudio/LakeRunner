@@ -31,9 +31,9 @@ public class DemoController : MonoBehaviour
     
     private GameObject platMan;
     private GameObject overMan;
-    private GameObject hero;
     private PlatformManager platScript;
     private OverworldManager overScript;
+    private Vector2 platLocation;
     private float secCount = 0.0f;
     private float totalCount = 5.0f;
     private bool inDemo = false;
@@ -43,6 +43,7 @@ public class DemoController : MonoBehaviour
     {
         overMan = GameObject.FindWithTag("OverworldManager");
         overScript = overMan.GetComponent<OverworldManager>();
+        platLocation = new Vector2(0,0);
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -75,7 +76,10 @@ public class DemoController : MonoBehaviour
 
             Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
             DemoFacade demo = DemoFacade.GetDemoFacade();
-            demo.FillGap(heroPos);
+            if(heroPos.x > platLocation.x)
+            {
+                platLocation = demo.FillGap(heroPos);
+            }
         }
     }
 }
@@ -94,16 +98,8 @@ namespace Facade
         protected DemoFacade()
         {
             //HOW DO YOU INITIALIZE PLATFORMMANAGER???
-            //pM = ;
+            pM = GameObject.Find("UserPlatformManager").GetComponent<PlatformManager>();
             ch = ChunkGroup.GetChunkGroup();
-            pB = new PlatBox{
-                posX = 0,
-                posY = 0,
-                width = 0,
-                height = 0,
-                valid = true,
-                floating = true
-            };
         }
 
         public static DemoFacade GetDemoFacade()
@@ -135,24 +131,24 @@ namespace Facade
             pM.MakePlat(pB,0);
         }
 
-        public void FillGap(Vector2 heroPos){
+        public Vector2 FillGap(Vector2 heroPos){
+            Vector2 topLeftLoc = heroPos; 
             GameObject nextChunk = ch.GetNextChunk(heroPos);
             GameObject curChunk = ch.GetCurChunk(heroPos);
             float distX = nextChunk.transform.position.x - curChunk.transform.position.x;
             float distY = nextChunk.transform.position.y - curChunk.transform.position.y;
-            Debug.Log("nextChunk = " + nextChunk + " and curChunk = " + curChunk);
+            float curXPos = curChunk.transform.position.x;
+            float curYPos = curChunk.transform.position.y;
+            float curWidth = curChunk.GetComponent<Collider2D>().bounds.size.x;
+            float curHeight = curChunk.GetComponent<Collider2D>().bounds.size.y;
             
             //Chunks are not meeting, gap must be filled
             if(distX > 0)
             {
-                float curXPos = curChunk.transform.position.x;
-                float curYPos = curChunk.transform.position.y;
-                float curWidth = curChunk.GetComponent<Collider2D>().bounds.size.x;
-                float curHeight = curChunk.GetComponent<Collider2D>().bounds.size.y;
                 //Player must be built up to next platform
                 if(distY > .5)
                 {
-                    Vector2 topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos + 0.5f);
+                    topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos + 0.5f);
                     for(int i = 0; i < distY * 2; i++){
                         Debug.Log("Demo making platform");
                         CreatePlatform(topLeftLoc,distY/distX);
@@ -163,10 +159,21 @@ namespace Facade
                 //Player may be built across on same level
                 else
                 {
-                    Vector2 topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos);
+                    topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos);
                     CreatePlatform(topLeftLoc,distX);
                 }
             }
+            else if (distY > .5)
+            {
+                topLeftLoc = new Vector2(curXPos + curWidth/2,curYPos+0.5f);
+                for(int i = 0; i < distY * 2; i++)
+                {
+                    CreatePlatform(topLeftLoc,distY/distX);
+                    topLeftLoc.x += distX/(distY * 2);
+                    topLeftLoc.y += 0.5f;
+                }
+            }
+            return topLeftLoc;
         }
     }
 
