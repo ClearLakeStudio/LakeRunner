@@ -98,7 +98,7 @@ namespace Facade
             //HOW DO YOU INITIALIZE PLATFORMMANAGER???
             //pM = ;
             ch = new ChunkGroup();
-            Debug.Log(typeof(ch));
+            //Debug.Log(typeof(ch));
         }
 
         public static DemoFacade GetDemoFacade()
@@ -117,10 +117,7 @@ namespace Facade
         }
 
         public Vector2 GetNextChunkPos(Vector2 pos){
-            if(typeof(ch) == typeof(ChunkGroup))
-            {
-                Debug.Log("ch is a " + typeof(ch) + " and so is ChunkGroup");
-            }
+            
             ChunkGroup temp = ch.GetNextChunk(pos);
             Vector2 tempLoc = temp.GetPos();
             return tempLoc;
