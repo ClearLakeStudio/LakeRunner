@@ -5,6 +5,7 @@
 */
 
 using Facade;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,7 +75,6 @@ public class DemoController : MonoBehaviour
 
             Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
             DemoFacade demo = DemoFacade.GetDemoFacade();
-            demo.GetNextChunkPos(heroPos);
             demo.FillGap(heroPos);
         }
     }
@@ -85,17 +85,25 @@ namespace Facade
     //Facade/Singleton to incorporate Chunk and PlatformManager classes
     public class DemoFacade
     {
+        private static object locker = new object();
         private PlatformManager pM;
         private ChunkGroup ch;
+        private PlatBox pB;
         static DemoFacade instance;
-        private static object locker = new object();
 
         protected DemoFacade()
         {
             //HOW DO YOU INITIALIZE PLATFORMMANAGER???
             //pM = ;
-            ch = new ChunkGroup();
-            Debug.Log("Type of ch = " + ch.GetType());
+            ch = ChunkGroup.GetChunkGroup();
+            pB = new PlatBox{
+                posX = 0,
+                posY = 0,
+                width = 0,
+                height = 0,
+                valid = true,
+                floating = true
+            };
         }
 
         public static DemoFacade GetDemoFacade()
@@ -114,33 +122,39 @@ namespace Facade
         }
 
         public Vector2 GetNextChunkPos(Vector2 pos){
-            return ch.GetNextChunk(pos).GetPos();
+            return ch.GetNextChunk(pos).transform.position;
         }
 
         public Vector2 GetCurChunkPos(Vector2 pos){
-            return ch.GetCurChunk(pos).GetPos();
+            return ch.GetCurChunk(pos).transform.position;
         }
 
         public void CreatePlatform(Vector2 topLeft, float width){
             Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
-            PlatBox pTemp = pM.CheckPlatValidity(loc);
-            pM.MakePlat(pTemp,0);
+            pB = pM.CheckPlatValidity(loc);
+            pM.MakePlat(pB,0);
         }
 
         public void FillGap(Vector2 heroPos){
-            ChunkGroup nextChunk = ch.GetNextChunk(heroPos);
-            ChunkGroup curChunk = ch.GetCurChunk(heroPos);
-            float distX = nextChunk.GetPos().x - curChunk.GetPos().x;
-            float distY = nextChunk.GetPos().y - curChunk.GetPos().y;
+            GameObject nextChunk = ch.GetNextChunk(heroPos);
+            GameObject curChunk = ch.GetCurChunk(heroPos);
+            float distX = nextChunk.transform.position.x - curChunk.transform.position.x;
+            float distY = nextChunk.transform.position.y - curChunk.transform.position.y;
+            Debug.Log("nextChunk = " + nextChunk + " and curChunk = " + curChunk);
             
             //Chunks are not meeting, gap must be filled
             if(distX > 0)
             {
+                float curXPos = curChunk.transform.position.x;
+                float curYPos = curChunk.transform.position.y;
+                float curWidth = curChunk.GetComponent<Collider2D>().bounds.size.x;
+                float curHeight = curChunk.GetComponent<Collider2D>().bounds.size.y;
                 //Player must be built up to next platform
                 if(distY > .5)
                 {
-                    Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y + 0.5f);
+                    Vector2 topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos + 0.5f);
                     for(int i = 0; i < distY * 2; i++){
+                        Debug.Log("Demo making platform");
                         CreatePlatform(topLeftLoc,distY/distX);
                         topLeftLoc.x += distX/(distY * 2);
                         topLeftLoc.y += 0.5f;
@@ -149,7 +163,7 @@ namespace Facade
                 //Player may be built across on same level
                 else
                 {
-                    Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y);
+                    Vector2 topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos);
                     CreatePlatform(topLeftLoc,distX);
                 }
             }
@@ -158,66 +172,91 @@ namespace Facade
 
     public class ChunkGroup
     {
-        private List<ChunkGroup> allChunks = new List<ChunkGroup>();
+        private List<GameObject> allChunks = new List<GameObject>();
         private GameObject obj;
         private Vector2 pos;
         private float width;
         private float height;
 
+        static ChunkGroup instance;
+        private static object locker = new object();
+
+        public static ChunkGroup GetChunkGroup()
+        {
+            if(instance == null)
+            {
+                lock(locker)
+                {
+                    if(instance == null)
+                    {
+                        instance = new ChunkGroup();
+                    }
+                }
+            }
+            return instance;
+        }
+
         //Constructor for ChunkGroup from existing terrain
-        public ChunkGroup()
+        protected ChunkGroup()
         {
             GameObject[] allTerrain;
-            ChunkGroup chunk;
-            Vector2 dimensions;
             //NEEDS TO BE SORTED BY X-POS
             allTerrain = GameObject.FindGameObjectsWithTag("Terrain");
+            Array.Sort(allTerrain, new xPosSort());
             for(int i = 0; i < allTerrain.Length; i++)
             {
-                Collider2D col = allTerrain[i].GetComponent<Collider2D>();
-                if(!col)
-                {
-                    col = allTerrain[i].transform.GetChild(0).gameObject.GetComponent<Collider2D>();
-                }
-                dimensions = col.bounds.size;
-                chunk = new ChunkGroup(allTerrain[i], allTerrain[i].transform.position, dimensions.x, dimensions.y);
+                AddChunk(allTerrain[i]);
             } 
         }
 
         //Constructor for a ChunkGroup with member
-        public ChunkGroup(GameObject o, Vector2 p, float w, float h){
-            obj = o;
-            pos = p;
-            width = w;
-            height = h;
-            foreach(ChunkGroup chunk in allChunks)
+        public void AddChunk(GameObject o){
+            Collider2D col = o.GetComponent<Collider2D>();
+            if(!col)
             {
-                if(chunk.GetObj() == o)
+                col = o.transform.GetChild(0).gameObject.GetComponent<Collider2D>();
+            }
+            Vector2 dimensions = col.bounds.size;
+            
+            obj = o;
+            pos = o.transform.position;
+            width = dimensions.x;
+            height = dimensions.y;
+            foreach(GameObject chunk in allChunks)
+            {
+                if(chunk.name == o.name)
                 {
                     return;
                 }
             }
-            allChunks.Add(this);
-            Debug.Log("Chunk pos = " + this.GetPos());
+            allChunks.Add(o);
+            Debug.Log("Chunk pos = " + o.transform.position);
         }    
 
-        public ChunkGroup GetNextChunk(Vector2 pos){
-            foreach(ChunkGroup chunk in allChunks)
+        public GameObject GetNextChunk(Vector2 pos)
+        {
+            for(int i = 0; i < allChunks.Count; i++)
             {
-                if(chunk.GetPos().x > pos.x)
+                if(allChunks[i] != null)
                 {
-                    return chunk;
+                    if(allChunks[i].transform.position.x > pos.x)
+                    {
+                        return allChunks[i + 1];
+                    }
                 }
             }
             return null;
         }
 
-        public ChunkGroup GetCurChunk(Vector2 pos){
-            foreach(ChunkGroup chunk in allChunks)
+        public GameObject GetCurChunk(Vector2 pos)
+        {
+            foreach(GameObject chunk in allChunks)
             {
-                if(chunk.GetPos(). x > pos.x)
-                {
-                    return chunk;
+                if(chunk != null){
+                    if(chunk.transform.position.x > pos.x)
+                    {
+                        return chunk;
+                    }
                 }
             }
             return null;
@@ -246,6 +285,14 @@ namespace Facade
         public GameObject GetObj()
         {
             return obj;
+        }
+    }
+
+    class xPosSort : IComparer
+    {
+        public int Compare(object obj1, object obj2)
+        {
+            return (new CaseInsensitiveComparer()).Compare(((GameObject)obj1).transform.position.x, ((GameObject)obj2).transform.position.x);
         }
     }
 }
