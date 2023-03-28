@@ -42,6 +42,7 @@ public class DemoController : MonoBehaviour
     {
         overMan = GameObject.FindWithTag("OverworldManager");
         overScript = overMan.GetComponent<OverworldManager>();
+        demo = new DemoFacade();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -69,13 +70,13 @@ public class DemoController : MonoBehaviour
             //Demo functions go here
             Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
 
-            demo = new DemoFacade();
             demo.FillGap(heroPos);
 
             if(Input.anyKey)
             {
                 inDemo = false;
                 SceneManager.LoadScene("Overworld");
+                
             }
         }
     }
@@ -91,18 +92,18 @@ public class DemoFacade
     {
         //HOW DO YOU INITIALIZE PLATFORMMANAGER???
         //pM = ;
-        //ch = new ChunkGroup();
+        ch = new ChunkGroup();
     }
 
     public Vector2 GetNextChunkPos(Vector2 pos){
         ChunkGroup temp = ch.GetNextChunk(pos);
-        Vector2 tempLoc = temp.transform.position;
+        Vector2 tempLoc = temp.GetPos();
         return tempLoc;
     }
 
     public Vector2 GetCurChunkPos(Vector2 pos){
         ChunkGroup temp = ch.GetCurChunk(pos);
-        Vector2 tempLoc = temp.transform.position;
+        Vector2 tempLoc = temp.GetPos();
         return tempLoc;
     }
 
@@ -124,7 +125,7 @@ public class DemoFacade
             //Player must be built up to next platform
             if(distY > .5)
             {
-                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x+(curChunk.GetComponent<Collider>().bounds.size.x/2),curChunk.GetPos().y + 0.5f);
+                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y + 0.5f);
                 for(int i = 0; i < distY * 2; i++){
                     CreatePlatform(topLeftLoc,distY/distX);
                     topLeftLoc.x += distX/(distY * 2);
@@ -134,9 +135,86 @@ public class DemoFacade
             //Player may be built across on same level
             else
             {
-                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x+(curChunk.GetComponent<Collider>().bounds.size.x/2),curChunk.GetPos().y);
+                Vector2 topLeftLoc = new Vector2(curChunk.GetPos().x-(curChunk.GetWidth()/2),curChunk.GetPos().y);
                 CreatePlatform(topLeftLoc,distX);
             }
         }
+    }
+}
+
+public class ChunkGroup
+{
+    private List<ChunkGroup> allChunks;
+    private GameObject obj;
+    private Vector2 pos;
+    private float width;
+    private float height;
+
+    //Constructor for ChunkGroup from existing terrain
+    public ChunkGroup()
+    {
+        GameObject[] allTerrain;
+        ChunkGroup chunk;
+        Vector2 dimensions;
+
+        allTerrain = GameObject.FindGameObjectsWithTag("Terrain");
+        for(int i = 0; i < allTerrain.Length; i++)
+        {
+            dimensions = allTerrain[i].GetComponent<Collider2D>().bounds.size;
+            chunk = new ChunkGroup(allTerrain[i], allTerrain[i].transform.position, dimensions.x, dimensions.y);
+            allChunks.Add(chunk);
+        } 
+        allChunks.ForEach(p => Debug.Log(p));
+    }
+
+    //Constructor for a ChunkGroup with member
+    public ChunkGroup(GameObject o, Vector2 p, float w, float h){
+        obj = o;
+        pos = p;
+        width = w;
+        height = h;
+        allChunks.Add(this);
+    }    
+
+    public ChunkGroup GetNextChunk(Vector2 pos){
+        foreach(ChunkGroup chunk in allChunks)
+        {
+            if(chunk.GetPos().x > pos.x)
+            {
+                return chunk;
+            }
+        }
+        return null;
+    }
+
+    public ChunkGroup GetCurChunk(Vector2 pos){
+        foreach(ChunkGroup chunk in allChunks)
+        {
+            if(chunk.GetPos(). x > pos.x)
+            {
+                return chunk;
+            }
+        }
+        return null;
+    }
+
+    public void SpawnChunk(ChunkGroup ch)
+    {
+        MonoBehaviour.Instantiate(ch.obj, ch.pos, Quaternion.identity);
+    }
+
+    public Vector2 GetPos()
+    {
+        return pos;
+    }
+
+    public float GetWidth()
+    {
+        return width;
+    }
+
+    public float GetHeight()
+    {
+        return height;
     }
 }
