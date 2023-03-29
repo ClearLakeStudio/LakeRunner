@@ -128,30 +128,47 @@ namespace Facade
         public void CreatePlatform(Vector2 topLeft, float width){
             Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
             pB = pM.CheckPlatValidity(loc);
-            pM.MakePlat(pB,0);
+            pB.floating = true;
+            pM.MakePlat(pB,(int)Time.time);
         }
 
         public Vector2 FillGap(Vector2 heroPos){
             Vector2 topLeftLoc = heroPos; 
             GameObject nextChunk = ch.GetNextChunk(heroPos);
             GameObject curChunk = ch.GetCurChunk(heroPos);
-            float distX = nextChunk.transform.position.x - curChunk.transform.position.x;
-            float distY = nextChunk.transform.position.y - curChunk.transform.position.y;
-            float curXPos = curChunk.transform.position.x;
-            float curYPos = curChunk.transform.position.y;
-            float curWidth = curChunk.GetComponent<Collider2D>().bounds.size.x;
-            float curHeight = curChunk.GetComponent<Collider2D>().bounds.size.y;
-            
+
+            float distX = 0.0f;
+            float distY = 0.0f;
+            float curXPos = 0.0f;
+            float curYPos = 0.0f;
+            float curWidth = 0.0f;
+            float curHeight = 0.0f;
+            float nextWidth = 0.0f;
+
+            if(nextChunk != null)
+            {
+                if(nextChunk.name.Contains("TerrainStair") || curChunk.name.Contains("TerrainStair"))
+                {
+                    return topLeftLoc;
+                }
+                nextWidth = nextChunk.GetComponent<Collider2D>().bounds.size.x;
+                curXPos = curChunk.transform.position.x;
+                curYPos = curChunk.transform.position.y;
+                curWidth = curChunk.GetComponent<Collider2D>().bounds.size.x;
+                curHeight = curChunk.GetComponent<Collider2D>().bounds.size.y;
+                distX = (nextChunk.transform.position.x - nextWidth/2) - (curXPos + curWidth/2);
+                distY = nextChunk.transform.position.y - curYPos;
+            }
+
             //Chunks are not meeting, gap must be filled
-            if(distX > 0)
+            if(distX > 0.5f)
             {
                 //Player must be built up to next platform
                 if(distY > .5)
                 {
-                    topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos + 0.5f);
-                    for(int i = 0; i < distY * 2; i++){
-                        Debug.Log("Demo making platform");
-                        CreatePlatform(topLeftLoc,distY/distX);
+                    topLeftLoc = new Vector2(curXPos+(curWidth/2),curYPos + curHeight);
+                    for(int i = 0; i <= distY * 2; i++){
+                        CreatePlatform(topLeftLoc,distX/(distY * 2));
                         topLeftLoc.x += distX/(distY * 2);
                         topLeftLoc.y += 0.5f;
                     }
@@ -159,13 +176,14 @@ namespace Facade
                 //Player may be built across on same level
                 else
                 {
-                    topLeftLoc = new Vector2(curXPos-(curWidth/2),curYPos);
+                    topLeftLoc = new Vector2(curXPos+curWidth/2.0f,curYPos+0.5f);
                     CreatePlatform(topLeftLoc,distX);
                 }
             }
+            //Player must be built up a level, but not across a gap
             else if (distY > .5)
             {
-                topLeftLoc = new Vector2(curXPos + curWidth/2,curYPos+0.5f);
+                topLeftLoc = new Vector2(curXPos,curYPos);
                 for(int i = 0; i < distY * 2; i++)
                 {
                     CreatePlatform(topLeftLoc,distY/distX);
@@ -248,6 +266,10 @@ namespace Facade
                 {
                     if(allChunks[i].transform.position.x > pos.x)
                     {
+                        if(i+1 >= allChunks.Count)
+                        {
+                            return null;
+                        }
                         return allChunks[i + 1];
                     }
                 }
