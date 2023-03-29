@@ -141,9 +141,12 @@ namespace Facade
             float distY = 0.0f;
             float curXPos = 0.0f;
             float curYPos = 0.0f;
+            float nextXPos = 0.0f;
+            float nextYPos = 0.0f;
             float curWidth = 0.0f;
             float curHeight = 0.0f;
             float nextWidth = 0.0f;
+            float nextHeight = 0.0f;
 
             if(nextChunk != null)
             {
@@ -152,12 +155,15 @@ namespace Facade
                     return topLeftLoc;
                 }
                 nextWidth = nextChunk.GetComponent<Collider2D>().bounds.size.x;
+                nextHeight = nextChunk.GetComponent<Collider2D>().bounds.size.y;
                 curXPos = curChunk.transform.position.x;
                 curYPos = curChunk.transform.position.y;
+                nextXPos = nextChunk.transform.position.x;
+                nextYPos = nextChunk.transform.position.y;
                 curWidth = curChunk.GetComponent<Collider2D>().bounds.size.x;
                 curHeight = curChunk.GetComponent<Collider2D>().bounds.size.y;
-                distX = (nextChunk.transform.position.x - nextWidth/2) - (curXPos + curWidth/2);
-                distY = nextChunk.transform.position.y - curYPos;
+                distX = (nextXPos - nextWidth/2) - (curXPos + curWidth/2);
+                distY = (nextYPos + nextHeight/2) - (curYPos + curHeight/2);
             }
 
             //Chunks are not meeting, gap must be filled
@@ -166,7 +172,7 @@ namespace Facade
                 //Player must be built up to next platform
                 if(distY > .5)
                 {
-                    topLeftLoc = new Vector2(curXPos+(curWidth/2),curYPos + curHeight);
+                    topLeftLoc = new Vector2(curXPos+(curWidth/2),curYPos + curHeight/2);
                     for(int i = 0; i <= distY * 2; i++){
                         CreatePlatform(topLeftLoc,distX/(distY * 2));
                         topLeftLoc.x += distX/(distY * 2);
@@ -176,17 +182,18 @@ namespace Facade
                 //Player may be built across on same level
                 else
                 {
-                    topLeftLoc = new Vector2(curXPos+curWidth/2.0f,curYPos+0.5f);
+                    topLeftLoc = new Vector2(curXPos+curWidth/2.0f,curYPos+curHeight/2);
                     CreatePlatform(topLeftLoc,distX);
                 }
             }
             //Player must be built up a level, but not across a gap
             else if (distY > .5)
             {
-                topLeftLoc = new Vector2(curXPos,curYPos);
+                distX = (curXPos + curWidth/2) - (curXPos - curWidth/2);
+                topLeftLoc = new Vector2((curXPos-curWidth/2),curYPos+curHeight/2);
                 for(int i = 0; i < distY * 2; i++)
                 {
-                    CreatePlatform(topLeftLoc,distY/distX);
+                    CreatePlatform(topLeftLoc,distX/(distY*2));
                     topLeftLoc.x += distX/(distY * 2);
                     topLeftLoc.y += 0.5f;
                 }
@@ -255,7 +262,6 @@ namespace Facade
                 }
             }
             allChunks.Add(o);
-            Debug.Log("Chunk pos = " + o.transform.position);
         }    
 
         public GameObject GetNextChunk(Vector2 pos)
