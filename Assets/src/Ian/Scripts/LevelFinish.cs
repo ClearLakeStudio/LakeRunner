@@ -10,13 +10,27 @@ using UnityEngine;
 
 public class LevelFinish : MonoBehaviour
 {
-    void OnTriggerExit2D(Collider2D col)
-    {
-        Debug.Log("Colliding with object.");
-        if (col.gameObject.tag == "Hero")
-        {
-            Time.timeScale = 0;
-            Debug.Log("Level Finished");
+    private RaycastHit2D[] colls;
+    private Vector2 rayLoc;
+
+    void Start(){
+        rayLoc = new Vector2(transform.position.x + transform.localScale.x/2, transform.position.y);
+    }
+
+    void FixedUpdate(){
+        colls = Physics2D.RaycastAll(rayLoc, new Vector2(0,1));
+        foreach(RaycastHit2D hit in colls){
+            if(hit.collider.gameObject.tag == "Hero"){
+                Time.timeScale = 0;
+                Debug.Log("Level Finished");
+            }
+        }
+        colls = Physics2D.RaycastAll(rayLoc, new Vector2(0,-1));
+        foreach(RaycastHit2D hit in colls){
+            if(hit.collider.gameObject.tag == "Hero"){
+                Time.timeScale = 0;
+                Debug.Log("Level Finished");
+            }
         }
     }
 }

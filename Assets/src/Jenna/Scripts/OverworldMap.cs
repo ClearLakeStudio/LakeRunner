@@ -16,8 +16,13 @@ using UnityEngine.UI;
  */
 public class OverworldMap : Map
 {
+    // hero variables
+    private GameObject hero;
+    private int hero_current_level = 1;
+
     void Start()
     {
+        hero = GameObject.FindGameObjectWithTag("Hero");
         /*
         var gameObject = new GameObject();
         gameObject.AddComponent<Lake>();
@@ -57,5 +62,10 @@ public class OverworldMap : Map
         }
 
         return false;
+    }
+
+    public int GetHeroLevel()
+    {
+        return hero_current_level;
     }
 }

@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 553484680}
   - component: {fileID: 553484681}
   m_Layer: 0
-  m_Name: PlatformManager
+  m_Name: UserPlatformManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

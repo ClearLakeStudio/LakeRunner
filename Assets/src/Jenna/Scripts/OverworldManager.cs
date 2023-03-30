@@ -41,4 +41,15 @@ public class OverworldManager : MonoBehaviour
             }
         }
     }
+
+    /*
+     * Gets the next level the hero/player will play.
+     *
+     * Returns:
+     * int -- a range between and including 1-5, one for each level.
+     */
+    public int GetHeroLevel()
+    {
+        return overworld.GetHeroLevel();
+    }
 }

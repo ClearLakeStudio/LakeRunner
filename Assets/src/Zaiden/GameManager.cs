@@ -15,6 +15,7 @@ public struct PlatBox // stores basic platform creation info
     public float width;
     public float height;
     public bool valid;
+    public bool floating;
 }
 
 public class GameManager : MonoBehaviour
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour
     Vector3 mousePos; // stores position of mouse at critical points
     Vector3[] boxCorners;
     bool mouseHold; // whether or not mouse is currently being held
+    float lastClickTime, doubleClickTime = 0.2f; // double click info
+    bool doubleClick; // store whether a double click occured when placing platforms
 
     // store hero position value
     Vector3 heroPos;
@@ -43,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         boxCorners = new Vector3[2];
         mouseHold = false;
+        doubleClick = false;
 
         heroPos = new Vector3();
 
@@ -71,6 +75,16 @@ public class GameManager : MonoBehaviour
             mousePos.z = Camera.main.nearClipPlane;
             Debug.Log(mousePos.x + " " + mousePos.y + " " + mousePos.z + ".");
             boxCorners[0] = new Vector3(mousePos.x, mousePos.y, mousePos.z);
+            if ((Time.time - lastClickTime) <= doubleClickTime)
+            {
+                doubleClick = true;
+            } else
+            {
+                doubleClick = false;
+            }
+            lastClickTime = Time.time;
+
+
         }
         if (!Input.GetMouseButton(0) && mouseHold == true) // releasing hold
         {
@@ -81,7 +95,17 @@ public class GameManager : MonoBehaviour
             PlatBox p = pM.CheckPlatValidity(boxCorners);
             if (p.valid == true)
             {
-                pM.MakePlat(p, 0);
+                if (!doubleClick) // dont make falling
+                {
+                    p.floating = true;
+                    pM.MakePlat(p, 0);
+                    //Debug.Log("not falling");
+                } else // make falling
+                {
+                    p.floating = false;
+                    pM.MakePlat(p, 0);
+                    //Debug.Log("falling");
+                }
             } else
             {
                 pM.DestroyPreVPlat();

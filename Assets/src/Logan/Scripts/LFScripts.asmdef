@@ -1,3 +1,16 @@
 {
-	"name": "LFScripts"
+    "name": "LFScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:de7052c1900fcaa45af03f97b1f7cbb5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

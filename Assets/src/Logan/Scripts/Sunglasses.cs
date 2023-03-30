@@ -14,8 +14,15 @@ using UnityEngine;
  */
 public class Sunglasses : InventoryItem
 {
+    private GameObject cameraObject;
+    private Camera heroCamera;
+
     public override void UseEffect()
     {
+        cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+        heroCamera = cameraObject.GetComponent<Camera>();
+
+        heroCamera.orthographicSize *= 4;
         Debug.Log("Sunglasses were used");
     }
 }
