@@ -13,7 +13,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
 
-    protected override void EntitySetTag()
+    protected override void EntityAwake()
     {
         gameObject.tag = "Enemy";
     }

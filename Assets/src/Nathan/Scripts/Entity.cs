@@ -22,7 +22,6 @@ public abstract class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
         //sprite = GetComponent<SpriteRenderer>();
-        EntitySetTag();
         EntityAwake();
         EntitySetBounds();
     }
@@ -55,13 +54,7 @@ public abstract class Entity : MonoBehaviour
         rb.position = setpos;
     }
 
-
-    protected abstract void EntitySetTag();
-
-    protected virtual void EntityAwake()
-    {
-        //nothing
-    }
+    protected abstract void EntityAwake();
 
     protected virtual void EntityCollision(Collider2D other)
     {
