@@ -65,7 +65,7 @@ public abstract class Entity : MonoBehaviour
     {
         //nothing
     }
-
+    //if GameManager has boundaries, then get them.
     protected virtual void EntitySetBounds()
     {
         //gameBoundaryLow = Vector2.negativeInfinity;
@@ -90,6 +90,4 @@ public abstract class Entity : MonoBehaviour
         rb.simulated = false;
         Debug.Log("(NN) Entity frozen, out of bounds");
     }
-
-    
 }
