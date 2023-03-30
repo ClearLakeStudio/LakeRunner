@@ -14,8 +14,15 @@ using UnityEngine;
  */
 public class Slippers : InventoryItem
 {
+    private GameObject heroObject;
+    private Hero heroScript;
+
     public override void UseEffect()
     {
+        heroObject = GameObject.FindGameObjectWithTag("Hero");
+        heroScript = heroObject.GetComponent<Hero>();
+        // need some way to jump the hero up
+        // heroScript.jumpForce += 1;
         Debug.Log("Slippers were used");
     }
 }
