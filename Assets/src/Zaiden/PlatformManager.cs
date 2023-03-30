@@ -16,7 +16,7 @@ public class PlatformManager : MonoBehaviour
     public GameObject fallPlatform;
     public GameObject pvPlatform;
 
-    GameObject pvPlat;
+    private GameObject pvPlat;
 
     public void Start()
     {
@@ -26,15 +26,10 @@ public class PlatformManager : MonoBehaviour
     // checks the validity of platform coordinates. returns true if valid placement, false otherwise
     public PlatBox CheckPlatValidity(Vector3[] pos)
     {
-        /*
-        Debug.Log("Zaiden: checking platform validity");
-        Debug.Log("Zaiden: coordinate1: (" + pos[0].x + ", " + pos[0].y + ").");
-        Debug.Log("Zaiden: coordinate2: (" + pos[1].x + ", " + pos[1].y + ").");
-        */
+        
         float width;
         float height;
-        //float xAnch = Mathf.Ceil(pos[0].x+100f) - 100f; // so negatives do not become an issue, the floor always affects in one way
-        //float yAnch = Mathf.Floor(pos[0].y + 100f) - 100f;
+        
         if (pos[1].x > pos[0].x)
         {
             width = Mathf.Ceil(pos[1].x - pos[0].x);
@@ -76,7 +71,6 @@ public class PlatformManager : MonoBehaviour
     public void MakePlat(PlatBox p, int time)
     {
         DestroyPreVPlat();
-        Debug.Log("Zaiden: making platform.");
         GameObject newPlat;
         if (p.floating) {
             newPlat = Instantiate(floatPlatform, new Vector3(p.posX, p.posY, 0), Quaternion.identity);
