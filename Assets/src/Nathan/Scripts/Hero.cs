@@ -11,6 +11,8 @@ public class Hero : Entity
 {
     public float jumpForce;
     public float movementSpeed;
+    private float health;
+    private float shield;
 
     [SerializeField]
     private float stepJump;
@@ -19,8 +21,50 @@ public class Hero : Entity
     [SerializeField]
     private float jumpTimer;
 
-    protected override void EntitySetTag(){
+
+    // public functions
+    public void SetHealth(float newHealth)
+    {
+        if(newHealth >= 100 ){
+            health = 100;
+        }
+        else if(newHealth < 0){
+            health = 0;
+            Debug.Log("Zero Health");
+        }
+        else{
+            health = newHealth;
+        }
+    }
+
+    public float GetHealth(){
+        return health;
+    }
+
+    public void SetShield(float newShield)
+    {
+        if(newShield >= 100 ){
+            shield = 100;
+        }
+        else if(newShield < 0){
+            shield = 0;
+            Debug.Log("Zero Health");
+        }
+        else{
+            shield = newShield;
+        }
+    }
+
+    public float GetShield(){
+        return shield;
+    }
+
+    //protected/private functions
+    protected override void EntityAwake()
+    {
         gameObject.tag = "Hero";
+        health = 100;
+        shield = 100;
     }
 
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
@@ -48,5 +92,4 @@ public class Hero : Entity
         Time.timeScale = 0;
         Debug.Log("(NN) Time frozen, Hero out of bounds");
     }
-
 }

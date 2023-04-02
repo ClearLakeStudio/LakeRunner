@@ -31,11 +31,11 @@ public class DemoController : MonoBehaviour
     
     private GameObject platMan;
     private GameObject overMan;
-    private PlatformManager platScript;
     private OverworldManager overScript;
     private Vector2 platLocation;
     private float secCount = 0.0f;
     private float totalCount = 5.0f;
+    private float randFloat;
     private bool inDemo = false;
 
     // Start is called before the first frame update
@@ -62,7 +62,6 @@ public class DemoController : MonoBehaviour
                 inDemo = true;
                 SceneManager.LoadScene(overScript.GetHeroLevel());
                 platMan = GameObject.Find("UserPlatformManager");
-                //platScript = platMan.GetComponent<PlatformManager>();
             }
         }
         else
@@ -72,11 +71,13 @@ public class DemoController : MonoBehaviour
             {
                 inDemo = false;
                 SceneManager.LoadScene("Overworld");
+                platLocation = new Vector2(0,0);
             }
 
             Vector2 heroPos = GameObject.FindWithTag("Hero").transform.position;
             DemoFacade demo = DemoFacade.GetDemoFacade();
-            if(heroPos.x > platLocation.x)
+            randFloat = UnityEngine.Random.Range(0.0f,10.0f);
+            if(heroPos.x > platLocation.x && randFloat < 0.1f)
             {
                 platLocation = demo.FillGap(heroPos);
             }
@@ -97,7 +98,6 @@ namespace Facade
 
         protected DemoFacade()
         {
-            //HOW DO YOU INITIALIZE PLATFORMMANAGER???
             pM = GameObject.Find("UserPlatformManager").GetComponent<PlatformManager>();
             ch = ChunkGroup.GetChunkGroup();
         }

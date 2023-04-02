@@ -53,15 +53,10 @@ public class GameManager : MonoBehaviour
         pM = platManager.GetComponent<PlatformManager>(); // assign script reference in platformmanager.cs
         cM = chunkManager.GetComponent<LoadLevel>(); // assign script reference in loadlevel.cs
         hB = healthBar.GetComponent<HealthBar>(); // assign script reference in HealthBar.cs
-        //mB = matBar.GetComponent<MaterialBar>(); // assign script reference in MatBar.cs
-        //ssB = sunscreenBar.GetComponent<SunSbar>(); // assign script reference in SunScreen.cs
 
 
         // initial calls, will be removed later and moved to hero script
         hB.SetMaxHealth(10);
-        //mB.SetMaxMat(100);
-        //ssB.SetSunS(10);
-
     }
 
     // Update is called once per frame
@@ -73,7 +68,6 @@ public class GameManager : MonoBehaviour
             mouseHold = true;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = Camera.main.nearClipPlane;
-            Debug.Log(mousePos.x + " " + mousePos.y + " " + mousePos.z + ".");
             boxCorners[0] = new Vector3(mousePos.x, mousePos.y, mousePos.z);
             if ((Time.time - lastClickTime) <= doubleClickTime)
             {
@@ -99,12 +93,10 @@ public class GameManager : MonoBehaviour
                 {
                     p.floating = true;
                     pM.MakePlat(p, 0);
-                    //Debug.Log("not falling");
                 } else // make falling
                 {
                     p.floating = false;
                     pM.MakePlat(p, 0);
-                    //Debug.Log("falling");
                 }
             } else
             {

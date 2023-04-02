@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1401742050558572388}
   - component: {fileID: -332586332756427381}
   - component: {fileID: 6679357443993390916}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TerrainStairGreen
   m_TagString: Terrain
   m_Icon: {fileID: 0}
