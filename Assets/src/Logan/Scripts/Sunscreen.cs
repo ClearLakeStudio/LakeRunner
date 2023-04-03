@@ -14,8 +14,19 @@ using UnityEngine;
  */
 public class Sunscreen : AttributeItem
 {
+    public float healthIncrease = 25f;
+    private GameObject heroObject;
+    private Hero heroScript;
+
     public override void UseEffect()
     {
+        float currentHealth;
+
+        heroObject = GameObject.FindGameObjectWithTag("Hero");
+        heroScript = heroObject.GetComponent<Hero>();
+
+        currentHealth = heroScript.GetHealth();
+        heroScript.SetHealth(currentHealth + healthIncrease);
         Debug.Log("Sunscreen was used");
     }
 }

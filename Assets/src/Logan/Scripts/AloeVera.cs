@@ -14,8 +14,19 @@ using UnityEngine;
  */
 public class AloeVera : AttributeItem
 {
+    public float shieldIncrease = 25f;
+    private GameObject heroObject;
+    private Hero heroScript;
+
     public override void UseEffect()
     {
+        float currentShield;
+
+        heroObject = GameObject.FindGameObjectWithTag("Hero");
+        heroScript = heroObject.GetComponent<Hero>();
+
+        currentShield = heroScript.GetShield();
+        heroScript.SetShield(currentShield + shieldIncrease);
         Debug.Log("Aloe Vera was used");
     }
 }
