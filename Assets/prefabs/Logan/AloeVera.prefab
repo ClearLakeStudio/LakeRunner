@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5174107038177568048}
   - component: {fileID: 579288026276296765}
   m_Layer: 0
-  m_Name: Aloe Vera
+  m_Name: AloeVera
   m_TagString: Aloe Vera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

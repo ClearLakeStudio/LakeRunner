@@ -52,7 +52,7 @@ public class Item : MonoBehaviour
         return this.type;
     }
 
-    protected void Start()
+    protected void Awake()
     {
         if (gameObject.tag == "Sunscreen") {
             this.SetType(ItemType.Sunscreen);
