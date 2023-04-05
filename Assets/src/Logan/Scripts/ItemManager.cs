@@ -24,7 +24,7 @@ public class ItemManager : MonoBehaviour
     // a prefab whose children are meant to represented in separate object pools
     [SerializeField] private GameObject itemCollection;
     // the number of GameObjects to be stored in each object pool
-    [SerializeField] private int numObjs = 10;
+    [SerializeField] private int numberOfObjectsInPool = 10;
 
     // stores all GameObject pools (implemented as lists) with the GameObject's ItemType as a key
     private Dictionary<ItemType, List<GameObject>> pools = new Dictionary<ItemType, List<GameObject>>();
@@ -53,7 +53,7 @@ public class ItemManager : MonoBehaviour
             // for each GameObject in the list of itemsFromCollection, create a new list (pool)
             List<GameObject> newPool = new List<GameObject>();
 
-            for (int j = 0; j < numObjs; j++) {
+            for (int j = 0; j < numberOfObjectsInPool; j++) {
                 GameObject obj = Instantiate(collectionObject);
                 obj.transform.parent = poolRepresentative.transform;
                 obj.SetActive(false);
@@ -143,7 +143,9 @@ public class ItemManager : MonoBehaviour
 
         // is this dynamic binding?
         Item itemScript = obj.GetComponent<Item>();
-        itemScript.UseEffect();
+        //itemScript.UseEffect();
+        //itemScript.StartCoroutine(UseEffect());
+        StartCoroutine(itemScript.UseEffect());
 
         if (!ReturnPooledObject(obj)) {
             Debug.Log("ERROR, COULDN'T RETURN ITEM");

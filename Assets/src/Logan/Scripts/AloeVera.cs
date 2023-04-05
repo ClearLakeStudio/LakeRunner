@@ -4,6 +4,7 @@
  * Purpose:   This file defines the "AloeVera" class.
  */
 
+using System.Collections;
 using UnityEngine;
 
 /*
@@ -18,7 +19,7 @@ public class AloeVera : AttributeItem
     private GameObject heroObject;
     private Hero heroScript;
 
-    public override void UseEffect()
+    public override IEnumerator UseEffect()
     {
         float currentShield;
 
@@ -28,5 +29,6 @@ public class AloeVera : AttributeItem
         currentShield = heroScript.GetShield();
         heroScript.SetShield(currentShield + shieldIncrease);
         Debug.Log("Aloe Vera was used");
+        yield return null;
     }
 }

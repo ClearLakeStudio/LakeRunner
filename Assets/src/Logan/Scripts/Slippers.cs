@@ -4,6 +4,7 @@
  * Purpose:   This file defines the "Slippers" class.
  */
 
+using System.Collections;
 using UnityEngine;
 
 /*
@@ -14,15 +15,18 @@ using UnityEngine;
  */
 public class Slippers : InventoryItem
 {
-    private GameObject heroObject;
-    private Hero heroScript;
-
-    public override void UseEffect()
+    public override IEnumerator UseEffect()
     {
-        heroObject = GameObject.FindGameObjectWithTag("Hero");
-        heroScript = heroObject.GetComponent<Hero>();
+        GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
+        Hero heroScript = heroObject.GetComponent<Hero>();
         // need some way to jump the hero up
         // heroScript.jumpForce += 1;
         Debug.Log("Slippers were used");
+
+        float elapsedTime = 0f;
+        while (elapsedTime < effectTime) {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }

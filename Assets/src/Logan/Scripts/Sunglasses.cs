@@ -4,6 +4,7 @@
  * Purpose:   This file defines the "Sunglasses" class.
  */
 
+using System.Collections;
 using UnityEngine;
 
 /*
@@ -14,15 +15,19 @@ using UnityEngine;
  */
 public class Sunglasses : InventoryItem
 {
-    private GameObject cameraObject;
-    private Camera heroCamera;
-
-    public override void UseEffect()
+    public override IEnumerator UseEffect()
     {
-        cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
-        heroCamera = cameraObject.GetComponent<Camera>();
+        GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+        Camera heroCamera = cameraObject.GetComponent<Camera>();
 
         heroCamera.orthographicSize *= 4;
         Debug.Log("Sunglasses were used");
+
+        float elapsedTime = 0f;
+        while (elapsedTime < effectTime) {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        heroCamera.orthographicSize /= 4;
     }
 }

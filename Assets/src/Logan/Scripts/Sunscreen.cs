@@ -4,6 +4,7 @@
  * Purpose:   This file defines the "Sunscreen" class.
  */
 
+using System.Collections;
 using UnityEngine;
 
 /*
@@ -15,18 +16,17 @@ using UnityEngine;
 public class Sunscreen : AttributeItem
 {
     public float healthIncrease = 25f;
-    private GameObject heroObject;
-    private Hero heroScript;
 
-    public override void UseEffect()
+    public override IEnumerator UseEffect()
     {
         float currentHealth;
 
-        heroObject = GameObject.FindGameObjectWithTag("Hero");
-        heroScript = heroObject.GetComponent<Hero>();
+        GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
+        Hero heroScript = heroObject.GetComponent<Hero>();
 
         currentHealth = heroScript.GetHealth();
         heroScript.SetHealth(currentHealth + healthIncrease);
         Debug.Log("Sunscreen was used");
+        yield return null;
     }
 }

@@ -4,6 +4,7 @@
  * Purpose:   This file defines the "item" abstract class.
  */
 
+using System.Collections;
 using UnityEngine;
 
 /*
@@ -28,8 +29,10 @@ public class Item : MonoBehaviour
 {
     public bool isCollected = false;
 
-    [SerializeField] AudioClip collectSound;
+
+    [SerializeField] private AudioClip collectSound;
     protected ItemType type = ItemType.Undefined;
+    protected float effectTime = 3f;
 
     /*
      * Should be called whenever the hero collides with an uncollected
@@ -90,8 +93,9 @@ public class Item : MonoBehaviour
         this.type = desiredType;
     }
 
-    public virtual void UseEffect()
+    public virtual IEnumerator UseEffect()
     {
-        Debug.Log("Hello from Item");
+        //Debug.Log("Hello from Item");
+        yield return null;
     }
 }
