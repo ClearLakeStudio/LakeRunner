@@ -28,6 +28,8 @@ public class Lake : MonoBehaviour
     public Text levelName;
     public Button startButton;
 
+    private string levelScene;
+
     void Start()
     {
         startButton.onClick.AddListener(LoadLevel);
@@ -43,8 +45,9 @@ public class Lake : MonoBehaviour
      */
     public void OpenLevelMenu()
     {
-        Debug.Log(lakeName);
-        levelName.text = lakeName;
+        levelName.text = this.lakeName;
+        this.levelScene = this.lakeName.Replace(" ", "");
+        Debug.Log(this.levelScene);
         levelMenu.SetActive(true);
     }
 
@@ -53,6 +56,8 @@ public class Lake : MonoBehaviour
      */
     public void LoadLevel()
     {
-        SceneManager.LoadScene("Level1");
+        if (levelName.text == lakeName) {
+            SceneManager.LoadScene(levelScene);
+        }
     }
 }

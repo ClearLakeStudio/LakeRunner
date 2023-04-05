@@ -16,9 +16,17 @@ using UnityEngine.UI;
  */
 public class OverworldMap : Map
 {
+    private static OverworldMap overworldMap;
     // hero variables
     private GameObject hero;
     private int hero_current_level = 1;
+
+    void Awake()
+    {
+        if (overworldMap == null) {
+            overworldMap = this;
+        }
+    }
 
     void Start()
     {
@@ -56,6 +64,7 @@ public class OverworldMap : Map
     {
         foreach (GameObject level in levels) {
             if (level.name == levelName) {
+                Debug.Log("here");
                 level.GetComponent<Lake>().OpenLevelMenu();
                 return true;
             }
@@ -64,6 +73,12 @@ public class OverworldMap : Map
         return false;
     }
 
+    /*
+     * Gets the next level the hero/player will play.
+     *
+     * Returns:
+     * int -- hero_current_level stores a range between and including 1-5, one for each level.
+     */
     public int GetHeroLevel()
     {
         return hero_current_level;
