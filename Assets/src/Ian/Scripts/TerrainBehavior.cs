@@ -12,14 +12,21 @@ using UnityEngine;
 public class TerrainBehavior : MonoBehaviour
 {
     private float terrPos;
+    private GameObject heroObj;
+    private Vector2 heroPos;
 
     void Awake()
     {
+        heroObj = GameObject.FindWithTag("Hero");
         terrPos = transform.position.x;
     }
 
-    void OnBecameInvisible()
+    void Update()
     {
-        Destroy(gameObject);
+        heroPos = heroObj.transform.position;
+        if(transform.position.x < (heroPos.x - 40.0f))
+        {
+            Destroy(gameObject);
+        }
     }
 }
