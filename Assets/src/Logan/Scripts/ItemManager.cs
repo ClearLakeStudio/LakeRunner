@@ -4,6 +4,8 @@
  * Purpose:   This file defines the "ItemManager" class.
  */
 
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +28,7 @@ public class ItemManager : MonoBehaviour
     // a prefab whose children are meant to represented in separate object pools
     [SerializeField] private GameObject itemCollection;
     // the number of GameObjects to be stored in each object pool
-    [SerializeField] private int numberOfObjectsInPool = 10;
+    [SerializeField] private int numberOfObjectsInPool = 100;
 
     // stores all GameObject pools (implemented as lists) with the GameObject's ItemType as a key
     private Dictionary<ItemType, List<GameObject>> pools = new Dictionary<ItemType, List<GameObject>>();
@@ -126,6 +128,7 @@ public class ItemManager : MonoBehaviour
 
             ActivateItemEffect(ItemType.Sunglasses);
         } else if (Input.GetKeyDown(slippersKey)) {
+            Vector2 temp = new Vector2(20, 20);
             ActivateItemEffect(ItemType.Slippers);
         } else if (Input.GetKeyDown(brainBlastBarKey)) {
             ActivateItemEffect(ItemType.BrainBlastBar);
@@ -160,5 +163,33 @@ public class ItemManager : MonoBehaviour
             Debug.Log("ERROR, COULDN'T RETURN ITEM");
             return;
         }
+    }
+
+    // if you want to spawn a random item, pass null in to the first argument
+    // if you want to spawn a speficci item, pass ItemType.[type] into the first argument
+    // if you want to set the pos but not the itemType, call SpawnItem(null, posVal)
+    public void SpawnItem(ItemType? itemType = null, Vector2? pos = null)
+    {
+        if (pos == null) {
+            GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
+            // this is not guaranteed to spawn the item on a platform
+            pos = new Vector2(heroObject.transform.position.x + 20, heroObject.transform.position.y + 10);
+        }
+
+        if (itemType == null) {
+            // choose a random ItemType besides undefined
+            List<ItemType> enums = ((ItemType[])Enum.GetValues(typeof(ItemType))).ToList();
+            enums.Remove(ItemType.Undefined);
+            System.Random random = new System.Random();
+            itemType = enums[random.Next(enums.Count)];
+            Debug.Log(itemType.ToString());
+        }
+
+        GameObject spawnedObj = this.GetPooledObject((ItemType)itemType);
+        // no objects avaialable in pool
+        if (spawnedObj == null) {
+            return;
+        }
+        spawnedObj.transform.position = (Vector2)pos;
     }
 }
