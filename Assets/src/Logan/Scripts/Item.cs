@@ -96,6 +96,7 @@ public class Item : MonoBehaviour
 
     public virtual IEnumerator UseEffect()
     {
+        Debug.Log("Slippers were used");
         yield return null;
     }
 }

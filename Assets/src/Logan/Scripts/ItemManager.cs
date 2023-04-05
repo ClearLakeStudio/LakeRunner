@@ -154,6 +154,8 @@ public class ItemManager : MonoBehaviour
         }
 
         // is this dynamic binding?
+        // Superclass: Item
+        // Subclasses: AloeVera, BrainBlastBar, Slippers, Sunglasses, Sunscreen
         Item itemScript = obj.GetComponent<Item>();
         if (itemScript.effectIsActive == false) {
             StartCoroutine(itemScript.UseEffect());
