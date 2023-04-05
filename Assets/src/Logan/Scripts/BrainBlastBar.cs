@@ -23,6 +23,8 @@ public class BrainBlastBar : InventoryItem
 
         GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
         Hero heroScript = heroObject.GetComponent<Hero>();
+
+        effectIsActive = true;
         heroScript.movementSpeed *= -1;
         Debug.Log("BrainBlastBar was used");
 
@@ -32,6 +34,7 @@ public class BrainBlastBar : InventoryItem
             yield return null;
         }
         heroScript.movementSpeed *= -1;
+        effectIsActive = false;
     }
 
     public void Update()

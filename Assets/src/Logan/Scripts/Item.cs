@@ -27,7 +27,8 @@ public enum ItemType {
 
 public class Item : MonoBehaviour
 {
-    public bool isCollected = false;
+    [HideInInspector] public bool isCollected = false;
+    [HideInInspector] public bool effectIsActive = false;
 
 
     [SerializeField] private AudioClip collectSound;
@@ -79,7 +80,7 @@ public class Item : MonoBehaviour
         if (collision.tag == "Hero") {
             AudioSource.PlayClipAtPoint(collectSound, transform.position);
             this.Collected();
-            Destroy(gameObject);
+            ItemManager.instance.ReturnPooledObject(gameObject);
         }
     }
 
@@ -95,7 +96,6 @@ public class Item : MonoBehaviour
 
     public virtual IEnumerator UseEffect()
     {
-        //Debug.Log("Hello from Item");
         yield return null;
     }
 }

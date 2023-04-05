@@ -4,7 +4,6 @@
  * Purpose:   This file defines the "ItemManager" class.
  */
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +15,9 @@ using UnityEngine;
  */
 public class ItemManager : MonoBehaviour
 {
+    // singleton pattern
+    public static ItemManager instance;
+
     // user input keys
     public KeyCode sunglassesKey = KeyCode.Alpha1;
     public KeyCode slippersKey = KeyCode.Alpha2;
@@ -30,6 +32,13 @@ public class ItemManager : MonoBehaviour
     private Dictionary<ItemType, List<GameObject>> pools = new Dictionary<ItemType, List<GameObject>>();
     // empty GameObject meant to organize the item pools in the Unity hierarchy
     private GameObject itemPools;
+
+    public void Awake()
+    {
+        if (instance == null) {
+            instance = this;
+        }
+    }
 
     public void Start()
     {
@@ -143,9 +152,9 @@ public class ItemManager : MonoBehaviour
 
         // is this dynamic binding?
         Item itemScript = obj.GetComponent<Item>();
-        //itemScript.UseEffect();
-        //itemScript.StartCoroutine(UseEffect());
-        StartCoroutine(itemScript.UseEffect());
+        if (itemScript.effectIsActive == false) {
+            StartCoroutine(itemScript.UseEffect());
+        }
 
         if (!ReturnPooledObject(obj)) {
             Debug.Log("ERROR, COULDN'T RETURN ITEM");

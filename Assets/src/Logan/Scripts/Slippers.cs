@@ -19,14 +19,12 @@ public class Slippers : InventoryItem
     {
         GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
         Hero heroScript = heroObject.GetComponent<Hero>();
-        // need some way to jump the hero up
-        // heroScript.jumpForce += 1;
-        Debug.Log("Slippers were used");
+        effectIsActive = true;
+        heroScript.Jump();
+        // detect hero touching ground
+        effectIsActive = false;
 
-        float elapsedTime = 0f;
-        while (elapsedTime < effectTime) {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+        Debug.Log("Slippers were used");
+        yield return null;
     }
 }

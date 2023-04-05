@@ -20,6 +20,7 @@ public class Sunglasses : InventoryItem
         GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
         Camera heroCamera = cameraObject.GetComponent<Camera>();
 
+        effectIsActive = true;
         heroCamera.orthographicSize *= 4;
         Debug.Log("Sunglasses were used");
 
@@ -29,5 +30,6 @@ public class Sunglasses : InventoryItem
             yield return null;
         }
         heroCamera.orthographicSize /= 4;
+        effectIsActive = false;
     }
 }
