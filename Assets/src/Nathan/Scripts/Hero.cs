@@ -13,6 +13,7 @@ public class Hero : Entity
     public float movementSpeed;
     private float health;
     private float shield;
+    private bool jumpQueued;
 
     [SerializeField]
     private float stepJump;
@@ -21,8 +22,11 @@ public class Hero : Entity
     [SerializeField]
     private float jumpTimer;
 
-
     // public functions
+    public void Jump()
+    {
+        jumpQueued = true;
+    }
     public void SetHealth(float newHealth)
     {
         if(newHealth >= 100 ){
@@ -70,7 +74,8 @@ public class Hero : Entity
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
     protected override void EntityFixedUpdate() 
     {
-        if((Time.fixedTime%jumpTimer==0) && (Time.fixedTime!=0)){
+        if(jumpQueued || ((Time.fixedTime%jumpTimer==0) && (Time.fixedTime!=0))){
+            jumpQueued = false;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+jumpForce);
         }
         if((Time.fixedTime%stepTimer==0) && (Time.fixedTime!=0)){
