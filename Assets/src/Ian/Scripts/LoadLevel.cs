@@ -29,8 +29,8 @@ public class LoadLevel : MonoBehaviour
         {
             for (int i = 0; i < 10; i++)
             {
-                    Instantiate(terrain, lastTerrainLoc, Quaternion.identity);
-                    lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
+                Instantiate(terrain, lastTerrainLoc, Quaternion.identity);
+                lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
             }
         }
     }
