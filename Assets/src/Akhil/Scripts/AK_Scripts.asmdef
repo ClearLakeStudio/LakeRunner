@@ -1,3 +1,16 @@
 {
-	"name": "AKScripts"
+    "name": "AKScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3de87288b8d324cab9de0965a836fec3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

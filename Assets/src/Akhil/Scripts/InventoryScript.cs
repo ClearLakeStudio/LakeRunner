@@ -94,43 +94,46 @@ public class InventoryScript : MonoBehaviour
     //     }
     // }
 
-    bool removeItem (string type)
+    bool removeItem (ItemType ActivateItemEffect)
     {
-        if (type == "BrainBlastBar")
+        switch (ActivateItemEffect)
         {
-            if (BBarCount>0)
-            {
-                BBarCount--;
-                return true;
-            }
-            else 
-            {
+            case ItemType.BrainBlastBar :
+                if (BBarCount > 0)
+                {
+                    BBarCount--;
+                    return true;
+                }
+                else
+                {  
+                    return false;
+                }
+            break;
+            case ItemType.Sunglasses :
+                if (SGlassCount > 0)
+                {
+                    SGlassCount--;
+                    return true;
+                }
+                else
+                {  
+                    return false;
+                }
+            break;
+            case ItemType.Slippers :
+                if (SlprCount > 0)
+                {
+                    SlprCount--;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            break;
+            default:
                 return false;
-            }
-        }
-        if (type == "Sunglasses")
-        {
-            if (SGlassCount>0)
-            {
-                SGlassCount--;
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-        }
-        if (type == "Slippers")
-        {
-            if (SlprCount>0)
-            {
-                SlprCount--;
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
+            break;
         }
     }
 
