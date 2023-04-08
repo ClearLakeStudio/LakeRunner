@@ -14,42 +14,85 @@ public class InventoryScript : MonoBehaviour
     public int SlprCount;
     public Text SlprText;
 
-    bool addItem(Item.Collected == true)
+    bool addItem(ItemType collectedItem)
     {
-        if (Item.Collected.type == "BrainBlastBar" ){
-            if (BBarCount < max_items)
-            {
-                BBarCount++;
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        if (Item.Collected.type == "Sunglasses" )
+        switch (collectedItem)
         {
-            if (SGlassCount < max_items)
-            {
-                SGlassCount++;
-                return true;
-            }
-            else{
+            case ItemType.BrainBlastBar :
+                if (BBarCount < max_items)
+                {
+                    BBarCount++;
+                    return true;
+                }
+                else
+                {  
+                    return false;
+                }
+            break;
+            case ItemType.Sunglasses :
+                if (SGlassCount < max_items)
+                {
+                    SGlassCount++;
+                    return true;
+                }
+                else
+                {  
+                    return false;
+                }
+            break;
+            case ItemType.Slippers :
+                if (SlprCount < max_items)
+                {
+                    SlprCount++;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            break;
+            default:
                 return false;
-            }
-        }
-        if (Item.Collected.type == "Slippers" )
-        {
-            if (SlprCount < max_items)
-            {
-                SlprCount++;
-                return true;
-            }
-            else{
-                return false;
-            }
+            break;
         }
     }
+
+    // bool addItem(Item.Collected == true)
+    // {
+    //     if (Item.Collected.type == "BrainBlastBar" ){
+    //         if (BBarCount < max_items)
+    //         {
+    //             BBarCount++;
+    //             return true;
+    //         }
+    //         else{
+    //             return false;
+    //         }
+    //     }
+
+    //     if (Item.Collected.type == "Sunglasses" )
+    //     {
+    //         if (SGlassCount < max_items)
+    //         {
+    //             SGlassCount++;
+    //             return true;
+    //         }
+    //         else{
+    //             return false;
+    //         }
+    //     }
+    //     if (Item.Collected.type == "Slippers" )
+    //     {
+    //         if (SlprCount < max_items)
+    //         {
+    //             SlprCount++;
+    //             return true;
+    //         }
+    //         else{
+    //             return false;
+    //         }
+    //     }
+    // }
 
     bool removeItem (string type)
     {
