@@ -92,11 +92,11 @@ public class GameManager : MonoBehaviour
                 if (!doubleClick) // dont make falling
                 {
                     p.floating = true;
-                    pM.MakePlat(p, 0);
+                    pM.MakePlat(p);
                 } else // make falling
                 {
                     p.floating = false;
-                    pM.MakePlat(p, 0);
+                    pM.MakePlat(p);
                 }
             } else
             {

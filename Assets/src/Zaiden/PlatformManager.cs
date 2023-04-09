@@ -68,7 +68,7 @@ public class PlatformManager : MonoBehaviour
     // instantiate and then place the platform at its position in the game
     // in the future will also call draw functions
     // may just be moved into specific platform classes though
-    public void MakePlat(PlatBox p, int time)
+    public void MakePlat(PlatBox p)
     {
         DestroyPreVPlat();
         GameObject newPlat;

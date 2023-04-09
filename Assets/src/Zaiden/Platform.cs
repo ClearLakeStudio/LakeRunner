@@ -11,7 +11,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private Vector3 position;
-    private int time;
+    
    
 }
 /*
