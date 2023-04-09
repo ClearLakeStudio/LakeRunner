@@ -129,7 +129,7 @@ namespace Facade
             Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
             pB = pM.CheckPlatValidity(loc);
             pB.floating = true;
-            pM.MakePlat(pB,(int)Time.time);
+            pM.MakePlat(pB);
         }
 
         public Vector2 FillGap(Vector2 heroPos){
