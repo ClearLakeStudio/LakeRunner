@@ -2,7 +2,9 @@
     "name": "LFScripts",
     "rootNamespace": "",
     "references": [
-        "GUID:de7052c1900fcaa45af03f97b1f7cbb5"
+        "GUID:de7052c1900fcaa45af03f97b1f7cbb5",
+        "GUID:5a703dd784343437eace14aa8fd384ea",
+        "GUID:9d704566551fe4c2e8c6e952aff9a69d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

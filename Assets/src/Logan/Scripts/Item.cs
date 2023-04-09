@@ -16,14 +16,6 @@ using UnityEngine;
  * type             -- ItemType that tells what kind of item this instance is.
  * collectSound     -- AudioClip that holds an audio file that is played an pick-up.
  */
-public enum ItemType {
-    Undefined     = -1,
-    AloeVera      = 0,
-    Sunscreen     = 1,
-    Sunglasses    = 10,
-    BrainBlastBar = 11,
-    Slippers      = 12,
-}
 
 public class Item : MonoBehaviour
 {
