@@ -7,7 +7,7 @@ public class ChangeScene : MonoBehaviour {
   public GameObject gameOverUI;
 
   //make an object of this script in the gamemanager or player script and attach gameoverScreen to it.
-  // for game over screen call this func like this 
+  // for game over screen call this func like this when the player finishes
   // ChangeScene.gameOver();
   // aslo create a bool and set it to true after this is called
   public void gameOver()
@@ -32,5 +32,6 @@ public class ChangeScene : MonoBehaviour {
   public void Quit() 
   {
     Application.Quit();
+    Debug.Log("Quit");
   }
 }

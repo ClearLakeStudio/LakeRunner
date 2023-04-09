@@ -804,7 +804,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &138745205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b6705722eb36a4daaea01345249c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeScene: {fileID: 393273192}
 --- !u!1001 &276666211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2948,7 +2949,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1010561696
 MonoBehaviour:
   m_ObjectHideFlags: 0
