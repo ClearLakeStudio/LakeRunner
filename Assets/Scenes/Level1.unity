@@ -407,6 +407,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6978544312361701071, guid: cb275ccfd0be64e4fba63f19827e8e5d, type: 3}
   m_PrefabInstance: {fileID: 28331050}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &28331052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6978544312361701070, guid: cb275ccfd0be64e4fba63f19827e8e5d, type: 3}
+  m_PrefabInstance: {fileID: 28331050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &30050281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2360,7 +2365,7 @@ MonoBehaviour:
   platManager: {fileID: 819621887}
   chunkManager: {fileID: 461071279}
   hero: {fileID: 811467669}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 28331052}
 --- !u!1 &787630309
 GameObject:
   m_ObjectHideFlags: 0
