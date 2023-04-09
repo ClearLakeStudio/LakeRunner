@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour {
-  public GameObject gameOverUI;
+  //public GameObject gameOverUI;
 
   //make a public variable in gamemanager and attach gameoverScreen to it.
   // for game over screen call this func like this 
@@ -12,7 +12,8 @@ public class ChangeScene : MonoBehaviour {
   // aslo create a bool and set it to true after this is called
   public void gameOver()
   {
-    gameOverUI.SetActive(true);
+    GameObject.SetActive(true); 
+    //gameOverUI.SetActive(true);
   }
 
   public void restart()
