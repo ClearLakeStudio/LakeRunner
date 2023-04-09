@@ -14,7 +14,7 @@ public class InventoryScript : MonoBehaviour
     public int SlprCount;
     public Text SlprText;
 
-    bool addItem(ItemType collectedItem)
+    public bool addItem(ItemType collectedItem)
     {
         switch (collectedItem)
         {
@@ -94,7 +94,7 @@ public class InventoryScript : MonoBehaviour
     //     }
     // }
 
-    bool removeItem (ItemType ActivateItemEffect)
+    public bool removeItem (ItemType ActivateItemEffect)
     {
         switch (ActivateItemEffect)
         {
