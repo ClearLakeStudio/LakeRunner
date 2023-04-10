@@ -4180,6 +4180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1221126292286550015, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
 --- !u!1001 &2596821494574726816

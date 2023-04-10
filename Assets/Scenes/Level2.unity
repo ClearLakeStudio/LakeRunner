@@ -487,6 +487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1221126292286550015, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
 --- !u!224 &186890697 stripped
@@ -1819,21 +1823,21 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742361865}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.26125, y: 1.26125, z: 1.26125}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543624197}
   - {fileID: 186890697}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1288154296}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 504.5, y: 283.75}
+  m_SizeDelta: {x: 800, y: 449.95044}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &755888972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +1983,7 @@ Transform:
   - {fileID: 395131382}
   - {fileID: 755888973}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &826156212
 PrefabInstance:
@@ -2299,7 +2303,7 @@ Transform:
   - {fileID: 2058178317}
   - {fileID: 1908298323}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &938335665
 PrefabInstance:
@@ -3505,8 +3509,9 @@ RectTransform:
   - {fileID: 1780097631}
   - {fileID: 2078353774}
   - {fileID: 195758817}
+  - {fileID: 742361869}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
