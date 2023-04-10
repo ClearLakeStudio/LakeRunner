@@ -14,6 +14,10 @@ public class ChangeScene : MonoBehaviour {
   {
     gameOverUI.SetActive(true);
   }
+  public void nextLevel()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+  }
 
   public void restart()
   {
