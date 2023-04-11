@@ -9,5 +9,5 @@
 #### This prefab will display the count of all the collectibles
 ## MatBAr
 #### This will show the amount of material resource the Player is having while playing like the healthbar
-## SuneScreen
+## SunScreen
 #### This will show the amount of Sunscreen the player is having in the game like the healthbar
