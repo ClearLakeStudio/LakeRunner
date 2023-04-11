@@ -32,6 +32,7 @@ public class OverworldMap : Map
 
     void Start()
     {
+        Debug.Log("loaded");
         hero = GameObject.FindGameObjectWithTag("Hero");
     }
 
@@ -52,6 +53,11 @@ public class OverworldMap : Map
             LevelMenu menu = levelMenus[i].GetComponent<LevelMenu>();
             levels[i].GetComponent<Lake>().Subscribe(menu);
         }
+    }
+
+    public override void LoadObjects()
+    {
+        Debug.Log("Loading objects in Overworld Map");
     }
 
     /*

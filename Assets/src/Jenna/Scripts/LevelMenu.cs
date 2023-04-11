@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ *
+ */
 public class LevelMenu : MonoBehaviour, ISubscriber
 {
     public GameObject menu;
@@ -42,14 +45,11 @@ public class LevelMenu : MonoBehaviour, ISubscriber
     {
         ActivateMenu((publisher as Lake).activeLevelMenu);  // check if level menu is active
 
-        if (unlocked != (publisher as Lake).unlocked) {
-            unlocked = (publisher as Lake).unlocked;
-
-            if (unlocked) {
-                menuButtonText.text = "Start ";
-            } else {
-                menuButtonText.text = "Locked ";
-            }
+        unlocked = (publisher as Lake).unlocked;  // check if level is unlocked
+        if (unlocked) {
+            menuButtonText.text = "Start ";
+        } else {
+            menuButtonText.text = "Locked ";
         }
     }
 

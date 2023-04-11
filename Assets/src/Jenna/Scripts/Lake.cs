@@ -77,4 +77,13 @@ public class Lake : MonoBehaviour, IPublisher
         this.activeLevelMenu = false;
         Notify();
     }
+
+    /*
+     *
+     */
+    public void UnlockLevel()
+    {
+        this.unlocked = true;
+        Notify();
+    }
 }

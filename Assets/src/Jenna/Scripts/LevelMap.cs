@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
  * Display a collection of all entities within a certain level.
@@ -16,12 +17,18 @@ public class LevelMap : Map
 {
     void Start()
     {
-        Debug.Log("JP Set initial hero position");
+        SceneManager.LoadScene("Overworld");
+        //Debug.Log("JP Set initial hero position");
     }
 
     void Update()
     {
 
+    }
+
+    public override void LoadObjects()
+    {
+        Debug.Log("Loading objects in Level Map");
     }
 
     /*

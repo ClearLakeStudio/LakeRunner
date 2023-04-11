@@ -22,12 +22,15 @@ public class OverworldManager : MonoBehaviour
     public GameObject[] levelMenus;
 
     private OverworldMap overworld;
+    private Map map;
     private bool funcReturn;
 
     void Start()
     {
+        map = gameObject.AddComponent<OverworldMap>();
         overworld = gameObject.AddComponent<OverworldMap>();
         overworld.OverworldMapInit(levels, levelMenus);
+        map.LoadObjects();
     }
 
     void Update()
