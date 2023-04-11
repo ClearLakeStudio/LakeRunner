@@ -20,8 +20,16 @@ using UnityEngine.UI;
 public class Lake : MonoBehaviour, IPublisher
 {
     public bool activeLevelMenu = false;
+    public bool unlocked = false;
 
     private List<ISubscriber> subscribers = new List<ISubscriber>();
+
+    void Start()
+    {
+        if (gameObject.name == "Level 1") {
+            unlocked = true;
+        }
+    }
 
     /*
      *

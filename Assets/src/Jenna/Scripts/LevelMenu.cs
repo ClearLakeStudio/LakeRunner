@@ -31,7 +31,7 @@ public class LevelMenu : MonoBehaviour, ISubscriber
         this.sceneName = levelName.Replace(" ", "");
 
         if (levelName == "Level 1") {
-            locked = false;
+            unlocked = true;
         }
     }
 
@@ -41,7 +41,16 @@ public class LevelMenu : MonoBehaviour, ISubscriber
     public void Update(IPublisher publisher)
     {
         ActivateMenu((publisher as Lake).activeLevelMenu);  // check if level menu is active
-        unlocked = (publisher as Lake).unlocked;
+
+        if (unlocked != (publisher as Lake).unlocked) {
+            unlocked = (publisher as Lake).unlocked;
+
+            if (unlocked) {
+                menuButtonText.text = "Start ";
+            } else {
+                menuButtonText.text = "Locked ";
+            }
+        }
     }
 
     /*
