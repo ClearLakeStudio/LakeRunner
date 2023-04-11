@@ -7,5 +7,6 @@ public interface IPublisher
 
 public interface ISubscriber
 {
+    void Init(string levelName);
     void Update(IPublisher publisher);
 }

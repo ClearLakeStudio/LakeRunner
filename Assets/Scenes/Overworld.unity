@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_Name
-      value: LEVEL 5
+      value: Level 5
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_TagString
@@ -1228,7 +1228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_Name
-      value: LEVEL 2
+      value: Level 3
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_TagString
@@ -1313,7 +1313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_Name
-      value: LEVEL 4
+      value: Level 4
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_TagString
@@ -1918,7 +1918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_Name
-      value: LEVEL 3
+      value: Level 3
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_TagString
@@ -2011,7 +2011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_Name
-      value: LEVEL 1
+      value: Level 1
       objectReference: {fileID: 0}
     - target: {fileID: 4896394690722938876, guid: 8dbc101669e27446dbc7707db8bf9a12, type: 3}
       propertyPath: m_TagString

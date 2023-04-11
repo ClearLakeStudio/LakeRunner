@@ -36,7 +36,10 @@ public class OverworldMap : Map
     }
 
     /*
-     *
+     * Initializes the overworld map.
+     * All of the levels are stored in the Levels array.
+     * All of the level menus are stored in the levelMenus array.
+     * Each levelMenu object is Subscribed to their correspoding level.
      */
     public void OverworldMapInit(GameObject[] levels, GameObject[] levelMenus)
     {
@@ -54,9 +57,6 @@ public class OverworldMap : Map
     /*
      * Is called when the user clicks on a GameObject.
      * Checks if clicked GameObject is a level.
-     *
-     * Returns:
-     * bool -- true if the GameObject is a level, false if it is not.
      */
     public void SelectLevel(string levelName)
     {

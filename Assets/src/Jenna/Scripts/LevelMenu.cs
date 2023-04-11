@@ -11,6 +11,10 @@ public class LevelMenu : MonoBehaviour, ISubscriber
     public Button menuButton;
     public Text menuButtonText;
 
+    private string levelName;
+    private string sceneName;
+    private bool unlocked = false;
+
     void Start()
     {
         menuButton.onClick.AddListener(LoadLevel);
@@ -18,22 +22,45 @@ public class LevelMenu : MonoBehaviour, ISubscriber
 
     void Update() {}
 
-    public void Update(IPublisher publisher)
+    /*
+     *
+     */
+    public void Init(string levelName)
     {
-        if ((publisher as Lake).activeLevelMenu) {
-            ActivateMenu(true);
-        } else {
-            ActivateMenu(false);
+        this.levelName = levelName;
+        this.sceneName = levelName.Replace(" ", "");
+
+        if (levelName == "Level 1") {
+            locked = false;
         }
     }
 
+    /*
+     *
+     */
+    public void Update(IPublisher publisher)
+    {
+        ActivateMenu((publisher as Lake).activeLevelMenu);  // check if level menu is active
+        unlocked = (publisher as Lake).unlocked;
+    }
+
+    /*
+     *
+     */
     public void ActivateMenu(bool activate)
     {
         menu.SetActive(activate);
     }
 
+    /*
+     *
+     */
     public void LoadLevel()
     {
-        Debug.Log("Load level");
+        if (unlocked) {
+            SceneManager.LoadScene(sceneName);
+        } else {
+            Debug.Log(sceneName);
+        }
     }
 }
