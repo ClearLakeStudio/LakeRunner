@@ -1,7 +1,10 @@
 {
     "name": "IK Scripts",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:3de87288b8d324cab9de0965a836fec3",
+        "GUID:5a703dd784343437eace14aa8fd384ea"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -489,6 +489,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7238953767844521795, guid: fd2978d66c912d04c8419cca73b0b2aa, type: 3}
+      propertyPath: isInfinite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7333816724182937725, guid: fd2978d66c912d04c8419cca73b0b2aa, type: 3}
       propertyPath: m_Name
       value: ChunkManager
@@ -649,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platManager: {fileID: 553484679}
-  chunkManager: {fileID: 0}
+  chunkManager: {fileID: 2006508312}
   hero: {fileID: 98936216}
   healthBar: {fileID: 1188135536}
 --- !u!1 &860315608
@@ -1501,6 +1505,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969320052}
   m_CullTransparentMesh: 1
+--- !u!1 &2006508312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7333816724182937725, guid: fd2978d66c912d04c8419cca73b0b2aa, type: 3}
+  m_PrefabInstance: {fileID: 522488652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2023376091 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3165188236970823851, guid: be3ed6b4cf7c84269bcdb72581bee1af, type: 3}
