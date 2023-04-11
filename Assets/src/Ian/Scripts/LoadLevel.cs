@@ -65,55 +65,8 @@ public class LoadLevel : MonoBehaviour
                 lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
                 if(randFloat < 1.0f)
                 {
-                    //New randFloat, if less than certain number - item commonness, repeat for every item with else-if
-                    //Adjust each commonness by -0.2 for each time a different item is spawned
                     randFloat = UnityEngine.Random.Range(0.0f,10.0f);
-                    items.SpawnItem(null, new Vector2(lastTerrainLoc.x, lastTerrainLoc.y + 1));
-                    // if(randFloat < 2.0 - itemRate[0])
-                    // {
-                    //     SpawnItem(AloeVera, new Vector2(lastTerrainLoc.x + 1, lastTerrainLoc.y));
-                    //     for(int i = 1; i <= 5; i++)
-                    //     {
-                    //         itemRate[i] -= 0.2f;
-                    //     }
-                    //     itemRate[0] += 0.2f;
-                    // }
-                    // else if(randFloat < 4.0 - itemRate[1])
-                    // {
-                    //     SpawnItem(Sunscreen, new Vector2(lastTerrainLoc.x + 1, lastTerrainLoc.y));
-                    //     for(int i = 0; i <= 5; i++)
-                    //     {
-                    //         itemRate[i] -= 0.2f;
-                    //     }
-                    //     itemRate[1] += 0.4f;
-                    // }
-                    // else if(randFloat < 5.0 - itemRate[2])
-                    // {
-                    //     SpawnItem(Sunglasses, new Vector2(lastTerrainLoc.x + 1, lastTerrainLoc.y));
-                    //     for(int i = 0; i <= 5; i++)
-                    //     {
-                    //         itemRate[i] -= 0.2f;
-                    //     }
-                    //     itemRate[2] += 0.4f;
-                    // }
-                    // else if(randFloat < 6.0 - itemRate[3])
-                    // {
-                    //     SpawnItem(BrainBlastBar, new Vector2(lastTerrainLoc.x + 1, lastTerrainLoc.y));
-                    //     for(int i = 0; i <= 5; i++)
-                    //     {
-                    //         itemRate[i] -= 0.2f;
-                    //     }
-                    //     itemRate[3] += 0.4f;
-                    // }
-                    // else if(randFloat < 7.0 - itemRate[4])
-                    // {
-                    //     SpawnItem(Slippers, new Vector2(lastTerrainLoc.x + 1, lastTerrainLoc.y));
-                    //     for(int i = 0; i <= 5; i++)
-                    //     {
-                    //         itemRate[i] -= 0.2f;
-                    //     }
-                    //     itemRate[4] += 0.4f;
-                    // }
+                    items.SpawnItem(null, new Vector2(lastTerrainLoc.x, lastTerrainLoc.y + 5));
                 }
                 chunkTime = 5;
             }
