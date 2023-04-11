@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadLevel : MonoBehaviour
 {
@@ -21,11 +22,13 @@ public class LoadLevel : MonoBehaviour
     private float[] itemRate = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
     private float randFloat;
     private float terrLength;
+    private int curLevel;
 
     void Start()
     {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         chunkTime = 0.0f;
+        curLevel = SceneManager.GetActiveScene().buildIndex;
         items = GameObject.FindWithTag("ItemManager").GetComponent<ItemManager>();
         terrLength = 5.12f;
         lastTerrainLoc = new Vector2(-1,-1);
@@ -69,6 +72,30 @@ public class LoadLevel : MonoBehaviour
                     items.SpawnItem(null, new Vector2(lastTerrainLoc.x, lastTerrainLoc.y + 5));
                 }
                 chunkTime = 5;
+            }
+        }
+        else 
+        {
+            switch (curLevel)
+            {
+                case 1:
+                    //Create items here
+                    break;
+                case 2:
+                    //Same
+                    break;
+                case 3:
+                    //Same
+                    break;
+                case 4:
+                    //Same
+                    break;
+                case 5:
+                    //Same
+                    break;
+                default:
+                    Debug.Log("LoadLevel - Invalid level index.");
+                    break;
             }
         }
     }
