@@ -1,2 +1,2 @@
 # PNG file Folder
-### these are png files for prefabs, UI, HUD and Inventory
+#### this folder will have the png files used for prefabs, UI, HUD and Inventory
