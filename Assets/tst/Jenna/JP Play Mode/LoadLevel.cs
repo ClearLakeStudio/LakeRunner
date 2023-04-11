@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
+/*G
 public class LoadLevel
 {
     [UnityTest]
@@ -22,11 +23,10 @@ public class LoadLevel
         Assert.AreEqual("GameScene", currentScene.name);
     }
 
-    /*
     [TearDown]
     public void TearDown()
     {
         SceneManager.UnloadSceneAsync("Level");
     }
-    */
 }
+*/

@@ -19,8 +19,9 @@ using UnityEngine.UI;
  * levelName -- public Text to reference the level name in the level menu panel.
  * startButton -- public Button to reference the start button.
  */
-public class Lake : MonoBehaviour
+public class Lake : MonoBehaviour, IPublisher
 {
+    /*
     public bool levelMenuIsActive = false;
     public bool levelIsLoaded = false;
     public string lakeName;
@@ -29,15 +30,29 @@ public class Lake : MonoBehaviour
     public Button startButton;
 
     private string levelScene;
+    */
 
-    void Start()
+    public bool activeLevelMenu = false;
+
+    private List<ISubscriber> subscribers = new List<ISubscriber>();
+
+    public void Subscribe(ISubscriber subscriber)
     {
-        startButton.onClick.AddListener(LoadLevel);
+        this.subscribers.Add(subscriber);
+        Debug.Log("Added new level menu.");
     }
 
-    void Update()
+    public void Unsubscribe(ISubscriber subscriber)
     {
+        this.subscribers.Remove(subscriber);
+        Debug.Log("Removed a level menu.");
+    }
 
+    public void Notify()
+    {
+        foreach (var subscriber in subscribers) {
+            subscriber.Update(this);
+        }
     }
 
     /*
@@ -45,19 +60,24 @@ public class Lake : MonoBehaviour
      */
     public void OpenLevelMenu()
     {
-        levelName.text = this.lakeName;
-        this.levelScene = this.lakeName.Replace(" ", "");
-        Debug.Log(this.levelScene);
-        levelMenu.SetActive(true);
+        this.activeLevelMenu = true;
+        Notify();
     }
 
+    public void CloseLevelMenu()
+    {
+        this.activeLevelMenu = false;
+        Notify();
+    }
     /*
      * Load the level associated with this Lake object.
      */
+    /*
     public void LoadLevel()
     {
         if (levelName.text == lakeName) {
             SceneManager.LoadScene(levelScene);
         }
     }
+    */
 }

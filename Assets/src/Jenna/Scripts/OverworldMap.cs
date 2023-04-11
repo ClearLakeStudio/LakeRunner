@@ -17,12 +17,14 @@ using UnityEngine.UI;
 public class OverworldMap : Map
 {
     private static OverworldMap overworldMap;
+    private GameObject[] levelMenus;
     // hero variables
     private GameObject hero;
-    private int hero_current_level = 1;
+    private int heroCurrentLevel = 1;
 
     void Awake()
     {
+        // implement Singleton pattern
         if (overworldMap == null) {
             overworldMap = this;
         }
@@ -31,25 +33,21 @@ public class OverworldMap : Map
     void Start()
     {
         hero = GameObject.FindGameObjectWithTag("Hero");
-        /*
-        var gameObject = new GameObject();
-        gameObject.AddComponent<Lake>();
-        level1 = gameObject.GetComponent<Lake>();
-        SelectLevel();
-        */
     }
 
     /*
-     * Gets all GameObjects with the "Level" tag and stores them in an array.
-     * Each level is added a "Lake" component.
+     *
      */
-    public void OverworldMapInit()
+    public void OverworldMapInit(GameObject[] levels, GameObject[] levelMenus)
     {
-        levels = GameObject.FindGameObjectsWithTag("Level");
-        levelCount = levels.Length;
+        this.levels = levels;
+        this.levelMenus = levelMenus;
+        this.levelCount = this.levels.Length;
 
-        foreach (GameObject level in levels) {
-            level.GetComponent<Lake>().lakeName = level.name;
+        for (int i = 0; i < levelCount; i++) {
+            levels[i].AddComponent<Lake>();
+            LevelMenu menu = levelMenus[i].GetComponent<LevelMenu>();
+            levels[i].GetComponent<Lake>().Subscribe(menu);
         }
     }
 
@@ -60,27 +58,25 @@ public class OverworldMap : Map
      * Returns:
      * bool -- true if the GameObject is a level, false if it is not.
      */
-    public bool SelectLevel(string levelName)
+    public void SelectLevel(string levelName)
     {
         foreach (GameObject level in levels) {
             if (level.name == levelName) {
-                Debug.Log("here");
                 level.GetComponent<Lake>().OpenLevelMenu();
-                return true;
+            } else {
+                level.GetComponent<Lake>().CloseLevelMenu();
             }
         }
-
-        return false;
     }
 
     /*
      * Gets the next level the hero/player will play.
      *
      * Returns:
-     * int -- hero_current_level stores a range between and including 1-5, one for each level.
+     * int -- heroCurrentLevel stores a range between and including 1-5, one for each level.
      */
     public int GetHeroLevel()
     {
-        return hero_current_level;
+        return heroCurrentLevel;
     }
 }

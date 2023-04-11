@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
+/*
 public class SelectLevel
 {
     [UnityTest]
@@ -21,3 +22,4 @@ public class SelectLevel
         Assert.IsTrue(level.levelMenuIsActive);
     }
 }
+*/

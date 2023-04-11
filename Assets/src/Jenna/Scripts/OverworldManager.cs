@@ -18,7 +18,8 @@ using UnityEngine;
  */
 public class OverworldManager : MonoBehaviour
 {
-    public GameObject levelMenu;
+    public GameObject[] levels;
+    public GameObject[] levelMenus;
 
     private OverworldMap overworld;
     private bool funcReturn;
@@ -26,7 +27,7 @@ public class OverworldManager : MonoBehaviour
     void Start()
     {
         overworld = gameObject.AddComponent<OverworldMap>();
-        overworld.OverworldMapInit();
+        overworld.OverworldMapInit(levels, levelMenus);
     }
 
     void Update()
@@ -37,7 +38,7 @@ public class OverworldManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
             if (hit.collider != null) {
-                funcReturn = overworld.SelectLevel(hit.collider.name);
+                overworld.SelectLevel(hit.collider.name);
             }
         }
     }
