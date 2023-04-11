@@ -1,0 +1,3 @@
+Prefab: Pine Tree
+Purpose: Basic decorative pine tree
+Interaction: No interactions

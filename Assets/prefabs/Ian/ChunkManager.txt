@@ -1,0 +1,3 @@
+Prefab: Chunk Manager
+Purpose: Handles chunk spawning and chunk interactions, primarily for Infinite Runner mode.
+Interaction: Manages the world that the player sees and interacts with.

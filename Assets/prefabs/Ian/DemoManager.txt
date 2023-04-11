@@ -1,0 +1,3 @@
+Prefab: Demo Manager
+Purpose: Handle functions for the demo mode.
+Interaction: No player interaction; navigates the world automatically.

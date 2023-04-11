@@ -1,0 +1,3 @@
+Prefab: Oak Tree
+Purpose: Basic decorative oak tree
+Interaction: No interactions
