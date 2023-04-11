@@ -21,6 +21,7 @@ public class LoadLevel : MonoBehaviour
     private float chunkTime;
     private float[] itemRate = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
     private float randFloat;
+    private float randTerr;
     private float terrLength;
     private int curLevel;
 
@@ -62,8 +63,25 @@ public class LoadLevel : MonoBehaviour
         if (isInfinite)
         {
             randFloat = UnityEngine.Random.Range(0.0f,10.0f);
+            randTerr = UnityEngine.Random.Range(0.0f,3.0f);
             if (lastTerrainLoc.x - heroPos.x < (5 * terrLength))
             {
+                if(randTerr <= 1.0f)
+                {
+                    //Set to parent chunk
+                }
+                else if (randTerr <= 2.0f)
+                {
+                    //Set to high chunk
+                }
+                else if (randTerr <= 3.0f)
+                {
+                    //Set to stair chunk
+                }
+                else
+                {
+                    //Create no chunk, adjust lastTerrLoc
+                }
                 Instantiate(terrain, lastTerrainLoc, Quaternion.identity);  
                 lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
                 if(randFloat < 1.0f)
@@ -107,5 +125,77 @@ public class LoadLevel : MonoBehaviour
         int randY = rnd.Next(-5,5);
         randLoc = new Vector2(heroPos.x + randX - 0.5f, heroPos.y + randY - 0.5f);
         Instantiate(terrain,randLoc,Quaternion.identity);
+    }
+}
+
+public enum TerrColor
+{
+    Undefined   = -1,
+    Green   = 0,
+    Sand    = 1,
+    Stone   = 2,
+}
+
+public class TerrParent
+{
+    private GameObject terr;
+    private Vector2 terrPos;
+    private TerrColor color;
+
+    public TerrParent(Vector2 pos, TerrColor c)
+    {
+        //terr = 
+        terrPos = pos;
+        color = c;
+    }
+
+    public TerrParent()
+    {
+        terrPos = new Vector2(-1,-1);
+        color = TerrColor.Undefined;
+    }
+
+    //Should return -1 for error, 0 for success
+    public virtual int CreateChunk()
+    {
+        return 0;
+    }
+}
+
+public class TerrHigh : TerrParent
+{
+    private GameObject terr;
+    private Vector2 terrPos;
+    private TerrColor color;
+
+    public TerrHigh(Vector2 pos, TerrColor c)
+    {
+        //terr
+        terrPos = pos;
+        color = c;
+    }
+
+    public override int CreateChunk()
+    {
+        return 0;
+    }
+}
+
+public class TerrStair : TerrParent
+{
+    private GameObject terr;
+    private Vector2 terrPos;
+    private TerrColor color;
+
+    public TerrStair(Vector2 pos, TerrColor c)
+    {
+        //terr
+        terrPos = pos;
+        color = c;
+    }
+
+    public override int CreateChunk()
+    {
+        return 0;
     }
 }
