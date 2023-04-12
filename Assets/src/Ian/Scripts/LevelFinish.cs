@@ -21,7 +21,7 @@ public class LevelFinish : MonoBehaviour
     void Start(){
         rayLoc = new Vector2(transform.position.x + transform.localScale.x/2, transform.position.y);
         platMan = GameObject.Find("UserPlatformManager");
-        Transform[] trs = GameObject.Find("Canvas").GetComponentsInChildren<Transform>(true);
+        Transform[] trs = GameObject.Find("Canvas (2)").GetComponentsInChildren<Transform>(true);
         foreach(Transform t in trs){
             if(t.name == "GameOverScreen"){
                 gameOver = t.gameObject;
