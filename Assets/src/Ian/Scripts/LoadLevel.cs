@@ -82,7 +82,7 @@ public class LoadLevel : MonoBehaviour
                     //Set to parent chunk
                     foreach(GameObject nextTerr in infTerrPool)
                     {
-                        if(nextTerr.name.Contains("Terrain"))
+                        if(nextTerr.name.Contains("Terrain") && nextTerr.name.Contains(nextColor.ToString()))
                         {
                             Debug.Log(nextTerr.name);
                             terrain = nextTerr;
@@ -96,7 +96,7 @@ public class LoadLevel : MonoBehaviour
                     //Set to high chunk
                     foreach(GameObject nextTerr in infTerrPool)
                     {
-                        if(nextTerr.name.Contains("High"))
+                        if(nextTerr.name.Contains("High") && nextTerr.name.Contains(nextColor.ToString()))
                         {
                             terrain = nextTerr;
                             lastTerrainLoc.y += 1;
@@ -110,7 +110,7 @@ public class LoadLevel : MonoBehaviour
                     //Set to stair chunk
                     foreach(GameObject nextTerr in infTerrPool)
                     {
-                        if(nextTerr.name.Contains("Stair"))
+                        if(nextTerr.name.Contains("Stair") && nextTerr.name.Contains(nextColor.ToString()))
                         {
                             terrain = nextTerr;
                             lastTerrainLoc.y += 1;
