@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 46e626f653e75496c8af238901d19952
+guid: c6f42bcd572fd41bfa40705b23cbd6dd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - gameOverUI: {fileID: 1221126292286550015, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
