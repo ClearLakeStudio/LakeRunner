@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2876816423721861757}
   - component: {fileID: -8420046549401104826}
   - component: {fileID: 9014268197561375623}
-  - component: {fileID: 2960661923990392835}
+  - component: {fileID: 5263455323309582832}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -121,12 +121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 7
+  gameOver: {fileID: 0}
   movementSpeed: 10
   stepJump: 2.5
   stepTimer: 0.25
   jumpTimer: 4
---- !u!70 &2960661923990392835
-CapsuleCollider2D:
+--- !u!61 &5263455323309582832
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -139,5 +140,15 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.75}
+  m_EdgeRadius: 0

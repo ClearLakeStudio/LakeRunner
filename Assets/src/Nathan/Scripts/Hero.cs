@@ -11,6 +11,9 @@ public class Hero : Entity
 {
     public float jumpForce;
     public float movementSpeed;
+    public GameObject gameManager;
+
+
     private float health;
     private float shield;
     private bool jumpQueued;
@@ -69,6 +72,7 @@ public class Hero : Entity
         gameObject.tag = "Hero";
         health = 100;
         shield = 100;
+        gameManager = GameObject.Find("GameManager");
     }
 
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
@@ -95,6 +99,7 @@ public class Hero : Entity
     protected override void EntityOutOfBounds() 
     {   
         Time.timeScale = 0;
+        gameManager.GetComponent<ChangeScene>().gameOver();
         Debug.Log("(NN) Time frozen, Hero out of bounds");
     }
 }

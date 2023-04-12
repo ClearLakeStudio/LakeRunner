@@ -16,6 +16,7 @@ public class ChangeScene : MonoBehaviour {
   // also create a bool and set it to true after this is called
   public void gameOver()
   {
+    gameOverUI.SetActive(true);
     if (finishGame == false){
       d.DisplayNextLevelButton();
       Debug.Log("button enabled");
@@ -24,7 +25,6 @@ public class ChangeScene : MonoBehaviour {
       e.DisplayNextLevelButton();
       Debug.Log("button diabled");
     }
-    gameOverUI.SetActive(true);
   }
   public void nextLevel()
   {

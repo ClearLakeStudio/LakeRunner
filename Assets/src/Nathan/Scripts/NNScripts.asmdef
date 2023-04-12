@@ -1,3 +1,16 @@
 {
-	"name": "NNScripts"
+    "name": "NNScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9d704566551fe4c2e8c6e952aff9a69d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
