@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class LevelFinish : MonoBehaviour
 {
+    public ChangeScene changeScene;
+    
     private GameObject gameOver;
     private GameObject platMan;
     private RaycastHit2D[] colls;

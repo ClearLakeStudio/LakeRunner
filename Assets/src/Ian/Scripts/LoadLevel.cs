@@ -44,9 +44,9 @@ public class LoadLevel : MonoBehaviour
                 Instantiate(terrain, lastTerrainLoc, Quaternion.identity);
                 lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
             }
-            foreach(GameObject nextOne in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+            foreach(GameObject nextOne in FindObjectsOfType(typeof(GameObject),true) as GameObject[])
             {
-                if(nextOne.tag == "Terrain")
+                if(nextOne.tag == "Terrain" && !nextOne.name.Contains("Clone"))
                 {
                     infTerrPool.Add(nextOne);
                 }
@@ -82,7 +82,7 @@ public class LoadLevel : MonoBehaviour
                     //Set to parent chunk
                     foreach(GameObject nextTerr in infTerrPool)
                     {
-                        if(nextTerr.name.Contains("Terrain") && nextTerr.name.Contains(nextColor.ToString()))
+                        if(nextTerr.name.Contains("Terrain"))
                         {
                             Debug.Log(nextTerr.name);
                             terrain = nextTerr;
@@ -96,9 +96,11 @@ public class LoadLevel : MonoBehaviour
                     //Set to high chunk
                     foreach(GameObject nextTerr in infTerrPool)
                     {
-                        if(nextTerr.name.Contains("High") && nextTerr.name.Contains(nextColor.ToString()))
+                        if(nextTerr.name.Contains("High"))
                         {
+                            Debug.Log(nextTerr.name);
                             terrain = nextTerr;
+                            lastTerrainLoc.y += 1;
                             break;
                         }
                     }
@@ -109,9 +111,11 @@ public class LoadLevel : MonoBehaviour
                     //Set to stair chunk
                     foreach(GameObject nextTerr in infTerrPool)
                     {
-                        if(nextTerr.name.Contains("Stair") && nextTerr.name.Contains(nextColor.ToString()))
+                        if(nextTerr.name.Contains("Stair"))
                         {
+                            Debug.Log(nextTerr.name);
                             terrain = nextTerr;
+                            lastTerrainLoc.y += 1;
                             break;
                         }
                     }
@@ -120,7 +124,7 @@ public class LoadLevel : MonoBehaviour
                 else
                 {
                     //Create no chunk, adjust lastTerrLoc
-                    lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength,lastTerrainLoc.y);
+                    lastTerrainLoc.x += terrLength;
                     return;
                 }
                 theChild.SetPos(lastTerrainLoc);
@@ -129,9 +133,7 @@ public class LoadLevel : MonoBehaviour
                     Debug.Log("LoadLevel - Chunk creation error.");
                     return;
                 }
-                lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
-                // Instantiate(terrain, lastTerrainLoc, Quaternion.identity);  
-                // lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
+                lastTerrainLoc.x += terrLength;
                 if(randFloat < 1.0f)
                 {
                     randFloat = UnityEngine.Random.Range(0.0f,10.0f);
@@ -201,8 +203,9 @@ public class TerrParent
     }
 
     //Should return -1 for error, 0 for success
-    public int CreateChunk()
+    public virtual int CreateChunk()
     {
+        Debug.Log("Create basic chunk");
         if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
             return 0;
         else
@@ -225,7 +228,16 @@ public class TerrHigh : TerrParent
     public override void SetPos(Vector2 newPos)
     {
         //Figure out offset
-        terrPos = new Vector2(newPos.x,newPos.y);
+        terrPos = new Vector2(newPos.x-0.1f,newPos.y + 1);
+    }
+
+    public override int CreateChunk()
+    {
+        Debug.Log("Create high chunk");
+        if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
+            return 0;
+        else
+            return -1;
     }
 }
 
@@ -244,6 +256,15 @@ public class TerrStair : TerrParent
     public override void SetPos(Vector2 newPos)
     {
         //Figure out offset
-        terrPos = new Vector2(newPos.x,newPos.y);
+        terrPos = new Vector2(newPos.x,newPos.y + 1);
+    }
+
+    public override int CreateChunk()
+    {
+        Debug.Log("Create stair chunk");
+        if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
+            return 0;
+        else
+            return -1;
     }
 }

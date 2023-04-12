@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2960587790472871598}
   - component: {fileID: -5770142662492288101}
+  - component: {fileID: 1462873224046323659}
   m_Layer: 0
   m_Name: FinishLine
   m_TagString: Untagged
@@ -58,3 +59,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1462873224046323659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410481647639952712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b6705722eb36a4daaea01345249c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
