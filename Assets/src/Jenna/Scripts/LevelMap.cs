@@ -17,8 +17,7 @@ public class LevelMap : Map
 {
     void Start()
     {
-        SceneManager.LoadScene("Overworld");
-        //Debug.Log("JP Set initial hero position");
+        Debug.Log("JP Set initial hero position");
     }
 
     void Update()
