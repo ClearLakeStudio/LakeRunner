@@ -61,7 +61,7 @@ public class LoadLevel : MonoBehaviour
         if (isInfinite)
         {
             randFloat = UnityEngine.Random.Range(0.0f,10.0f);
-            randTerr = UnityEngine.Random.Range(0.0f,3.0f);
+            randTerr = UnityEngine.Random.Range(0.0f,4.0f);
             randColor = UnityEngine.Random.Range(0.0f,10.0f);
             if(randColor < 0.5f)
             {
@@ -77,7 +77,7 @@ public class LoadLevel : MonoBehaviour
             }
             if (lastTerrainLoc.x - heroPos.x < (5 * terrLength))
             {
-                if(randTerr <= 1.0f)
+                if(randTerr <= 2.0f)
                 {
                     //Set to parent chunk
                     foreach(GameObject nextTerr in infTerrPool)
@@ -91,14 +91,13 @@ public class LoadLevel : MonoBehaviour
                     }
                     theChild = new TerrParent(terrain,nextColor);
                 }
-                else if (randTerr <= 2.0f)
+                else if (randTerr <= 2.5f)
                 {
                     //Set to high chunk
                     foreach(GameObject nextTerr in infTerrPool)
                     {
                         if(nextTerr.name.Contains("High"))
                         {
-                            Debug.Log(nextTerr.name);
                             terrain = nextTerr;
                             lastTerrainLoc.y += 1;
                             break;
@@ -113,7 +112,6 @@ public class LoadLevel : MonoBehaviour
                     {
                         if(nextTerr.name.Contains("Stair"))
                         {
-                            Debug.Log(nextTerr.name);
                             terrain = nextTerr;
                             lastTerrainLoc.y += 1;
                             break;
@@ -205,7 +203,6 @@ public class TerrParent
     //Should return -1 for error, 0 for success
     public virtual int CreateChunk()
     {
-        Debug.Log("Create basic chunk");
         if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
             return 0;
         else
@@ -233,7 +230,6 @@ public class TerrHigh : TerrParent
 
     public override int CreateChunk()
     {
-        Debug.Log("Create high chunk");
         if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
             return 0;
         else
@@ -261,7 +257,6 @@ public class TerrStair : TerrParent
 
     public override int CreateChunk()
     {
-        Debug.Log("Create stair chunk");
         if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
             return 0;
         else
