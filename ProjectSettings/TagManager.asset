@@ -18,6 +18,7 @@ TagManager:
   - ItemManager
   - Level
   - OverworldManager
+  - GameOver
   layers:
   - Default
   - TransparentFX
