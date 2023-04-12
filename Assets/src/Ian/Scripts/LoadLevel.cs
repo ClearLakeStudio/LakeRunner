@@ -98,7 +98,7 @@ public class LoadLevel : MonoBehaviour
                         if(nextTerr.name.Contains("High") && nextTerr.name.Contains(nextColor.ToString()))
                         {
                             terrain = nextTerr;
-                            lastTerrainLoc.y += 1;
+                            lastTerrainLoc.y += 3;
                             break;
                         }
                     }
@@ -112,7 +112,7 @@ public class LoadLevel : MonoBehaviour
                         if(nextTerr.name.Contains("Stair") && nextTerr.name.Contains(nextColor.ToString()))
                         {
                             terrain = nextTerr;
-                            lastTerrainLoc.y += 1;
+                            lastTerrainLoc.y += 2.5f;
                             break;
                         }
                     }
@@ -227,7 +227,7 @@ public class TerrHigh : TerrParent
 
     public override void SetPos(Vector2 newPos)
     {
-        terrPos = new Vector2(newPos.x-0.1f,newPos.y + 1);
+        terrPos = new Vector2(newPos.x,newPos.y - 1);
     }
 
     public override int CreateChunk()
@@ -257,7 +257,7 @@ public class TerrStair : TerrParent
 
     public override void SetPos(Vector2 newPos)
     {
-        terrPos = new Vector2(newPos.x,newPos.y + 1);
+        terrPos = new Vector2(newPos.x,newPos.y - 0.75f);
     }
 
     public override int CreateChunk()
