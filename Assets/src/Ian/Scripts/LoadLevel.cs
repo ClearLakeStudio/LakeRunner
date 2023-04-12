@@ -84,7 +84,6 @@ public class LoadLevel : MonoBehaviour
                     {
                         if(nextTerr.name.Contains("Terrain") && nextTerr.name.Contains(nextColor.ToString()))
                         {
-                            Debug.Log(nextTerr.name);
                             terrain = nextTerr;
                             break;
                         }
