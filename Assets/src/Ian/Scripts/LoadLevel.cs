@@ -16,10 +16,14 @@ public class LoadLevel : MonoBehaviour
     public Vector2 lastTerrainLoc;
     public bool isInfinite;
 
+    private List<GameObject> infTerrPool = new List<GameObject>();
+    private List<GameObject> infTerr;
     private ItemManager items;
+    private TerrColor nextColor = TerrColor.Green;
+    private TerrParent theChild;
     private Vector2 randLoc;
-    private float chunkTime;
-    private float[] itemRate = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
+    // private float[] itemRate = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
+    private float randColor;
     private float randFloat;
     private float randTerr;
     private float terrLength;
@@ -28,31 +32,25 @@ public class LoadLevel : MonoBehaviour
     void Start()
     {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
-        chunkTime = 0.0f;
         curLevel = SceneManager.GetActiveScene().buildIndex;
         items = GameObject.FindWithTag("ItemManager").GetComponent<ItemManager>();
         terrLength = 5.12f;
         lastTerrainLoc = new Vector2(-1,-1);
         if (isInfinite)
         {
+            //infTerr = Resources.FindObjectsOfTypeAll(typeof(GameObject));
             for (int i = 0; i < 10; i++)
             {
                 Instantiate(terrain, lastTerrainLoc, Quaternion.identity);
                 lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
             }
-        }
-    }
-
-    void Update()
-    {
-        //Subtract the seconds since last frame from the chunk loading timer. If this puts the timer below 0, set it to 0.
-        if (chunkTime > 0)
-        {
-            chunkTime--;
-        }
-        if (chunkTime < 0)
-        {
-            chunkTime = 0;
+            foreach(GameObject nextOne in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+            {
+                if(nextOne.tag == "Terrain")
+                {
+                    infTerrPool.Add(nextOne);
+                }
+            }
         }
     }
 
@@ -64,32 +62,81 @@ public class LoadLevel : MonoBehaviour
         {
             randFloat = UnityEngine.Random.Range(0.0f,10.0f);
             randTerr = UnityEngine.Random.Range(0.0f,3.0f);
+            randColor = UnityEngine.Random.Range(0.0f,10.0f);
+            if(randColor < 0.5f)
+            {
+                nextColor = TerrColor.Green;
+            }
+            else if(randColor < 1.0f)
+            {
+                nextColor = TerrColor.Sand;
+            }
+            else if(randColor < 1.5f)
+            {
+                nextColor = TerrColor.Stone;
+            }
             if (lastTerrainLoc.x - heroPos.x < (5 * terrLength))
             {
                 if(randTerr <= 1.0f)
                 {
                     //Set to parent chunk
+                    foreach(GameObject nextTerr in infTerrPool)
+                    {
+                        if(nextTerr.name.Contains("Terrain") && nextTerr.name.Contains(nextColor.ToString()))
+                        {
+                            Debug.Log(nextTerr.name);
+                            terrain = nextTerr;
+                            break;
+                        }
+                    }
+                    theChild = new TerrParent(terrain,nextColor);
                 }
                 else if (randTerr <= 2.0f)
                 {
                     //Set to high chunk
+                    foreach(GameObject nextTerr in infTerrPool)
+                    {
+                        if(nextTerr.name.Contains("High") && nextTerr.name.Contains(nextColor.ToString()))
+                        {
+                            terrain = nextTerr;
+                            break;
+                        }
+                    }
+                    theChild = new TerrHigh(terrain,nextColor);
                 }
                 else if (randTerr <= 3.0f)
                 {
                     //Set to stair chunk
+                    foreach(GameObject nextTerr in infTerrPool)
+                    {
+                        if(nextTerr.name.Contains("Stair") && nextTerr.name.Contains(nextColor.ToString()))
+                        {
+                            terrain = nextTerr;
+                            break;
+                        }
+                    }
+                    theChild = new TerrStair(terrain,nextColor);
                 }
                 else
                 {
                     //Create no chunk, adjust lastTerrLoc
+                    lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength,lastTerrainLoc.y);
+                    return;
                 }
-                Instantiate(terrain, lastTerrainLoc, Quaternion.identity);  
+                theChild.SetPos(lastTerrainLoc);
+                if(theChild.CreateChunk() != 0)
+                {
+                    Debug.Log("LoadLevel - Chunk creation error.");
+                    return;
+                }
                 lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
+                // Instantiate(terrain, lastTerrainLoc, Quaternion.identity);  
+                // lastTerrainLoc = new Vector2(lastTerrainLoc.x + terrLength, lastTerrainLoc.y);
                 if(randFloat < 1.0f)
                 {
                     randFloat = UnityEngine.Random.Range(0.0f,10.0f);
                     items.SpawnItem(null, new Vector2(lastTerrainLoc.x, lastTerrainLoc.y + 5));
                 }
-                chunkTime = 5;
             }
         }
         else 
@@ -142,23 +189,24 @@ public class TerrParent
     private Vector2 terrPos;
     private TerrColor color;
 
-    public TerrParent(Vector2 pos, TerrColor c)
+    public TerrParent(GameObject nextTerr,TerrColor c=TerrColor.Green)
     {
-        //terr = 
-        terrPos = pos;
+        terr = nextTerr;
         color = c;
     }
 
-    public TerrParent()
+    public virtual void SetPos(Vector2 newPos)
     {
-        terrPos = new Vector2(-1,-1);
-        color = TerrColor.Undefined;
+        terrPos = newPos;
     }
 
     //Should return -1 for error, 0 for success
-    public virtual int CreateChunk()
+    public int CreateChunk()
     {
-        return 0;
+        if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
+            return 0;
+        else
+            return -1;
     }
 }
 
@@ -168,16 +216,16 @@ public class TerrHigh : TerrParent
     private Vector2 terrPos;
     private TerrColor color;
 
-    public TerrHigh(Vector2 pos, TerrColor c)
+    public TerrHigh(GameObject nextTerr,TerrColor c=TerrColor.Green) : base(nextTerr,c)
     {
-        //terr
-        terrPos = pos;
+        terr = nextTerr;
         color = c;
     }
 
-    public override int CreateChunk()
+    public override void SetPos(Vector2 newPos)
     {
-        return 0;
+        //Figure out offset
+        terrPos = new Vector2(newPos.x,newPos.y);
     }
 }
 
@@ -187,15 +235,15 @@ public class TerrStair : TerrParent
     private Vector2 terrPos;
     private TerrColor color;
 
-    public TerrStair(Vector2 pos, TerrColor c)
+    public TerrStair(GameObject nextTerr,TerrColor c=TerrColor.Green) : base(nextTerr,c)
     {
-        //terr
-        terrPos = pos;
+        terr = nextTerr;
         color = c;
     }
 
-    public override int CreateChunk()
+    public override void SetPos(Vector2 newPos)
     {
-        return 0;
+        //Figure out offset
+        terrPos = new Vector2(newPos.x,newPos.y);
     }
 }

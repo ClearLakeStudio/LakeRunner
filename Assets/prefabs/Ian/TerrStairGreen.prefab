@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -332586332756427381}
   - component: {fileID: 6679357443993390916}
   m_Layer: 3
-  m_Name: TerrainStairGreen
+  m_Name: TerrStairGreen
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
