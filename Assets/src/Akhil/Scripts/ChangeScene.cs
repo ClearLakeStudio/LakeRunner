@@ -3,29 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+class DisNxtBt 
+{  
+  public GameObject NextLevelButton;
+  public virtual void DisplayNextLevelButton () {
+    //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
+    NextLevelButton.SetActive(false);
+    Debug.Log("button disabled");
+  }
+} 
+
+class EbNxtBt : DisNxtBt
+{
+  public override void DisplayNextLevelButton ()
+  {
+    //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
+    NextLevelButton.SetActive(true);
+    Debug.Log("button enabled");
+  }
+}
+
 public class ChangeScene : MonoBehaviour 
 {
 
 
-  class DisNxtBt 
-  {  
-    public GameObject NextLevelButton;
-    public virtual void DisplayNextLevelButton () {
-      //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
-      NextLevelButton.SetActive(false);
-      Debug.Log("button disabled");
-    }
-  } 
-
-  class EbNxtBt : DisNxtBt
-  {
-    public override void DisplayNextLevelButton ()
-    {
-      //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
-      NextLevelButton.SetActive(true);
-      Debug.Log("button enabled");
-    }
-  }
+  
 
   private DisNxtBt d = new DisNxtBt();
   private EbNxtBt e = new EbNxtBt();
@@ -62,7 +65,7 @@ public class ChangeScene : MonoBehaviour
 
   public void gameOver()
   {
-    //d.DisplayNextLevelButton();
+    d.DisplayNextLevelButton();
     Debug.Log("Button set");
     gameOverUI.SetActive(true);
     if (finishGame == false){
