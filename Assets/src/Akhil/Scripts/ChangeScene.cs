@@ -5,19 +5,65 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour 
 {
-  
+
+
+  class DisNxtBt 
+  {  
+    public GameObject NextLevelButton;
+    public virtual void DisplayNextLevelButton () {
+      //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
+      NextLevelButton.SetActive(false);
+      Debug.Log("button disabled");
+    }
+  } 
+
+  class EbNxtBt : DisNxtBt
+  {
+    public override void DisplayNextLevelButton ()
+    {
+      //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
+      NextLevelButton.SetActive(true);
+      Debug.Log("button enabled");
+    }
+  }
+
+  private DisNxtBt d = new DisNxtBt();
+  private EbNxtBt e = new EbNxtBt();
+
+
+
+  // public DisableNextLevelButton Dbu;
+  // public NextLevelButton Nbu;
+ 
   public GameObject gameOverUI;
-  bool finishGame = false;
+  bool finishGame = true;
 
-  public DisableNextLevelButton d;
-  public DisableNextLevelButton e;
+  // void Start()
+  // {
+  //   // DisableNextLevelButton Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
+  //   // NextLevelButton Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
+  // }
+  // void update()
+  // {
+  //   if (finishGame == false){
+  //     //d.DisplayNextLevelButton();
+  //     //Dbu.DisplayNextLevelButton();
+  //     Debug.Log("button enabled");
+  //   }
+  //   else {
+  //     //e.DisplayNextLevelButton();
+  //     //Nbu.DisplayNextLevelButton();
+  //     Debug.Log("button diabled");
+  //   }
+  // }
+  
 
-  //make an object of this script in the gamemanager or player script and attach gameoverScreen to it.
-  // for game over screen call this func like this when the player finishes
-  // ChangeScene.gameOver();
-  // also create a bool and set it to true after this is called
+  //public DisableNextLevelButton e = new NextLevelButton();
+
   public void gameOver()
   {
+    d.DisplayNextLevelButton();
+    Debug.Log("Button set");
     gameOverUI.SetActive(true);
     if (finishGame == false){
       d.DisplayNextLevelButton();

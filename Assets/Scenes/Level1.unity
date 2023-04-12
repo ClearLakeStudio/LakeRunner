@@ -950,6 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b6705722eb36a4daaea01345249c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeScene: {fileID: 0}
 --- !u!1001 &276666211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1478,6 +1479,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7333816724182937725, guid: fd2978d66c912d04c8419cca73b0b2aa, type: 3}
   m_PrefabInstance: {fileID: 461071277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &477923233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1221126292286550015, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+  m_PrefabInstance: {fileID: 1221126291970977947}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &482869081
 GameObject:
@@ -4206,6 +4212,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5314950591279327145, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 477923233}
     m_RemovedComponents:
     - {fileID: 1221126292286550003, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
