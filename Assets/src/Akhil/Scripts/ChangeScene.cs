@@ -62,7 +62,7 @@ public class ChangeScene : MonoBehaviour
 
   public void gameOver()
   {
-    d.DisplayNextLevelButton();
+    //d.DisplayNextLevelButton();
     Debug.Log("Button set");
     gameOverUI.SetActive(true);
     if (finishGame == false){
