@@ -75,7 +75,7 @@ public class LoadLevel : MonoBehaviour
             {
                 nextColor = TerrColor.Stone;
             }
-            if (lastTerrainLoc.x - heroPos.x < (5 * terrLength))
+            if (lastTerrainLoc.x - heroPos.x < (10 * terrLength))
             {
                 if(randTerr <= 2.0f)
                 {
@@ -203,8 +203,12 @@ public class TerrParent
     //Should return -1 for error, 0 for success
     public virtual int CreateChunk()
     {
-        if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
+        GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+        if(thisTerr)
+        {
+            thisTerr.GetComponent<TerrainBehavior>().enabled = true;
             return 0;
+        }
         else
             return -1;
     }
@@ -224,14 +228,17 @@ public class TerrHigh : TerrParent
 
     public override void SetPos(Vector2 newPos)
     {
-        //Figure out offset
         terrPos = new Vector2(newPos.x-0.1f,newPos.y + 1);
     }
 
     public override int CreateChunk()
     {
-        if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
+        GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+        if(thisTerr)
+        {
+            thisTerr.GetComponent<TerrainBehavior>().enabled = true;
             return 0;
+        }
         else
             return -1;
     }
@@ -251,14 +258,17 @@ public class TerrStair : TerrParent
 
     public override void SetPos(Vector2 newPos)
     {
-        //Figure out offset
         terrPos = new Vector2(newPos.x,newPos.y + 1);
     }
 
     public override int CreateChunk()
     {
-        if(UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity))
+        GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+        if(thisTerr)
+        {
+            thisTerr.GetComponent<TerrainBehavior>().enabled = true;
             return 0;
+        }
         else
             return -1;
     }
