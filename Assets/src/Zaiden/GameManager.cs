@@ -94,15 +94,20 @@ public class GameManager : MonoBehaviour
             mousePos.z = Camera.main.nearClipPlane;
             boxCorners[1] = mousePos;
             PlatBox p = pM.CheckPlatValidity(boxCorners);
+            // Platform p = new Platform(boxCorners, currBuildMaterial);
+            // get rid of if p.valid = true
+            // then delete Preview object
             if (p.valid == true)
             {
                 if (!doubleClick) // dont make falling
                 {
+                    // BaseDecorator temp = new Floating(p);
                     p.floating = true;
                     pM.MakePlat(p);
                 }
                 else // make falling
                 {
+                    // BaseDecorator temp = new Floating(p);
                     p.floating = false;
                     pM.MakePlat(p);
                 }
@@ -118,8 +123,16 @@ public class GameManager : MonoBehaviour
             mousePos.z = Camera.main.nearClipPlane;
             boxCorners[1] = new Vector3(mousePos.x, mousePos.y, mousePos.z);
             PlatBox p = pM.CheckPlatValidity(boxCorners);
+            // Platform p = new Platform(boxCorners, currBuildMaterial);
+            // do not check if valid, Preview will do it itself
+            // destroy PV Plat no matter what, do before creating preview platform
             if (p.valid == true)
             {
+                // if (temp == NULL){
+                //  BaseDecorator pV = Instance(p);
+                // } else {
+                //  pv.update(p);
+                // }
                 pM.MakePreVPlat(p); // creates preview platform
             }
             else

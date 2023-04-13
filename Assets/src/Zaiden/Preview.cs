@@ -16,13 +16,13 @@ public class Preview : BaseDecorator
 
     private Preview(Platform p)
     {
-        basePlatForm = p;
-        basePlatForm.CheckValidity();
-        if (basePlatForm.GetValid())
+        SetBasePlatform(p);
+        GetBasePlatform().CheckValidity();
+        if (GetBasePlatform().GetValid())
         {
-            Vector2 position = basePlatForm.GetPosition();
+            Vector2 position = GetBasePlatform().GetPosition();
             SetThisPlatform(Instantiate(floatPlatform, new Vector3(position[0], position[1], 0), Quaternion.identity));
-            GetThisPlatform().transform.localScale = new Vector3(basePlatForm.GetWidth(), basePlatForm.GetHeight(), 1);
+            GetThisPlatform().transform.localScale = new Vector3(GetBasePlatform().GetWidth(), GetBasePlatform().GetHeight(), 1);
         }
     }
 
@@ -37,14 +37,21 @@ public class Preview : BaseDecorator
 
     public void UpdateBox(Platform p) // takes in a new platform and updates the PV platform's location
     {
-        basePlatForm = p;
-        basePlatForm.CheckValidity();
-        if (basePlatForm.GetValid())
+        SetBasePlatform(p);
+        GetBasePlatform().CheckValidity();
+        if (GetBasePlatform().GetValid())
         {
-            Vector2 position = basePlatForm.GetPosition();
+            Vector2 position = GetBasePlatform().GetPosition();
             GetThisPlatform().transform.position = new Vector3(position[0], position[1], 0);
-            GetThisPlatform().transform.localScale = new Vector3(basePlatForm.GetWidth(), basePlatForm.GetHeight(), 1);
+            GetThisPlatform().transform.localScale = new Vector3(GetBasePlatform().GetWidth(), GetBasePlatform().GetHeight(), 1);
         }
     }
+
+    /*
+     * this is where i will override the collision function that works on falling and floating
+     * will just have it return without doing anything so nothing as affected
+     * 
+     * 
+    */
 
 }

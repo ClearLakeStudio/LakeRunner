@@ -1,7 +1,7 @@
 /*
  * Filename: PlatformManager.cs
  * Developer: Zaiden Espe
- * Purpose: To store a management class for the player-drawn platforms
+ * Purpose: To store a management class for the player-drawn platforms. WILL BECOME OBSOLETE ONCE PATTERNS LINKED TO GameManager!
  */
 
 using System.Collections;

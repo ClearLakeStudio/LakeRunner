@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824b3110da38909479ae3a2cf7f9d0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platManager: {fileID: 0}
-  chunkManager: {fileID: 0}
-  hero: {fileID: 0}
-  healthBar: {fileID: 0}
+  platManager: {fileID: 7260615195327587921, guid: d23f35fbefc2bfe498ba22d982db5f06, type: 3}
+  chunkManager: {fileID: 7333816724182937725, guid: fd2978d66c912d04c8419cca73b0b2aa, type: 3}
+  hero: {fileID: 5716343106048154735, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}

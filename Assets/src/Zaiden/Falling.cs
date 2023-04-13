@@ -9,20 +9,25 @@ using UnityEngine;
 
 public class Falling : BaseDecorator
 {
-    Platform basePlatForm;
 
     public GameObject fallPlatform;
 
     public Falling(Platform p)
     {
-        basePlatForm = p;
-        basePlatForm.CheckValidity();
-        if (basePlatForm.GetValid())
+        SetBasePlatform(p);
+        GetBasePlatform().CheckValidity();
+        if (GetBasePlatform().GetValid())
         {
-            Vector2 position = basePlatForm.GetPosition();
+            Vector2 position = GetBasePlatform().GetPosition();
             SetThisPlatform(Instantiate(fallPlatform, new Vector3(position[0], position[1], 0), Quaternion.identity));
-            GetThisPlatform().transform.localScale = new Vector3(basePlatForm.GetWidth(), basePlatForm.GetHeight(), 1);
+            GetThisPlatform().transform.localScale = new Vector3(GetBasePlatform().GetWidth(), GetBasePlatform().GetHeight(), 1);
         }
     }
+
+    /*
+     * will need to add onto/override collision function here to kill enemies when it falls onto them 
+     * 
+     * 
+    */
 
 }

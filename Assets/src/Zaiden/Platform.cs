@@ -46,7 +46,7 @@ public class Platform : MonoBehaviour
         {
             valid = false;
         }
-        if (width * height * 2 > currPBM)  // when I implement the current build material i will set valid=false;
+        if (width * height * 4 < currPBM)  // when I implement the current build material i will set valid=false and switch sign
         {
             valid = true;
         }
