@@ -15,7 +15,6 @@ public abstract class Entity : MonoBehaviour
     private Vector2 gameBoundaryLow;
     private Vector2 gameBoundaryHigh;
 
-
     //Awake is called when the object is initialized.
     void Awake()
     {
@@ -65,13 +64,15 @@ public abstract class Entity : MonoBehaviour
     {
         //nothing
     }
-    //if GameManager has boundaries, then get them.
+
+    //if GameManager has boundaries, then get them. Else the boundaries are set here
     protected virtual void EntitySetBounds()
     {
         //gameBoundaryLow = Vector2.negativeInfinity;
         gameBoundaryLow = new Vector2(-100,-100);
         //gameBoundaryHigh = Vector2.positiveInfinity;
-        gameBoundaryHigh = new Vector2(1000,100);
+        gameBoundaryHigh = new Vector2(10000,100);
+
         var gm = GameObject.Find("GameManager").GetComponent("GameManager");
         var glb = gm.GetType().GetMethod("GetLowerBoundary");
         var gub = gm.GetType().GetMethod("GetUpperBoundary");
@@ -85,6 +86,7 @@ public abstract class Entity : MonoBehaviour
             }
         }   
     }
+
     protected virtual void EntityOutOfBounds()
     {
         rb.simulated = false;

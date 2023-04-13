@@ -11,7 +11,8 @@ public class HeroUpward
     {
         //SceneManager.LoadScene("GameScene");
         GameObject obj = GameObject.FindWithTag("Hero");
-        yield return new WaitForSeconds(1); //1 second is a timely majic number
+        obj.GetComponent<Hero>().Jump();
+        yield return new WaitForSeconds(0.1f);
         Assert.IsTrue(0<obj.transform.position.y);
     }
 }
