@@ -1,0 +1,13 @@
+##PATTERNS_AND_DYNAMIC_INHERITANCE_DESCRIPTIONS
+#Singleton
+	I used the singleton pattern in the Preview.cs file.
+	Only one preview platform at a time needs to exist, so instead of deleting,
+	and re-instantiating each frame the mouse is held, I use a singleton to just adjust 	the preview's position and dimensions as needed.
+#Decorator
+	I use the decorator pattern in the BaseDecorator.cs, Platform.cs, Floating.cs, 	Falling.cs, and Preview.cs files. The floating, falling, and preview platform types
+	serve as the decorators to the basic platform. The three classes all inherit from
+	the BaseDecorator class which will be expanded as needed. The three classes 	encapsulate the basic Platform class which stores general position and size
+	information about any type of platform.  
+#DYNAMIC_INHERITANCE
+	figuring this part out still. will either be something with how the platforms handle 	collisions separately, or how they delete themselves given time. maybe something else.
+	
