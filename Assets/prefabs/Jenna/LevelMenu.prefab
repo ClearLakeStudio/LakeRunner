@@ -71,7 +71,7 @@ MonoBehaviour:
     m_FontSize: 60
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 6
+    m_MinSize: 0
     m_MaxSize: 60
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 572740231660473164}
   - component: {fileID: 9176615966073935730}
   m_Layer: 5
-  m_Name: Level Menu
+  m_Name: LevelMenu
   m_TagString: Level Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,6 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2764c152134488998af36f785f39d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  menuName: {fileID: 0}
   menuButton: {fileID: 572740231928440111}
   menuButtonText: {fileID: 572740231075594030}
 --- !u!1 &572740231928440105

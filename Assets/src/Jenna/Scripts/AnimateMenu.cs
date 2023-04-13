@@ -12,12 +12,12 @@ public class AnimateMenu : MonoBehaviour
 
     void Start()
     {
-        image = gameObject.GetComponent<Image>();
         Play();
     }
 
-    private void Play()
+    public void Play()
     {
+        image = GetComponent<Image>();
         Stop();
         StartCoroutine(Animation());
     }
