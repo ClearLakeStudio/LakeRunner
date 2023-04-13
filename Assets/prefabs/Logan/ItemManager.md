@@ -2,7 +2,7 @@
 
 Manages the item pools and item effect activation in the scene.
 
-# Design Patterns Implemented:
+## Design Patterns Implemented:
 
 1. Singleton Pattern
     * This class contains a static reference to itself. The first instance of the class that is instantiated is assigned to that reference. No other instantiation of the class afterward will be able to interact with that instance reference.
@@ -12,7 +12,7 @@ Manages the item pools and item effect activation in the scene.
       The dictionary is indexed by the ItemType enum value of the object that is stored in the relevant list. For example, the ItemType.Sunglasses is the key into the dictionary for the the Sunglasses object pool.
       With the help of the GetPooledObject() method SpawnItem() method, and ReturnPooledObject() method, any script can get a reference to an object in any of the pools and manipulate it.
 
-# Dynamic Binding:
+## Dynamic Binding:
 
 * In the ActivateItemEffect() method, I use dynamic binding to avoid a messy switch statement. All item objects that should be pooled must inherit from the Item class and override the virtual function "UseEffect()".
   First, we fetch a reference to the item object whose effect needs to be activated. Then, we create an "Item" object that will dynamically bind to the item object reference we found earlier. Lastly, the "UseEffect()" method is called and the item object is returned to its object pool.
