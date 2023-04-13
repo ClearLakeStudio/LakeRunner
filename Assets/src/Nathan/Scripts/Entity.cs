@@ -12,6 +12,7 @@ public abstract class Entity : MonoBehaviour
     protected Rigidbody2D rb;
     //protected Animator anim;
     protected SpriteRenderer sprite;
+    
     private Vector2 gameBoundaryLow;
     private Vector2 gameBoundaryHigh;
 
@@ -25,7 +26,7 @@ public abstract class Entity : MonoBehaviour
         EntitySetBounds();
     }
 
-    //FixedUpdate Is called for every physics frame (framerate independant, timescale dependant)
+    //FixedUpdate is called for every physics frame (framerate independant, timescale dependant)
     void FixedUpdate() 
     {
         EntityFixedUpdate();
@@ -91,5 +92,11 @@ public abstract class Entity : MonoBehaviour
     {
         rb.simulated = false;
         Debug.Log("(NN) Entity frozen, out of bounds");
+    }
+
+    //prototype design pattern in the abstract superclass
+    protected virtual Object EntityClone(Vector3 location)
+    {
+        return gameObject; //does nothing if clone not defined, returns self like a singleton.
     }
 }

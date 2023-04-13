@@ -1,7 +1,7 @@
 /*
  * Filename: Enemy.cs
  * Developer: Nathan
- * Purpose: Defines the Enemy class including all enemy behaviors.
+ * Purpose: Defines the Enemy superclass, deciding how often enemies attack asnd setting up referances.
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ public class Enemy : Entity
         }
     }
 
-    //All Enemies have some form of attack action, even if it is to do nothing.
+    //Strategy pattern for eney attacks
     protected virtual void EnemyAttack()
     {
         //nothing
