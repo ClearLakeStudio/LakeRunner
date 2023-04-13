@@ -4472,13 +4472,5 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 2488578}
-    - target: {fileID: 2596821495697630164, guid: 59425e0e856ec4c039dfd6fc8152187f, type: 3}
-      propertyPath: itemCollection
-      value: 
-      objectReference: {fileID: 114900914812322615, guid: f8cf0bae8b2774435843ef26f97bff06, type: 3}
-    - target: {fileID: 2596821495697630164, guid: 59425e0e856ec4c039dfd6fc8152187f, type: 3}
-      propertyPath: numberOfObjectsInPool
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59425e0e856ec4c039dfd6fc8152187f, type: 3}

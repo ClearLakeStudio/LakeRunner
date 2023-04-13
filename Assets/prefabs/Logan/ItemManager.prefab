@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72debda62555d41c1984651c17d999f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunglassesKey: 49
-  slippersKey: 50
-  brainBlastBarKey: 51
+  deniedSound: {fileID: 0}
+  inventory: {fileID: 0}
+  sunglassesKey: 50
+  slippersKey: 51
+  brainBlastBarKey: 49
+  itemCollection: {fileID: 114900914812322615, guid: f8cf0bae8b2774435843ef26f97bff06, type: 3}
+  numberOfObjectsInPool: 100
