@@ -1,0 +1,4 @@
+# Prefab: AngrySentientCoconut Enemy
+Summary: A largr, slow enemy-entity that moves in front of the Hero object.
+Inherits from Enemy Inherits from Entity
+Targets the object in the hierarchy named "Hero", and moves towards it every "attackTimer" seconds.

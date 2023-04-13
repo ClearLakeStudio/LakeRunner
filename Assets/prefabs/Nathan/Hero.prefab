@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  movementSpeed: 12
+  movementSpeed: 10
   stepJump: 2.5
   stepTimer: 0.25
   jumpTimer: 4

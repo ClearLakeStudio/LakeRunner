@@ -1,0 +1,4 @@
+# Prefab: Hero
+Summary: The Hero Prefab is the entity which the camera and most of the game revolves around.
+Enemies chase the Hero, and UI elements Such as the Healthbar and SunscreenBar are communicate with the Hero.
+Inherits from Entity 
