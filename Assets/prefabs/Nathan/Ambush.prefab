@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2069538595687712181}
   - component: {fileID: 2876816423721861757}
   - component: {fileID: -8420046549401104826}
-  - component: {fileID: 1274301779011114298}
-  - component: {fileID: 2607591668980986907}
+  - component: {fileID: 7777591200475139031}
+  - component: {fileID: -8484100769397585709}
   m_Layer: 0
-  m_Name: Crab
+  m_Name: Ambush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5716343106048154735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ffa7862441cde5e4cb8645e30da1a8e4, type: 3}
+  m_Color: {r: 1, g: 0.5899133, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &1274301779011114298
+--- !u!60 &7777591200475139031
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,14 +118,14 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -133,10 +133,46 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
---- !u!114 &2607591668980986907
+    - - {x: 0.19, y: -1.0799999}
+      - {x: 0.17859259, y: -0.65915555}
+      - {x: 0.57, y: -0.84}
+      - {x: 0.74, y: -0.68}
+      - {x: 0.74, y: -0.53999996}
+      - {x: 0.69, y: -0.51}
+      - {x: 0.65, y: -0.19999999}
+      - {x: 0.51, y: -0.07}
+      - {x: 0.42999998, y: -0.04}
+      - {x: 0.52, y: 0.34}
+      - {x: 0.42999998, y: 0.35999998}
+      - {x: 0.5, y: 0.48}
+      - {x: 0.51, y: 0.57}
+      - {x: 0.45, y: 0.61}
+      - {x: 0.41, y: 0.91999996}
+      - {x: 0.19, y: 1.13}
+      - {x: 0.099999994, y: 1.28}
+      - {x: -0.03, y: 1.28}
+      - {x: -0.17, y: 1.15}
+      - {x: -0.44, y: 0.9}
+      - {x: -0.53999996, y: 0.62}
+      - {x: -0.45999998, y: 0.59}
+      - {x: -0.53999996, y: 0.38}
+      - {x: -0.51, y: 0.22999999}
+      - {x: -0.42999998, y: 0.21}
+      - {x: -0.52, y: -0.12}
+      - {x: -0.59, y: -0.14999999}
+      - {x: -0.65999997, y: -0.35999998}
+      - {x: -0.65999997, y: -0.65999997}
+      - {x: -0.39999998, y: -0.82}
+      - {x: -0.099549636, y: -0.6892118}
+      - {x: -0.28, y: -1.16}
+      - {x: -0.32, y: -1.18}
+      - {x: -0.34, y: -1.1999999}
+      - {x: -0.34, y: -1.28}
+      - {x: 0.34, y: -1.28}
+      - {x: 0.34, y: -1.1999999}
+      - {x: 0.32, y: -1.18}
+      - {x: 0.26999998, y: -1.11}
+--- !u!114 &-8484100769397585709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +181,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5716343106048154735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92e70f67daf1e9479faba7076fa8992, type: 3}
+  m_Script: {fileID: 11500000, guid: 29d512bb9afd9fa4eb55f8d39fdc2d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+  attacktimer: 0
+  frog: {fileID: 2260054494407781739, guid: 5f1da08fc6911b64c83333c05c4b161e, type: 3}
+  bear: {fileID: 2290122178140475491, guid: 33e6db1f2aec8e94f8de6406e9029ab6, type: 3}

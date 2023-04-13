@@ -94,7 +94,7 @@ public class Hero : Entity
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y/2 + jumpForce);
         }
         if((Time.fixedTime % stepTimer == 0) && (Time.fixedTime != 0)){
-            rb.velocity = new Vector2(rb.velocity.x/2 + movementSpeed, rb.velocity.y/2 + stepJump);
+            rb.velocity = new Vector2(rb.velocity.x/3 + movementSpeed, rb.velocity.y/2 + stepJump);
             if(rb.position.x < lastX + 1){
                 Debug.Log("Sun damage");
                 if(shield > 0){

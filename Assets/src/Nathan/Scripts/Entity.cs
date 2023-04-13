@@ -12,7 +12,7 @@ public abstract class Entity : MonoBehaviour
     protected Rigidbody2D rb;
     //protected Animator anim;
     protected SpriteRenderer sprite;
-    
+
     private Vector2 gameBoundaryLow;
     private Vector2 gameBoundaryHigh;
 
@@ -95,7 +95,7 @@ public abstract class Entity : MonoBehaviour
     }
 
     //prototype design pattern in the abstract superclass
-    protected virtual Object EntityClone(Vector3 location)
+    public virtual Object EntityClone(Vector3 location)
     {
         return gameObject; //does nothing if clone not defined, returns self like a singleton.
     }

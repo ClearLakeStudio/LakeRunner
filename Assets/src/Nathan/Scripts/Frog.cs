@@ -28,7 +28,7 @@ public class Frog : Enemy
     }
 
     //prototype pattern, returns a copy of itself
-    protected override Object EntityClone(Vector3 position)
+    public override Object EntityClone(Vector3 position)
     {
         return Instantiate(gameObject, position, Quaternion.identity);
     }
