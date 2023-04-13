@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Microsoft.CSharp;
 
 ///**** Dynamic Binding ********
 class DisNxtBt 
@@ -42,25 +41,27 @@ public class ChangeScene : MonoBehaviour
 
   private DisNxtBt d = new DisNxtBt();
   private EbNxtBt e = new EbNxtBt();
-  private DisableNextLevelButton Dbu;
-  private NextLevelButton Nbu;
+  // private DisableNextLevelButton Dbu;
+  // private NextLevelButton Nbu;
 
-  void Start()
-  {
-    Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
-    Dbu.d = d;
-    Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
-    Nbu.e = e;
-    dynamic dynamicD = d;
-    dynamic dynamicE = e;
-    d.DisplayNextLevelButton();
-  }
+  // void Start()
+  // {
+  //   Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
+  //   Dbu.d = d;
+  //   Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
+  //   Nbu.e = e;
+  //   dynamic dynamicD = d;
+  //   dynamic dynamicE = e;
+  //   d.DisplayNextLevelButton();
+  // }
 
   // public DisableNextLevelButton Dbu;
   // public NextLevelButton Nbu;
  
+ 
   public GameObject gameOverUI;
   bool finishGame = true;
+
 
   // void Start()
   // {
@@ -120,7 +121,7 @@ public class ChangeScene : MonoBehaviour
   }
   public void mainMenu()
   {
-    SceneManager.LoadScene(1)
+    SceneManager.LoadScene(1);
     Debug.Log("menu");
   }
 
