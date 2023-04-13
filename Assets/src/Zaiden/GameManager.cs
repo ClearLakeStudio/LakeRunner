@@ -24,12 +24,10 @@ public class GameManager : MonoBehaviour
     public GameObject platManager;
     public GameObject chunkManager;
     public GameObject hero;
-    public GameObject healthBar;
 
     // store references to scripts
     PlatformManager pM;
     LoadLevel cM;
-    HealthBar hB;
 
     // store moues data value
     Vector3 mousePos; // stores position of mouse at critical points
@@ -52,17 +50,25 @@ public class GameManager : MonoBehaviour
 
         pM = platManager.GetComponent<PlatformManager>(); // assign script reference in platformmanager.cs
         cM = chunkManager.GetComponent<LoadLevel>(); // assign script reference in loadlevel.cs
-        hB = healthBar.GetComponent<HealthBar>(); // assign script reference in HealthBar.cs
 
 
-        // initial calls, will be removed later and moved to hero script
-        hB.SetMaxHealth(10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // need to write mouse detection function
+        // mouse detection
+        ReceivePlatformInput();
+
+        // update hero position
+        heroPos = hero.transform.position;
+
+        // call chunk creation function
+        cM.CreateNewChunk(new Vector3(heroPos.x, -4.25f, heroPos.z));
+    }
+
+    void ReceivePlatformInput()
+    {
         if (Input.GetMouseButton(0) && mouseHold == false) // beginning hold
         {
             mouseHold = true;
@@ -72,7 +78,8 @@ public class GameManager : MonoBehaviour
             if ((Time.time - lastClickTime) <= doubleClickTime)
             {
                 doubleClick = true;
-            } else
+            }
+            else
             {
                 doubleClick = false;
             }
@@ -93,12 +100,14 @@ public class GameManager : MonoBehaviour
                 {
                     p.floating = true;
                     pM.MakePlat(p);
-                } else // make falling
+                }
+                else // make falling
                 {
                     p.floating = false;
                     pM.MakePlat(p);
                 }
-            } else
+            }
+            else
             {
                 pM.DestroyPreVPlat();
             }
@@ -112,16 +121,11 @@ public class GameManager : MonoBehaviour
             if (p.valid == true)
             {
                 pM.MakePreVPlat(p); // creates preview platform
-            } else
+            }
+            else
             {
                 pM.DestroyPreVPlat();
             }
         }
-
-        // update hero position
-        heroPos = hero.transform.position;
-
-        // call chunk creation function
-        cM.CreateNewChunk(new Vector3(heroPos.x, -4.25f, heroPos.z));
     }
 }

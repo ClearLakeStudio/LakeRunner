@@ -7,7 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 
 // this class is to handle platform creation and call the actual instances of the platforms
 public class PlatformManager : MonoBehaviour
@@ -25,8 +25,7 @@ public class PlatformManager : MonoBehaviour
 
     // checks the validity of platform coordinates. returns true if valid placement, false otherwise
     public PlatBox CheckPlatValidity(Vector3[] pos)
-    {
-        
+    {      
         float width;
         float height;
         
