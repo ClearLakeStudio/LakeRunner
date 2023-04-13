@@ -7,7 +7,7 @@ Inherits from the AttributeItem class, which inherits from the Item class
 * AudioClip collectSound
     * The audio clip that will execute when the item is collected.
 
-* public float shieldIncrease = 25f
+* float shieldIncrease = 25f
     * The amount that this item should increase the Hero's shield attribute bar.
 
 ## Public Methods:
