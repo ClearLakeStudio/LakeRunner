@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
+// **** Facade Design pattern ****
+public class HealthBar : MonoBehaviour 
+{
 
-    public Slider healthSlider;
+    public Slider healthSlider; 
+
     // <===== init the max health in the player script
     public int maxHealth = 100;   
 
@@ -16,7 +19,6 @@ public class HealthBar : MonoBehaviour {
         healthSlider.value = maxHealth;
         Debug.Log("Akhil : Max health set");
     }
-
     // <<==== call this func in damage or update func  
     public void updateHealth (int health) 
     {

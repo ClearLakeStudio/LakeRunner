@@ -8,7 +8,8 @@ using Microsoft.CSharp;
 class DisNxtBt 
 {  
   public GameObject NextLevelButton;
-  public virtual void DisplayNextLevelButton () {
+  public virtual void DisplayNextLevelButton () 
+  {
     //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
     NextLevelButton.SetActive(false);
     Debug.Log("button disabled");
@@ -27,18 +28,16 @@ class EbNxtBt : DisNxtBt
 
 public class ChangeScene : MonoBehaviour 
 {
-  // Singleton Pattern
+  // ****** Singleton Pattern ******
   private static ChangeScene instance;
-  public static ChangeScene Instance
+  public static ChangeScene Instance()
   {
-      get
-      {
-          if (instance == null)
-          {
-              instance = FindObjectOfType<ChangeScene>();
-          }
-          return instance;
-      }
+
+    if (instance == null)
+    {
+      instance = FindObjectOfType<ChangeScene>();
+    }
+    return instance;
   }
 
   private DisNxtBt d = new DisNxtBt();
@@ -95,12 +94,14 @@ public class ChangeScene : MonoBehaviour
     d.DisplayNextLevelButton();
     Debug.Log("Button set");
     gameOverUI.SetActive(true);
-    if (finishGame == false){
+    if (finishGame == false)
+    {
       //d.DisplayNextLevelButton();
       d.DisplayNextLevelButton();
       Debug.Log("button enabled");
     }
-    else {
+    else 
+    {
       //e.DisplayNextLevelButton();
       e.DisplayNextLevelButton();
       Debug.Log("button diabled");
@@ -119,7 +120,7 @@ public class ChangeScene : MonoBehaviour
   }
   public void mainMenu()
   {
-    SceneManager.LoadScene(1);
+    SceneManager.LoadScene(1)
     Debug.Log("menu");
   }
 
