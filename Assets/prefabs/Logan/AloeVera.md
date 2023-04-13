@@ -2,7 +2,7 @@
 
 Inherits from the AttributeItem class, which inherits from the Item class
 
-# Public Fields:
+## Public Fields:
 
 * AudioClip collectSound
     * The audio clip that will execute when the item is collected.
@@ -10,7 +10,7 @@ Inherits from the AttributeItem class, which inherits from the Item class
 * public float shieldIncrease = 25f
     * The amount that this item should increase the Hero's shield attribute bar.
 
-# Public Methods:
+## Public Methods:
 
 * IEnumerator UseEffect()
     * Must be executed as a coroutine. Adds a floating point value to the Hero's shield attribute bar.
@@ -27,7 +27,7 @@ Inherits from the AttributeItem class, which inherits from the Item class
 * void SetType(ItemType desiredType)
     * Assigns the type of the item that this method is called on to be equal to the desiredType passed in.
 
-# Dependencies:
+## Dependencies:
 
 * A GameObject with the tag of "Hero" must exist in the hierarchy.
     * That object must also contain a "Hero" script component.
