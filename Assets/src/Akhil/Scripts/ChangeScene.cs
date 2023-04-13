@@ -80,7 +80,7 @@ public class ChangeScene : MonoBehaviour
   //     //Nbu.DisplayNextLevelButton();
   //     Debug.Log("button diabled");
   //   }
-  // }
+  // } 
 
   //public DisableNextLevelButton e = new NextLevelButton();
 
