@@ -146,4 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6d1b4918e39244c99ae3a9ba15c635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallPlatform: {fileID: 0}
+  fallPlatform: {fileID: 2166465162896219611}

@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour
     // store references to gameObjects to initialize
     public GameObject platManager;
     public GameObject chunkManager;
+    public GameObject finishLine;
     public GameObject hero;
 
     // store references to scripts
-    PlatformManager pM;
-    LoadLevel cM;
+    private PlatformManager pM;
+    private LoadLevel cM;
+    private LevelFinish lF;
 
     // store moues data value
     Vector3 mousePos; // stores position of mouse at critical points
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
 
         pM = platManager.GetComponent<PlatformManager>(); // assign script reference in platformmanager.cs
         cM = chunkManager.GetComponent<LoadLevel>(); // assign script reference in loadlevel.cs
+        lF = finishLine.GetComponent<LevelFinish>(); // assign script reference in LevelFinish.cs
 
 
     }
@@ -58,7 +61,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // mouse detection
-        ReceivePlatformInput();
+        if (lF.CanPlacePlatforms())
+        {
+            ReceivePlatformInput();
+        }
 
         // update hero position
         heroPos = hero.transform.position;

@@ -35,7 +35,7 @@ public abstract class BaseDecorator : MonoBehaviour
      * will include this function in the future
     void OnColliderEnter2D(Collider other)
     {
-        if (other.tag == "Hero" || other.tag == )
+        if (other.tag == "Hero" || other.tag == "\whatever enemy is\")
         {
             other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0.1f)); // push the hero upwards when in contact with bubble
             // i need to add that it pushes the player in the x direction that matches their velocity here aswell

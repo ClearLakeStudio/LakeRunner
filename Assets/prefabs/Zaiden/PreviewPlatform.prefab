@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98526eb7845029040bf6683b6b23532d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatPlatform: {fileID: 0}
+  floatPlatform: {fileID: 6825211924453270627}
