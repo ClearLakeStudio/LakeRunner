@@ -11,7 +11,7 @@ public class Hero : Entity
 {
     public float jumpForce;
     public float movementSpeed;
-    public GameObject gameManager;
+    private GameObject gameManager;
 
 
     private float health;
@@ -78,12 +78,12 @@ public class Hero : Entity
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
     protected override void EntityFixedUpdate() 
     {
-        if(jumpQueued || ((Time.fixedTime%jumpTimer==0) && (Time.fixedTime!=0))){
+        if(jumpQueued || ((Time.fixedTime % jumpTimer == 0) && (Time.fixedTime != 0))){
             jumpQueued = false;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpForce);
         }
-        if((Time.fixedTime%stepTimer==0) && (Time.fixedTime!=0)){
-            rb.velocity = new Vector2(movementSpeed, rb.velocity.y+stepJump);
+        if((Time.fixedTime % stepTimer == 0) && (Time.fixedTime != 0)){
+            rb.velocity = new Vector2((rb.velocity.x + movementSpeed)/2, rb.velocity.y + stepJump);
         }
     }
 

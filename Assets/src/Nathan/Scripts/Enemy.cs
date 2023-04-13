@@ -12,10 +12,15 @@ using UnityEngine;
  */
 public class Enemy : Entity
 {
+    [SerializeField]
+    protected float attacktimer;
+
+    protected Hero hero = null;
 
     protected override void EntityAwake()
     {
         gameObject.tag = "Enemy";
+        hero = GameObject.Find("Hero").GetComponent<Hero>();
     }
 
     //EntityOutOfBounds destroys enemies when called
@@ -30,4 +35,16 @@ public class Enemy : Entity
         Debug.Log("(NN) Enemy acknowledged collision");
     }
 
+    protected override void EntityFixedUpdate()
+    {
+        if((Time.fixedTime % attacktimer == 0) && (Time.fixedTime!=0)){
+            EnemyAttack();
+        }
+    }
+
+    //All Enemies have some form of attack action, even if it is to do nothing.
+    protected virtual void EnemyAttack()
+    {
+        //nothing
+    }
 }
