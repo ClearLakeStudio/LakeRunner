@@ -12,16 +12,18 @@ public class Ambush : Enemy
     public Frog frog;
     public Bear bear;
 
+    private Object newClone;
+
     protected override void EntityCollision(Collider2D other)
     {
         Debug.Log("Ambush triggered");
         if(other.tag == "Hero"){
             var value = Random.value;
             if(value < 0.5){
-                frog.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
+                newClone = frog.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
             }
             else{
-                bear.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
+                newClone = bear.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
             }
             Destroy(gameObject, 0.2f);
         }
