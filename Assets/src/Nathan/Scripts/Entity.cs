@@ -10,8 +10,8 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     protected Rigidbody2D rb;
-    //private Animator anim;
-    //private SpriteRenderer sprite;
+    //protected Animator anim;
+    protected SpriteRenderer sprite;
     private Vector2 gameBoundaryLow;
     private Vector2 gameBoundaryHigh;
 
@@ -20,7 +20,7 @@ public abstract class Entity : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
-        //sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
         EntityAwake();
         EntitySetBounds();
     }
