@@ -28,8 +28,6 @@ public class ChangeScene : MonoBehaviour
 {
 
 
-  
-
   private DisNxtBt d = new DisNxtBt();
   private EbNxtBt e = new EbNxtBt();
 
@@ -65,6 +63,7 @@ public class ChangeScene : MonoBehaviour
 
   public void gameOver()
   {
+
     d.DisplayNextLevelButton();
     Debug.Log("Button set");
     gameOverUI.SetActive(true);

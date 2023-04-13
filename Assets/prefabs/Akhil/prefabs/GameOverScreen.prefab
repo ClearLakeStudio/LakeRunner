@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b977ed5207d4247caaaf10ad1b8a7cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 0}
   NextLevelButton: {fileID: 1221126293847603815}
 --- !u!1 &1221126292710752774
 GameObject:
