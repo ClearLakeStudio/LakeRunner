@@ -16,6 +16,7 @@ public class Frog : Enemy
         }
         if(hero.GetPosition().x > this.GetPosition().x){
             rb.velocity = new Vector2(rb.velocity.x + leapX, rb.velocity.y + leapY);
+            sprite.flipX = false;
         }
     }
 

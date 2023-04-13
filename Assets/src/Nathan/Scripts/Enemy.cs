@@ -19,7 +19,7 @@ public class Enemy : Entity
 
     protected override void EntityAwake()
     {
-        gameObject.tag = "DefaultEnemy";
+        gameObject.tag = "Enemy";
         hero = GameObject.Find("Hero").GetComponent<Hero>();
     }
 
