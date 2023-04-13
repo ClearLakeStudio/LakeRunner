@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platManager: {fileID: 819621887}
   chunkManager: {fileID: 461071279}
-  hero: {fileID: 811467669}
+  hero: {fileID: 5716343106048154735, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
   healthBar: {fileID: 28331052}
 --- !u!114 &737884531
 MonoBehaviour:
@@ -2248,6 +2248,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2069538595687712181, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069538595687712181, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2287,6 +2291,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2876816423721861757, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876816423721861757, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876816423721861757, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11cb95b495bddbd4d9e810427b808479, type: 3}
+    - target: {fileID: 2876816423721861757, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876816423721861757, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876816423721861757, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263455323309582832, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263455323309582832, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5716343106048154735, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -2320,11 +2356,6 @@ PrefabInstance:
 --- !u!4 &801252181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2069538595687712181, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
-  m_PrefabInstance: {fileID: 801252180}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &811467669 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5716343106048154735, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
   m_PrefabInstance: {fileID: 801252180}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &819621887

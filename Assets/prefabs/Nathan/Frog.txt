@@ -1,0 +1,4 @@
+# Prefab: Frog Enemy
+Summary: A quick, heavy enemy-entity that hops towards the Hero object.
+Inherits from Enemy Inherits from Entity
+Targets the object in the hierarchy named "Hero", and jumps towards it every "attackTimer" seconds.
