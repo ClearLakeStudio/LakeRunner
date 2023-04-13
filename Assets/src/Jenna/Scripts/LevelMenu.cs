@@ -43,13 +43,22 @@ public class LevelMenu : MonoBehaviour, ISubscriber
      */
     public void Update(IPublisher publisher)
     {
-        ActivateMenu((publisher as Lake).activeLevelMenu);  // check if level menu is active
+        // check if level menu is active
+        if ((publisher as Lake).activeLevelMenu) {
+            ActivateMenu(true);
+
+            // reactivate animation coroutines
+            gameObject.GetComponent<AnimateMenu>().Play();
+            menuButton.GetComponent<AnimateMenu>().Play();
+        } else {
+            ActivateMenu(false);
+        }
 
         unlocked = (publisher as Lake).unlocked;  // check if level is unlocked
         if (unlocked) {
-            menuButtonText.text = "Start ";
+            menuButtonText.text = "Start";
         } else {
-            menuButtonText.text = "Locked ";
+            menuButtonText.text = "Locked";
         }
     }
 
@@ -58,6 +67,8 @@ public class LevelMenu : MonoBehaviour, ISubscriber
      */
     public void ActivateMenu(bool activate)
     {
+        //gameObject.GetComponent<AnimateMenu>().enabled = false;
+        //gameObject.GetComponent<AnimateMenu>().enabled = activate;
         menu.SetActive(activate);
     }
 
