@@ -11,12 +11,15 @@ public class Hero : Entity
 {
     public float jumpForce;
     public float movementSpeed;
-    private GameObject gameManager;
+    public HealthBar healthbar;
+    public SunSbar shieldbar;
 
+    private GameObject gameManager;
 
     private float health;
     private float shield;
     private bool jumpQueued;
+    private float lastX;
 
     [SerializeField]
     private float stepJump;
@@ -35,13 +38,17 @@ public class Hero : Entity
         if(newHealth >= 100 ){
             health = 100;
         }
-        else if(newHealth < 0){
+        else if(newHealth <= 0){
             health = 0;
-            Debug.Log("Zero Health");
+            healthbar.updateHealth((int)health);
+            Debug.Log("(NN) Hero Health Depleated");
+            Time.timeScale = 0;
+            gameManager.GetComponent<ChangeScene>().gameOver();
         }
         else{
             health = newHealth;
         }
+        healthbar.updateHealth((int)health);
     }
 
     public float GetHealth(){
@@ -53,13 +60,14 @@ public class Hero : Entity
         if(newShield >= 100 ){
             shield = 100;
         }
-        else if(newShield < 0){
+        else if(newShield <= 0){
             shield = 0;
-            Debug.Log("Zero Health");
+            Debug.Log("(NN) Hero Shield Depleated");
         }
         else{
             shield = newShield;
         }
+        shieldbar.updateSunS((int)shield);
     }
 
     public float GetShield(){
@@ -73,6 +81,9 @@ public class Hero : Entity
         health = 100;
         shield = 100;
         gameManager = GameObject.Find("GameManager");
+        healthbar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
+        shieldbar = GameObject.Find("SunScreen").GetComponent<SunSbar>();
+        lastX = rb.position.x;
     }
 
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
@@ -84,6 +95,16 @@ public class Hero : Entity
         }
         if((Time.fixedTime % stepTimer == 0) && (Time.fixedTime != 0)){
             rb.velocity = new Vector2((rb.velocity.x + movementSpeed)/2, rb.velocity.y + stepJump);
+            if(rb.position.x < lastX + 1){
+                Debug.Log("Sun damage");
+                if(shield > 0){
+                    SetShield(shield - 5);
+                }
+                else{
+                    SetHealth(health - 5);
+                }
+            }
+            lastX = rb.position.x;
         }
     }
 
