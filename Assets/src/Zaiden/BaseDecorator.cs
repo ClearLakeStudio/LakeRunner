@@ -20,4 +20,14 @@ public abstract class BaseDecorator : MonoBehaviour
     {
         thisPlatform = p;
     }
+    /*
+     * will include this function in the future
+    void OnColliderEnter2D(Collider other)
+    {
+        if (other.tag == "Hero")
+        {
+            other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0.1f)); // push the hero upwards when in contact with bubble
+        }
+    }
+    */
 }

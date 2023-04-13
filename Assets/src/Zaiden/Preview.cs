@@ -46,4 +46,5 @@ public class Preview : BaseDecorator
             GetThisPlatform().transform.localScale = new Vector3(basePlatForm.GetWidth(), basePlatForm.GetHeight(), 1);
         }
     }
+
 }
