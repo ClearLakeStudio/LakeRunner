@@ -20,6 +20,12 @@ public class ItemManager : MonoBehaviour
     // singleton pattern
     public static ItemManager instance;
 
+    // denied sound effect to play when player tries to use an item that doesn't exist
+    [SerializeField] private AudioClip deniedSound;
+
+    // inventory object
+    public InventoryScript inventory;
+
     // user input keys
     public KeyCode sunglassesKey = KeyCode.Alpha1;
     public KeyCode slippersKey = KeyCode.Alpha2;
@@ -126,12 +132,31 @@ public class ItemManager : MonoBehaviour
             //     // play "denial" sound
             // }
 
-            ActivateItemEffect(ItemType.Sunglasses);
+            if (inventory.removeItem(ItemType.Sunglasses)) {
+                // play success sound
+
+                // activate effect
+                ActivateItemEffect(ItemType.Sunglasses);
+            }
+            else {
+                //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
+            }
         } else if (Input.GetKeyDown(slippersKey)) {
-            Vector2 temp = new Vector2(20, 20);
-            ActivateItemEffect(ItemType.Slippers);
+            if (inventory.removeItem(ItemType.Slippers)) {
+                ActivateItemEffect(ItemType.Slippers);
+            }
+            else {
+                //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
+            }
         } else if (Input.GetKeyDown(brainBlastBarKey)) {
-            ActivateItemEffect(ItemType.BrainBlastBar);
+            if (inventory.removeItem(ItemType.BrainBlastBar)) {
+                ActivateItemEffect(ItemType.BrainBlastBar);
+            }
+            else {
+                //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
+                //AudioSource.Play(deniedSound);
+                //deniedSound.Play();
+            }
         }
     }
 
@@ -153,7 +178,7 @@ public class ItemManager : MonoBehaviour
             return;
         }
 
-        // is this dynamic binding?
+        // ## Dynamic binding ##
         // Superclass: Item
         // Subclasses: AloeVera, BrainBlastBar, Slippers, Sunglasses, Sunscreen
         Item itemScript = obj.GetComponent<Item>();
@@ -195,3 +220,4 @@ public class ItemManager : MonoBehaviour
         spawnedObj.transform.position = (Vector2)pos;
     }
 }
+
