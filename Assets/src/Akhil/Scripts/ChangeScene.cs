@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Microsoft.CSharp;
 
-
+///**** Dynamic Binding ********
 class DisNxtBt 
 {  
   public GameObject NextLevelButton;
@@ -26,12 +27,35 @@ class EbNxtBt : DisNxtBt
 
 public class ChangeScene : MonoBehaviour 
 {
-
+  // Singleton Pattern
+  private static ChangeScene instance;
+  public static ChangeScene Instance
+  {
+      get
+      {
+          if (instance == null)
+          {
+              instance = FindObjectOfType<ChangeScene>();
+          }
+          return instance;
+      }
+  }
 
   private DisNxtBt d = new DisNxtBt();
   private EbNxtBt e = new EbNxtBt();
+  private DisableNextLevelButton Dbu;
+  private NextLevelButton Nbu;
 
-
+  void Start()
+  {
+    Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
+    Dbu.d = d;
+    Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
+    Nbu.e = e;
+    dynamic dynamicD = d;
+    dynamic dynamicE = e;
+    d.DisplayNextLevelButton();
+  }
 
   // public DisableNextLevelButton Dbu;
   // public NextLevelButton Nbu;
@@ -57,21 +81,27 @@ public class ChangeScene : MonoBehaviour
   //     Debug.Log("button diabled");
   //   }
   // }
-  
 
   //public DisableNextLevelButton e = new NextLevelButton();
 
   public void gameOver()
   {
+    dynamic dynamicD = d;
+    dynamic dynamicE = e;
+    /// To call this func use this method to call it    
+    //*******   ChangeScene.Instance.gameOver(); ******
 
+    //d.DisplayNextLevelButton();
     d.DisplayNextLevelButton();
     Debug.Log("Button set");
     gameOverUI.SetActive(true);
     if (finishGame == false){
+      //d.DisplayNextLevelButton();
       d.DisplayNextLevelButton();
       Debug.Log("button enabled");
     }
     else {
+      //e.DisplayNextLevelButton();
       e.DisplayNextLevelButton();
       Debug.Log("button diabled");
     }
