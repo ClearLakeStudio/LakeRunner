@@ -80,7 +80,7 @@ public class LevelMenu : MonoBehaviour, ISubscriber
         if (unlocked) {
             SceneManager.LoadScene(sceneName);
         } else {
-            Debug.Log(sceneName);
+            //Debug.Log(sceneName);
         }
     }
 }

@@ -64,14 +64,29 @@ public class OverworldMap : Map
      * Is called when the user clicks on a GameObject.
      * Checks if clicked GameObject is a level.
      */
-    public void SelectLevel(string levelName)
+    public bool SelectLevel(string levelName)
     {
+        bool found = false;
+
         foreach (GameObject level in levels) {
             if (level.name == levelName) {
+                found = true;
                 level.GetComponent<Lake>().OpenLevelMenu();
             } else {
                 level.GetComponent<Lake>().CloseLevelMenu();
             }
+        }
+
+        return found;
+    }
+
+    /*
+     *
+     */
+    public void DeselectLevel()
+    {
+        foreach (GameObject level in levels) {
+            level.GetComponent<Lake>().CloseLevelMenu();
         }
     }
 

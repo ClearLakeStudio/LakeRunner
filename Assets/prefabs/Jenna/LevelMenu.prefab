@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 35, y: 95, z: 20, w: 100}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 572740231660473160}
   - component: {fileID: 572740231660473166}
   - component: {fileID: 572740231660473167}
-  - component: {fileID: 572740231660473165}
   - component: {fileID: 572740231660473164}
   - component: {fileID: 9176615966073935730}
   m_Layer: 5
@@ -226,7 +225,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 55, y: 210, z: 55, w: 190}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -241,32 +240,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!61 &572740231660473165
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572740231660473161}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 820, y: 875}
-  m_EdgeRadius: 0
 --- !u!114 &572740231660473164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +408,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 35, y: 95, z: 20, w: 100}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

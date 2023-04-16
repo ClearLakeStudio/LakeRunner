@@ -7,6 +7,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /*
  * Listens for user input in the "Overworld" scene.
@@ -20,13 +22,20 @@ public class OverworldManager : MonoBehaviour
 {
     public GameObject[] levels;
     public GameObject[] levelMenus;
+    public Canvas canvas;
 
     private OverworldMap overworld;
     private Map map;
-    private bool funcReturn;
+    private bool activeMenu = false;
+    private GraphicRaycaster raycaster;
+    private PointerEventData pointerEventData;
+    private EventSystem eventSystem;
 
     void Start()
     {
+        raycaster = canvas.GetComponent<GraphicRaycaster>();
+        eventSystem = canvas.GetComponent<EventSystem>();
+
         map = gameObject.AddComponent<OverworldMap>();
         overworld = gameObject.AddComponent<OverworldMap>();
         overworld.OverworldMapInit(levels, levelMenus);
@@ -37,11 +46,28 @@ public class OverworldManager : MonoBehaviour
     {
         // check for user input
         if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            if (activeMenu == false) {
+                // physics raycaster
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-            if (hit.collider != null) {
-                overworld.SelectLevel(hit.collider.name);
+                if (hit.collider != null) {
+                    //Debug.Log(hit.collider.name);
+                    activeMenu = overworld.SelectLevel(hit.collider.name);
+                }
+            } else {
+                // graphics raycaster
+                pointerEventData = new PointerEventData(eventSystem);
+                pointerEventData.position = Input.mousePosition;
+
+                List<RaycastResult> results = new List<RaycastResult>();
+
+                raycaster.Raycast(pointerEventData, results);
+
+                if (results.Count == 0) {
+                    overworld.DeselectLevel();
+                    activeMenu = false;
+                }
             }
         }
     }
