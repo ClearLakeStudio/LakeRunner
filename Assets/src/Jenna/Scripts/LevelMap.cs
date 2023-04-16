@@ -15,8 +15,12 @@ using UnityEngine.SceneManagement;
  */
 public class LevelMap : Map
 {
+    private LevelDatastore datastore;
+
     void Start()
     {
+        datastore = new LevelDatastore();
+        datastore.PrintLevel();
         Debug.Log("JP Set initial hero position");
     }
 

@@ -23,9 +23,12 @@ public class Lake : MonoBehaviour, IPublisher
     public bool unlocked = false;
 
     private List<ISubscriber> subscribers = new List<ISubscriber>();
+    private LevelDatastore datastore;
 
     void Start()
     {
+        datastore = new LevelDatastore();
+        datastore.ChangeLevel();
         if (gameObject.name == "Level 1") {
             unlocked = true;
         }
