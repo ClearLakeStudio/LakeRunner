@@ -52,6 +52,34 @@ public class LoadLevel : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            curLevel = SceneManager.GetActiveScene().buildIndex; 
+            switch (curLevel)
+            {
+                case 1:
+                    //Create items here
+                    items.SpawnItem(ItemType.Sunscreen, new Vector2(56, 50));
+                    items.SpawnItem(ItemType.AloeVera, new Vector2(126, 50));
+                    break;
+                case 2:
+                    //Same
+                    items.SpawnItem(ItemType.Sunglasses, new Vector2(15, 20));
+                    break;
+                case 3:
+                    //Same
+                    break;
+                case 4:
+                    //Same
+                    break;
+                case 5:
+                    //Same
+                    break;
+                default:
+                    Debug.Log("LoadLevel - " + curLevel + " is Invalid level index.");
+                    break;
+            }
+        }
     }
 
     /*  This function will spawn the first three chunks of the level immediately. It will then check whether 
@@ -136,31 +164,6 @@ public class LoadLevel : MonoBehaviour
                     randFloat = UnityEngine.Random.Range(0.0f,10.0f);
                     items.SpawnItem(null, new Vector2(lastTerrainLoc.x, lastTerrainLoc.y + 5));
                 }
-            }
-        }
-        else 
-        {
-            curLevel = SceneManager.GetActiveScene().buildIndex;
-            switch (curLevel)
-            {
-                case 1:
-                    //Create items here
-                    break;
-                case 2:
-                    //Same
-                    break;
-                case 3:
-                    //Same
-                    break;
-                case 4:
-                    //Same
-                    break;
-                case 5:
-                    //Same
-                    break;
-                default:
-                    Debug.Log("LoadLevel - " + curLevel + " is Invalid level index.");
-                    break;
             }
         }
     }
