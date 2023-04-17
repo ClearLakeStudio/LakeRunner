@@ -140,6 +140,7 @@ public class LoadLevel : MonoBehaviour
         }
         else 
         {
+            curLevel = SceneManager.GetActiveScene().buildIndex;
             switch (curLevel)
             {
                 case 1:
@@ -158,7 +159,7 @@ public class LoadLevel : MonoBehaviour
                     //Same
                     break;
                 default:
-                    Debug.Log("LoadLevel - Invalid level index.");
+                    Debug.Log("LoadLevel - " + curLevel + " is Invalid level index.");
                     break;
             }
         }
