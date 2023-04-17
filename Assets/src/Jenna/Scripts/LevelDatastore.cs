@@ -47,14 +47,14 @@ public class LevelDatastore
         //nextLevel = "Jenna-Luz";
     }
 
-    public void EndOfLevel(string level, bool finished)
+    public void FinishLevel(string level)
     {
         if (unlockedLevels.ContainsKey(level)) {
             int levelIndex = int.Parse(level.Replace("Level", ""));
-            finishedLevels[levelIndex] = finished;
+            finishedLevels[levelIndex] = true;
 
-            if (levelIndex < levelCount && finished == true) {
-                unlockedLevels["Level" + (levelIndex + 1)] = finished;
+            if (levelIndex < levelCount) {
+                unlockedLevels["Level" + (levelIndex + 1)] = true;
                 nextLevel = "Level" + (levelIndex + 1);
             }
         }

@@ -32,7 +32,7 @@ public class OverworldMap : Map
 
     void Start()
     {
-        Debug.Log("loaded");
+        //Debug.Log("loaded");
         hero = GameObject.FindGameObjectWithTag("Hero");
     }
 
