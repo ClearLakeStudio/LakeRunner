@@ -43,13 +43,11 @@ public class ItemManager : MonoBehaviour
 
     public void Awake()
     {
+        // singleton
         if (instance == null) {
             instance = this;
         }
-    }
 
-    public void Start()
-    {
         // intermediate list of GameObjects retrieved from the itemCollection GameObject
         List<GameObject> itemsFromCollection = new List<GameObject>();
         // iterate through each child in the itemCollection and add it to the itemsFromCollection list
