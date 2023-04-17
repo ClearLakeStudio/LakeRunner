@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelFinish : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class LevelFinish : MonoBehaviour
     
     private GameObject gameOver;
     private GameObject platMan;
+    private LevelDatastore levData;
     private RaycastHit2D[] colls;
     private Vector2 rayLoc;
     private bool platforms = true;
@@ -21,6 +23,7 @@ public class LevelFinish : MonoBehaviour
     void Start(){
         rayLoc = new Vector2(transform.position.x + transform.localScale.x/2, transform.position.y);
         platMan = GameObject.Find("UserPlatformManager");
+        levData = new LevelDatastore();
         Transform[] trs = GameObject.Find("Canvas").GetComponentsInChildren<Transform>(true);
         foreach(Transform t in trs){
             if(t.name == "GameOverScreen"){
@@ -37,6 +40,7 @@ public class LevelFinish : MonoBehaviour
                 platMan.SetActive(false);
                 gameOver.SetActive(true);
                 platforms = false;
+                levData.EndOfLevel(SceneManager.GetActiveScene().name, true);
             }
         }
         colls = Physics2D.RaycastAll(rayLoc, new Vector2(0,-1));
@@ -46,6 +50,7 @@ public class LevelFinish : MonoBehaviour
                 platMan.SetActive(false);
                 gameOver.SetActive(true);
                 platforms = false;
+                levData.EndOfLevel(SceneManager.GetActiveScene().name, true);
             }
         }
     }
