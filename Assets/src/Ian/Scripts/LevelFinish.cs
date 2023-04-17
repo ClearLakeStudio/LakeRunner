@@ -18,11 +18,12 @@ public class LevelFinish : MonoBehaviour
     private LevelDatastore levData;
     private RaycastHit2D[] colls;
     private Vector2 rayLoc;
-    private bool platforms = true;
+    private bool platforms;
 
     void Start(){
         rayLoc = new Vector2(transform.position.x + transform.localScale.x/2, transform.position.y);
         platMan = GameObject.Find("UserPlatformManager");
+        platforms = true;
         levData = new LevelDatastore();
         Transform[] trs = GameObject.Find("Canvas").GetComponentsInChildren<Transform>(true);
         foreach(Transform t in trs){
