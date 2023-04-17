@@ -63,17 +63,21 @@ public class LoadLevel : MonoBehaviour
                     items.SpawnItem(ItemType.AloeVera, new Vector2(126, 50));
                     break;
                 case 2:
-                    items.SpawnItem(ItemType.Sunglasses, new Vector2(15, 10));
+                    items.SpawnItem(ItemType.Sunglasses, new Vector2(15, 5));
                     items.SpawnItem(ItemType.Slippers, new Vector2(61, 5));
                     break;
                 case 3:
-                    items.SpawnItem(ItemType.BrainBlastBar, new Vector2(25,0));
+                    items.SpawnItem(ItemType.BrainBlastBar, new Vector2(30,0));
+                    items.SpawnItem(ItemType.Sunscreen, new Vector2(110,0));
                     break;
                 case 4:
-                    //Same
+                    items.SpawnItem(ItemType.Sunglasses, new Vector2(45,5));
+                    items.SpawnItem(ItemType.AloeVera, new Vector2(150,10));
                     break;
                 case 5:
-                    //Same
+                    items.SpawnItem(ItemType.Slippers, new Vector2(25,3));
+                    items.SpawnItem(ItemType.Sunscreen, new Vector2(75,3));
+                    items.SpawnItem(ItemType.BrainBlastBar, new Vector2(95,3));
                     break;
                 default:
                     Debug.Log("LoadLevel - " + curLevel + " is Invalid level index.");
