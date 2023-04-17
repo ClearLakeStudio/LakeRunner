@@ -40,7 +40,7 @@ public class LevelFinish : MonoBehaviour
                 platMan.SetActive(false);
                 gameOver.SetActive(true);
                 platforms = false;
-                levData.EndOfLevel(SceneManager.GetActiveScene().name, true);
+                levData.FinishLevel(SceneManager.GetActiveScene().name);
             }
         }
         colls = Physics2D.RaycastAll(rayLoc, new Vector2(0,-1));
@@ -50,7 +50,7 @@ public class LevelFinish : MonoBehaviour
                 platMan.SetActive(false);
                 gameOver.SetActive(true);
                 platforms = false;
-                levData.EndOfLevel(SceneManager.GetActiveScene().name, true);
+                levData.FinishLevel(SceneManager.GetActiveScene().name);
             }
         }
     }
