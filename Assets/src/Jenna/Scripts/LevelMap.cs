@@ -19,9 +19,10 @@ public class LevelMap : Map
 
     void Start()
     {
-        datastore = new LevelDatastore();
-        datastore.PrintLevel();
         Debug.Log("JP Set initial hero position");
+        //datastore = new LevelDatastore();
+        //datastore.EndOfLevel(SceneManager.GetActiveScene().name, true);
+        //SceneManager.LoadScene("Overworld");
     }
 
     void Update()

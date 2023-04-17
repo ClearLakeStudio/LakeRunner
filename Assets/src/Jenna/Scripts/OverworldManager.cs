@@ -30,9 +30,11 @@ public class OverworldManager : MonoBehaviour
     private GraphicRaycaster raycaster;
     private PointerEventData pointerEventData;
     private EventSystem eventSystem;
+    private LevelDatastore datastore;
 
     void Start()
     {
+        datastore = new LevelDatastore(5);
         raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = canvas.GetComponent<EventSystem>();
 
@@ -40,6 +42,8 @@ public class OverworldManager : MonoBehaviour
         overworld = gameObject.AddComponent<OverworldMap>();
         overworld.OverworldMapInit(levels, levelMenus);
         map.LoadObjects();
+
+        datastore.PrintLevelStatus();
     }
 
     void Update()
@@ -80,6 +84,6 @@ public class OverworldManager : MonoBehaviour
      */
     public int GetHeroLevel()
     {
-        return overworld.GetHeroLevel();
+        return datastore.GetNextLevel();
     }
 }

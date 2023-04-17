@@ -28,10 +28,8 @@ public class Lake : MonoBehaviour, IPublisher
     void Start()
     {
         datastore = new LevelDatastore();
-        datastore.ChangeLevel();
-        if (gameObject.name == "Level 1") {
-            unlocked = true;
-        }
+        unlocked = datastore.GetLevelStatus(gameObject.name);
+        Debug.Log(gameObject.name + " unlocked " + unlocked);
     }
 
     /*
