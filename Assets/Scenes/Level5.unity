@@ -1756,6 +1756,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3115859357927490907, guid: 96a4dba7f78244bc28d3cc697af039d4, type: 3}
   m_PrefabInstance: {fileID: 802583531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &802583533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5949788419150917325, guid: 96a4dba7f78244bc28d3cc697af039d4, type: 3}
+  m_PrefabInstance: {fileID: 802583531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ff0470d12d847be99054fd886550df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &867661118
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,6 +4109,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2596821495697630164, guid: 59425e0e856ec4c039dfd6fc8152187f, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 802583533}
     - target: {fileID: 2596821495697630164, guid: 59425e0e856ec4c039dfd6fc8152187f, type: 3}
       propertyPath: itemCollection
       value: 

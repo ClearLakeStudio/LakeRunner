@@ -63,11 +63,11 @@ public class LoadLevel : MonoBehaviour
                     items.SpawnItem(ItemType.AloeVera, new Vector2(126, 50));
                     break;
                 case 2:
-                    //Same
-                    items.SpawnItem(ItemType.Sunglasses, new Vector2(15, 20));
+                    items.SpawnItem(ItemType.Sunglasses, new Vector2(15, 10));
+                    items.SpawnItem(ItemType.Slippers, new Vector2(61, 5));
                     break;
                 case 3:
-                    //Same
+                    items.SpawnItem(ItemType.BrainBlastBar, new Vector2(25,0));
                     break;
                 case 4:
                     //Same
