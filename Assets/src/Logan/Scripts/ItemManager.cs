@@ -83,6 +83,14 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    public bool UpdateInventory(ItemType collidedItem)
+    {
+        if (inventory.addItem(collidedItem)) {
+            return true;
+        }
+        return false;
+    }
+
     public GameObject GetPooledObject(ItemType desiredType)
     {
         // search through the pools dictionary for a pool that matches the desiredType

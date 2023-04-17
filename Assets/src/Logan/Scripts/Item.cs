@@ -23,7 +23,7 @@ public class Item : MonoBehaviour
     [HideInInspector] public bool effectIsActive = false;
 
 
-    [SerializeField] private AudioClip collectSound;
+    [SerializeField] protected AudioClip collectSound;
     protected ItemType type = ItemType.Undefined;
     protected float effectTime = 3f;
 
@@ -67,7 +67,7 @@ public class Item : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Hero") {
             AudioSource.PlayClipAtPoint(collectSound, transform.position);
