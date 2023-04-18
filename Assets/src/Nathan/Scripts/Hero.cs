@@ -12,9 +12,10 @@ public class Hero : Entity
     public float jumpForce;
     public float movementSpeed;
 
-    //private GameObject gameManager;
+
     private HealthBar healthbar;
     private SunSbar shieldbar;
+    private GameObject gameOver;
 
     private float health;
     private float shield;
@@ -43,7 +44,7 @@ public class Hero : Entity
             healthbar.updateHealth((int)health);
             Debug.Log("(NN) Hero Health Depleated");
             Time.timeScale = 0;
-            //gameManager.GetComponent<ChangeScene>().gameOver();
+            gameOver.SetActive(true);
         }
         else{
             health = newHealth;
@@ -80,10 +81,16 @@ public class Hero : Entity
         gameObject.tag = "Hero";
         health = 100;
         shield = 100;
-        //gameManager = GameObject.Find("GameManager");
         healthbar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         shieldbar = GameObject.Find("SunScreen").GetComponent<SunSbar>();
         lastX = rb.position.x;
+
+        Transform[] trs = GameObject.Find("Canvas").GetComponentsInChildren<Transform>(true);
+        foreach(Transform t in trs){
+            if(t.name == "GameOverScreen"){
+                gameOver = t.gameObject;
+            }
+        }
     }
 
     //FixedUpdate should be used for physics based calls, since it is independent of framerate and scaled by time effects.
@@ -91,9 +98,9 @@ public class Hero : Entity
     {
         if(jumpQueued || ((Time.fixedTime % jumpTimer == 0) && (Time.fixedTime != 0))){
             jumpQueued = false;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y/2 + jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x + movementSpeed/2, rb.velocity.y/2 + jumpForce);
         }
-        if((Time.fixedTime % stepTimer == 0) && (Time.fixedTime != 0)){
+        else if((Time.fixedTime % stepTimer == 0) && (Time.fixedTime != 0)){
             rb.velocity = new Vector2(rb.velocity.x/3 + movementSpeed, rb.velocity.y/2 + stepJump);
             if(rb.position.x < lastX + 1){
                 Debug.Log("Sun damage");
@@ -120,7 +127,7 @@ public class Hero : Entity
     protected override void EntityOutOfBounds() 
     {   
         Time.timeScale = 0;
-        //gameManager.GetComponent<ChangeScene>().gameOver();
+        gameOver.SetActive(true);
         Debug.Log("(NN) Time frozen, Hero out of bounds");
     }
 }

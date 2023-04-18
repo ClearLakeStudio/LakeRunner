@@ -12,7 +12,7 @@ public class Ambush : Enemy
     public Frog frog;
     public Bear bear;
 
-    private Object newClone;
+    private Entity newClone;
 
     protected override void EntityCollision(Collider2D other)
     {
@@ -20,14 +20,14 @@ public class Ambush : Enemy
         if(other.tag == "Hero"){
             var value = Random.value;
             if(value < 0.5){
-                newClone = frog.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
+                newClone = (Entity)frog.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
             }
             else{
-                newClone = bear.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
+                newClone = (Entity)bear.EntityClone(new Vector3(hero.GetPosition().x + 20, hero.GetPosition().y + 2, 0));
             }
             Destroy(gameObject, 0.2f);
         }
-    }
+    } 
 
     //prototype pattern, returns a copy of itself
     public override Object EntityClone(Vector3 position)
