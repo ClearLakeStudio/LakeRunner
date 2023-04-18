@@ -25,10 +25,14 @@ public class LevelFinish : MonoBehaviour
         platMan = GameObject.Find("UserPlatformManager");
         platforms = true;
         levData = new LevelDatastore();
-        Transform[] trs = GameObject.Find("Canvas").GetComponentsInChildren<Transform>(true);
-        foreach(Transform t in trs){
-            if(t.name == "GameOverScreen"){
-                gameOver = t.gameObject;
+        if(GameObject.Find("Canvas"))
+        {
+            Transform[] trs = GameObject.Find("Canvas").GetComponentsInChildren<Transform>(true);
+            foreach(Transform t in trs)
+            {
+                if(t.name == "GameOverScreen"){
+                    gameOver = t.gameObject;
+                }
             }
         }
     }
