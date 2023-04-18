@@ -10,6 +10,7 @@ public class MaterialBar : MonoBehaviour
     
     public Slider matSlider;
     public int maxMat;   
+    public int currentMat = 0;
 
     // <<==== call this func in the player script start func  
     public void SetMaxMat(int maxMat)
@@ -23,6 +24,11 @@ public class MaterialBar : MonoBehaviour
     public void updateMaterial (int material) 
     {     
         matSlider.value = material;
+        currentMat = material;
         Debug.Log("Akhil : Material resource update");
+    }
+
+    public int retCurrentMat(){
+        return currentMat;
     }
 }
