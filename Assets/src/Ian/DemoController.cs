@@ -93,7 +93,7 @@ namespace Facade
         private static object locker = new object();
         private PlatformManager pM;
         private ChunkGroup ch;
-        private PlatBox pB;
+        // private PlatBox pB;
         static DemoFacade instance;
 
         protected DemoFacade()
@@ -126,10 +126,12 @@ namespace Facade
         }
 
         public void CreatePlatform(Vector2 topLeft, float width){
-            Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
-            pB = pM.CheckPlatValidity(loc);
-            pB.floating = true;
-            pM.MakePlat(pB);
+            Vector2[] loc = {new Vector2(topLeft.x,topLeft.y),new Vector2(topLeft.x + width, topLeft.y-1)};
+            Platform p = new Platform(loc,10000);
+            BaseDecorator pF = new Floating(p);
+            // pB = pM.CheckPlatValidity(loc);
+            // pB.floating = true;
+            // pM.MakePlat(pB);
         }
 
         public Vector2 FillGap(Vector2 heroPos){
