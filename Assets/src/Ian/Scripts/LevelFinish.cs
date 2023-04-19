@@ -43,6 +43,7 @@ public class LevelFinish : MonoBehaviour
             if(hit.collider.gameObject.tag == "Hero"){
                 platMan.SetActive(false);
                 gameOver.GetComponent<ChangeScene>().gameOver();
+                gameOver.GetComponent<ChangeScene>().finishGame = true;
                 platforms = false;
                 levData.FinishLevel(SceneManager.GetActiveScene().name);
             }
@@ -52,6 +53,7 @@ public class LevelFinish : MonoBehaviour
             if(hit.collider.gameObject.tag == "Hero"){
                 platMan.SetActive(false);
                 gameOver.GetComponent<ChangeScene>().gameOver();
+                gameOver.GetComponent<ChangeScene>().finishGame = true;
                 platforms = false;
                 levData.FinishLevel(SceneManager.GetActiveScene().name);
             }

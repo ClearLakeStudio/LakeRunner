@@ -1,138 +1,145 @@
+/*
+ * FileName: ChangeScene.cs
+ * Developer: Akhil
+ * Purpose: Loading and Changing Scenes in the game.
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-///**** Dynamic Binding ********
+/*
+ * The classes below implement
+ * Dynamic Binding
+ * to Enable or Disable Next Level button in the Gameover Screen
+*/
 class DisNxtBt 
-{  
-  public GameObject NextLevelButton;
-  public virtual void DisplayNextLevelButton () 
-  {
-    //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
-    NextLevelButton.SetActive(false);
-    Debug.Log("button disabled");
-  }
-} 
-
-class EbNxtBt : DisNxtBt
-{
-  public override void DisplayNextLevelButton ()
-  {
-    //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
-    NextLevelButton.SetActive(true);
-    Debug.Log("button enabled");
-  }
+{ 
+    public virtual bool DisplayNextLevelButton() 
+    {
+        Debug.Log("button disabled");
+        return false;
+    }
 }
 
+// this class is the subclass and it overrides its function when called
+class EbNxtBt : DisNxtBt
+{
+    public override bool DisplayNextLevelButton()
+    {
+        Debug.Log("button enabled");
+        return true;
+    }
+}
+
+
+/*
+ * This class has 
+ * functions to change, load and activate scenes
+*/
 public class ChangeScene : MonoBehaviour 
 {
-  // ****** Singleton Pattern ******
-  private static ChangeScene instance;
-  public static ChangeScene Instance()
-  {
+    /*
+    * This function is a Singleton pattern
+    * to ensure that only one instance of the object is present
+    */
+    private static ChangeScene instance;
 
-    if (instance == null)
+    public static ChangeScene Instance()
     {
-      instance = FindObjectOfType<ChangeScene>();
-    }
+        if (instance == null) {
+            instance = FindObjectOfType<ChangeScene>();
+        }
+
     return instance;
-  }
-
-  private DisNxtBt d = new DisNxtBt();
-  private EbNxtBt e = new EbNxtBt();
-  // private DisableNextLevelButton Dbu;
-  // private NextLevelButton Nbu;
-
-  // void Start()
-  // {
-  //   Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
-  //   Dbu.d = d;
-  //   Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
-  //   Nbu.e = e;
-  //   dynamic dynamicD = d;
-  //   dynamic dynamicE = e;
-  //   d.DisplayNextLevelButton();
-  // }
-
-  // public DisableNextLevelButton Dbu;
-  // public NextLevelButton Nbu;
- 
- 
-  public GameObject gameOverUI;
-  bool finishGame = true;
-
-
-  // void Start()
-  // {
-  //   // DisableNextLevelButton Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
-  //   // NextLevelButton Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
-  // }
-  // void update()
-  // {
-  //   if (finishGame == false){
-  //     //d.DisplayNextLevelButton();
-  //     //Dbu.DisplayNextLevelButton();
-  //     Debug.Log("button enabled");
-  //   }
-  //   else {
-  //     //e.DisplayNextLevelButton();
-  //     //Nbu.DisplayNextLevelButton();
-  //     Debug.Log("button diabled");
-  //   }
-  // } 
-
-  //public DisableNextLevelButton e = new NextLevelButton();
-
-  public void gameOver()
-  {
-    dynamic dynamicD = d;
-    dynamic dynamicE = e;
-    /// To call this func use this method to call it    
-    //*******   ChangeScene.Instance.gameOver(); ******
-
-    //d.DisplayNextLevelButton();
-    d.DisplayNextLevelButton();
-    Debug.Log("Button set");
-    gameOverUI.SetActive(true);
-    if (finishGame == false)
-    {
-      //d.DisplayNextLevelButton();
-      d.DisplayNextLevelButton();
-      Debug.Log("button enabled");
     }
-    else 
+
+    // public gameobject for attaching the Next Level Button
+    public GameObject NextLevelButtn;
+    // public gameobject for attaching the gameoverScreen Prefab
+    public GameObject gameOverUI;
+    // initializing the object of the class which has dynamic binding
+    private DisNxtBt d;
+    // this bool will tell true if the player has finished the level successfully
+    bool finishGame = true;
+    // this bool stores value to show or hide the button
+    bool button = true;
+
+    /*
+     * this function activates the gameover screen
+     * when the player completes the level
+     * or loses   
+    */
+    public void GameOver()
     {
-      //e.DisplayNextLevelButton();
-      e.DisplayNextLevelButton();
-      Debug.Log("button diabled");
+        /*
+        * if the player has successfully completed 
+        * the level then the 
+        * next level button is shown
+        */
+        if (finishGame == true) {
+            d = new DisNxtBt();
+            button = d.DisplayNextLevelButton();
+        }
+        else if(finishGame == false) {
+            d = new EbNxtBt();
+            button = d.DisplayNextLevelButton();
+        }
+
+        // frezes the game to stop when it is over
+        Time.timeScale = 0;
+        Debug.Log("Time Freeze");
+        // activate gameover screen panel
+        gameOverUI.SetActive(true);
+
+        /*
+         * if player didnt complete the level and lost 
+         * then the next level button will be hidden
+         */
+
+        if (button == false) {
+            Debug.Log("button enabled");
+            NextLevelButtn.SetActive(false);
+        }
+        else {
+            Debug.Log("button diabled");
+            NextLevelButtn.SetActive(true);
+        }
+
     }
-  }
-  public void nextLevel()
-  {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    Debug.Log("next level");
-  }
 
-  public void restart()
-  {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    Debug.Log("restart");
-  }
-  public void mainMenu()
-  {
-    SceneManager.LoadScene("MainMenu");
-    Debug.Log("MainMenu");
-  }
+    // this func will take to the next level
+    public void NextLevel()
+    {
+        Debug.Log("next level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
-  public void MoveToScene( int SceneID ) 
-  {
-    SceneManager.LoadScene (SceneID);
-  }
+    // this func will load the current scene again
+    public void Restart()
+    {
+        Debug.Log("restart");
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
-  public void Quit() 
-  {
-    Application.Quit();
-    Debug.Log("Quit");
-  }
+    // this func will take to the main menu
+    public void MainMenu()
+    {
+        Debug.Log("MainMenu");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void MoveToScene(int SceneID) 
+    {
+        SceneManager.LoadScene(SceneID);
+    }
+
+    // this func will quit the application
+    public void Quit() 
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }

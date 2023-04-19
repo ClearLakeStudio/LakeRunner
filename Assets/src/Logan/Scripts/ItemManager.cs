@@ -85,7 +85,7 @@ public class ItemManager : MonoBehaviour
 
     public bool UpdateInventory(ItemType collidedItem)
     {
-        if (inventory.addItem(collidedItem)) {
+        if (inventory.AddItem(collidedItem)) {
             return true;
         }
         return false;
@@ -138,7 +138,7 @@ public class ItemManager : MonoBehaviour
             //     // play "denial" sound
             // }
 
-            if (inventory.removeItem(ItemType.Sunglasses)) {
+            if (inventory.RemoveItem(ItemType.Sunglasses)) {
                 // play success sound
 
                 // activate effect
@@ -148,14 +148,14 @@ public class ItemManager : MonoBehaviour
                 //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
             }
         } else if (Input.GetKeyDown(slippersKey)) {
-            if (inventory.removeItem(ItemType.Slippers)) {
+            if (inventory.RemoveItem(ItemType.Slippers)) {
                 ActivateItemEffect(ItemType.Slippers);
             }
             else {
                 //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
             }
         } else if (Input.GetKeyDown(brainBlastBarKey)) {
-            if (inventory.removeItem(ItemType.BrainBlastBar)) {
+            if (inventory.RemoveItem(ItemType.BrainBlastBar)) {
                 ActivateItemEffect(ItemType.BrainBlastBar);
             }
             else {

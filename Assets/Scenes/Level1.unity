@@ -2335,6 +2335,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2069538595687712181, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
   m_PrefabInstance: {fileID: 801252180}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &805855964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1221126293847603815, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+  m_PrefabInstance: {fileID: 1221126291970977947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &872593114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4706,6 +4711,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4223472294846257240, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+      propertyPath: NextLevelButtn
+      value: 
+      objectReference: {fileID: 805855964}
     - target: {fileID: 5597629986140858162, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: m_SizeDelta.y
       value: 69
