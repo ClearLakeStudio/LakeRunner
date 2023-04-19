@@ -121,8 +121,8 @@ public class ChangeScene : MonoBehaviour
   }
   public void mainMenu()
   {
-    SceneManager.LoadScene(1);
-    Debug.Log("menu");
+    SceneManager.LoadScene("MainMenu");
+    Debug.Log("MainMenu");
   }
 
   public void MoveToScene( int SceneID ) 
