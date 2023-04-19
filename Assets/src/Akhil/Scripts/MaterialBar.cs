@@ -1,18 +1,31 @@
+/*
+ * FileName: MaterialBar.cs
+ * Developer: Akhil
+ * Purpose: Instantiating and Showing the Players Material resource on the screen
+ * which is used for drawing platforms for the player to move
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * this class has the functions to 
+ * initialize and update the amount of resources player is having
+ * and returns the current value to the gamemanager for calculations of the usage
+*/
 public class MaterialBar : MonoBehaviour 
-{
-
-    // <<===== init the max material building resource in the player script
-    
+{   
+    // this slider will show his resource material levels
     public Slider matSlider;
-    public int maxMat;   
-    public int currentMat = 0;
 
-    // <<==== call this func in the player script start func  
+    // initial value of the players resource material
+    public int maxMat = 100;   
+    // this variable will return the current level
+    public int currentMat = 0;
+ 
+    // function to set the max value when scene loads
     public void SetMaxMat(int maxMat)
     {
         matSlider.maxValue = maxMat;
@@ -20,15 +33,19 @@ public class MaterialBar : MonoBehaviour
         Debug.Log("Akhil : Max material resource set");
     }
 
-    // <<==== call this func in material use or update func 
-    public void updateMaterial (int material) 
+    // func to update the value and change the level on the bar 
+    public void UpdateMaterial(int material) 
     {     
         matSlider.value = material;
         currentMat = material;
         Debug.Log("Akhil : Material resource update");
     }
 
-    public int retCurrentMat(){
+    // func to tell the gamemanager about the resource material available
+    public int RetCurrentMat() 
+    {
         return currentMat;
     }
 }
+
+
