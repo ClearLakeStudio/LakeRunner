@@ -91,14 +91,14 @@ namespace Facade
     public class DemoFacade
     {
         private static object locker = new object();
-        private PlatformManager pM;
+        //private PlatformManager pM;
         private ChunkGroup ch;
         // private PlatBox pB;
         static DemoFacade instance;
 
         protected DemoFacade()
         {
-            pM = GameObject.Find("UserPlatformManager").GetComponent<PlatformManager>();
+            //pM = GameObject.Find("UserPlatformManager").GetComponent<PlatformManager>();
             ch = ChunkGroup.GetChunkGroup();
         }
 
