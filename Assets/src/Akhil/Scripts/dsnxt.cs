@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnableNextLevelButton : DisableNextLevelButton
+public class dsnxt : ChangeScene
 {
-  public override void DisplayNextLevelButton (){
+  public virtual void DisplayNextLevelButton () 
+  {
     //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
-    NextLevelButton.SetActive(true);
-    Debug.Log("button enabled");
+    NextLevelButton.SetActive(false);
+    Debug.Log("button disabled");
   }
-}*/
+}
+*/

@@ -5,22 +5,18 @@ using UnityEngine.SceneManagement;
 
 ///**** Dynamic Binding ********
 class DisNxtBt 
-{  
-  public GameObject NextLevelButton;
-  public virtual void DisplayNextLevelButton () 
+{ 
+  public virtual bool DisplayNextLevelButton () 
   {
-    //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
-    NextLevelButton.SetActive(false);
+    return false;
     Debug.Log("button disabled");
   }
-} 
-
+}
 class EbNxtBt : DisNxtBt
 {
-  public override void DisplayNextLevelButton ()
+  public override bool DisplayNextLevelButton ()
   {
-    //UnityEngine.UI.Button button = GameObject.Find("NextLevel").GetComponent<UnityEngine.UI.Button>();
-    NextLevelButton.SetActive(true);
+    return true;
     Debug.Log("button enabled");
   }
 }
@@ -31,82 +27,46 @@ public class ChangeScene : MonoBehaviour
   private static ChangeScene instance;
   public static ChangeScene Instance()
   {
-
     if (instance == null)
     {
       instance = FindObjectOfType<ChangeScene>();
     }
     return instance;
   }
-
-  private DisNxtBt d = new DisNxtBt();
-  private EbNxtBt e = new EbNxtBt();
-  // private DisableNextLevelButton Dbu;
-  // private NextLevelButton Nbu;
-
-  // void Start()
-  // {
-  //   Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
-  //   Dbu.d = d;
-  //   Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
-  //   Nbu.e = e;
-  //   dynamic dynamicD = d;
-  //   dynamic dynamicE = e;
-  //   d.DisplayNextLevelButton();
-  // }
-
-  // public DisableNextLevelButton Dbu;
-  // public NextLevelButton Nbu;
- 
- 
+  public GameObject NextLevelButtn;
   public GameObject gameOverUI;
   bool finishGame = true;
+  bool button = true;
 
-
-  // void Start()
-  // {
-  //   // DisableNextLevelButton Dbu = gameObject.AddComponent<DisableNextLevelButton>() as DisableNextLevelButton;
-  //   // NextLevelButton Nbu = gameObject.AddComponent<NextLevelButton>() as NextLevelButton;
-  // }
-  // void update()
-  // {
-  //   if (finishGame == false){
-  //     //d.DisplayNextLevelButton();
-  //     //Dbu.DisplayNextLevelButton();
-  //     Debug.Log("button enabled");
-  //   }
-  //   else {
-  //     //e.DisplayNextLevelButton();
-  //     //Nbu.DisplayNextLevelButton();
-  //     Debug.Log("button diabled");
-  //   }
-  // } 
-
-  //public DisableNextLevelButton e = new NextLevelButton();
+  private DisNxtBt d;
 
   public void gameOver()
   {
-    dynamic dynamicD = d;
-    dynamic dynamicE = e;
-    /// To call this func use this method to call it    
-    //*******   ChangeScene.Instance.gameOver(); ******
 
-    //d.DisplayNextLevelButton();
-    d.DisplayNextLevelButton();
-    Debug.Log("Button set");
+    if (finishGame == true) {
+      d = new DisNxtBt();
+      button = d.DisplayNextLevelButton();
+    }
+    else if(finishGame == false){
+      d = new EbNxtBt();
+      button = d.DisplayNextLevelButton();
+    }
+
+    Time.timeScale = 0;
+    Debug.Log("Time Freeze");
     gameOverUI.SetActive(true);
-    if (finishGame == false)
+
+    if (button == false)
     {
-      //d.DisplayNextLevelButton();
-      d.DisplayNextLevelButton();
       Debug.Log("button enabled");
+      NextLevelButtn.SetActive(false);
     }
     else 
     {
-      //e.DisplayNextLevelButton();
-      e.DisplayNextLevelButton();
       Debug.Log("button diabled");
+      NextLevelButtn.SetActive(true);
     }
+
   }
   public void nextLevel()
   {
@@ -116,6 +76,7 @@ public class ChangeScene : MonoBehaviour
 
   public void restart()
   {
+    Time.timeScale = 1;
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     Debug.Log("restart");
   }
@@ -136,3 +97,7 @@ public class ChangeScene : MonoBehaviour
     Debug.Log("Quit");
   }
 }
+
+
+
+
