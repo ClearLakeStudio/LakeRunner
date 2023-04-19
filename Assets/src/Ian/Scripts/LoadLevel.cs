@@ -192,7 +192,7 @@ public enum TerrColor
 public class TerrParent
 {
     private GameObject terr;
-    private Vector2 terrPos;
+    public Vector2 terrPos;
     private TerrColor color;
 
     public TerrParent(GameObject nextTerr,TerrColor c=TerrColor.Green)
@@ -241,7 +241,7 @@ public class TerrParent
 public class TerrHigh : TerrParent
 {
     private GameObject terr;
-    private Vector2 terrPos;
+    public Vector2 terrPos;
     private TerrColor color;
 
     public TerrHigh(GameObject nextTerr,TerrColor c=TerrColor.Green) : base(nextTerr,c)
@@ -288,7 +288,7 @@ public class TerrHigh : TerrParent
 public class TerrStair : TerrParent
 {
     private GameObject terr;
-    private Vector2 terrPos;
+    public Vector2 terrPos;
     private TerrColor color;
 
     public TerrStair(GameObject nextTerr,TerrColor c=TerrColor.Green) : base(nextTerr,c)

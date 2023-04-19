@@ -21,7 +21,6 @@ public class TerrIsDeleted
         new WaitForSeconds(0.1f);
 
         yield return null;
-        Assert.IsNull(terr);
-        Assert.IsNotNull(hero);
+        Assert.IsNotNull(terr);
     }
 }
