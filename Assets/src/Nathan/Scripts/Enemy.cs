@@ -42,7 +42,7 @@ public class Enemy : Entity
         }
     }
 
-    //Strategy pattern for eney attacks
+    //Strategy pattern for enemy attacks
     protected virtual void EnemyAttack()
     {
         //nothing

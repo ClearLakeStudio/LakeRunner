@@ -12,7 +12,6 @@ public class Hero : Entity
     public float jumpForce;
     public float movementSpeed;
 
-
     private HealthBar healthbar;
     private SunSbar shieldbar;
     private GameObject gameOver;
