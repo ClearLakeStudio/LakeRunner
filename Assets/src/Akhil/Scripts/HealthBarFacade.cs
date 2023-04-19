@@ -20,7 +20,7 @@ public class updateHlth : HealthBar
         Debug.Log("Akhil : health update");
     }
 }
-
+///*******Facade***************
 public class HealthBarFacade : MonoBehaviour
 {
     public Slider healthSlider; 
