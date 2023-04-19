@@ -41,7 +41,6 @@ public class LevelFinish : MonoBehaviour
         colls = Physics2D.RaycastAll(rayLoc, new Vector2(0,1));
         foreach(RaycastHit2D hit in colls){
             if(hit.collider.gameObject.tag == "Hero"){
-                Time.timeScale = 0;
                 platMan.SetActive(false);
                 gameOver.SetActive(true);
                 platforms = false;
@@ -51,7 +50,6 @@ public class LevelFinish : MonoBehaviour
         colls = Physics2D.RaycastAll(rayLoc, new Vector2(0,-1));
         foreach(RaycastHit2D hit in colls){
             if(hit.collider.gameObject.tag == "Hero"){
-                Time.timeScale = 0;
                 platMan.SetActive(false);
                 gameOver.SetActive(true);
                 platforms = false;
