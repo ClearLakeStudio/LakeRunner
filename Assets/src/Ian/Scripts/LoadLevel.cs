@@ -13,7 +13,6 @@ using UnityEngine.SceneManagement;
 public class LoadLevel : MonoBehaviour
 {
     public GameObject terrain;
-    public Vector2 lastTerrainLoc;
     public bool isInfinite;
 
     private List<GameObject> infTerrPool = new List<GameObject>();
@@ -22,7 +21,7 @@ public class LoadLevel : MonoBehaviour
     private TerrColor nextColor = TerrColor.Green;
     private TerrParent theChild;
     private Vector2 randLoc;
-    // private float[] itemRate = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
+    private Vector2 lastTerrainLoc;
     private float randColor;
     private float randFloat;
     private float randTerr;
