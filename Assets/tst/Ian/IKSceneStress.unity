@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9e87bfa1adad14996a0af84fd16ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 1
+  interval: 0.5
 --- !u!1 &146302944
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde17dcb0ac4f094998b4b21641600d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Platform: {fileID: 2166465162896219611, guid: f288831d45e775d4691e60b41e9f2672, type: 3}
+  floatPlatform: {fileID: 0}
+  fallPlatform: {fileID: 0}
+  pvPlatform: {fileID: 0}
 --- !u!1 &740163687
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 302319365480725765, guid: 07843e4919ec90140ba9290c74d33f07, type: 3}
-  lastTerrainLoc: {x: 0, y: 0}
+  isInfinite: 0
 --- !u!1 &1478197984
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +908,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8420046549401104826, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2069538595687712181, guid: fae50fcb10e35bb46a7941fb78018190, type: 3}
       propertyPath: m_RootOrder
@@ -1117,5 +1119,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platManager: {fileID: 156998698}
   chunkManager: {fileID: 1427813334}
+  finishLine: {fileID: 0}
   hero: {fileID: 1378926535}
-  healthBar: {fileID: 740163687}

@@ -15,3 +15,10 @@ How it works:
 	- Places this new terrain behind the last-placed piece of terrain.
 		- May also forgo spawning a piece of terrain and create an empty space.
 	- Spawns items on the new terrain at random.
+
+Dependencies:
+ - ItemManager object must be included in the current scene.
+ - ItemManager and ItemType must be defined separately.
+ - A pool of objects with "Terrain" tag must be placed in the current scene before infinite runner generation.
+
+To see what it looks like, see "ChunkManager.mov" video in Assets/prefabs/Ian directory.
