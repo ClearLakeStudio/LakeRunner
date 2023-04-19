@@ -18,7 +18,7 @@ class DisNxtBt
 { 
     public virtual bool DisplayNextLevelButton() 
     {
-        Debug.Log("button disabled");
+        Debug.Log("dyn button disabled");
         return false;
     }
 }
@@ -28,7 +28,7 @@ class EbNxtBt : DisNxtBt
 {
     public override bool DisplayNextLevelButton()
     {
-        Debug.Log("button enabled");
+        Debug.Log("dyn button enabled");
         return true;
     }
 }
@@ -62,9 +62,9 @@ public class ChangeScene : MonoBehaviour
     // initializing the object of the class which has dynamic binding
     private DisNxtBt d;
     // this bool will tell true if the player has finished the level successfully
-    bool finishGame = true;
+    public bool finishGame = false;
     // this bool stores value to show or hide the button
-    bool button = true;
+    bool button =true;
 
     /*
      * this function activates the gameover screen
@@ -73,17 +73,18 @@ public class ChangeScene : MonoBehaviour
     */
     public void GameOver()
     {
+        d = new EbNxtBt();
         /*
         * if the player has successfully completed 
         * the level then the 
         * next level button is shown
         */
         if (finishGame == true) {
-            d = new DisNxtBt();
+            
             button = d.DisplayNextLevelButton();
         }
         else if(finishGame == false) {
-            d = new EbNxtBt();
+            //d = new DisNxtBt();
             button = d.DisplayNextLevelButton();
         }
 
@@ -99,11 +100,11 @@ public class ChangeScene : MonoBehaviour
          */
 
         if (button == false) {
-            Debug.Log("button enabled");
+            Debug.Log("button disabled");
             NextLevelButtn.SetActive(false);
         }
         else {
-            Debug.Log("button diabled");
+            Debug.Log("button enabled");
             NextLevelButtn.SetActive(true);
         }
 

@@ -218,6 +218,24 @@ public class TerrParent
         else
             return -1;
     }
+
+    // public void SetPos(Vector2 newPos)
+    // {
+    //     terrPos = newPos;
+    // }
+
+    // //Should return -1 for error, 0 for success
+    // public int CreateChunk()
+    // {
+    //     GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+    //     if(thisTerr)
+    //     {
+    //         thisTerr.GetComponent<TerrainBehavior>().enabled = true;
+    //         return 0;
+    //     }
+    //     else
+    //         return -1;
+    // }
 }
 
 public class TerrHigh : TerrParent
@@ -248,6 +266,23 @@ public class TerrHigh : TerrParent
         else
             return -1;
     }
+
+    // public void SetPos(Vector2 newPos)
+    // {
+    //     terrPos = new Vector2(newPos.x,newPos.y - 1);
+    // }
+
+    // public int CreateChunk()
+    // {
+    //     GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+    //     if(thisTerr)
+    //     {
+    //         thisTerr.GetComponent<TerrainBehavior>().enabled = true;
+    //         return 0;
+    //     }
+    //     else
+    //         return -1;
+    // }
 }
 
 public class TerrStair : TerrParent
@@ -278,4 +313,21 @@ public class TerrStair : TerrParent
         else
             return -1;
     }
+
+    // public void SetPos(Vector2 newPos)
+    // {
+    //     terrPos = new Vector2(newPos.x,newPos.y - 0.75f);
+    // }
+
+    // public int CreateChunk()
+    // {
+    //     GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+    //     if(thisTerr)
+    //     {
+    //         thisTerr.GetComponent<TerrainBehavior>().enabled = true;
+    //         return 0;
+    //     }
+    //     else
+    //         return -1;
+    // }
 }
