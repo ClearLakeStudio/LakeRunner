@@ -1,3 +1,20 @@
 Prefab: Demo Manager
-Purpose: Handle functions for the demo mode.
+Purpose: Runs a demo mode on the current level.
 Interaction: No player interaction; navigates the world automatically.
+
+How it works:
+ - Runs the attached DemoController script, so just drag and drop the prefab into your overworld scene!
+ - DemoController:
+	- Finds the OverworldManager script.
+	- Persists between scene loads so that it can be accessed from within a demo.
+	- Counts from 0 to 10; when 10 is reached, the demo starts on the current level.
+		- Any user input interrupts this countdown.
+		- Any user input exits the demo.
+	- Loads the current level and runs the demo on that level.
+	- Finds the Hero object and tracks its location.
+	- Creates a Demo Facade, which uses platform and chunk creation functions from separate classes.
+		- These classes are Platform and ChunkGroup, respectively.
+		- Demo Facade is a singleton, so only one instance of it can exist at any given time.
+		- ChunkGroup is also a singleton.
+	- Finds the next vertical or horizontal gap between chunks and builds platforms to move the hero between them.
+		- This is done at random, so a gap may not be filled to show a level failure.

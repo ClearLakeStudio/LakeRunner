@@ -12,24 +12,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DemoController : MonoBehaviour
-{
-    /*  Needed:
-    *   - Find current and next 3? terrain
-    *   - Compare distance from top right edge of one terrain COLLIDER to top left edge of next
-    *   - If x-distance > 1?
-    *       - If y-distance > 1? then draw stairs
-    *       - Else draw platform from top right corner of platform to left edge of next, minimum height
-    *   - Item interactions as needed
-    *
-    *   Checking distances:
-    *   - Iterate through terrain pieces one at a time based on relation to player location
-    *       - Store last terrain location
-    *       - If player moves onto last terrain and no next terrain is found: 
-    *           - Make sure finish line is not behind player
-    *           - Begin drawing certain length platforms until next terrain is found or player passes finish
-    */
-    
-    private GameObject platMan;
+{    
     private GameObject overMan;
     private OverworldManager overScript;
     private Vector2 platLocation;
@@ -61,7 +44,6 @@ public class DemoController : MonoBehaviour
             {
                 inDemo = true;
                 SceneManager.LoadScene(overScript.GetHeroLevel());
-                platMan = GameObject.Find("UserPlatformManager");
             }
         }
         else
