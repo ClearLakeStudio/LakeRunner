@@ -9,7 +9,6 @@ public class AK_test1
 {
 
    /* HealthBar health1; */
-    
 
     //GameObject HealthBar = Resources.Load<GameObject>("HealthBar");
 
@@ -22,9 +21,20 @@ public class AK_test1
     public void AK_test1SimplePasses()
     {
                    // var SpawnObj = Instantiate(health1);
-       /* health1 = GameObject.Find("HealthBar").GetComponent<HealthBar>();
-        Assert.AreEqual(health1.maxHealth, 100); */
-    }
+       /* health1 = GameObject.Find("HealthBar").GetComponent<HealthBar>(); 
+       health1.SetMaxHealth;
+        HealthBarVal = GameObject.Find ("HealthBar").GetComponent <Slider> ().value;
+        Assert.AreEqual(health1.maxHealth, 100);
+        
+
+        Assert.AreEqual(health1.UpdateHealth(70), 70);
+
+        Assert.AreEqual(health1.UpdateHealth(10), 10);
+
+        Assert.AreEqual(health1.UpdateHealth(-10), -10);   */
+
+    }  
+
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
     // `yield return null;` to skip a frame.

@@ -4517,7 +4517,7 @@ PrefabInstance:
       objectReference: {fileID: 477923235}
     - target: {fileID: 1221126291832759791, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: restart
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 1221126292286550012, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: m_CullTransparentMesh
@@ -4653,7 +4653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1221126292710752772, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: mainMenu
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1221126292710752772, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4690,6 +4690,10 @@ PrefabInstance:
     - target: {fileID: 1221126293605746773, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221126293847603813, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 1221126293847603814, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: m_SizeDelta.y
