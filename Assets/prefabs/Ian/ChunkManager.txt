@@ -1,3 +1,17 @@
 Prefab: Chunk Manager
 Purpose: Handles chunk spawning and chunk interactions, primarily for Infinite Runner mode.
 Interaction: Manages the world that the player sees and interacts with.
+
+How it works:
+ - Uses LoadLevel script
+ - Takes boolean indicator for whether the level should be infinite or not
+ - For finite, LoadLevel:
+	- Spawns items at specific locations based on the current level.
+	- Provides CreateRandomChunk() method, which allows for random chunk spawning within a certain radius of the hero.
+ - For infinite, LoadLevel:
+	- Creates ten flat platforms to help the player get started.
+	- Finds and stores a terrain pool placed in the scene.
+	- Randomly selects a type (flat, high, stair) and color (green, sand, stone) of terrain.
+	- Places this new terrain behind the last-placed piece of terrain.
+		- May also forgo spawning a piece of terrain and create an empty space.
+	- Spawns items on the new terrain at random.
