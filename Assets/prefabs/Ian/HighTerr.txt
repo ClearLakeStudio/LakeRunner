@@ -1,9 +1,9 @@
-Prefab: Terrain Basic
-Purpose: Basic, low-level terrain
-Interaction: Player runs on top
+Prefab: High Terr
+Purpose: Taller terrain piece
+Interaction: Player walks on top of it
 
 How it works:
- - Uses a Sprite Renderer to show the basic terrain of a given color.
+ - Uses a Sprite Renderer to show the high terrain of a given color.
  - Uses a box collider with boundaries set to the edges of the sprite.
  - Uses Terrain Behavior script, which:
 	- Tracks the position of the object tagged "Hero" within the scene.

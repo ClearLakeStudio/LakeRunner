@@ -1,0 +1,10 @@
+Prefab: Terrain Stair
+Purpose: Incline or decline in terrain
+Interaction: Player runs on top of it
+
+How it works:
+ - Uses a Sprite Renderer to show the stair terrain of a given color.
+ - Since the stairs are at an angle, a separate prefab called "TerrStairCollider" must be attached to provide collision.
+ - Uses Terrain Behavior script, which:
+	- Tracks the position of the object tagged "Hero" within the scene.
+	- Destroys the terrain object if the Hero reaches a point 40 spaces to the right of the terrain.

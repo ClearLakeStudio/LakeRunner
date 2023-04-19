@@ -1,3 +1,6 @@
 Prefab: Pine Tree
 Purpose: Basic decorative pine tree
 Interaction: No interactions
+
+How it works:
+ - Just a Sprite Renderer attached to an object to show a pine tree; simply drag and drop into your scene!

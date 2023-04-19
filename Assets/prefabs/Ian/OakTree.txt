@@ -1,3 +1,6 @@
 Prefab: Oak Tree
 Purpose: Basic decorative oak tree
 Interaction: No interactions
+
+How it works:
+ - Purely a Sprite Renderer to show an oak tree sprite; just drag and drop into your scene!
