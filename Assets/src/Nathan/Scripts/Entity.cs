@@ -13,8 +13,8 @@ public abstract class Entity : MonoBehaviour
     //protected Animator anim;
     protected SpriteRenderer sprite;
 
-    private Vector2 gameBoundaryLow;
-    private Vector2 gameBoundaryHigh;
+    public Vector2 gameBoundaryLow;
+    public Vector2 gameBoundaryHigh;
 
     //Awake is called when the object is initialized.
     void Awake()

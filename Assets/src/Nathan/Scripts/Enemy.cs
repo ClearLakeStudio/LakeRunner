@@ -13,7 +13,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
     [SerializeField]
-    protected float attacktimer;
+    public float attacktimer;
 
     protected Hero hero = null;
 
