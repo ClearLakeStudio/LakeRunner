@@ -7,7 +7,7 @@ using UnityEngine.TestTools;
 public class PlatformStop
 {
     [UnityTest]
-    public IEnumerator ItemIsCollectedTest()
+    public IEnumerator PlatformStopTest()
     {
         var finishLine = new GameObject();
         finishLine.gameObject.transform.position = new Vector2(0,0);

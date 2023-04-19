@@ -11,14 +11,12 @@ public class TerrIsDeleted
         var hero = new GameObject();
         hero.gameObject.transform.position = new Vector2(0,0);
         hero.gameObject.tag = "Hero";
-        // hero.AddComponent<RigidBody2D>();
-        // hero.AddComponent<Hero>();
         
         var terr = new GameObject();
         terr.gameObject.transform.position = new Vector2(0,0);
         terr.AddComponent<TerrainBehavior>();
 
-        hero.gameObject.transform.position = new Vector2(0, 40.1f);
+        hero.gameObject.transform.position = new Vector2(42, 0);
 
         yield return null;
         Assert.IsNotNull(terr);
