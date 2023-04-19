@@ -4,7 +4,7 @@
 ## HealthBar
  This prefab will display the current health of the NPC while playing 
 ## Inventory
- This prefab will display the contents of the collectibles and it will store them and update if player picked up any or used
+ This prefab will display the contents of the collectibles and it will store them and update if player picked up any or used. this prefab interacts with the inventoryitem manager script, this prefab will also ensure that an item wont be stored beyond the maximum allowed limit and it is responsible for not letting the player use an item when its not there in the inventory.
 ## MatBAr
  This will show the amount of material resource the Player is having while playing just like the healthbar, but it will also return the available resource to the game manager
 ## SunScreen
