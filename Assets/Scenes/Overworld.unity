@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807953677463437283, guid: 0b3ebf62cf8a7964ab230f2817c9bba1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6839480090910658801, guid: 0b3ebf62cf8a7964ab230f2817c9bba1, type: 3}
       propertyPath: m_RootOrder
@@ -1752,6 +1752,7 @@ MonoBehaviour:
   canvas: {fileID: 1174039775}
   objectSprites:
   - {fileID: 21300000, guid: 11cb95b495bddbd4d9e810427b808479, type: 3}
+  overworld: {fileID: 0}
 --- !u!4 &1191884112
 Transform:
   m_ObjectHideFlags: 0
