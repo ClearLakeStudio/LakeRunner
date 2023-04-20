@@ -48,23 +48,9 @@ public class Item : MonoBehaviour
         return this.type;
     }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
-        if (gameObject.tag == "Sunscreen") {
-            this.SetType(ItemType.Sunscreen);
-        }
-        else if (gameObject.tag == "Aloe Vera") {
-            this.SetType(ItemType.AloeVera);
-        }
-        else if (gameObject.tag == "Sunglasses") {
-            this.SetType(ItemType.Sunglasses);
-        }
-        else if (gameObject.tag == "Slippers") {
-            this.SetType(ItemType.Slippers);
-        }
-        else if (gameObject.tag == "BrainBlastBar") {
-            this.SetType(ItemType.BrainBlastBar);
-        }
+        this.SetType(ItemType.Undefined);
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)

@@ -15,6 +15,11 @@ using UnityEngine;
  */
 public class Sunglasses : InventoryItem
 {
+    protected override void Awake()
+    {
+        this.SetType(ItemType.Sunglasses);
+    }
+
     public override IEnumerator UseEffect()
     {
         GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");

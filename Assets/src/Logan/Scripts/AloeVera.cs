@@ -19,6 +19,11 @@ public class AloeVera : AttributeItem
     private GameObject heroObject;
     private Hero heroScript;
 
+    protected override void Awake()
+    {
+        this.SetType(ItemType.AloeVera);
+    }
+
     public override IEnumerator UseEffect()
     {
         float currentShield;

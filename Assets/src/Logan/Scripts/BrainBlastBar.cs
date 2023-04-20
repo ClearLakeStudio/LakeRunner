@@ -15,6 +15,11 @@ using UnityEngine;
  */
 public class BrainBlastBar : InventoryItem
 {
+    protected override void Awake()
+    {
+        this.SetType(ItemType.BrainBlastBar);
+    }
+
     public override IEnumerator UseEffect()
     {
         // Store the original x velocity of the runner

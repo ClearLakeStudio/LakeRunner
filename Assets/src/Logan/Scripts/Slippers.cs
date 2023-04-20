@@ -15,6 +15,11 @@ using UnityEngine;
  */
 public class Slippers : InventoryItem
 {
+    protected override void Awake()
+    {
+        this.SetType(ItemType.Slippers);
+    }
+
     public override IEnumerator UseEffect()
     {
         GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");

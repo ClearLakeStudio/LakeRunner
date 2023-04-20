@@ -17,6 +17,11 @@ public class Sunscreen : AttributeItem
 {
     public float healthIncrease = 25f;
 
+    protected override void Awake()
+    {
+        this.SetType(ItemType.Sunscreen);
+    }
+
     public override IEnumerator UseEffect()
     {
         float currentHealth;
