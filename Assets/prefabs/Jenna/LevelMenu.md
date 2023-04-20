@@ -1,7 +1,7 @@
 # Level Menu
 Add this to your Canvas to create a menu for each of your game levels!
 
-## Componenets
+## Components
 It is a UI panel with the following UI elements:
 - Level Name: __Legacy Text__ to display the name of the level.
 - Start Button: __Button__ to start the level.
