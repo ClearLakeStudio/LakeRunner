@@ -4,19 +4,17 @@ using UnityEngine;
 using UnityEngine.TestTools;
 
 public class StairInheritance
-{
+{    
     [UnityTest]
     public IEnumerator StairInheritsTest()
     {
-        var theTerr = new GameObject();
-        theTerr.AddComponent<LoadLevel>();
+        GameObject theTerr = (GameObject)Resources.Load("TerrStairGreen");
 
-        TerrStair stairs = new TerrStair(theTerr);
+        TerrParent stairs = new TerrStair(theTerr);
         stairs.SetPos(new Vector2(0,0));
+        theTerr = stairs.CreateChunk();
 
-        Debug.Log(stairs.terrPos.y);
-
-        Assert.IsTrue(stairs.terrPos.y == -0.75f);
+        Assert.IsTrue(theTerr.transform.position.y == -0.75f);
         return null;
     }
 }

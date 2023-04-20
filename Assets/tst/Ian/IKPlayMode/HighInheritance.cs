@@ -8,15 +8,13 @@ public class HighInheritance
     [UnityTest]
     public IEnumerator HighInheritsTest()
     {
-        var theTerr = new GameObject();
-        theTerr.AddComponent<LoadLevel>();
+        GameObject theTerr = (GameObject)Resources.Load("HighTerrGreen");
 
-        TerrHigh high = new TerrHigh(theTerr);
+        TerrParent high = new TerrHigh(theTerr);
         high.SetPos(new Vector2(0,0));
+        theTerr = high.CreateChunk();
 
-        Debug.Log(high.terrPos.y);
-
-        Assert.IsTrue(high.terrPos.y == -1.0f);
+        Assert.IsTrue(theTerr.transform.position.y == -1.0f);
         return null;
     }
 }
