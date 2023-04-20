@@ -30,13 +30,12 @@ Can be stored in an inventory or be used immediately on pickup.
     * Assigns the type of the item that this method is called on to be equal to the desiredType passed in.
 
 * static bool GetEffectIsActive()
-    * A static method that returns whether any object of type "BrainBlastBar" are currently activated.
+    * A static method that returns whether any objects of type "BrainBlastBar" are currently activated.
 
 ## Dependencies:
 
 * A GameObject with the tag of "Hero" must exist in the hierarchy scene.
     * That object must also contain a "Hero" script component.
-        * That script must contain the "GetShield()" and "SetShield()" methods.
 
 * A GameObject with the tag of "ItemManager" must exist in the hierarchy of the scene.
     * That object must also contain a "ItemManager" script component.
@@ -50,4 +49,4 @@ Can be stored in an inventory or be used immediately on pickup.
 
 ## Notes
 
-* This prefab is completely free to use and modify. Reference the GPL 3.0 license for restrictions.
+* This prefab is completely free to use and modify. Please refer to the GPL 3.0 license for restrictions.
