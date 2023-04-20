@@ -13,15 +13,22 @@ using UnityEngine.UI;
  * Displays an overview of all the game levels.
  * Also displays a specific level menu, which shows the hero's current inventory and the player's
  *     current high score for that level.
+ *
+ * Member Variables:
+ * heroPos -- public Vector3 array to hold hero position on overworld based on the next level.
+ * overworldMap -- private static OverworldMap to ensure only one instance exists.
+ * datastore -- private LevelDatastore to access stored data.
+ * levelMenus -- private GameObject array to hold all levelMenu UI panel elements.
+ * hero -- private GameObject to display the hero sprite on the overworld.
  */
 public class OverworldMap : Map
 {
+    public Vector3[] heroPos;
+
     private static OverworldMap overworldMap;
     private LevelDatastore datastore;
     private GameObject[] levelMenus;
-    // hero variables
     private GameObject hero;
-    private Vector3[] heroPos;
 
     void Awake()
     {
@@ -40,16 +47,15 @@ public class OverworldMap : Map
         };
     }
 
-    void Start()
-    {
-        //hero = GameObject.FindGameObjectWithTag("Hero");
-    }
-
     /*
      * Initializes the overworld map.
      * All of the levels are stored in the Levels array.
      * All of the level menus are stored in the levelMenus array.
      * Each levelMenu object is Subscribed to their correspoding level.
+     *
+     * Parameters:
+     * levels -- GameObject array to hold all levels.
+     * levelMenus -- GameObject array to hold all level menu UI panels.
      */
     public void OverworldMapInit(GameObject[] levels, GameObject[] levelMenus)
     {
@@ -57,12 +63,19 @@ public class OverworldMap : Map
         this.levelMenus = levelMenus;
         this.levelCount = this.levels.Length;
 
+        // subscriber level menus to appropriate lake/level.
         for (int i = 0; i < levelCount; i++) {
             LevelMenu menu = levelMenus[i].GetComponent<LevelMenu>();
             levels[i].GetComponent<Lake>().Subscribe(menu);
         }
     }
 
+    /*
+     * Loads the hero onto the overworld map according to the next level.
+     *
+     * Parameters:
+     * objectSprites -- Sprite array to hold sprites for each object.
+     */
     public override void LoadObjects(Sprite[] objectSprites)
     {
         Debug.Log("Loading objects in Overworld Map");
@@ -81,6 +94,12 @@ public class OverworldMap : Map
     /*
      * Is called when the user clicks on a GameObject.
      * Checks if clicked GameObject is a level.
+     *
+     * Parameters:
+     * levelName -- string to hold the name of the selected level.
+     *
+     * Returns:
+     * found -- bool false if level is not found, true if it is found.
      */
     public bool SelectLevel(string levelName)
     {
@@ -99,7 +118,8 @@ public class OverworldMap : Map
     }
 
     /*
-     *
+     * Called when users clicks off of the level menu.
+     * All level menus are closed.
      */
     public void DeselectLevel()
     {

@@ -1,3 +1,12 @@
+/*
+ * Filename: Map.cs
+ * Developer: Jenna-Luz Pura
+ * Purpose: Defines the most generic map type.
+ */
+
+/*
+ * List methods a publisher must have.
+ */
 public interface IPublisher
 {
     void Subscribe(ISubscriber subscriber);
@@ -5,6 +14,9 @@ public interface IPublisher
     void Notify();
 }
 
+/*
+ * Lists methods a subscriber must have.
+ */
 public interface ISubscriber
 {
     void Init(string levelName);

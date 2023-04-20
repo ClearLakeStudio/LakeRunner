@@ -36,4 +36,24 @@ public class NextLevel
             yield return null;
         }
     }
+
+    [UnityTest]
+    public IEnumerator HeroPositionWithEnumeratorPasses()
+    {
+        SceneManager.LoadScene("Overworld");
+        yield return new WaitForSeconds(1);
+
+        overworldManager = GameObject.FindGameObjectWithTag("OverworldManager").GetComponent<OverworldManager>();
+        OverworldMap overworld = overworldManager.overworld;
+        datastore = overworldManager.datastore;
+        GameObject hero = GameObject.Find("Hero");
+        int nextLevel = datastore.GetNextLevel();
+        Vector3 heroPosition = hero.transform.position;
+
+        if (nextLevel < 5) {
+            Assert.AreEqual(expected: overworld.heroPos[nextLevel - 1], actual: heroPosition);
+        } else {
+            Assert.AreEqual(expected: overworld.heroPos[4], actual: heroPosition);
+        }
+    }
 }

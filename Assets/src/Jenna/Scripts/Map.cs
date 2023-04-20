@@ -20,6 +20,10 @@ public class Map : MonoBehaviour
     protected int levelCount;
     protected GameObject[] levels;
 
+    /*
+     * Parameters:
+     * objectSprites -- Sprite array to hold sprites for each object.
+     */
     public virtual void LoadObjects(Sprite[] objectSprites)
     {
         Debug.Log("Loading objects in Map");

@@ -11,11 +11,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /*
- * Holds statistics about individual levels and loads them.
+ * Holds statistics about individual levels and notifies level menu subscribers when changed.
  *
  * Member variables:
- * activeLevelMenu -- public bool to store the state of the level menu.
- * subscribers --- private List<ISubscriber> to store all subscribers to the lake for the observer pattern.
+ * activeLevelMenu -- public bool false when inactive and true when active.
+ * unlocked -- public bool false when locked (cannot be played) and true when unlocked.
+ * subscribers -- ISubscriber list to hold all subscribers.
+ * datastore -- LevelDatastore to access stored data.
  */
 public class Lake : MonoBehaviour, IPublisher
 {
@@ -35,7 +37,10 @@ public class Lake : MonoBehaviour, IPublisher
     }
 
     /*
+     * Adds subscriber to subscribers list.
      *
+     * Parameters:
+     * subscriber -- ISubscriber object to be subscribed to the Lake.
      */
     public void Subscribe(ISubscriber subscriber)
     {
@@ -45,7 +50,10 @@ public class Lake : MonoBehaviour, IPublisher
     }
 
     /*
+     * Removes subscriber from subscribers list.
      *
+     * Parameters:
+     * subscriber -- ISubscriber object to be subscribed to the Lake.
      */
     public void Unsubscribe(ISubscriber subscriber)
     {
@@ -54,7 +62,7 @@ public class Lake : MonoBehaviour, IPublisher
     }
 
     /*
-     *
+     * Notifies each subscriber of changes in the Lake object.
      */
     public void Notify()
     {
@@ -64,7 +72,7 @@ public class Lake : MonoBehaviour, IPublisher
     }
 
     /*
-     * Open the level menu by activating the level menu panel.
+     * Tells level menu subscriber to activate their UI panel.
      */
     public void OpenLevelMenu()
     {
@@ -73,7 +81,7 @@ public class Lake : MonoBehaviour, IPublisher
     }
 
     /*
-     *
+     * Tells level menu subscriber to deactivate their UI panel.
      */
     public void CloseLevelMenu()
     {
@@ -82,7 +90,7 @@ public class Lake : MonoBehaviour, IPublisher
     }
 
     /*
-     *
+     * Tells level menu subscriber to unlock level.
      */
     public void UnlockLevel()
     {
