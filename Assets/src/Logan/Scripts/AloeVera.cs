@@ -20,6 +20,7 @@ public class AloeVera : AttributeItem
     protected override void Awake()
     {
         this.SetType(ItemType.AloeVera);
+        gameObject.tag = "Aloe Vera";
     }
 
     public override IEnumerator UseEffect()

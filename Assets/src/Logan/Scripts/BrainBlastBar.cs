@@ -25,6 +25,7 @@ public class BrainBlastBar : InventoryItem
     protected override void Awake()
     {
         this.SetType(ItemType.BrainBlastBar);
+        gameObject.tag = "BrainBlastBar";
     }
 
     public override IEnumerator UseEffect()

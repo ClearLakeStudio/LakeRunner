@@ -25,6 +25,7 @@ public class Slippers : InventoryItem
     protected override void Awake()
     {
         this.SetType(ItemType.Slippers);
+        gameObject.tag = "Slippers";
     }
 
     public override IEnumerator UseEffect()

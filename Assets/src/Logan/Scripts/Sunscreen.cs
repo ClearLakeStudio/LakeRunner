@@ -20,6 +20,7 @@ public class Sunscreen : AttributeItem
     protected override void Awake()
     {
         this.SetType(ItemType.Sunscreen);
+        gameObject.tag = "Sunscreen";
     }
 
     public override IEnumerator UseEffect()

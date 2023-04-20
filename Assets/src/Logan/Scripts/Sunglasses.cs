@@ -25,6 +25,7 @@ public class Sunglasses : InventoryItem
     protected override void Awake()
     {
         this.SetType(ItemType.Sunglasses);
+        gameObject.tag = "Sunglasses";
     }
 
     public override IEnumerator UseEffect()
