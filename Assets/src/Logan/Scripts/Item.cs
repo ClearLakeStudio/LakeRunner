@@ -72,8 +72,21 @@ public class Item : MonoBehaviour
 
     public virtual IEnumerator UseEffect()
     {
+        GameObject heroObj = GameObject.FindGameObjectWithTag("Hero");
+        Hero hero = heroObj.GetComponent<Hero>();
+
+        Vector3 scaleChange = new Vector3(heroObj.transform.localScale.x, 3 *heroObj.transform.localScale.y, heroObj.transform.localScale.z);
+
+        heroObj.transform.localScale = scaleChange;
         Debug.Log("Item was used");
-        yield return null;
+
+        float elapsedTime = 0f;
+        while (elapsedTime < effectTime) {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        scaleChange = new Vector3(heroObj.transform.localScale.x, heroObj.transform.localScale.y / 3, heroObj.transform.localScale.z);
+        heroObj.transform.localScale = scaleChange;
     }
 
     public bool GetEffectIsActive()
