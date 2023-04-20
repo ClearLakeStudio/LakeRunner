@@ -37,6 +37,8 @@ public class LevelMenu : MonoBehaviour, ISubscriber
         menuButton.onClick.AddListener(LoadLevel);
     }
 
+    void Update() {}  // here to distinguish between user defined and MonoBehaviour method
+
     /*
      * Sets the levelName to the passed levelName parameter.
      * If it is the first level, then it is unlocked.
@@ -52,8 +54,6 @@ public class LevelMenu : MonoBehaviour, ISubscriber
             unlocked = true;
         }
     }
-
-    void Update() {}  // here to distinguish between user defined and MonoBehaviour method
 
     /*
      * Updates member variables according the publisher member variables.
