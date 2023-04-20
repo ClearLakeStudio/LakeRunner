@@ -15,7 +15,7 @@ using UnityEngine;
  */
 public class Sunscreen : AttributeItem
 {
-    public float healthIncrease = 25f;
+    public float shieldIncrease = 25f;
 
     protected override void Awake()
     {
@@ -25,11 +25,11 @@ public class Sunscreen : AttributeItem
 
     public override IEnumerator UseEffect()
     {
-        float currentHealth;
+        float currentShield;
         Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
-        currentHealth = hero.GetHealth();
-        hero.SetHealth(currentHealth + healthIncrease);
+        currentShield = hero.GetShield();
+        hero.SetShield(currentShield + shieldIncrease);
         Debug.Log("Sunscreen was used");
         yield return null;
     }

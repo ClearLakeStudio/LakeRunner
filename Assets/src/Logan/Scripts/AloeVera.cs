@@ -15,7 +15,7 @@ using UnityEngine;
  */
 public class AloeVera : AttributeItem
 {
-    public float shieldIncrease = 25f;
+    public float healthIncrease = 25f;
 
     protected override void Awake()
     {
@@ -25,12 +25,13 @@ public class AloeVera : AttributeItem
 
     public override IEnumerator UseEffect()
     {
-        float currentShield;
+        float currentHealth;
         Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
-        currentShield = hero.GetShield();
-        hero.SetShield(currentShield + shieldIncrease);
+        currentHealth = hero.GetHealth();
+        hero.SetHealth(currentHealth + healthIncrease);
         Debug.Log("Aloe Vera was used");
         yield return null;
+
     }
 }
