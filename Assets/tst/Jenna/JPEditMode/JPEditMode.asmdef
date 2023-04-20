@@ -2,8 +2,5 @@
     "name": "JPEditMode",
     "optionalUnityReferences": [
         "TestAssemblies"
-    ],
-    "includePlatforms": [
-        "Editor"
     ]
 }

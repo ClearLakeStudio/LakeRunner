@@ -24,14 +24,14 @@ public class OverworldManager : MonoBehaviour
     public GameObject[] levelMenus;
     public Canvas canvas;
     public Sprite[] objectSprites;
+    public OverworldMap overworld;
+    public LevelDatastore datastore;
 
     private int[] test = new int[1] {12};
-    private OverworldMap overworld;
     private Map map;
     private GraphicRaycaster raycaster;
     private PointerEventData pointerEventData;
     private EventSystem eventSystem;
-    private LevelDatastore datastore;
     private bool activeMenu = false;
 
     void Start()

@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_Name
-      value: Level 5 Menu
+      value: Level5Menu
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_IsActive
@@ -540,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_Name
-      value: Level 1 Menu
+      value: Level1Menu
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_IsActive
@@ -708,7 +708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_Name
-      value: Level 3 Menu
+      value: Level3Menu
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_IsActive
@@ -1094,7 +1094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_Name
-      value: Level 2 Menu
+      value: Level2Menu
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_IsActive
@@ -1424,7 +1424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_Name
-      value: Level 4 Menu
+      value: Level4Menu
       objectReference: {fileID: 0}
     - target: {fileID: 572740231660473161, guid: bb477fbb6242e49edb42e1a1080ab5b8, type: 3}
       propertyPath: m_IsActive

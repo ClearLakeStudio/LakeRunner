@@ -13,10 +13,10 @@ public class LevelMenu : MonoBehaviour, ISubscriber
     public Text menuName;
     public Button menuButton;
     public Text menuButtonText;
-
-    private string levelName;
-    private string sceneName;
-    private bool unlocked = false;
+    [HideInInspector]
+    public string levelName;
+    [HideInInspector]
+    public bool unlocked = false;
 
     void Start()
     {
@@ -31,7 +31,6 @@ public class LevelMenu : MonoBehaviour, ISubscriber
     public void Init(string levelName)
     {
         this.levelName = levelName;
-        this.sceneName = levelName.Replace(" ", "");
 
         if (levelName == "Level 1") {
             unlocked = true;
@@ -78,9 +77,7 @@ public class LevelMenu : MonoBehaviour, ISubscriber
     public void LoadLevel()
     {
         if (unlocked) {
-            SceneManager.LoadScene(sceneName);
-        } else {
-            //Debug.Log(sceneName);
+            SceneManager.LoadScene(levelName);
         }
     }
 }
