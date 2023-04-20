@@ -5,7 +5,9 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "LFScripts",
-        "LFEnums"
+        "LFEnums",
+        "NNScripts",
+        "AKScripts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
