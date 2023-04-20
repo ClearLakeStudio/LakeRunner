@@ -30,7 +30,7 @@ Can be stored in an inventory or be used immediately on pickup.
     * Assigns the type of the item that this method is called on to be equal to the desiredType passed in.
 
 * static bool GetEffectIsActive()
-    * A static method that returns whether any objects of type "BrainBlastBar" are currently activated.
+    * A static method that returns whether the effect of any "BrainBlastBar" object is currently activated.
 
 ## Dependencies:
 
