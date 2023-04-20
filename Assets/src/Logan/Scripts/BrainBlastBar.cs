@@ -30,9 +30,13 @@ public class BrainBlastBar : InventoryItem
 
     public override IEnumerator UseEffect()
     {
-        Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
+        GameObject heroObj = GameObject.FindGameObjectWithTag("Hero");
+        Hero hero = heroObj.GetComponent<Hero>();
+
+        Vector3 scaleChange = new Vector3(-heroObj.transform.localScale.x, heroObj.transform.localScale.y, heroObj.transform.localScale.z);
 
         effectIsActive = true;
+        heroObj.transform.localScale = scaleChange;
         hero.movementSpeed *= -1;
         Debug.Log("BrainBlastBar was used");
 
@@ -41,6 +45,8 @@ public class BrainBlastBar : InventoryItem
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        scaleChange = new Vector3(-heroObj.transform.localScale.x, heroObj.transform.localScale.y, heroObj.transform.localScale.z);
+        heroObj.transform.localScale = scaleChange;
         hero.movementSpeed *= -1;
         effectIsActive = false;
     }
