@@ -88,7 +88,7 @@ public class Item : MonoBehaviour
 
     public virtual IEnumerator UseEffect()
     {
-        Debug.Log("Slippers were used");
+        Debug.Log("Item was used");
         yield return null;
     }
 }
