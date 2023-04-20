@@ -27,7 +27,7 @@ With game objects, sprite animations are highly supported. However, I found no b
   - Starts the animation according to the Fps and in order of the Sprites array.
 
 ## Level Menu Script
-This script is used in conjunction with script Lake which is attached to prefab [Lake](Lake.md).
+This script is used in conjunction with script Lake which is attached to prefab [Level](Level.md).
 
 ### Public Members
 - Menu
