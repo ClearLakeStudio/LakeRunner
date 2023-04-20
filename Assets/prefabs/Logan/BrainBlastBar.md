@@ -1,6 +1,8 @@
 # Brain Blast Bar
 
-Inherits from the AttributeItem class, which inherits from the Item class
+Inherits from the InventoryItem class, which inherits from the Item class.
+Can be placed in a scene as an item that is meant to be picked up by a "Hero" character.
+Can be stored in an inventory or be used immediately on pickup.
 
 ## Public Fields:
 
@@ -45,3 +47,7 @@ Inherits from the AttributeItem class, which inherits from the Item class
 ## Images
 
 ![](BrainBlastBar.gif)
+
+## Notes
+
+* This prefab is completely free to use and modify. Reference the GPL 3.0 license for restrictions.
