@@ -45,6 +45,7 @@ This script is used in conjunction with script Lake which is attached to prefab 
 
 ## Sprites
 ### Level Name
+![LevelMenuName](./img/LevelMenuName.gif)
 
 ### Start Button
 ![LevelMenuButton](./img/LevelMenuButton.gif)
