@@ -61,7 +61,7 @@ public class ItemManager : MonoBehaviour
 
         foreach(GameObject collectionObject in itemsFromCollection) {
             // create an empty GameObject that will hold the pooled GameObjects for this type in the unity hierarchy
-            GameObject poolRepresentative = new GameObject(collectionObject.name);
+            GameObject poolRepresentative = new GameObject(collectionObject.name + "Pool");
             // make the empty GameObject a child of the itemPools GameObject
             poolRepresentative.transform.parent = itemPools.transform;
 
