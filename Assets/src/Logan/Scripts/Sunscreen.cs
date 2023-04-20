@@ -25,12 +25,10 @@ public class Sunscreen : AttributeItem
     public override IEnumerator UseEffect()
     {
         float currentHealth;
+        Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
-        GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
-        Hero heroScript = heroObject.GetComponent<Hero>();
-
-        currentHealth = heroScript.GetHealth();
-        heroScript.SetHealth(currentHealth + healthIncrease);
+        currentHealth = hero.GetHealth();
+        hero.SetHealth(currentHealth + healthIncrease);
         Debug.Log("Sunscreen was used");
         yield return null;
     }

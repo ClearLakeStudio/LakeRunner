@@ -20,8 +20,6 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [HideInInspector] public bool isCollected = false;
-    [HideInInspector] public bool effectIsActive = false;
-
 
     [SerializeField] protected AudioClip collectSound;
     protected ItemType type = ItemType.Undefined;
@@ -76,5 +74,10 @@ public class Item : MonoBehaviour
     {
         Debug.Log("Item was used");
         yield return null;
+    }
+
+    public bool GetEffectIsActive()
+    {
+        return false;
     }
 }

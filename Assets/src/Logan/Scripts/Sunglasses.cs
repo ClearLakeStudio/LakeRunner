@@ -15,6 +15,13 @@ using UnityEngine;
  */
 public class Sunglasses : InventoryItem
 {
+    private static bool effectIsActive = false;
+
+    public new static bool GetEffectIsActive()
+    {
+        return effectIsActive;
+    }
+
     protected override void Awake()
     {
         this.SetType(ItemType.Sunglasses);
@@ -22,11 +29,10 @@ public class Sunglasses : InventoryItem
 
     public override IEnumerator UseEffect()
     {
-        GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
-        Camera heroCamera = cameraObject.GetComponent<Camera>();
+        Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         effectIsActive = true;
-        heroCamera.orthographicSize *= 4;
+        camera.orthographicSize *= 4;
         Debug.Log("Sunglasses were used");
 
         float elapsedTime = 0f;
@@ -34,7 +40,7 @@ public class Sunglasses : InventoryItem
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        heroCamera.orthographicSize /= 4;
+        camera.orthographicSize /= 4;
         effectIsActive = false;
     }
 }

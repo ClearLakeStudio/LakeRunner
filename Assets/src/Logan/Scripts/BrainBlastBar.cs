@@ -15,6 +15,13 @@ using UnityEngine;
  */
 public class BrainBlastBar : InventoryItem
 {
+    private static bool effectIsActive = false;
+
+    public new static bool GetEffectIsActive()
+    {
+        return effectIsActive;
+    }
+
     protected override void Awake()
     {
         this.SetType(ItemType.BrainBlastBar);
@@ -22,15 +29,10 @@ public class BrainBlastBar : InventoryItem
 
     public override IEnumerator UseEffect()
     {
-        // Store the original x velocity of the runner
-        // Set runner's velocity to be negative x velocity
-        // After a period of time elapses, restore x velocity back to original
-
-        GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
-        Hero heroScript = heroObject.GetComponent<Hero>();
+        Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
         effectIsActive = true;
-        heroScript.movementSpeed *= -1;
+        hero.movementSpeed *= -1;
         Debug.Log("BrainBlastBar was used");
 
         float elapsedTime = 0f;
@@ -38,11 +40,7 @@ public class BrainBlastBar : InventoryItem
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        heroScript.movementSpeed *= -1;
+        hero.movementSpeed *= -1;
         effectIsActive = false;
-    }
-
-    public void Update()
-    {
     }
 }

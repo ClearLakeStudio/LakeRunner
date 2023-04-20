@@ -15,6 +15,13 @@ using UnityEngine;
  */
 public class Slippers : InventoryItem
 {
+    private static bool effectIsActive = false;
+
+    public new static bool GetEffectIsActive()
+    {
+        return effectIsActive;
+    }
+
     protected override void Awake()
     {
         this.SetType(ItemType.Slippers);
@@ -22,11 +29,10 @@ public class Slippers : InventoryItem
 
     public override IEnumerator UseEffect()
     {
-        GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
-        Hero heroScript = heroObject.GetComponent<Hero>();
+        Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
         effectIsActive = true;
-        heroScript.Jump();
+        hero.Jump();
         Debug.Log("Slippers were used");
 
         float elapsedTime = 0f;
@@ -35,7 +41,5 @@ public class Slippers : InventoryItem
             yield return null;
         }
         effectIsActive = false;
-
-        //yield return null;
     }
 }
