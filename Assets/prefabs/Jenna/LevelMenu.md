@@ -47,5 +47,9 @@ This script is used in conjunction with script Lake which is attached to prefab 
 ### Level Name
 ![LevelMenuName](./img/LevelMenuName.gif)
 
+*1 frame per second*
+
 ### Start Button
 ![LevelMenuButton](./img/LevelMenuButton.gif)
+
+*2 frames per second*
