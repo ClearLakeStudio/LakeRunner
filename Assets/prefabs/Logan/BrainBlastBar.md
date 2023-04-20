@@ -18,7 +18,7 @@ Can be stored in an inventory or be used immediately on pickup.
     * Must be executed as a coroutine. Reverses the direction of the Hero GameObject for a period of time.
     * There must exist a GameObject in the hierarchy with a tag of "Hero" to which is attached a script of the type "Hero" that has a transform component.
 
-* ItemType Colleted()
+* ItemType Collected()
     * When executed, will activate its own effect through the scene's ItemManager GameObject.
     * There must exist a GameObject in the hierarchy with a tag of "ItemManager" to which is attached a script of the type "ItemManager" that contains the method "ActivateItemEffect()".
     * Returns the ItemType enum value associated with the object that this method is being called on.
