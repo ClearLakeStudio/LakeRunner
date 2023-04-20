@@ -43,8 +43,14 @@ public class EffectIsActivated
         yield return null;
 
         var brainBlastBar = new GameObject().AddComponent<BrainBlastBar>().GetComponent<BrainBlastBar>();
+
+        // make sure the effect isn't already active
+        Assert.IsFalse(BrainBlastBar.GetEffectIsActive());
+
+        // activate the effect
         brainBlastBar.StartCoroutine(brainBlastBar.UseEffect());
-        Assert.IsTrue(brainBlastBar.effectIsActive);
+
+        Assert.IsTrue(BrainBlastBar.GetEffectIsActive());
     }
 
     [UnityTest]
@@ -59,8 +65,14 @@ public class EffectIsActivated
         yield return null;
 
         var slippers = new GameObject().AddComponent<Slippers>().GetComponent<Slippers>();
+
+        // make sure the effect isn't already active
+        Assert.IsFalse(Slippers.GetEffectIsActive());
+
+        // activate the effect
         slippers.StartCoroutine(slippers.UseEffect());
-        Assert.IsTrue(slippers.effectIsActive);
+
+        Assert.IsTrue(Slippers.GetEffectIsActive());
     }
 
     [UnityTest]
@@ -75,8 +87,14 @@ public class EffectIsActivated
         yield return null;
 
         var sunglasses = new GameObject().AddComponent<Sunglasses>().GetComponent<Sunglasses>();
+
+        // make sure the effect isn't already active
+        Assert.IsFalse(Sunglasses.GetEffectIsActive());
+
+        // activate the effect
         sunglasses.StartCoroutine(sunglasses.UseEffect());
-        Assert.IsTrue(sunglasses.effectIsActive);
+
+        Assert.IsTrue(Sunglasses.GetEffectIsActive());
     }
 
     [UnityTest]
