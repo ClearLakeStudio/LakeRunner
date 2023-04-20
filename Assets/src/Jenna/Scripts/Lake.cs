@@ -19,7 +19,9 @@ using UnityEngine.UI;
  */
 public class Lake : MonoBehaviour, IPublisher
 {
+    [HideInInspector]
     public bool activeLevelMenu = false;
+    [HideInInspector]
     public bool unlocked = false;
 
     private List<ISubscriber> subscribers = new List<ISubscriber>();
@@ -39,7 +41,7 @@ public class Lake : MonoBehaviour, IPublisher
     {
         this.subscribers.Add(subscriber);
         subscriber.Init(gameObject.name);
-        //Debug.Log("Added new level menu.");
+        Debug.Log("Added new level menu.");
     }
 
     /*
@@ -48,7 +50,7 @@ public class Lake : MonoBehaviour, IPublisher
     public void Unsubscribe(ISubscriber subscriber)
     {
         this.subscribers.Remove(subscriber);
-        //Debug.Log("Removed a level menu.");
+        Debug.Log("Removed a level menu.");
     }
 
     /*

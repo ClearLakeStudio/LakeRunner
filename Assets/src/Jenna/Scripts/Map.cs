@@ -20,7 +20,7 @@ public class Map : MonoBehaviour
     protected int levelCount;
     protected GameObject[] levels;
 
-    public virtual void LoadObjects()
+    public virtual void LoadObjects(Sprite[] objectSprites)
     {
         Debug.Log("Loading objects in Map");
     }

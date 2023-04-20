@@ -56,6 +56,8 @@ public class LevelDatastore
             if (levelIndex < levelCount) {
                 unlockedLevels["Level" + (levelIndex + 1)] = true;
                 nextLevel = "Level" + (levelIndex + 1);
+            } else {
+                nextLevel = "Level5";
             }
         }
     }

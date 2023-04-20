@@ -23,14 +23,16 @@ public class OverworldManager : MonoBehaviour
     public GameObject[] levels;
     public GameObject[] levelMenus;
     public Canvas canvas;
+    public Sprite[] objectSprites;
 
+    private int[] test = new int[1] {12};
     private OverworldMap overworld;
     private Map map;
-    private bool activeMenu = false;
     private GraphicRaycaster raycaster;
     private PointerEventData pointerEventData;
     private EventSystem eventSystem;
     private LevelDatastore datastore;
+    private bool activeMenu = false;
 
     void Start()
     {
@@ -41,7 +43,7 @@ public class OverworldManager : MonoBehaviour
         map = gameObject.AddComponent<OverworldMap>();
         overworld = gameObject.AddComponent<OverworldMap>();
         overworld.OverworldMapInit(levels, levelMenus);
-        map.LoadObjects();
+        map.LoadObjects(objectSprites);
 
         datastore.PrintLevelStatus();
     }

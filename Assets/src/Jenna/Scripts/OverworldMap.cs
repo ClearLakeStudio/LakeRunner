@@ -17,10 +17,11 @@ using UnityEngine.UI;
 public class OverworldMap : Map
 {
     private static OverworldMap overworldMap;
+    private LevelDatastore datastore;
     private GameObject[] levelMenus;
     // hero variables
     private GameObject hero;
-    private int heroCurrentLevel = 1;
+    private Vector3[] heroPos;
 
     void Awake()
     {
@@ -28,12 +29,20 @@ public class OverworldMap : Map
         if (overworldMap == null) {
             overworldMap = this;
         }
+
+        datastore = new LevelDatastore();
+        heroPos = new Vector3[5] {
+            new Vector3(-5.5f, 3.75f, 0f),
+            new Vector3(-4.5f, 2.25f, 0f),
+            new Vector3(-2.85f, 0.45f, 0f),
+            new Vector3(-0.85f, -0.65f, 0f),
+            new Vector3(1.9f, -1.2f, 0f)
+        };
     }
 
     void Start()
     {
-        //Debug.Log("loaded");
-        hero = GameObject.FindGameObjectWithTag("Hero");
+        //hero = GameObject.FindGameObjectWithTag("Hero");
     }
 
     /*
@@ -49,15 +58,24 @@ public class OverworldMap : Map
         this.levelCount = this.levels.Length;
 
         for (int i = 0; i < levelCount; i++) {
-            levels[i].AddComponent<Lake>();
             LevelMenu menu = levelMenus[i].GetComponent<LevelMenu>();
             levels[i].GetComponent<Lake>().Subscribe(menu);
         }
     }
 
-    public override void LoadObjects()
+    public override void LoadObjects(Sprite[] objectSprites)
     {
         Debug.Log("Loading objects in Overworld Map");
+
+        int nextLevel = datastore.GetNextLevel();
+
+        // load hero
+        hero = new GameObject("Hero");
+        hero.transform.position = heroPos[nextLevel - 1];
+        hero.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        hero.AddComponent<SpriteRenderer>();
+        hero.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        hero.GetComponent<SpriteRenderer>().sprite = objectSprites[0];
     }
 
     /*
@@ -88,16 +106,5 @@ public class OverworldMap : Map
         foreach (GameObject level in levels) {
             level.GetComponent<Lake>().CloseLevelMenu();
         }
-    }
-
-    /*
-     * Gets the next level the hero/player will play.
-     *
-     * Returns:
-     * int -- heroCurrentLevel stores a range between and including 1-5, one for each level.
-     */
-    public int GetHeroLevel()
-    {
-        return heroCurrentLevel;
     }
 }
