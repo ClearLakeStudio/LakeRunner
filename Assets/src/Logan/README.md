@@ -37,7 +37,7 @@ I am responsible for the items that the player can use to manipulate the Surfer'
             - To ensure proper interaction between my feature and others
 
     - well-documented prefab (3):
-        - See ![BrainBlastBar.txt](../../prefabs/Logan/BrainBlastBar.txt)
+        - See ![BrainBlastBar.md](../../prefabs/Logan/BrainBlastBar.md)
 
     - dynamic binding (3):
         - Super class: Item.cs
