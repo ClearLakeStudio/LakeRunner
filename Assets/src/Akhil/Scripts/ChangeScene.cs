@@ -114,6 +114,7 @@ public class ChangeScene : MonoBehaviour
     public void NextLevel()
     {
         Debug.Log("next level");
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
