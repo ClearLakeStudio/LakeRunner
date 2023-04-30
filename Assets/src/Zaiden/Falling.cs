@@ -7,27 +7,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Falling : BaseDecorator
+public class Falling : MonoBehaviour
 {
-
-    public GameObject fallPlatform;
-
-    public Falling(Platform p)
+    public void OnColliderEnter2D(Collider other)
     {
-        SetBasePlatform(p);
-        GetBasePlatform().CheckValidity();
-        if (GetBasePlatform().GetValid())
+        if (other.tag == "Hero" || other.tag == "Ambush" || other.tag == "Frog" || other.tag == "AngrySentientCoconut")
         {
-            Vector2 position = GetBasePlatform().GetPosition();
-            SetThisPlatform(Instantiate(fallPlatform, new Vector3(position[0], position[1], 0), Quaternion.identity));
-            GetThisPlatform().transform.localScale = new Vector3(GetBasePlatform().GetWidth(), GetBasePlatform().GetHeight(), 1);
+            Rigidbody2D rB = other.GetComponent<Rigidbody2D>();
+            int direction = (int)(rB.velocity.x / Mathf.Abs(rB.velocity.x)); // get direction of hero
+            rB.AddForce(new Vector2(direction * 0.1f, 0.1f)); // push in x axis direction and up
         }
     }
-
-    /*
-     * will need to add onto/override collision function here to kill enemies when it falls onto them 
-     * 
-     * 
-    */
 
 }
