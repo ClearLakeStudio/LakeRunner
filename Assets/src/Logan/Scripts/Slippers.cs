@@ -15,16 +15,32 @@ using UnityEngine;
  */
 public class Slippers : InventoryItem
 {
+    private static bool effectIsActive = false;
+
+    public new static bool GetEffectIsActive()
+    {
+        return effectIsActive;
+    }
+
+    protected override void Awake()
+    {
+        this.SetType(ItemType.Slippers);
+        gameObject.tag = "Slippers";
+    }
+
     public override IEnumerator UseEffect()
     {
-        GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
-        Hero heroScript = heroObject.GetComponent<Hero>();
-        effectIsActive = true;
-        heroScript.Jump();
-        // detect hero touching ground
-        effectIsActive = false;
+        Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
+        effectIsActive = true;
+        hero.Jump();
         Debug.Log("Slippers were used");
-        yield return null;
+
+        float elapsedTime = 0f;
+        while (elapsedTime < effectTime) {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        effectIsActive = false;
     }
 }

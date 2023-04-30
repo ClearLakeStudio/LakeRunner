@@ -14,34 +14,46 @@ using UnityEngine.EventSystems;
  * Listens for user input in the "Overworld" scene.
  *
  * Member Variables:
- * levelMenu -- public  GameObject to reference the level menu panel.
- * overworld -- private OverworldMap to access stored levels.
- * funcReturn -- private bool to hold return value of certain methods.
+ * levels -- public GameObject array to hold all of the level GameObjects.
+ * levelMenus -- public GameObject array to hold all of the level menu UI elements.
+ * canvas -- public Canvas to reference the Canvas.
+ * objectSprites -- public Sprite array to hold an array of object sprites.
+ * overworld -- public OverworldMap to reference OverworldMap script.
+ * datastore -- public LevelDatastore to reference stored data.
+ * map -- private Map to reference static type.
+ * raycaster -- private GraphicRaycaster to raycast UI elements.
+ * pointerEventData -- private PointerEventData to register clicks on Canvas.
+ * eventSystem -- private EventSystem to reference EventSystem.
+ * activeMenu -- private bool false if inactive and true if active.
  */
 public class OverworldManager : MonoBehaviour
 {
     public GameObject[] levels;
     public GameObject[] levelMenus;
     public Canvas canvas;
+    public Sprite[] objectSprites;
+    public OverworldMap overworld;
+    public LevelDatastore datastore;
 
-    private OverworldMap overworld;
     private Map map;
-    private bool activeMenu = false;
     private GraphicRaycaster raycaster;
     private PointerEventData pointerEventData;
     private EventSystem eventSystem;
-    private LevelDatastore datastore;
+    private bool activeMenu = false;
 
     void Start()
     {
         datastore = new LevelDatastore(5);
+
+        // UI element raycast
         raycaster = canvas.GetComponent<GraphicRaycaster>();
         eventSystem = canvas.GetComponent<EventSystem>();
 
+        // static and dynamic binding
         map = gameObject.AddComponent<OverworldMap>();
         overworld = gameObject.AddComponent<OverworldMap>();
         overworld.OverworldMapInit(levels, levelMenus);
-        map.LoadObjects();
+        map.LoadObjects(objectSprites);
 
         datastore.PrintLevelStatus();
     }

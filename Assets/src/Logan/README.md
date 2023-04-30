@@ -15,22 +15,34 @@ I am responsible for the items that the player can use to manipulate the Surfer'
 ## Oral exam notes
 
 - contribution (10):
-    - ...
+    - I designed and implemented the items and item effects.
+    - In this case, I overestimated myself by about 11 hours. The reason why is because as I got familiar with Unity and C#, I learned a lot and ended up
+    going back and rewriting some code just for the fun of it. If I was already familiary with Unity and C# by the time I begin working on this project,
+    I think I would have even been a little bit below my original estimation.
+    - Whenever a scene is started, the ItemManager runs and creates the Item Pools in the scene hierarchy. In order for an item to be shown, it has to be
+    retrieved or spawned using the GetPooledObject() method or SpawnItem() method. Ian calls my SpawnItem method in each scene because he was the one who designed
+    the levels. Whenever an item collides with the Hero, a function runs (depending on the parent class of the item) that either stores the item in the inventory
+    (if space is available) or activates the item's effect immediately.
 
 - technical (20):
     - test plan (4):
         - What am I testing?
-            - ...
+            - Whether the proper flags are set when an item is collected.
+            - Whether the inventory is properly updated when an item is collided with
+            - Whether an item effect runs whenever the effect is activated
+            - Whether all of the item pools are created at scene startup
+            - Whether the correct tag is set when an item is created
+            - Whether all of the items in an item pool are of the correct type
         - Why am I testing those things?
-            - ...
+            - To ensure proper interaction between my feature and others
 
     - well-documented prefab (3):
-        - See ../../prefabs/Logan/BrainBlastBar.txt
+        - See ![BrainBlastBar.md](../../prefabs/Logan/BrainBlastBar.md)
 
     - dynamic binding (3):
-        - Super class:
-        - Sub class:
-        - Virtual function:
+        - Super class: Item.cs
+        - Sub class: Sunglasses.cs
+        - Virtual function: UseEffect()
 
     - copyright (4):
         - The sprite for the BrainBlastBar was taken from Super Mario World for the SNES.
@@ -46,5 +58,4 @@ I am responsible for the items that the player can use to manipulate the Surfer'
 
     - patterns (6):
         - Singleton: ItemManager (only one can exist at a time)
-        - Builder/decorator/template/facade
         - Object Pool: One object pool for each type of object. Decided on an object pool rather than a thread pool because We'll need a maximum of a few hundred items.

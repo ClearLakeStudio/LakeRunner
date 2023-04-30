@@ -20,8 +20,6 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [HideInInspector] public bool isCollected = false;
-    [HideInInspector] public bool effectIsActive = false;
-
 
     [SerializeField] protected AudioClip collectSound;
     protected ItemType type = ItemType.Undefined;
@@ -48,23 +46,9 @@ public class Item : MonoBehaviour
         return this.type;
     }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
-        if (gameObject.tag == "Sunscreen") {
-            this.SetType(ItemType.Sunscreen);
-        }
-        else if (gameObject.tag == "Aloe Vera") {
-            this.SetType(ItemType.AloeVera);
-        }
-        else if (gameObject.tag == "Sunglasses") {
-            this.SetType(ItemType.Sunglasses);
-        }
-        else if (gameObject.tag == "Slippers") {
-            this.SetType(ItemType.Slippers);
-        }
-        else if (gameObject.tag == "BrainBlastBar") {
-            this.SetType(ItemType.BrainBlastBar);
-        }
+        this.SetType(ItemType.Undefined);
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
@@ -88,7 +72,25 @@ public class Item : MonoBehaviour
 
     public virtual IEnumerator UseEffect()
     {
-        Debug.Log("Slippers were used");
-        yield return null;
+        GameObject heroObj = GameObject.FindGameObjectWithTag("Hero");
+        Hero hero = heroObj.GetComponent<Hero>();
+
+        Vector3 scaleChange = new Vector3(heroObj.transform.localScale.x, 3 *heroObj.transform.localScale.y, heroObj.transform.localScale.z);
+
+        heroObj.transform.localScale = scaleChange;
+        Debug.Log("Item was used");
+
+        float elapsedTime = 0f;
+        while (elapsedTime < effectTime) {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        scaleChange = new Vector3(heroObj.transform.localScale.x, heroObj.transform.localScale.y / 3, heroObj.transform.localScale.z);
+        heroObj.transform.localScale = scaleChange;
+    }
+
+    public bool GetEffectIsActive()
+    {
+        return false;
     }
 }

@@ -6,7 +6,8 @@
         "UnityEditor.TestRunner",
         "Scripts",
         "NNScripts",
-        "IK Scripts"
+        "IK Scripts",
+        "LFScripts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,0 +1,8 @@
+Prefab: Terr Stair Collider
+Purpose: The collider to attach to a Terr Stair object to create an incline or decline in terrain
+Interaction: Player runs on top of it
+
+How it works:
+ - A 2D box collider tilted at 28.5 degrees on the Z plane.
+ - Transform has been edited to fit the size of the Terr Stair incline.
+ - Attach this collider before you resize the Terr Stair object.

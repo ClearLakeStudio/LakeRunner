@@ -20,7 +20,7 @@ public class LevelFinish : MonoBehaviour
     private Vector2 rayLoc;
     private bool platforms;
 
-    void Start(){
+    void Awake(){
         rayLoc = new Vector2(transform.position.x + transform.localScale.x/2, transform.position.y);
         platMan = GameObject.Find("UserPlatformManager");
         platforms = true;
@@ -42,7 +42,8 @@ public class LevelFinish : MonoBehaviour
         foreach(RaycastHit2D hit in colls){
             if(hit.collider.gameObject.tag == "Hero"){
                 platMan.SetActive(false);
-                gameOver.GetComponent<ChangeScene>().gameOver();
+                gameOver.GetComponent<ChangeScene>().GameOver();
+                //gameOver.GetComponent<ChangeScene>().finishGame = true;
                 platforms = false;
                 levData.FinishLevel(SceneManager.GetActiveScene().name);
             }
@@ -51,7 +52,8 @@ public class LevelFinish : MonoBehaviour
         foreach(RaycastHit2D hit in colls){
             if(hit.collider.gameObject.tag == "Hero"){
                 platMan.SetActive(false);
-                gameOver.GetComponent<ChangeScene>().gameOver();
+                gameOver.GetComponent<ChangeScene>().GameOver();
+                //gameOver.GetComponent<ChangeScene>().finishGame = true;
                 platforms = false;
                 levData.FinishLevel(SceneManager.GetActiveScene().name);
             }

@@ -15,17 +15,21 @@ using UnityEngine;
  */
 public class Sunscreen : AttributeItem
 {
-    public float healthIncrease = 25f;
+    public float shieldIncrease = 25f;
+
+    protected override void Awake()
+    {
+        this.SetType(ItemType.Sunscreen);
+        gameObject.tag = "Sunscreen";
+    }
 
     public override IEnumerator UseEffect()
     {
-        float currentHealth;
+        float currentShield;
+        Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
-        GameObject heroObject = GameObject.FindGameObjectWithTag("Hero");
-        Hero heroScript = heroObject.GetComponent<Hero>();
-
-        currentHealth = heroScript.GetHealth();
-        heroScript.SetHealth(currentHealth + healthIncrease);
+        currentShield = hero.GetShield();
+        hero.SetShield(currentShield + shieldIncrease);
         Debug.Log("Sunscreen was used");
         yield return null;
     }

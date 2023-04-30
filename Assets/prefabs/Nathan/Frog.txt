@@ -14,14 +14,17 @@ Components:
     Frog (Script) AttackTimer 0.5, LeapX 5, LeapY 10
 
 Frog Class: Inherits from Enemy, which Inherits from Entity.
-    data: floats LeapX LeapY
+    data: LeapX LeapY
     method: EnemyAttack that Targets the object in the hierarchy named "Hero", and jumps towards it every "attackTimer" seconds.
     method: EntityClone that creates a new instance of a frog, and returns the entity.
 
 Enemy Class: Inherits from Entity.
+    data: AttackTimer
     method: EntityAwake gives the enemy a tag and finds/stores the "Hero" object.
     method: EntityOutOfBounds destroys the entity.
     method: EntityCollision acknowledges collision.
     method: EntityFixedUpdate triggers EnemyAttack on a timer.
     method: EnemyAttack does nothing by default.
 
+Entity Class:
+    method:

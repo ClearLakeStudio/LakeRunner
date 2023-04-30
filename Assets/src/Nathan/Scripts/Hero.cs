@@ -40,7 +40,7 @@ public class Hero : Entity
         }
         else if(newHealth <= 0){
             health = 0;
-            healthbar.updateHealth((int)health);
+            healthbar.UpdateHealth((int)health);
             Debug.Log("(NN) Hero Health Depleated");
             Time.timeScale = 0;
             gameOver.SetActive(true);
@@ -48,7 +48,7 @@ public class Hero : Entity
         else{
             health = newHealth;
         }
-        healthbar.updateHealth((int)health);
+        healthbar.UpdateHealth((int)health);
     }
 
     public float GetHealth(){
@@ -67,7 +67,7 @@ public class Hero : Entity
         else{
             shield = newShield;
         }
-        shieldbar.updateSunS((int)shield);
+        shieldbar.UpdateSunS((int)shield);
     }
 
     public float GetShield(){

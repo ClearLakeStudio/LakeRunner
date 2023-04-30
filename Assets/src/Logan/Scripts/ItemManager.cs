@@ -61,7 +61,7 @@ public class ItemManager : MonoBehaviour
 
         foreach(GameObject collectionObject in itemsFromCollection) {
             // create an empty GameObject that will hold the pooled GameObjects for this type in the unity hierarchy
-            GameObject poolRepresentative = new GameObject(collectionObject.name);
+            GameObject poolRepresentative = new GameObject(collectionObject.name + "Pool");
             // make the empty GameObject a child of the itemPools GameObject
             poolRepresentative.transform.parent = itemPools.transform;
 
@@ -85,7 +85,7 @@ public class ItemManager : MonoBehaviour
 
     public bool UpdateInventory(ItemType collidedItem)
     {
-        if (inventory.addItem(collidedItem)) {
+        if (inventory.AddItem(collidedItem)) {
             return true;
         }
         return false;
@@ -131,37 +131,16 @@ public class ItemManager : MonoBehaviour
     {
         // check for user input
         if (Input.GetKeyDown(sunglassesKey)) {
-            // query the inventory to ensure that the player has the item
-            // if (inventory.ExistsInInventory(ItemType.Sunglasses == true) {
-            //     // call the item's effect
-            // } else {
-            //     // play "denial" sound
-            // }
-
-            if (inventory.removeItem(ItemType.Sunglasses)) {
-                // play success sound
-
-                // activate effect
+            if (inventory.RemoveItem(ItemType.Sunglasses) && !Sunglasses.GetEffectIsActive()) {
                 ActivateItemEffect(ItemType.Sunglasses);
             }
-            else {
-                //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
-            }
-        } else if (Input.GetKeyDown(slippersKey)) {
-            if (inventory.removeItem(ItemType.Slippers)) {
+        } else if (Input.GetKeyDown(slippersKey) && !Slippers.GetEffectIsActive()) {
+            if (inventory.RemoveItem(ItemType.Slippers)) {
                 ActivateItemEffect(ItemType.Slippers);
             }
-            else {
-                //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
-            }
-        } else if (Input.GetKeyDown(brainBlastBarKey)) {
-            if (inventory.removeItem(ItemType.BrainBlastBar)) {
+        } else if (Input.GetKeyDown(brainBlastBarKey) && !BrainBlastBar.GetEffectIsActive()) {
+            if (inventory.RemoveItem(ItemType.BrainBlastBar)) {
                 ActivateItemEffect(ItemType.BrainBlastBar);
-            }
-            else {
-                //AudioSource.PlayClipAtPoint(deniedSound, transform.position);
-                //AudioSource.Play(deniedSound);
-                //deniedSound.Play();
             }
         }
     }
@@ -188,7 +167,7 @@ public class ItemManager : MonoBehaviour
         // Superclass: Item
         // Subclasses: AloeVera, BrainBlastBar, Slippers, Sunglasses, Sunscreen
         Item itemScript = obj.GetComponent<Item>();
-        if (itemScript.effectIsActive == false) {
+        if (!itemScript.GetEffectIsActive()) {
             StartCoroutine(itemScript.UseEffect());
         }
 

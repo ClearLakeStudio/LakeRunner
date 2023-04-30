@@ -28,7 +28,7 @@ public class LoadLevel : MonoBehaviour
     private float terrLength;
     private int curLevel;
 
-    void Start()
+    void Awake()
     {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         curLevel = SceneManager.GetActiveScene().buildIndex;
@@ -156,7 +156,7 @@ public class LoadLevel : MonoBehaviour
                     return;
                 }
                 theChild.SetPos(lastTerrainLoc);
-                if(theChild.CreateChunk() != 0)
+                if(!theChild.CreateChunk())
                 {
                     Debug.Log("LoadLevel - Chunk creation error.");
                     return;
@@ -192,7 +192,7 @@ public enum TerrColor
 public class TerrParent
 {
     private GameObject terr;
-    private Vector2 terrPos;
+    public Vector2 terrPos;
     private TerrColor color;
 
     public TerrParent(GameObject nextTerr,TerrColor c=TerrColor.Green)
@@ -207,23 +207,41 @@ public class TerrParent
     }
 
     //Should return -1 for error, 0 for success
-    public virtual int CreateChunk()
+    public virtual GameObject CreateChunk()
     {
         GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
         if(thisTerr)
         {
             thisTerr.GetComponent<TerrainBehavior>().enabled = true;
-            return 0;
+            return thisTerr;
         }
         else
-            return -1;
+            return null;
     }
+
+    // public void SetPos(Vector2 newPos)
+    // {
+    //     terrPos = newPos;
+    // }
+
+    // //Should return -1 for error, 0 for success
+    // public GameObject CreateChunk()
+    // {
+    //     GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+    //     if(thisTerr)
+    //     {
+    //         thisTerr.GetComponent<TerrainBehavior>().enabled = true;
+    //         return thisTerr;
+    //     }
+    //     else
+    //         return null;
+    // }
 }
 
 public class TerrHigh : TerrParent
 {
     private GameObject terr;
-    private Vector2 terrPos;
+    public new Vector2 terrPos;
     private TerrColor color;
 
     public TerrHigh(GameObject nextTerr,TerrColor c=TerrColor.Green) : base(nextTerr,c)
@@ -237,23 +255,40 @@ public class TerrHigh : TerrParent
         terrPos = new Vector2(newPos.x,newPos.y - 1);
     }
 
-    public override int CreateChunk()
+    public override GameObject CreateChunk()
     {
         GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
         if(thisTerr)
         {
             thisTerr.GetComponent<TerrainBehavior>().enabled = true;
-            return 0;
+            return thisTerr;
         }
         else
-            return -1;
+            return null;
     }
+
+    // public void SetPos(Vector2 newPos)
+    // {
+    //     terrPos = new Vector2(newPos.x,newPos.y - 1);
+    // }
+
+    // public GameObject CreateChunk()
+    // {
+    //     GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+    //     if(thisTerr)
+    //     {
+    //         thisTerr.GetComponent<TerrainBehavior>().enabled = true;
+    //         return thisTerr;
+    //     }
+    //     else
+    //         return null;
+    // }
 }
 
 public class TerrStair : TerrParent
 {
     private GameObject terr;
-    private Vector2 terrPos;
+    public new Vector2 terrPos;
     private TerrColor color;
 
     public TerrStair(GameObject nextTerr,TerrColor c=TerrColor.Green) : base(nextTerr,c)
@@ -267,15 +302,32 @@ public class TerrStair : TerrParent
         terrPos = new Vector2(newPos.x,newPos.y - 0.75f);
     }
 
-    public override int CreateChunk()
+    public override GameObject CreateChunk()
     {
         GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
         if(thisTerr)
         {
             thisTerr.GetComponent<TerrainBehavior>().enabled = true;
-            return 0;
+            return thisTerr;
         }
         else
-            return -1;
+            return null;
     }
+
+    // public void SetPos(Vector2 newPos)
+    // {
+    //     terrPos = new Vector2(newPos.x,newPos.y - 0.75f);
+    // }
+
+    // public GameObject CreateChunk()
+    // {
+    //     GameObject thisTerr = UnityEngine.Object.Instantiate(terr,terrPos,Quaternion.identity);
+    //     if(thisTerr)
+    //     {
+    //         thisTerr.GetComponent<TerrainBehavior>().enabled = true;
+    //         return thisTerr;
+    //     }
+    //     else
+    //         return null;
+    // }
 }

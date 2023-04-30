@@ -15,20 +15,23 @@ using UnityEngine;
  */
 public class AloeVera : AttributeItem
 {
-    public float shieldIncrease = 25f;
-    private GameObject heroObject;
-    private Hero heroScript;
+    public float healthIncrease = 25f;
+
+    protected override void Awake()
+    {
+        this.SetType(ItemType.AloeVera);
+        gameObject.tag = "Aloe Vera";
+    }
 
     public override IEnumerator UseEffect()
     {
-        float currentShield;
+        float currentHealth;
+        Hero hero = GameObject.FindGameObjectWithTag("Hero").GetComponent<Hero>();
 
-        heroObject = GameObject.FindGameObjectWithTag("Hero");
-        heroScript = heroObject.GetComponent<Hero>();
-
-        currentShield = heroScript.GetShield();
-        heroScript.SetShield(currentShield + shieldIncrease);
+        currentHealth = hero.GetHealth();
+        hero.SetHealth(currentHealth + healthIncrease);
         Debug.Log("Aloe Vera was used");
         yield return null;
+
     }
 }

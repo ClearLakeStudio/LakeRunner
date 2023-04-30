@@ -1,3 +1,15 @@
 Prefab: Finish Line
-Purpose: Mark the end of a level
-Interaction: Goes to the end screen once the player passes it
+Purpose: Signal the completion of a level
+Interaction: Activates the end screen once the player passes it.
+
+How it works:
+ - Is not visible on its own, must have a separate sprite attached.
+ - Utilizes the LevelFinish script.
+ - LevelFinish:
+	- Accesses the current platform manager and a datastore of completed levels.
+	- Finds the gameOver screen object in the current scene.
+ 	- Raycasts directly upward and directly downward, and on collision with an object tagged "Hero":
+		- Deactivates platform creation.
+		- Activates the gameOver screen and sets its finishGame attribute to "true".
+		- Calls the levelDatastore function FinishLevel to show that the player has completed the current level.
+ 	- Contains the function CanPlacePlatforms to return private data member "platforms".

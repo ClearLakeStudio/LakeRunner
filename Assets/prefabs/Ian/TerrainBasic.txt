@@ -1,3 +1,10 @@
 Prefab: Terrain Basic
 Purpose: Basic, low-level terrain
 Interaction: Player runs on top
+
+How it works:
+ - Uses a Sprite Renderer to show the basic terrain of a given color.
+ - Uses a box collider with boundaries set to the edges of the sprite.
+ - Uses Terrain Behavior script, which:
+	- Tracks the position of the object tagged "Hero" within the scene.
+	- Destroys the terrain object if the Hero reaches a point 40 spaces to the right of the terrain.
