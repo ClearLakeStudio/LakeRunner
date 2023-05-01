@@ -227,8 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e626f653e75496c8af238901d19952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevelButton: {fileID: 0}
+  NextLevelButtn: {fileID: 7429797003155065564, guid: 3f34889421bf241b287d9ba07c78a442, type: 3}
   gameOverUI: {fileID: 1221126292286550015}
+  finishGame: 1
 --- !u!1 &1221126292710752774
 GameObject:
   m_ObjectHideFlags: 0
