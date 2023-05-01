@@ -28,7 +28,7 @@ public class LoadLevel : MonoBehaviour
     private float terrLength;
     private int curLevel;
 
-    void Awake()
+    void Start()
     {
         //Create timer to check whether a chunk has been loaded in the past two seconds. This prevents framerate-dependent chunk loading.
         curLevel = SceneManager.GetActiveScene().buildIndex;
@@ -56,24 +56,24 @@ public class LoadLevel : MonoBehaviour
             curLevel = SceneManager.GetActiveScene().buildIndex; 
             switch (curLevel)
             {
-                case 1:
+                case 2:
                     //Create items here
                     items.SpawnItem(ItemType.Sunscreen, new Vector2(56, 50));
                     items.SpawnItem(ItemType.AloeVera, new Vector2(126, 50));
                     break;
-                case 2:
+                case 3:
                     items.SpawnItem(ItemType.Sunglasses, new Vector2(15, 5));
                     items.SpawnItem(ItemType.Slippers, new Vector2(61, 5));
                     break;
-                case 3:
+                case 4:
                     items.SpawnItem(ItemType.BrainBlastBar, new Vector2(30,0));
                     items.SpawnItem(ItemType.Sunscreen, new Vector2(110,0));
                     break;
-                case 4:
+                case 5:
                     items.SpawnItem(ItemType.Sunglasses, new Vector2(45,5));
                     items.SpawnItem(ItemType.AloeVera, new Vector2(150,10));
                     break;
-                case 5:
+                case 6:
                     items.SpawnItem(ItemType.Slippers, new Vector2(25,3));
                     items.SpawnItem(ItemType.Sunscreen, new Vector2(75,3));
                     items.SpawnItem(ItemType.BrainBlastBar, new Vector2(95,3));
