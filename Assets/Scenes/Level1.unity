@@ -784,7 +784,7 @@ PrefabInstance:
     - target: {fileID: 1462873224046323659, guid: 75dcf695aafbfce48b3ee58b2b47ecb9, type: 3}
       propertyPath: changeScene
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 477923235}
     - target: {fileID: 2960587790472871598, guid: 75dcf695aafbfce48b3ee58b2b47ecb9, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -849,19 +849,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 410481647639952712, guid: 75dcf695aafbfce48b3ee58b2b47ecb9, type: 3}
   m_PrefabInstance: {fileID: 237269892}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &237269895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237269894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b6705722eb36a4daaea01345249c08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeScene: {fileID: 0}
 --- !u!1 &242849302 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5435288670920172781, guid: a44ee851e92d04f4d859b3c27268f46d, type: 3}
