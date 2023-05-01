@@ -80,7 +80,7 @@ namespace Facade
 
         protected DemoFacade()
         {
-            //pM = GameObject.Find("UserPlatformManager").GetComponent<PlatformManager>();
+            pM = GameObject.Find("UserPlatformManager").GetComponent<PlatformManager>();
             ch = ChunkGroup.GetChunkGroup();
         }
 
@@ -109,8 +109,6 @@ namespace Facade
 
         public void CreatePlatform(Vector2 topLeft, float width){
             Vector3[] loc = {new Vector3(topLeft.x,topLeft.y,0),new Vector3(topLeft.x + width, topLeft.y-1,0)};
-            // Platform p = new Platform(loc,10000);
-            // BaseDecorator pF = new Floating(p);
             pB = pM.CheckPlatValidity(loc);
             pB.floating = true;
             pM.MakePlat(pB);
