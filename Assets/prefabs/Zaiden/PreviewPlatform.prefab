@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4244877439890298295}
   - component: {fileID: 1273712731070067601}
   - component: {fileID: 9037091351655319043}
-  - component: {fileID: -399499851135104444}
   m_Layer: 0
   m_Name: PreviewPlatform
   m_TagString: Untagged
@@ -75,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.06289297, g: 1, b: 0.9160608, a: 0.50980395}
+  m_Sprite: {fileID: -1059340132, guid: 96f446b505ce0154ea7ffa133dd47ad0, type: 3}
+  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0.50980395}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,16 +111,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-399499851135104444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6825211924453270627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98526eb7845029040bf6683b6b23532d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatPlatform: {fileID: 6825211924453270627}

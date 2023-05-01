@@ -9,14 +9,27 @@ using UnityEngine;
 
 public class Falling : MonoBehaviour
 {
-    public void OnColliderEnter2D(Collider other)
+    Animator anim;
+    Rigidbody2D rb;
+    void Start()
     {
-        if (other.tag == "Hero" || other.tag == "Ambush" || other.tag == "Frog" || other.tag == "AngrySentientCoconut")
-        {
-            Rigidbody2D rB = other.GetComponent<Rigidbody2D>();
-            int direction = (int)(rB.velocity.x / Mathf.Abs(rB.velocity.x)); // get direction of hero
-            rB.AddForce(new Vector2(direction * 0.1f, 0.1f)); // push in x axis direction and up
-        }
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+    // use awake to play sound upon instantiation
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        anim.SetBool("popping", true);
+        rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
+        StartCoroutine(Die());
+    }
+
+    private IEnumerator Die()
+    {
+        anim.Play("poppingbubble");
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 
 }
