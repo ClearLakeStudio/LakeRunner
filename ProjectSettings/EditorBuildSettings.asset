@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: 33c3acf2ef81a440db98f6bbbb3d3ab7
+  - enabled: 1
+    path: Assets/Scenes/Infinite Runner.unity
+    guid: 9ac571936d1c0ab4794d9023aec3f135
   - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: 2ecb8de34942745198cec86c59ca53e5
