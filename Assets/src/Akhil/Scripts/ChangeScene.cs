@@ -102,7 +102,7 @@ public class ChangeScene : MonoBehaviour
             Debug.Log("button disabled");
             NextLevelButtn.SetActive(false);
         }
-        else {
+        else if(finishGame == true) {
             Debug.Log("button enabled");
             NextLevelButtn.SetActive(true);
         }
