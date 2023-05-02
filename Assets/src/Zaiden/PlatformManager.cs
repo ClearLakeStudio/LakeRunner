@@ -96,4 +96,11 @@ public class PlatformManager : MonoBehaviour
             Destroy(pvPlat);
         }
     }
+
+    public bool GetPVPlatCollision()
+    {
+        return pvPlat.GetComponent<Preview>().GetCollision();
+    }
+
+
 }

@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
         lF = finishLine.GetComponent<LevelFinish>(); // assign script reference in LevelFinish.cs
         mB = matBar.GetComponent<MaterialBar>();
         aud = GetComponent<AudioSource>();
+
+        mB.UpdateMaterial(100);
     }
 
     // Update is called once per frame
@@ -105,7 +107,7 @@ public class GameManager : MonoBehaviour
             boxCorners[1] = mousePos;
             PlatBox p = pM.CheckPlatValidity(boxCorners);
             int currentMaterial = mB.RetCurrentMat();
-            if (p.valid == true && Mathf.Abs(p.width * p.height * 4) <= currentMaterial)
+            if (p.valid == true && Mathf.Abs(p.width * p.height * 4) <= currentMaterial && !pM.GetPVPlatCollision())
             {
                 if (!doubleClick) // dont make falling
                 {

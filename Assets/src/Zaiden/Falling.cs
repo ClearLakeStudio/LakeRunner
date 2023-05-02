@@ -21,7 +21,7 @@ public class Falling : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         aud = GetComponent<AudioSource>();
     }
-    // use awake to play sound upon instantiation
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         anim.SetBool("popping", true);
