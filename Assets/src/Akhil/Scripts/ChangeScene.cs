@@ -64,7 +64,7 @@ public class ChangeScene : MonoBehaviour
     // this bool will tell true if the player has finished the level successfully
     public bool finishGame = false;
     // this bool stores value to show or hide the button
-    bool button =true;
+    public bool button =false;
 
     /*
      * this function activates the gameover screen
@@ -79,8 +79,7 @@ public class ChangeScene : MonoBehaviour
         * the level then the 
         * next level button is shown
         */
-        if (finishGame == true) {
-            
+        if (finishGame == true) {            
             button = d.DisplayNextLevelButton();
         }
         else if(finishGame == false) {
@@ -99,11 +98,11 @@ public class ChangeScene : MonoBehaviour
          * then the next level button will be hidden
          */
 
-        if (button == false) {
+        if (finishGame == false) {
             Debug.Log("button disabled");
             NextLevelButtn.SetActive(false);
         }
-        else {
+        else if(finishGame == true) {
             Debug.Log("button enabled");
             NextLevelButtn.SetActive(true);
         }

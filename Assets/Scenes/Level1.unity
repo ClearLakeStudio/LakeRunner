@@ -5496,6 +5496,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4223472294846257240, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+      propertyPath: button
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223472294846257240, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
+      propertyPath: finishGame
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223472294846257240, guid: dfdf3122cdead4323af8321479a6bbdc, type: 3}
       propertyPath: NextLevelButtn
       value: 
       objectReference: {fileID: 805855964}

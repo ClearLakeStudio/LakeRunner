@@ -9,9 +9,10 @@ public class HeroForward
     [UnityTest]
     public IEnumerator RunDir()
     {
-        //SceneManager.LoadScene("GameScene");
         GameObject obj = GameObject.FindWithTag("Hero");
+        Assert.IsTrue(obj!=null);
+        Hero hero = obj.GetComponent<Hero>();
         yield return new WaitForSeconds(1); //1 second is a timely majic number
-        Assert.IsTrue(0<obj.transform.position.x);
+        Assert.IsTrue(0 < hero.GetPosition().x);
     }
 }

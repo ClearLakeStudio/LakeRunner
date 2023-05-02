@@ -13,7 +13,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
     [SerializeField]
-    public float attacktimer;
+    private float attacktimer;
 
     protected Hero hero = null;
 
@@ -39,7 +39,7 @@ public class Enemy : Entity
     {
         if((Time.fixedTime % attacktimer == 0) && (Time.fixedTime!=0)){
             EnemyAttack();
-            Debug.Log("Enemy at:" + GetPosition());
+            //Debug.Log("(NN) Enemy at:" + GetPosition());
         }
     }
 

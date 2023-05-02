@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class Hero : Entity
 {
+    public bool drbcmode;
+
     public float jumpForce;
     public float movementSpeed;
 
@@ -33,6 +35,7 @@ public class Hero : Entity
     {
         jumpQueued = true;
     }
+
     public void SetHealth(float newHealth)
     {
         if(newHealth >= 100 ){
@@ -42,8 +45,10 @@ public class Hero : Entity
             health = 0;
             healthbar.UpdateHealth((int)health);
             Debug.Log("(NN) Hero Health Depleated");
-            Time.timeScale = 0;
-            gameOver.SetActive(true);
+            if(!drbcmode){
+                Time.timeScale = 0;
+                gameOver.SetActive(true);
+            }
         }
         else{
             health = newHealth;
@@ -102,7 +107,7 @@ public class Hero : Entity
         else if((Time.fixedTime % stepTimer == 0) && (Time.fixedTime != 0)){
             rb.velocity = new Vector2(rb.velocity.x/3 + movementSpeed, rb.velocity.y/2 + stepJump);
             if(rb.position.x < lastX + 1){
-                Debug.Log("Sun damage");
+                Debug.Log("(NN) Sun damage");
                 if(shield > 0){
                     SetShield(shield - 5);
                 }
@@ -117,16 +122,20 @@ public class Hero : Entity
     //Collision is called whenever the object collides with a trigger.
     protected override void EntityCollision(Collider2D other)
     {
-        if(other.tag == "Enemy")
-        {
+        if(other.tag == "Enemy"){
             Debug.Log("(NN) Collision with enemy");
         }
     }
 
     protected override void EntityOutOfBounds() 
     {   
-        Time.timeScale = 0;
-        gameOver.SetActive(true);
-        Debug.Log("(NN) Time frozen, Hero out of bounds");
+        if(!drbcmode){
+            Time.timeScale = 0;
+            gameOver.SetActive(true);
+            Debug.Log("(NN) Time frozen, Hero out of bounds");
+        }
+        else{
+            rb.position = new Vector3(rb.position.x/0.75f, 30, 0);
+        }
     }
 }
