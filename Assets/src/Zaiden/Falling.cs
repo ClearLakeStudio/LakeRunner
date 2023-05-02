@@ -26,14 +26,13 @@ public class Falling : MonoBehaviour
     {
         anim.SetBool("popping", true);
         rb.gravityScale = 0;
+        AudioSource.PlayClipAtPoint(pop, transform.position);
         rb.velocity = Vector2.zero;
         StartCoroutine(Die());
     }
 
     private IEnumerator Die()
     {
-        aud.PlayOneShot(pop, 1);
-        anim.Play("poppingbubble");
         yield return new WaitForSeconds(0.8f);
         Destroy(gameObject);
     }

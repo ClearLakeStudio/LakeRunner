@@ -10,7 +10,12 @@ public class Preview : MonoBehaviour
     {
         inCollision = false;
     }
+
     public void OnTriggerEnter2D(Collider2D other)
+    {
+        inCollision = true;
+    }
+    void OnCollisionEnter2D(Collision2D col)
     {
         inCollision = true;
     }

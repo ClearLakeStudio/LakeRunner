@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     Vector3[] boxCorners;
     bool mouseHold; // whether or not mouse is currently being held
     float lastClickTime, doubleClickTime = 0.2f; // double click info
+    float lastMaterialIncreaseTime;
     bool doubleClick; // store whether a double click occured when placing platforms
 
     // store hero position value
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         boxCorners = new Vector3[2];
         mouseHold = false;
         doubleClick = false;
+        lastMaterialIncreaseTime = Time.time;
 
         heroPos = new Vector3();
 
@@ -77,6 +79,14 @@ public class GameManager : MonoBehaviour
 
         // call chunk creation function
         cM.CreateNewChunk(new Vector3(heroPos.x, -4.25f, heroPos.z));
+
+        // update material resource
+        int currentMaterial = mB.RetCurrentMat();
+        if (currentMaterial + 10 <= 100 && Time.time > lastMaterialIncreaseTime + 1)
+        {
+            mB.UpdateMaterial(currentMaterial + 10);
+            lastMaterialIncreaseTime = Time.time;
+        }
     }
 
     void ReceivePlatformInput()
