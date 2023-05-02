@@ -24,12 +24,16 @@ public class GameManager : MonoBehaviour
     public GameObject platManager;
     public GameObject chunkManager;
     public GameObject finishLine;
+    public GameObject matBar;
     public GameObject hero;
 
     // store references to scripts
     private PlatformManager pM;
     private LoadLevel cM;
     private LevelFinish lF;
+    private MaterialBar mB;
+
+    AudioSource aud;
 
     // store moues data value
     Vector3 mousePos; // stores position of mouse at critical points
@@ -53,8 +57,8 @@ public class GameManager : MonoBehaviour
         pM = platManager.GetComponent<PlatformManager>(); // assign script reference in platformmanager.cs
         cM = chunkManager.GetComponent<LoadLevel>(); // assign script reference in loadlevel.cs
         lF = finishLine.GetComponent<LevelFinish>(); // assign script reference in LevelFinish.cs
-
-
+        mB = matBar.GetComponent<MaterialBar>();
+        aud = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -100,7 +104,8 @@ public class GameManager : MonoBehaviour
             mousePos.z = Camera.main.nearClipPlane;
             boxCorners[1] = mousePos;
             PlatBox p = pM.CheckPlatValidity(boxCorners);
-            if (p.valid == true)
+            int currentMaterial = mB.RetCurrentMat();
+            if (p.valid == true && Mathf.Abs(p.width * p.height * 4) <= currentMaterial)
             {
                 if (!doubleClick) // dont make falling
                 {
@@ -112,10 +117,12 @@ public class GameManager : MonoBehaviour
                     p.floating = false;
                     pM.MakePlat(p);
                 }
+                mB.UpdateMaterial(currentMaterial - (int)Mathf.Abs((4 * p.width * p.height)));
             }
             else
             {
                 pM.DestroyPreVPlat();
+                aud.Play();
             }
         }
         if (Input.GetMouseButton(0) && mouseHold == true) // get where mouse hold currently is to make preview box

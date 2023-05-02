@@ -4887,6 +4887,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5435288670920172783, guid: a44ee851e92d04f4d859b3c27268f46d, type: 3}
+      propertyPath: matBar
+      value: 
+      objectReference: {fileID: 90034196}
+    - target: {fileID: 5435288670920172783, guid: a44ee851e92d04f4d859b3c27268f46d, type: 3}
       propertyPath: finishLine
       value: 
       objectReference: {fileID: 237269894}

@@ -16,7 +16,7 @@ public class Floating : MonoBehaviour
         {
             Debug.Log("Floating Collision with entity");
             Rigidbody2D rB = other.attachedRigidbody;
-            rB.velocity = new Vector2(rB.velocity.x * 0.9f, rB.velocity.y+0.6f); // push up
+            rB.velocity = new Vector2(rB.velocity.x * 0.98f, rB.velocity.y+0.5f); // push up
         }
     }
 }
