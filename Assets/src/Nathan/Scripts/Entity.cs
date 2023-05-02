@@ -13,8 +13,8 @@ public abstract class Entity : MonoBehaviour
     //protected Animator anim;
     protected SpriteRenderer sprite;
 
-    public Vector2 gameBoundaryLow;
-    public Vector2 gameBoundaryHigh;
+    private Vector2 gameBoundaryLow;
+    private Vector2 gameBoundaryHigh;
 
     //Awake is called when the object is initialized.
     void Awake()
@@ -70,9 +70,9 @@ public abstract class Entity : MonoBehaviour
     protected virtual void EntitySetBounds()
     {
         //gameBoundaryLow = Vector2.negativeInfinity;
-        gameBoundaryLow = new Vector2(-100,-100);
+        gameBoundaryLow = new Vector2(-20,-50);
         //gameBoundaryHigh = Vector2.positiveInfinity;
-        gameBoundaryHigh = new Vector2(10000,100);
+        gameBoundaryHigh = new Vector2(10000,50);
 
         var gm = GameObject.Find("GameManager").GetComponent("GameManager");
         var glb = gm.GetType().GetMethod("GetLowerBoundary");

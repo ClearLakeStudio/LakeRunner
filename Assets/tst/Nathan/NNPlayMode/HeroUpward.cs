@@ -9,10 +9,11 @@ public class HeroUpward
     [UnityTest]
     public IEnumerator JumpDir()
     {
-        //SceneManager.LoadScene("GameScene");
         GameObject obj = GameObject.FindWithTag("Hero");
-        obj.GetComponent<Hero>().Jump();
+        Assert.IsTrue(obj!=null);
+        Hero hero = obj.GetComponent<Hero>();
+        hero.Jump();
         yield return new WaitForSeconds(0.1f);
-        Assert.IsTrue(0<obj.transform.position.y);
+        Assert.IsTrue(0 < hero.GetPosition().y);
     }
 }
