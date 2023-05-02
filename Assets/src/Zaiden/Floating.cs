@@ -10,14 +10,13 @@ using UnityEngine;
 public class Floating : MonoBehaviour
 {
     // use awake to play sound upon instantiation
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Hero" || other.tag == "Ambush" || other.tag == "Frog" || other.tag == "AngrySentientCoconut")
         {
             Debug.Log("Floating Collision with entity");
-            Rigidbody2D rB = other.GetComponent<Rigidbody2D>();
-            int direction = (int)(rB.velocity.x / Mathf.Abs(rB.velocity.x)); // get direction of hero
-            rB.AddForce(new Vector2(direction * 0.1f, 0.1f)); // push in x axis direction and up
+            Rigidbody2D rB = other.attachedRigidbody;
+            rB.velocity = new Vector2(rB.velocity.x * 0.9f, rB.velocity.y+0.6f); // push up
         }
     }
 }

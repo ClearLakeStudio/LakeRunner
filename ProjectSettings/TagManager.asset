@@ -19,6 +19,7 @@ TagManager:
   - Level
   - OverworldManager
   - GameOver
+  - FallingPlatform
   layers:
   - Default
   - TransparentFX
