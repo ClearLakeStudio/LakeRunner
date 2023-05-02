@@ -43,7 +43,7 @@ public class DemoController : MonoBehaviour
             if(secCount >= totalCount)
             {
                 inDemo = true;
-                SceneManager.LoadScene(overScript.GetHeroLevel());
+                SceneManager.LoadScene(overScript.GetHeroLevel() + 1);
             }
         }
         else
