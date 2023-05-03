@@ -42,8 +42,8 @@ public class LevelFinish : MonoBehaviour
         foreach(RaycastHit2D hit in colls){
             if(hit.collider.gameObject.tag == "Hero"){
                 platMan.SetActive(false);
-                gameOver.GetComponent<ChangeScene>().GameOver();
                 gameOver.GetComponent<ChangeScene>().finishGame = true;
+                gameOver.GetComponent<ChangeScene>().GameOver();
                 platforms = false;
                 levData.FinishLevel(SceneManager.GetActiveScene().name);
             }
@@ -52,8 +52,8 @@ public class LevelFinish : MonoBehaviour
         foreach(RaycastHit2D hit in colls){
             if(hit.collider.gameObject.tag == "Hero"){
                 platMan.SetActive(false);
-                gameOver.GetComponent<ChangeScene>().GameOver();
                 gameOver.GetComponent<ChangeScene>().finishGame = true;
+                gameOver.GetComponent<ChangeScene>().GameOver();
                 platforms = false;
                 levData.FinishLevel(SceneManager.GetActiveScene().name);
             }
