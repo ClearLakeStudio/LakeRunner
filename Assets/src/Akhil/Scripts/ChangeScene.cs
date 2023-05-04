@@ -29,7 +29,7 @@ class EbNxtBt : DisNxtBt
     public override bool DisplayNextLevelButton()
     {
         Debug.Log("dyn button enabled");
-        return true;
+        return false;
     }
 }
 
