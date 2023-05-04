@@ -100,6 +100,7 @@ public class LevelMenu : MonoBehaviour, ISubscriber
     public void LoadLevel()
     {
         if (unlocked) {
+            Time.timeScale = 1;
             SceneManager.LoadScene(levelName);
         }
     }
